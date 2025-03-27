@@ -7,14 +7,15 @@ public class CircleController : MonoBehaviour
 {
     private float maxHeight=3f;
     private float minHeight=-3f;
-    public float moveDuration = 2f;
     private bool isMouseDown = false;
     private bool isTrigger = false;
+    public float MaxSpeed = 0.08f;
 
     public float progress;
 
-    private void Update()
+    private void FixedUpdate()
     {
+
         if (Mouse.current.leftButton.isPressed)
         {
             if (!isMouseDown)
@@ -33,23 +34,22 @@ public class CircleController : MonoBehaviour
             OnMouseUnHold();
         }
 
+
         if (isTrigger)
             progress += 1;
-        
-
     }
     private void OnMouseHold()
     {
         if (transform.position.y < maxHeight)
         {
-            transform.position += new Vector3(0, 0.01f, 0);
+            transform.position += new Vector3(0, MaxSpeed, 0);
         }
     }
     private void OnMouseUnHold()
     {
         if (transform.position.y > minHeight)
         {
-            transform.position -= new Vector3(0, 0.01f, 0);
+            transform.position -= new Vector3(0, MaxSpeed, 0);
         }
     }
 

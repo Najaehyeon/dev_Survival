@@ -19,7 +19,7 @@ public class RandomLine : MonoBehaviour
         lineRenderer.positionCount = (numberOfPoints - 1) * interpolationPoints + 1;
 
         Vector3[] points = new Vector3[numberOfPoints];
-        for (int i = 7; i < numberOfPoints; i++)
+        for (int i =0; i < numberOfPoints; i++)
         {
             float x = i * 2f;  // x ÁÂÇ¥
 

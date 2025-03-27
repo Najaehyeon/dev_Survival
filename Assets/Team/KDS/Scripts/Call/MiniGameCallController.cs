@@ -9,14 +9,24 @@ public class MiniGameCallController : MonoBehaviour
     public float progerss;
     public int score;
 
-    [Header("GameEntity")]
-    public GameObject gameend;
+    public GameObject lineRenderer;
 
+    public void Start()
+    {
+        lineRenderer=Instantiate(lineRenderer, Vector3.zero, Quaternion.identity);
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("게임종료");
         progerss = cirele.GetProgerss();
-        Debug.Log($"{progerss}");
+        Destroy(lineRenderer);
+    }
+
+    private void ProgressToScore()
+    {
+        if (progerss > 730) { score = 3; }
+        else if (progerss > 650) { score = 2; }
+        else if (progerss > 600) { score = 1; }
+        else { score = 0; }//실패
     }
 }
