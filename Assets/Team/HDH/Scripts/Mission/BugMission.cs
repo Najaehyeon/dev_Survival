@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Bug : MonoBehaviour
+public class BugMission : MonoBehaviour
 {
     [Header("미션 관련 정보")]
     private float passsedTime;

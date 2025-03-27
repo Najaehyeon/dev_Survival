@@ -2225,7 +2225,7 @@ GameObject:
   - component: {fileID: 1847252826}
   - component: {fileID: 1847252827}
   m_Layer: 5
-  m_Name: BugGame
+  m_Name: BugMission
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2272,12 +2272,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2171f7b80823514785eaf665d100a75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LimitTime: 10
   Bugs: []
   ExitButton: {fileID: 1625357155}
   InfoButton: {fileID: 628288711}
   CompleteButton: {fileID: 663022889}
   TimerText: {fileID: 997602433}
   ProgressBarImage: {fileID: 8900645}
+  ProgressText: {fileID: 1742406732}
 --- !u!1 &1849326152
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,10 +2329,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
