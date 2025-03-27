@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5ffb8107dc4defb429648f7dfec471db
+guid: 367237203ea337d47af7b49d86767c51
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -120,7 +120,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -133,7 +133,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Windows Store Apps
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -149,1177 +149,1009 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sky
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 122
-        width: 256
-        height: 38
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6775386c70a4d1740935b4553a42441c
-      internalID: -499419630
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Chair_Red
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 97
-        width: 11
-        height: 22
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 23da570b01dc0954cac0e75e83e6c39f
-      internalID: -169132450
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Chair_Yellow
+      name: Bugs_0
       rect:
         serializedVersion: 2
         x: 19
-        y: 97
-        width: 11
-        height: 22
+        y: 675
+        width: 51
+        height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 075e057cb00e6604cbda3a8ab6e202a4
-      internalID: 1688491916
+      spriteID: c81537e54a2adc843990182aaa77a1cc
+      internalID: 1769174373
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chair_Green
+      name: Bugs_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 97
-        width: 11
-        height: 22
+        x: 109
+        y: 675
+        width: 51
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c19363299f5dfc746884c1c3bdd7692c
-      internalID: 1633908720
+      spriteID: 73fc905b59deb1b4e8d7e30d1b3f81fb
+      internalID: -1485379175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chair_Blue
+      name: Bugs_2
       rect:
         serializedVersion: 2
-        x: 45
-        y: 97
-        width: 11
-        height: 22
+        x: 199
+        y: 675
+        width: 51
+        height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac875cc29a4a2464ca2e074bcadb8e33
-      internalID: -825697077
+      spriteID: b8bdfb9783728ac4b92c508f1d157fcd
+      internalID: -1507393599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chair_White
+      name: Bugs_3
       rect:
         serializedVersion: 2
-        x: 58
-        y: 97
-        width: 11
-        height: 22
+        x: 289
+        y: 675
+        width: 51
+        height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9b35c0b677c06346b4ba66ea61459ce
-      internalID: 1307739518
+      spriteID: 15542e41e877f9a4ea7d6d2cfcbac98c
+      internalID: 206338634
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chair_Grey
+      name: Bugs_4
       rect:
         serializedVersion: 2
-        x: 71
-        y: 97
-        width: 11
-        height: 22
+        x: 379
+        y: 675
+        width: 51
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75f01b23bba3b3c4bbae8289448a9b0e
-      internalID: -1288026517
+      spriteID: 0a5928e4149c3e64f8d9d86d301f92b5
+      internalID: -1683497863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Desk_Midium
+      name: Bugs_5
       rect:
         serializedVersion: 2
-        x: 85
-        y: 97
-        width: 26
-        height: 16
+        x: 469
+        y: 675
+        width: 51
+        height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed4f17fd857c1c940a6a3d96e9ea6297
-      internalID: 1161963376
+      spriteID: 6e9103b4a4cc7554fb0d43d3fcdb2390
+      internalID: 822399328
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Desk_Large
+      name: Bugs_6
       rect:
         serializedVersion: 2
-        x: 115
-        y: 97
-        width: 40
-        height: 16
+        x: 560
+        y: 675
+        width: 51
+        height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2d363fca7cc05d41959df5edf381ce7
-      internalID: 1629167284
+      spriteID: 616a4ea12045f714c98b33b746cead3d
+      internalID: -236223660
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_9
+      name: Bugs_7
       rect:
         serializedVersion: 2
-        x: 171
-        y: 99
-        width: 79
-        height: 17
+        x: 650
+        y: 675
+        width: 51
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08c23dfc44fe3814dac38f03672f60dd
-      internalID: -2069181325
+      spriteID: d8d0fae946dd6ec49b61714a0ced3082
+      internalID: -343125040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_10
+      name: Bugs_8
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 675
+        width: 51
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ba1aa29457a24443b78d41755dcdecd
+      internalID: 547662523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_9
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 675
+        width: 51
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83991f42a72403d419ab521c119331ad
+      internalID: 1371259454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_10
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 675
+        width: 51
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1c724df688b9564592b996ae70c1134
+      internalID: 1118432302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_11
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 675
+        width: 51
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b050c548170aa84cb3a8146112112b2
+      internalID: 535596347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_12
       rect:
         serializedVersion: 2
         x: 3
-        y: 68
-        width: 73
-        height: 24
+        y: 579
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9941544a0769ce24e81dfd9e542637c6
-      internalID: -269601162
+      spriteID: d2178ec970cc7334ab24474a825aec65
+      internalID: -1260297612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_11
+      name: Bugs_13
       rect:
         serializedVersion: 2
-        x: 84
-        y: 70
-        width: 26
-        height: 20
+        x: 93
+        y: 579
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe6a2b3f514f1b94fb7384f22274a60e
-      internalID: -1541989841
+      spriteID: 30cb18d49c6fac54ea53344d58027416
+      internalID: -593363107
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_12
-      rect:
-        serializedVersion: 2
-        x: 119
-        y: 79
-        width: 33
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dc1536a09e34fce48af8fee6d7cdbdd2
-      internalID: -2128504075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_13
-      rect:
-        serializedVersion: 2
-        x: 170
-        y: 76
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f6ecf487f683b584b89c461f2d8ed560
-      internalID: -1919429575
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_14
-      rect:
-        serializedVersion: 2
-        x: 188
-        y: 78
-        width: 17
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 771d7eb45636ea4458dbfeb848f49e5b
-      internalID: 879657587
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_15
-      rect:
-        serializedVersion: 2
-        x: 207
-        y: 70
-        width: 4
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2eae480848742a14a925e360c2f9455e
-      internalID: -1957109408
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_16
-      rect:
-        serializedVersion: 2
-        x: 213
-        y: 78
-        width: 17
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c3c652ae6290854196eccccf75f2a88
-      internalID: 1340929090
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_17
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 61
-        width: 33
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a1efe7b54d97c0048a35bea529c0dd5d
-      internalID: 2071568316
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_18
-      rect:
-        serializedVersion: 2
-        x: 159
-        y: 58
-        width: 7
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d99158532887e2449a1761a4f8b28d68
-      internalID: 2070718225
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_19
-      rect:
-        serializedVersion: 2
-        x: 234
-        y: 68
-        width: 17
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8867d1ceac74db348843776108d71ef0
-      internalID: 123420938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_20
-      rect:
-        serializedVersion: 2
-        x: 59
-        y: 43
-        width: 26
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 879ab88e9fc2b7d4dbc6dec2d9d1f000
-      internalID: 1508287117
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_21
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 43
-        width: 26
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1b6099f893f742b4585c72546752ccbb
-      internalID: -868974645
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_22
-      rect:
-        serializedVersion: 2
-        x: 169
-        y: 58
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3bc40d1abbc83b243a74c29040f5ce36
-      internalID: -701245545
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_23
-      rect:
-        serializedVersion: 2
-        x: 179
-        y: 57
-        width: 12
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1574337bffe71d347b1645111e168913
-      internalID: -66508152
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_24
-      rect:
-        serializedVersion: 2
-        x: 193
-        y: 57
-        width: 12
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ccd67da6fdeba74fa21eeb6cb28eb89
-      internalID: -131736343
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_25
-      rect:
-        serializedVersion: 2
-        x: 207
-        y: 45
-        width: 16
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7ad42612749fa8846bde35787e395a46
-      internalID: -482825707
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_26
-      rect:
-        serializedVersion: 2
-        x: 222
-        y: 58
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4992f6cd653750d4b9f172070ddeb198
-      internalID: 1922056493
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_27
-      rect:
-        serializedVersion: 2
-        x: 230
-        y: 58
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b19e889553a5584b8b37fb134f9792d
-      internalID: -1395828514
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_28
-      rect:
-        serializedVersion: 2
-        x: 239
-        y: 58
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13848061056739c4d8099d0772386b3d
-      internalID: 1805609939
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_29
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 32
-        width: 15
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee84ee3b34eb4ef4097330afa7a8ff13
-      internalID: 1712919479
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_30
-      rect:
-        serializedVersion: 2
-        x: 19
-        y: 32
-        width: 19
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 99740f9a6240eed47819d46660807ba1
-      internalID: -1270850554
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_31
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 32
-        width: 13
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 70ae7f29cec9ee54791d4d5d041e8b14
-      internalID: 527956076
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_32
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 42
-        width: 33
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cc34251df1b78a642816a5e3b0a1544c
-      internalID: 1696946346
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_33
-      rect:
-        serializedVersion: 2
-        x: 159
-        y: 46
-        width: 19
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ced6eafdaad67d94299206957384a9ce
-      internalID: -9179797
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelOfficeAssets_34
+      name: Bugs_14
       rect:
         serializedVersion: 2
         x: 183
-        y: 45
-        width: 6
-        height: 8
+        y: 579
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd5779152ea3abd41ba8eaf20b3ecc11
-      internalID: -1873712538
+      spriteID: 8489bc780d961a641bf707c367ce53dd
+      internalID: 175433059
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_35
+      name: Bugs_15
       rect:
         serializedVersion: 2
-        x: 192
-        y: 44
-        width: 6
-        height: 9
+        x: 273
+        y: 579
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50d8f2ecd55e96049a65ccf3644322f7
-      internalID: -1950622905
+      spriteID: a2f461db9b200e34690b81088f1f6ad1
+      internalID: 630709325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_36
+      name: Bugs_16
       rect:
         serializedVersion: 2
-        x: 200
-        y: 44
-        width: 9
-        height: 9
+        x: 363
+        y: 579
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b947e962726dbe46b99cbf5e608c3bb
-      internalID: -508935770
+      spriteID: d66fcbf25da57474fbddbae4c00bfe45
+      internalID: -683996421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_37
+      name: Bugs_17
       rect:
         serializedVersion: 2
-        x: 233
-        y: 35
-        width: 15
-        height: 19
+        x: 453
+        y: 579
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae0082c8a4570fb4591d2a09cbf49fae
-      internalID: 342783301
+      spriteID: dd9cdbe5de9a44c41bc90ecaba5df4eb
+      internalID: -1692938662
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_38
+      name: Bugs_18
       rect:
         serializedVersion: 2
-        x: 98
-        y: 9
-        width: 16
-        height: 31
+        x: 544
+        y: 579
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 326914d7bc569724c8831a58b836091c
-      internalID: 498144987
+      spriteID: f780cc8dc2bd3cd4f9d85df351a0dce0
+      internalID: 1404682441
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_39
+      name: Bugs_19
       rect:
         serializedVersion: 2
-        x: 120
-        y: 23
-        width: 33
-        height: 16
+        x: 634
+        y: 579
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9e6633240c2a2647b0723c3c2c67619
-      internalID: -1179967777
+      spriteID: e96110cc70aeaeb4fb80cab75e048ba9
+      internalID: 925361007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_40
+      name: Bugs_20
       rect:
         serializedVersion: 2
-        x: 159
-        y: 3
-        width: 24
-        height: 34
+        x: 724
+        y: 579
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dde70c165034e8544b84f0e719e569ed
-      internalID: 1567867465
+      spriteID: 4befdf726473b9e4ab9918866adcc6e3
+      internalID: -308318490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_41
+      name: Bugs_21
       rect:
         serializedVersion: 2
-        x: 184
-        y: 3
-        width: 24
-        height: 31
+        x: 813
+        y: 579
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc945e8dfc078c143a1b9a794a02ea71
-      internalID: 2037590743
+      spriteID: b43c8d7fff35a544d985ea391333cce7
+      internalID: 1354365496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_42
+      name: Bugs_22
       rect:
         serializedVersion: 2
-        x: 211
-        y: 33
-        width: 11
-        height: 8
+        x: 903
+        y: 579
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c78acb07f6655f449d1e076d14ea65d
-      internalID: 1254749958
+      spriteID: a5bd78b4314ded4469fca2c07cd2bafc
+      internalID: 1720414360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_43
+      name: Bugs_23
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 579
+        width: 84
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 567d887bed596c349b95230eda71d795
+      internalID: 1503193711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_24
       rect:
         serializedVersion: 2
         x: 3
-        y: 5
-        width: 17
-        height: 23
+        y: 483
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a19f811be4bbe34448e97f23a63fd6da
-      internalID: 520700322
+      spriteID: 2d51ec063cd7836438bbfad3e7bc6bfb
+      internalID: -2000868320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_44
+      name: Bugs_25
       rect:
         serializedVersion: 2
-        x: 22
-        y: 5
-        width: 17
-        height: 23
+        x: 93
+        y: 483
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 515389efe31674f4ab73ce34431d84ef
-      internalID: -509597263
+      spriteID: 6dd5649fe9872b841843239c2abe2d54
+      internalID: 2037899759
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_45
+      name: Bugs_26
       rect:
         serializedVersion: 2
-        x: 65
-        y: 18
-        width: 16
-        height: 13
+        x: 183
+        y: 483
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b388a3271b265e40886dd8d23e2e2a0
-      internalID: -305441756
+      spriteID: e5a647732c0fe544dbee9f9010a018cc
+      internalID: -574181004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_46
+      name: Bugs_27
       rect:
         serializedVersion: 2
-        x: 211
-        y: 23
-        width: 11
-        height: 8
+        x: 273
+        y: 483
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c453c917d6ad96241b60626b8b5dc700
-      internalID: -990420508
+      spriteID: 5e1564a218b55ac4b904e1656b066ef2
+      internalID: -787059639
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_47
+      name: Bugs_28
       rect:
         serializedVersion: 2
-        x: 233
-        y: 9
-        width: 5
-        height: 16
+        x: 363
+        y: 483
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a32fd504700f2e942abdaa7b3ebef056
-      internalID: -273138092
+      spriteID: 5b9ee61676c53fb47bc5cd64534228ae
+      internalID: 1261798112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_48
+      name: Bugs_29
       rect:
         serializedVersion: 2
-        x: 240
-        y: 13
-        width: 6
-        height: 19
+        x: 453
+        y: 483
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23eae6ce02599674c8a33bff971d7c48
-      internalID: 2019027759
+      spriteID: 0364821f22f645145b9e7c8fe81490cf
+      internalID: -1749681123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_49
+      name: Bugs_30
       rect:
         serializedVersion: 2
-        x: 59
-        y: 3
-        width: 24
-        height: 11
+        x: 544
+        y: 483
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4348b92fe8a5a3b4db308df9d2bc4439
-      internalID: -1727274562
+      spriteID: 0dd1f5405e8dcd848b67a5ce70105ea9
+      internalID: 491026610
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_50
+      name: Bugs_31
       rect:
         serializedVersion: 2
-        x: 116
-        y: 3
-        width: 9
-        height: 14
+        x: 634
+        y: 483
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e89b163db0c7a014cbc6f636e164d5bc
-      internalID: -380936577
+      spriteID: d56219a19845a174eb0fa124a109ab22
+      internalID: 1812054764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_51
+      name: Bugs_32
       rect:
         serializedVersion: 2
-        x: 126
-        y: 3
-        width: 9
-        height: 14
+        x: 724
+        y: 483
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df67d8e18dc02494a9f20570eb4419ec
-      internalID: -1638117483
+      spriteID: 4d1acfd794fc1764ba1a619c705c250f
+      internalID: 1184024861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_52
+      name: Bugs_33
       rect:
         serializedVersion: 2
-        x: 136
-        y: 3
-        width: 9
-        height: 14
+        x: 813
+        y: 483
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce8295e370963a44db4aeae588ac1f7a
-      internalID: 466112530
+      spriteID: c52173865948f384aa77a22f188a72cc
+      internalID: -1628090238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_53
+      name: Bugs_34
       rect:
         serializedVersion: 2
-        x: 147
-        y: 3
-        width: 9
-        height: 17
+        x: 903
+        y: 483
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c1aeacd55f1a7a4f9091445354d99a9
-      internalID: -1317021408
+      spriteID: 0e0d7b58d204ac245afe4d30f9678bd6
+      internalID: -1094776893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_54
+      name: Bugs_35
       rect:
         serializedVersion: 2
-        x: 211
-        y: 12
-        width: 11
-        height: 8
+        x: 993
+        y: 483
+        width: 84
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f04e1b5c1fa42594da07a89e04c911d1
-      internalID: -1141791813
+      spriteID: 37604cb328a9f7c4eb6930e6a3774fd7
+      internalID: -1152842855
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelOfficeAssets_55
+      name: Bugs_36
       rect:
         serializedVersion: 2
-        x: 211
-        y: 3
-        width: 10
-        height: 6
+        x: 20
+        y: 384
+        width: 51
+        height: 69
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 254776187c7986e4b8fe2e0e5c5a8142
-      internalID: -895898913
+      spriteID: f4ad0dc2e25c8a74396b8e864ca0a402
+      internalID: -1108977706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_37
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 384
+        width: 45
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcd72c0413fc5ca4eaf696d345da4481
+      internalID: 1174453258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_38
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 384
+        width: 45
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e86fa66495b70974ea50ff40955dedff
+      internalID: -1038298128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_39
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 384
+        width: 51
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 151c86d74689c374cb9609a3f26449b8
+      internalID: 1975330922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_40
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 384
+        width: 45
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f45466d2998e9014784b2341c6ebcd68
+      internalID: -1702574275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_41
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 384
+        width: 45
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53f638436240f364eb7fb1bdbeb1bc9b
+      internalID: -1341042566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_42
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 384
+        width: 51
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d30ec4143f7b1934ab17e5e5f0d93af0
+      internalID: -545223689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_43
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 384
+        width: 45
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5059f20dc2f517a4fbd4a357919a5350
+      internalID: -95598681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_44
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 384
+        width: 45
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69c9456e8f442af40a70bfe4d7acad83
+      internalID: 1073281867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_45
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 384
+        width: 51
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd51f95c1ded764fa782c08da7b52ba
+      internalID: 851372426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_46
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 384
+        width: 45
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a258b0fffc13fd44aadf780c7ade2673
+      internalID: 2023856352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bugs_47
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 384
+        width: 45
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdd3c57c3464f304cb54db256adb9454
+      internalID: -1414314406
       vertices: []
       indices: 
       edges: []
@@ -1335,62 +1167,54 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Chair_Blue: -825697077
-      Chair_Green: 1633908720
-      Chair_Grey: -1288026517
-      Chair_Red: -169132450
-      Chair_White: 1307739518
-      Chair_Yellow: 1688491916
-      Desk_Large: 1629167284
-      Desk_Midium: 1161963376
-      PixelOfficeAssets_10: -269601162
-      PixelOfficeAssets_11: -1541989841
-      PixelOfficeAssets_12: -2128504075
-      PixelOfficeAssets_13: -1919429575
-      PixelOfficeAssets_14: 879657587
-      PixelOfficeAssets_15: -1957109408
-      PixelOfficeAssets_16: 1340929090
-      PixelOfficeAssets_17: 2071568316
-      PixelOfficeAssets_18: 2070718225
-      PixelOfficeAssets_19: 123420938
-      PixelOfficeAssets_20: 1508287117
-      PixelOfficeAssets_21: -868974645
-      PixelOfficeAssets_22: -701245545
-      PixelOfficeAssets_23: -66508152
-      PixelOfficeAssets_24: -131736343
-      PixelOfficeAssets_25: -482825707
-      PixelOfficeAssets_26: 1922056493
-      PixelOfficeAssets_27: -1395828514
-      PixelOfficeAssets_28: 1805609939
-      PixelOfficeAssets_29: 1712919479
-      PixelOfficeAssets_30: -1270850554
-      PixelOfficeAssets_31: 527956076
-      PixelOfficeAssets_32: 1696946346
-      PixelOfficeAssets_33: -9179797
-      PixelOfficeAssets_34: -1873712538
-      PixelOfficeAssets_35: -1950622905
-      PixelOfficeAssets_36: -508935770
-      PixelOfficeAssets_37: 342783301
-      PixelOfficeAssets_38: 498144987
-      PixelOfficeAssets_39: -1179967777
-      PixelOfficeAssets_40: 1567867465
-      PixelOfficeAssets_41: 2037590743
-      PixelOfficeAssets_42: 1254749958
-      PixelOfficeAssets_43: 520700322
-      PixelOfficeAssets_44: -509597263
-      PixelOfficeAssets_45: -305441756
-      PixelOfficeAssets_46: -990420508
-      PixelOfficeAssets_47: -273138092
-      PixelOfficeAssets_48: 2019027759
-      PixelOfficeAssets_49: -1727274562
-      PixelOfficeAssets_50: -380936577
-      PixelOfficeAssets_51: -1638117483
-      PixelOfficeAssets_52: 466112530
-      PixelOfficeAssets_53: -1317021408
-      PixelOfficeAssets_54: -1141791813
-      PixelOfficeAssets_55: -895898913
-      PixelOfficeAssets_9: -2069181325
-      Sky: -499419630
+      Bugs_0: 1769174373
+      Bugs_1: -1485379175
+      Bugs_10: 1118432302
+      Bugs_11: 535596347
+      Bugs_12: -1260297612
+      Bugs_13: -593363107
+      Bugs_14: 175433059
+      Bugs_15: 630709325
+      Bugs_16: -683996421
+      Bugs_17: -1692938662
+      Bugs_18: 1404682441
+      Bugs_19: 925361007
+      Bugs_2: -1507393599
+      Bugs_20: -308318490
+      Bugs_21: 1354365496
+      Bugs_22: 1720414360
+      Bugs_23: 1503193711
+      Bugs_24: -2000868320
+      Bugs_25: 2037899759
+      Bugs_26: -574181004
+      Bugs_27: -787059639
+      Bugs_28: 1261798112
+      Bugs_29: -1749681123
+      Bugs_3: 206338634
+      Bugs_30: 491026610
+      Bugs_31: 1812054764
+      Bugs_32: 1184024861
+      Bugs_33: -1628090238
+      Bugs_34: -1094776893
+      Bugs_35: -1152842855
+      Bugs_36: -1108977706
+      Bugs_37: 1174453258
+      Bugs_38: -1038298128
+      Bugs_39: 1975330922
+      Bugs_4: -1683497863
+      Bugs_40: -1702574275
+      Bugs_41: -1341042566
+      Bugs_42: -545223689
+      Bugs_43: -95598681
+      Bugs_44: 1073281867
+      Bugs_45: 851372426
+      Bugs_46: 2023856352
+      Bugs_47: -1414314406
+      Bugs_5: 822399328
+      Bugs_6: -236223660
+      Bugs_7: -343125040
+      Bugs_8: 547662523
+      Bugs_9: 1371259454
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
