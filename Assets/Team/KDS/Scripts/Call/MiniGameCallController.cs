@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniGameCallController : MonoBehaviour
+public class MiniGameCallController : MonoBehaviour ,IMission
 {
     public CircleController cirele;
     [Header("GameScore")]
@@ -19,14 +19,24 @@ public class MiniGameCallController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         progerss = cirele.GetProgerss();
+        ProgressToScore();
         Destroy(lineRenderer);
     }
 
     private void ProgressToScore()
     {
-        if (progerss > 730) { score = 3; }
-        else if (progerss > 650) { score = 2; }
+        if (progerss > 730) { score = 5; }
+        else if (progerss > 650) { score = 3; }
         else if (progerss > 600) { score = 1; }
-        else { score = 0; }//½ÇÆĞ
+        else { score = 0; }//ì‹¤íŒ¨
+    }
+    public void GameEnd() { }
+    public int GetScore() { return score; }    
+    public float GetStress()
+    {
+        float stress = 0;
+        if (score > 0) { stress = 5f; }
+        else { stress = 10f; }
+        return stress;
     }
 }
