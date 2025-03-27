@@ -10,7 +10,7 @@ public class CodeMission : MonoBehaviour
     [SerializeField] private GameObject unityPanel;
     [SerializeField] private GameObject errerPanel;
     [SerializeField] private GameObject inspectorPanel;
-    [SerializeField] private GameObject SelectObjectPanel;
+    [SerializeField] private GameObject selectObjectPanel;
 
     [Header("Panel Button")]
     [SerializeField] private Button errerButton;
@@ -26,6 +26,11 @@ public class CodeMission : MonoBehaviour
     [SerializeField] private List<string> missionTextList = new List<string>();
     [SerializeField] private string answer;
 
+    [Header("Select Text")]
+    [SerializeField] private TextMeshProUGUI selectObjectText;
+    [SerializeField] private string selectText;
+
+
     private void Start()
     {
         OnClickStart();
@@ -33,7 +38,7 @@ public class CodeMission : MonoBehaviour
         RandomText();
 
         inspectorPanel.SetActive(false);
-        SelectObjectPanel.gameObject.SetActive(false);
+        selectObjectPanel.gameObject.SetActive(false);
     }
 
     private void OnClickStart()
@@ -41,10 +46,13 @@ public class CodeMission : MonoBehaviour
         errerButton.onClick.AddListener(onClickCancelButton);
         unityButton.onClick.AddListener(OnClickUnityButton);
         inspectorButton.onClick.AddListener(OnClickInspectorButton);
+        applyButton.onClick.AddListener(OnClickApplyButton);
 
         for (int i = 0; i < objectListButton.Count; i++)
         {
-            objectListButton[i].onClick.AddListener(CloseInspectorPanel);
+            int index = i;
+            objectListButton[i].onClick.AddListener(CloseSelectObjectPanel);
+            objectListButton[i].onClick.AddListener(() => ChangeText(index));
         }
     }
 
@@ -59,16 +67,36 @@ public class CodeMission : MonoBehaviour
     }
     private void OnClickInspectorButton()
     {
-        SelectObjectPanel.gameObject.SetActive(true);
+        selectObjectPanel.gameObject.SetActive(true);
     }
-    private void CloseInspectorPanel()
+    private void CloseSelectObjectPanel()
     {
-        inspectorPanel.gameObject.SetActive(false);
+        selectObjectPanel.gameObject.SetActive(false);
+    }
+    private void ChangeText(int i)
+    {
+        Debug.Log(i);
+        selectObjectText.text = objectListButton[i].GetComponent<TextMeshProUGUI>().text;
+        selectText = selectObjectText.text;
+    }
+    private void OnClickApplyButton()
+    {
+        if (answer == selectText)
+        {
+            Debug.Log("성공");
+        }
+        else
+        {
+            Debug.Log("실패");
+        }
     }
 
     public void RandomText()
     {
         missionTextList.Clear();
+
+        selectObjectText.text = "null";
+
         for (int i = 0; i < objectListButton.Count; i++)
         {
             string text = objectListButton[i].GetComponent<TextMeshProUGUI>().text;
