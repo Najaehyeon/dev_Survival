@@ -22,7 +22,7 @@ public class InGameState : BaseState
 
     public override void Exit()
     {
-        GameManager.Instance.PassDay();
+        
     }
 
     public override void Update()

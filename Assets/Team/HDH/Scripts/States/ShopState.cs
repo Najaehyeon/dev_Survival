@@ -16,6 +16,7 @@ public class ShopState : BaseState
     public override void Exit()
     {
         GameManager.Instance.SetTimeZero();
+        GameManager.Instance.PassDay();
     }
 
     public override void Update()
