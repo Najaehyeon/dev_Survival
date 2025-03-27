@@ -5,29 +5,40 @@ using UnityEngine;
 public class Bug : MonoBehaviour
 {
     [field: SerializeField] public bool isDead;
+    [field: SerializeField] public float speed;
+    [field: SerializeField] public Vector2 boarderMargin;
+    [field: SerializeField] private float respawnTime;
 
-    public Rect FieldRange;
+    [HideInInspector] public Rect FieldRange;
 
-    private Quaternion bugRotation;
+    private Coroutine respawnCoroutine;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetRandomPosition();
+        transform.localPosition = SetRandomPosition();
         transform.rotation = SetRandomRotation();
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.Translate(Vector2.down * speed * Time.deltaTime);
+
+        if (!IsInField() && respawnCoroutine == null)
+        {
+            Debug.Log("Respawn");
+            respawnCoroutine = StartCoroutine(RespawnBug());
+        }
+
     }
 
-    void SetRandomPosition()
+    Vector3 SetRandomPosition()
     {
-        float randomX = Random.Range(-FieldRange.width / 2, FieldRange.width / 2);
-        float randomY = Random.Range(-FieldRange.height / 2, FieldRange.height / 2);
+        float randomX = Random.Range(boarderMargin.x, FieldRange.width - boarderMargin.x);
+        float randomY = Random.Range(boarderMargin.y, FieldRange.height - boarderMargin.y);
 
-        transform.position = new Vector3(randomX, randomY);
+        return new Vector3(randomX, randomY, 0);
     }
 
     Quaternion SetRandomRotation()
@@ -38,10 +49,19 @@ public class Bug : MonoBehaviour
 
     bool IsInField()
     {
-        if (transform.position.x < -FieldRange.width / 2 || transform.position.x > FieldRange.width / 2) return false;
-        if (transform.position.y < -FieldRange.height / 2 || transform.position.y > FieldRange.height / 2) return false;
+        if (transform.localPosition.x <= 0 || transform.localPosition.x >= FieldRange.width) return false;
+        if (transform.localPosition.y <= 0 || transform.localPosition.y >= FieldRange.height) return false;
 
         return true;
+    }
+
+    IEnumerator RespawnBug()
+    {
+        yield return new WaitForSeconds(respawnTime);
+
+        transform.localPosition = SetRandomPosition();
+        transform.rotation = SetRandomRotation();
+        respawnCoroutine = null;
     }
 
     

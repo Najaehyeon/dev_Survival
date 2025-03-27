@@ -1498,7 +1498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 144, y: -137}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1467088655
@@ -2059,7 +2059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60.700012}
+  m_AnchoredPosition: {x: 144, y: -197.70001}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1819700508
@@ -2278,7 +2278,6 @@ MonoBehaviour:
   - {fileID: 9216499595802382620, guid: 64232b26c42857946973b2229a87bb9a, type: 3}
   - {fileID: 9092573716934019762, guid: a05475a33a07e7e4c9bf1fba12bc39dd, type: 3}
   - {fileID: 5255377708491209522, guid: 5639e7f63131d8f46baf60cb154f0d3d, type: 3}
-  bugFieldPrefab: {fileID: 8744672110130225639, guid: 422e62f024454194d9036277d3f31683, type: 3}
   Bugs: []
   fieldRange:
     serializedVersion: 2
@@ -2612,7 +2611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -119.100006}
+  m_AnchoredPosition: {x: 144, y: -256.10004}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!1660057539 &9223372036854775807

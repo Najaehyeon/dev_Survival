@@ -10,7 +10,6 @@ public class BugMission : MonoBehaviour
     private float passsedTime;
     [SerializeField] float LimitTime = 10f;
     [SerializeField] GameObject[] bugPrefab;
-    [SerializeField] GameObject bugFieldPrefab;
     [SerializeField] List<Bug> Bugs;
     [SerializeField] Rect fieldRange;
 
@@ -24,11 +23,12 @@ public class BugMission : MonoBehaviour
 
     private void Start()
     {
-        GameObject field = Instantiate(bugFieldPrefab, new Vector3(fieldRange.x, fieldRange.y, 0), Quaternion.identity);
+        GameObject fieldObj = new GameObject("BugField");
+        fieldObj.transform.position = new Vector3(fieldRange.x, fieldRange.y, 0);
 
         for(int i = 0; i < 5; i++)
         {
-            Bugs.Add(Instantiate(bugPrefab[Random.Range(0, bugPrefab.Length)], field.transform).GetComponent<Bug>());
+            Bugs.Add(Instantiate(bugPrefab[Random.Range(0, bugPrefab.Length)], fieldObj.transform).GetComponent<Bug>());
             Bugs[i].FieldRange = fieldRange;
         }
     }
