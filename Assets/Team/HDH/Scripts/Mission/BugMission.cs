@@ -9,7 +9,10 @@ public class BugMission : MonoBehaviour
     [Header("미션 관련 정보")]
     private float passsedTime;
     [SerializeField] float LimitTime = 10f;
-    [SerializeField] GameObject[] Bugs;
+    [SerializeField] GameObject[] bugPrefab;
+    [SerializeField] GameObject bugFieldPrefab;
+    [SerializeField] List<Bug> Bugs;
+    [SerializeField] Rect fieldRange;
 
     [Header("UI 요소")]
     [SerializeField] private Button ExitButton;
@@ -19,12 +22,32 @@ public class BugMission : MonoBehaviour
     [SerializeField] private Image ProgressBarImage;
     [SerializeField] private TextMeshProUGUI ProgressText;
 
+    private void Start()
+    {
+        GameObject field = Instantiate(bugFieldPrefab, new Vector3(fieldRange.x, fieldRange.y, 0), Quaternion.identity);
+
+        for(int i = 0; i < 5; i++)
+        {
+            Bugs.Add(Instantiate(bugPrefab[Random.Range(0, bugPrefab.Length)], field.transform).GetComponent<Bug>());
+            Bugs[i].FieldRange = fieldRange;
+        }
+    }
+
     private void Update()
     {
         if (passsedTime >= LimitTime) return;
 
         passsedTime += Time.deltaTime;
         TimerText.text = passsedTime.FormatTime2();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red * 0.1f;
+        Vector3 center = new Vector3(fieldRange.x + fieldRange.width / 2, fieldRange.y + fieldRange.height / 2);
+        Vector3 size = new Vector3(fieldRange.width, fieldRange.height);
+        Gizmos.DrawCube(center, size);
+
     }
 
 }
