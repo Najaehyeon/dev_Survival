@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0d76df7cd5d74b14f86ae243a98b063a
+guid: 86a414e604d6c7e4998a64aa6bfb5210
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: PixelOffice
+  - name: businessman1_idle_up_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: -0.11111111}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 256
-      height: 224
-    spriteID: b0917ad86d0e0a94b9b3776fbdf3bc9a
+      width: 14
+      height: 27
+    spriteID: 669aae891c9f1394a99b8934faaf1b6b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,28 +140,84 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: -21, y: -15}
+  - name: businessman1_idle_up_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: -0.11111111}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 39
+      width: 14
+      height: 27
+    spriteID: 1a78470e949145a4dbad38d7a1c360b2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -21, y: 20}
+  - name: businessman1_idle_up_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 74
+      width: 14
+      height: 26
+    spriteID: a0bdc9d4a34288b40ae9b23943f0f0bc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -21, y: 55}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1201969102
-    name: PixelOffice
+    guid: -1891645054
+    name: businessman1_idle_up
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: PixelOffice
+    - name: businessman1_idle_up_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 256
-        height: 224
-      spriteId: b0917ad86d0e0a94b9b3776fbdf3bc9a
+        x: -24
+        y: -16
+        width: 64
+        height: 64
+      spriteId: 669aae891c9f1394a99b8934faaf1b6b
+    - name: businessman1_idle_up_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: -24
+        y: -16
+        width: 64
+        height: 64
+      spriteId: 1a78470e949145a4dbad38d7a1c360b2
+    - name: businessman1_idle_up_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: -24
+        y: -16
+        width: 64
+        height: 64
+      spriteId: a0bdc9d4a34288b40ae9b23943f0f0bc
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 256, y: 224}
+  canvasSize: {x: 16, y: 32}
