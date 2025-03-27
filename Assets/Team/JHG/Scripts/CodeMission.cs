@@ -19,7 +19,8 @@ public class CodeMission : MonoBehaviour
 
 
     [Header("Mission")]
-    [SerializeField] private List<TextMeshProUGUI> missionHintText = new List<TextMeshProUGUI>();
+    [SerializeField] private TextMeshProUGUI missionHintText1; // ErrerPanel 힌트
+    [SerializeField] private TextMeshProUGUI missionHintText2; // InspectorPanel 힌트
     [SerializeField] private List<Button> objectListButton = new List<Button>();
 
     [SerializeField] private List<string> missionTextList = new List<string>();
@@ -40,7 +41,7 @@ public class CodeMission : MonoBehaviour
         selectObjectPanel.gameObject.SetActive(false);
     }
 
-    private void OnClickStart()
+    private void OnClickStart() // 모든 버튼 onClick 기능 부여
     {
         errerButton.onClick.AddListener(onClickCancelButton);
         unityButton.onClick.AddListener(OnClickUnityButton);
@@ -90,7 +91,7 @@ public class CodeMission : MonoBehaviour
         }
     }
 
-    public void RandomText()
+    public void RandomText() // 랜덤으로 정답 고르는 매서드
     {
         missionTextList.Clear();
 
@@ -108,9 +109,7 @@ public class CodeMission : MonoBehaviour
 
         Debug.Log(answer);
 
-        for (int i = 0; i < missionHintText.Count; i++)
-        {
-            missionHintText[i].text = answer;
-        }
+        missionHintText1.text = $"NullReferenceException: Object reference not set to an instance of an object\r\nGameManager.{answer} (System.Int32 {answer}) (at Assets/Manager.cs:41)";
+        missionHintText2.text = answer;
     }
 }
