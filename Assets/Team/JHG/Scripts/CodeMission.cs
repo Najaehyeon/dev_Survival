@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class CodeMission : MonoBehaviour
 {
     [Header("Panel")]
-    [SerializeField] private GameObject unityPanel;
     [SerializeField] private GameObject errerPanel;
     [SerializeField] private GameObject inspectorPanel;
     [SerializeField] private GameObject selectObjectPanel;
