@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -7,11 +6,20 @@ using UnityEngine.UI;
 public class BugMission : MonoBehaviour
 {
     [Header("미션 관련 정보")]
-    private float passsedTime;
     [SerializeField] float LimitTime = 10f;
     [SerializeField] GameObject[] bugPrefab;
     [SerializeField] List<Bug> Bugs;
     [SerializeField] Rect fieldRange;
+    [SerializeField] float aimOffset;
+
+    private float passsedTime;
+    private int killCount;
+    private bool isFail;
+    private bool isComplete;
+
+    private float completeTime;
+
+    private GameObject fieldObj;
 
     [Header("UI 요소")]
     [SerializeField] private Button ExitButton;
@@ -20,25 +28,33 @@ public class BugMission : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TimerText;
     [SerializeField] private Image ProgressBarImage;
     [SerializeField] private TextMeshProUGUI ProgressText;
+    [SerializeField] private GameObject CompleteSign;
+    [SerializeField] private GameObject FailSign;
 
     private void Start()
     {
-        GameObject fieldObj = new GameObject("BugField");
-        fieldObj.transform.position = new Vector3(fieldRange.x, fieldRange.y, 0);
+        //ResetMission();
+    }
 
-        for(int i = 0; i < 5; i++)
-        {
-            Bugs.Add(Instantiate(bugPrefab[Random.Range(0, bugPrefab.Length)], fieldObj.transform).GetComponent<Bug>());
-            Bugs[i].FieldRange = fieldRange;
-        }
+    private void OnEnable()
+    {
+        ResetMission();
     }
 
     private void Update()
     {
-        if (passsedTime >= LimitTime) return;
+        if (passsedTime < LimitTime && !isComplete)
+        {
+            passsedTime += Time.deltaTime;
+            TimerText.text = passsedTime.FormatTime2();
 
-        passsedTime += Time.deltaTime;
-        TimerText.text = passsedTime.FormatTime2();
+            KillBug();
+        }
+        else if(passsedTime > LimitTime)
+        {
+            isFail = true;
+            OnFail();
+        }
     }
 
     private void OnDrawGizmos()
@@ -48,6 +64,87 @@ public class BugMission : MonoBehaviour
         Vector3 size = new Vector3(fieldRange.width, fieldRange.height);
         Gizmos.DrawCube(center, size);
 
+    }
+
+    void ResetMission()
+    {
+        fieldObj = new GameObject("BugField");
+        fieldObj.transform.position = new Vector3(fieldRange.x, fieldRange.y, 0);
+
+        for (int i = 0; i < 5; i++)
+        {
+            Bugs.Add(Instantiate(bugPrefab[Random.Range(0, bugPrefab.Length)], fieldObj.transform).GetComponent<Bug>());
+            Bugs[i].FieldRange = fieldRange;
+        }
+
+        CompleteButton.onClick.AddListener(OnComplete);
+        ExitButton.onClick.AddListener(OnExit);
+
+        passsedTime = 0;
+        killCount = 0;
+
+        UpdateProgressBar();
+        isComplete = false;
+        isFail = false;
+        CompleteSign.SetActive(false);
+        FailSign.SetActive(false);
+        passsedTime = 0;
+        completeTime = 0;
+    }
+
+    void KillBug()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            foreach (Bug bug in Bugs)
+            {
+                if ((bug.transform.position - (Vector3)mousePos).magnitude < aimOffset)
+                {
+                    killCount++;
+                    bug.gameObject.SetActive(false);
+
+                    isComplete = killCount == Bugs.Count;
+
+                    UpdateProgressBar();
+                }
+            }
+        }
+    }
+
+    void OnFail()
+    {
+        FailSign.SetActive(true);
+
+        Bugs.Clear();
+        Destroy(fieldObj);
+    }
+
+    void OnComplete()
+    {
+        if (!isComplete) return;
+        completeTime = passsedTime;
+        CompleteSign.SetActive(true);
+        Bugs.Clear();
+        Destroy(fieldObj);
+        
+
+    }
+
+    void UpdateProgressBar()
+    {
+        ProgressBarImage.fillAmount = (float)killCount / Bugs.Count;
+        ProgressText.text = (((float)killCount / Bugs.Count) * 100).ToString() + "%";
+    }
+
+    void OnExit()
+    {
+        if (isFail || isComplete)
+        {
+            Bugs.Clear();
+            gameObject.SetActive(false);
+        }
     }
 
 }

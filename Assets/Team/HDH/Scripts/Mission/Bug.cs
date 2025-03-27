@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bug : MonoBehaviour
 {
-    [field: SerializeField] public bool isDead;
     [field: SerializeField] public float speed;
     [field: SerializeField] public Vector2 boarderMargin;
     [field: SerializeField] private float respawnTime;
@@ -30,7 +29,6 @@ public class Bug : MonoBehaviour
             Debug.Log("Respawn");
             respawnCoroutine = StartCoroutine(RespawnBug());
         }
-
     }
 
     Vector3 SetRandomPosition()
