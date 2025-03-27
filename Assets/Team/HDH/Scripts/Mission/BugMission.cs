@@ -33,12 +33,19 @@ public class BugMission : MonoBehaviour
 
     private void Start()
     {
-        //ResetMission();
-    }
+        fieldObj = new GameObject("BugField");
+        fieldObj.transform.position = new Vector3(fieldRange.x, fieldRange.y, 0);
 
-    private void OnEnable()
-    {
-        ResetMission();
+        for (int i = 0; i < 5; i++)
+        {
+            Bugs.Add(Instantiate(bugPrefab[Random.Range(0, bugPrefab.Length)], fieldObj.transform).GetComponent<Bug>());
+            Bugs[i].FieldRange = fieldRange;
+        }
+
+        CompleteButton.onClick.AddListener(OnComplete);
+        ExitButton.onClick.AddListener(OnExit);
+
+        UpdateProgressBar();
     }
 
     private void Update()
@@ -64,32 +71,6 @@ public class BugMission : MonoBehaviour
         Vector3 size = new Vector3(fieldRange.width, fieldRange.height);
         Gizmos.DrawCube(center, size);
 
-    }
-
-    void ResetMission()
-    {
-        fieldObj = new GameObject("BugField");
-        fieldObj.transform.position = new Vector3(fieldRange.x, fieldRange.y, 0);
-
-        for (int i = 0; i < 5; i++)
-        {
-            Bugs.Add(Instantiate(bugPrefab[Random.Range(0, bugPrefab.Length)], fieldObj.transform).GetComponent<Bug>());
-            Bugs[i].FieldRange = fieldRange;
-        }
-
-        CompleteButton.onClick.AddListener(OnComplete);
-        ExitButton.onClick.AddListener(OnExit);
-
-        passsedTime = 0;
-        killCount = 0;
-
-        UpdateProgressBar();
-        isComplete = false;
-        isFail = false;
-        CompleteSign.SetActive(false);
-        FailSign.SetActive(false);
-        passsedTime = 0;
-        completeTime = 0;
     }
 
     void KillBug()
@@ -128,8 +109,6 @@ public class BugMission : MonoBehaviour
         CompleteSign.SetActive(true);
         Bugs.Clear();
         Destroy(fieldObj);
-        
-
     }
 
     void UpdateProgressBar()
@@ -142,8 +121,8 @@ public class BugMission : MonoBehaviour
     {
         if (isFail || isComplete)
         {
-            Bugs.Clear();
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
