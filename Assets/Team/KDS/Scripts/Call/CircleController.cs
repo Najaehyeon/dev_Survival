@@ -9,7 +9,9 @@ public class CircleController : MonoBehaviour
     private float minHeight=-3f;
     public float moveDuration = 2f;
     private bool isMouseDown = false;
+    private bool isTrigger = false;
 
+    public float progress;
 
     private void Update()
     {
@@ -30,6 +32,11 @@ public class CircleController : MonoBehaviour
             }
             OnMouseUnHold();
         }
+
+        if (isTrigger)
+            progress += 1;
+        
+
     }
     private void OnMouseHold()
     {
@@ -44,6 +51,21 @@ public class CircleController : MonoBehaviour
         {
             transform.position -= new Vector3(0, 0.01f, 0);
         }
+    }
+
+    public float GetProgerss()
+    {
+        return progress;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isTrigger = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isTrigger = false;
     }
 }
 

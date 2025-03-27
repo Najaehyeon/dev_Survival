@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MiniGameCallController : MonoBehaviour
 {
+    public CircleController cirele;
     [Header("GameScore")]
     public float progerss;
     public int score;
@@ -11,12 +12,11 @@ public class MiniGameCallController : MonoBehaviour
     [Header("GameEntity")]
     public GameObject gameend;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         Debug.Log("게임종료");
+        progerss = cirele.GetProgerss();
+        Debug.Log($"{progerss}");
     }
 }
