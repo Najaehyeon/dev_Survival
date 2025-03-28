@@ -100,19 +100,4 @@ public class ServerRoomMission : MonoBehaviour
     {
         return RectTransformUtility.RectangleContainsScreenPoint(wire, mousePos);
     }
-
-    public int GiveScore()
-    {
-        switch (completedConnections)
-        {
-            case 1:
-                return 1;
-            case 2:
-                return 3;
-            case 3:
-                return 5;
-            default:
-                return 0;
-        }
-    }
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ServerRoomManager : MonoBehaviour
+public class ServerRoomManager : Mission
 {
     [SerializeField] private ServerRoomMission serverRoomMission;
     [SerializeField] private float missionTime = 10f;
@@ -18,6 +18,8 @@ public class ServerRoomManager : MonoBehaviour
 
     private float timer;
     private bool missionActive = false;
+
+    private int score;
     private float stress = 0;
 
     private void Start()
@@ -49,11 +51,10 @@ public class ServerRoomManager : MonoBehaviour
     private void EndMission()
     {
         missionActive = false;
-        int score = serverRoomMission.GiveScore();
         if (timer <= 0 && serverRoomMission.completedConnections > 0)
         {
             timeOver.SetActive(true);
-            timeOverText.text = "타임 오버!\n" + serverRoomMission.completedConnections + " / 3 성공\n" + serverRoomMission.GiveScore() + "점 획득!";
+            timeOverText.text = "타임 오버!\n" + serverRoomMission.completedConnections + " / 3 성공\n" + GetScroe() + "점 획득!";
             stress = 5f;
         }
         else if (timer <= 0 && serverRoomMission.completedConnections == 0)
@@ -66,6 +67,12 @@ public class ServerRoomManager : MonoBehaviour
             missionComplete.SetActive(true);
             stress = 5f;
         }
+        Invoke("GameEnd", 2f);
+    }
+
+    public override void GameEnd()
+    {
+        base.GameEnd();
     }
 
     private void AssignRandomPositions()
@@ -81,7 +88,22 @@ public class ServerRoomManager : MonoBehaviour
         }
     }
 
-    public float ReturnStress()
+    public override int GetScroe()
+    {
+        switch (serverRoomMission.completedConnections)
+        {
+            case 1:
+                return 1;
+            case 2:
+                return 3;
+            case 3:
+                return 5;
+            default:
+                return 0;
+        }
+    }
+
+    public override float GetStress()
     {
         return stress;
     }
