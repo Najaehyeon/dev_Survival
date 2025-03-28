@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 28
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -134,7 +134,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Hairs_F
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 129
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 463bbfa6d9e62b34c873adb271614e56
+      internalID: -636921038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hairs_R
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 129
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a703eaa94a30ca347a8794292cb1f41d
+      internalID: -443810393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hairs_B
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 129
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7124bedf11621144e9d210c1186a98f0
+      internalID: -137498243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hairs_L
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 129
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276640e8106aa4649aace58eced1a9ce
+      internalID: 674188226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +229,36 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Hairs_1: -1547534019
+      Hairs_10: -1893603346
+      Hairs_11: -340332589
+      Hairs_12: -889427490
+      Hairs_13: -386273177
+      Hairs_14: 872547406
+      Hairs_15: -499096741
+      Hairs_16: -1275533451
+      Hairs_17: 648604110
+      Hairs_18: -976050097
+      Hairs_19: -1566900832
+      Hairs_20: -542371635
+      Hairs_21: -987614816
+      Hairs_22: 1947314897
+      Hairs_23: -1523558582
+      Hairs_B: -137498243
+      Hairs_F: -636921038
+      Hairs_F0: -941614125
+      Hairs_F1: -1547534019
+      Hairs_F2: -976050097
+      Hairs_F3: 1947314897
+      Hairs_F4: -1523558582
+      Hairs_F5: -1706163893
+      Hairs_L: 674188226
+      Hairs_R: -443810393
+      Hairs_R0: -1115100197
+      Hairs_R2: 503945477
+      Hairs_R3: -1293280080
+      Hairs_R4: 574133492
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
