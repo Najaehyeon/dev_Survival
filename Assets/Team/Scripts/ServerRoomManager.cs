@@ -9,10 +9,17 @@ public class ServerRoomManager : MonoBehaviour
 
     [SerializeField] private RectTransform[] destinations;
 
+    [SerializeField] private GameObject missionComplete;
+    [SerializeField] private GameObject timeOver;
+    [SerializeField] private GameObject missionFail;
+
+    [SerializeField] private TextMeshProUGUI timeOverText;
+    [SerializeField] private TextMeshProUGUI timerText;
+
     private float timer;
     private bool missionActive = false;
 
-    private void OnEnable()
+    private void Start()
     {
         StartMission();
     }
@@ -22,6 +29,7 @@ public class ServerRoomManager : MonoBehaviour
         if (missionActive)
         {
             timer -= Time.deltaTime;
+            timerText.text = timer.ToString("F0");
             if (timer <= 0 || serverRoom.completedConnections == 3)
             {
                 EndMission();
@@ -41,7 +49,21 @@ public class ServerRoomManager : MonoBehaviour
     {
         missionActive = false;
         int score = serverRoom.GiveScore();
+        if (timer <= 0 && serverRoom.completedConnections > 0)
+        {
+            timeOver.SetActive(true);
+            timeOverText.text = "타임 오버!\n" + serverRoom.completedConnections + " / 3 성공\n" + serverRoom.GiveScore() + "점 획득!";
+        }
+        else if (timer <= 0 && serverRoom.completedConnections == 0)
+        {
+            missionFail.SetActive(true);
+        }
+        else if (serverRoom.completedConnections == 3)
+        {
+            missionComplete.SetActive(true);
+        }
         // 상황별로 미션 끝났을 때 보여줄 UI 필요
+
     }
 
     private void AssignRandomPositions()
