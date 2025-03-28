@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CodeMission : MonoBehaviour
+public class CodeMission : MonoBehaviour, IMission
 {
     [Header("Panel")]
     [SerializeField] private GameObject errerPanel;
@@ -19,8 +19,8 @@ public class CodeMission : MonoBehaviour
 
 
     [Header("Mission")]
-    [SerializeField] private TextMeshProUGUI missionHintText1; // ErrerPanel ÈùÆ®
-    [SerializeField] private TextMeshProUGUI missionHintText2; // InspectorPanel ÈùÆ®
+    [SerializeField] private TextMeshProUGUI missionHintText1; // ErrerPanel ížŒíŠ¸
+    [SerializeField] private TextMeshProUGUI missionHintText2; // InspectorPanel ížŒíŠ¸
     [SerializeField] private List<Button> objectListButton = new List<Button>();
 
     [SerializeField] private List<string> missionTextList = new List<string>();
@@ -30,7 +30,8 @@ public class CodeMission : MonoBehaviour
     [SerializeField] private TextMeshProUGUI selectObjectText;
     [SerializeField] private string selectText;
 
-
+    bool isAnswer = false;
+    int score = 0;
     private void Start()
     {
         OnClickStart();
@@ -41,7 +42,7 @@ public class CodeMission : MonoBehaviour
         selectObjectPanel.gameObject.SetActive(false);
     }
 
-    private void OnClickStart() // ¸ðµç ¹öÆ° onClick ±â´É ºÎ¿©
+    private void OnClickStart() // ëª¨ë“  ë²„íŠ¼ onClick ê¸°ëŠ¥ ë¶€ì—¬
     {
         errerButton.onClick.AddListener(onClickCancelButton);
         unityButton.onClick.AddListener(OnClickUnityButton);
@@ -83,15 +84,17 @@ public class CodeMission : MonoBehaviour
     {
         if (answer == selectText)
         {
-            Debug.Log("¼º°ø");
+            Debug.Log("ì„±ê³µ");
+            isAnswer = true;
         }
         else
         {
-            Debug.Log("½ÇÆÐ");
+            Debug.Log("ì‹¤íŒ¨");
+            isAnswer=false;
         }
     }
 
-    public void RandomText() // ·£´ýÀ¸·Î Á¤´ä °í¸£´Â ¸Å¼­µå
+    public void RandomText() // ëžœë¤ìœ¼ë¡œ ì •ë‹µ ê³ ë¥´ëŠ” ë§¤ì„œë“œ
     {
         missionTextList.Clear();
 
@@ -111,5 +114,26 @@ public class CodeMission : MonoBehaviour
 
         missionHintText1.text = $"NullReferenceException: Object reference not set to an instance of an object\r\nGameManager.{answer} (System.Int32 {answer}) (at Assets/Manager.cs:41)";
         missionHintText2.text = answer;
+    }
+
+
+    
+    public void GameEnd()
+    {
+        Destroy(this.gameObject);
+    }
+
+    public int GetScore()
+    {
+        score = isAnswer ? 0 : 5;
+        GetStress();
+        return score;
+    }
+
+    public float GetStress()
+    {
+        float stress = 0;
+        stress = score > 0 ? 5 : 10;
+        return stress;
     }
 }
