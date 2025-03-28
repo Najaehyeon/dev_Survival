@@ -40,8 +40,10 @@ public class MissionTimer:MonoBehaviour
     }
     public virtual void TimeOut()
     {
-        Debug.Log("타임아웃");
+
         gameStart = true;
+        mission.GameEnd();
+        gameObject.SetActive(false);
     }
 
     private void UpdateFillAmount()

@@ -906,7 +906,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee05fc59c1b7794986fd9e50515bda7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missons: []
   missonTimers:
   - {fileID: 978369710}
 --- !u!1 &2049497180
