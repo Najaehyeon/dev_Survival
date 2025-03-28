@@ -52,4 +52,31 @@ public class PlayerController : MonoBehaviour
 
         _rigidbody.velocity = dir;
     }
+
+
+    MissionTimer MissionTimer;
+    bool isTriggerOn = false;
+    public void OnInteractionInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed && isTriggerOn)
+        {
+            Debug.Log("상호작용");
+            MissionTimer.OnGameStart();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("상호작용 중");
+        isTriggerOn = true;
+
+        MissionTimer = collision.gameObject.GetComponent<MissionTimer>();
+        
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isTriggerOn = false;
+        MissionTimer = null;
+    }
 }
