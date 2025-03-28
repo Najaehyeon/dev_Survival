@@ -6,8 +6,10 @@ using UnityEngine.AI;
 public class NPCController : MonoBehaviour
 {
     NavMeshAgent agent;
+    NPCStateMachine stateMachine;
 
-    [SerializeField] Transform[] transforms;
+    [SerializeField] public StateDestinationSet IdleDestinationSet;
+    private int destinationIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -15,11 +17,25 @@ public class NPCController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateUpAxis = false;
         agent.updateRotation = false;
+        stateMachine = GetComponent<NPCStateMachine>();
+        stateMachine.Init();
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(transforms[0].position);
+        stateMachine.StateUpdate();
     }
+
+    public void SetDestination(Vector3 pos)
+    {
+        agent.SetDestination(pos);
+    }
+
+    public Vector3 SetTargetDestination(Vector3 pos)
+    {
+        return pos;
+    }
+
+
 }

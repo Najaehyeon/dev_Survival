@@ -12,7 +12,8 @@ public abstract class BaseStateMachine : MonoBehaviour
 
     public void StateUpdate()
     {
-        CurrentState.Update();
+        if(CurrentState != null)
+            CurrentState.Update();
     }
 
     public void ChangeState(BaseState state)
