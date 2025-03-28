@@ -9,11 +9,5 @@ public class MissionManager : Singleton<MissionManager>
 
     [Header("MissionControll")]
     public MissionController controller;
-    void Start()
-    {        
-    }
-    void Update()
-    {
-        
-    }
+
 }

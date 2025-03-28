@@ -14,6 +14,7 @@ public class MissionController : MonoBehaviour
 
     public MissionTimer[] missonTimers;
 
+    public Canvas canvas;
     private int missionCount;
     private int claerCount;
     void Start()
@@ -65,6 +66,10 @@ public class MissionController : MonoBehaviour
         {
             claerCount = 0;
             nowMissionState = false;
+        }
+        foreach (var missonTimer in missonTimers)
+        {
+            Destroy(missonTimer.mission);
         }
     }
 }
