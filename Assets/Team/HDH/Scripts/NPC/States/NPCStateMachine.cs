@@ -4,6 +4,8 @@ public class NPCStateMachine : BaseStateMachine
 {
     StateSet stateSet;
 
+    public NPCBaseState CurrentNPCState { get => CurrentState as NPCBaseState; }
+
     public NPCBaseState npcIdleState { get; private set; }
     public NPCBaseState npcMissionState { get; private set; }
     public NPCBaseState npcRestState { get; private set; }

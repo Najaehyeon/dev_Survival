@@ -25,17 +25,12 @@ public class NPCController : MonoBehaviour
     void Update()
     {
         stateMachine.StateUpdate();
-    }
+        agent.SetDestination(stateMachine.CurrentNPCState.TargetDestination);
 
-    public void SetDestination(Vector3 pos)
-    {
-        agent.SetDestination(pos);
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            stateMachine.ChangeState(stateMachine.npcMissionState);
+        }
     }
-
-    public Vector3 SetTargetDestination(Vector3 pos)
-    {
-        return pos;
-    }
-
 
 }

@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af51a81310b6bf44cb009df33891f604, type: 3}
   m_Name: CatIdle
   m_EditorClassIdentifier: 
-  StateName: 
-  DestinationSet: []
+  StateName: CatIdle
+  DestinationSet:
+  - {x: 8.46, y: -4.66, z: 0}
+  - {x: 5.02, y: 8.62, z: 0}
+  - {x: -5.74, y: 5.08, z: 0}
+  - {x: -8.59, y: -4.52, z: 0}
