@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CodeMission : MonoBehaviour, IMission
+public class CodeMission : Mission
 {
     [Header("Panel")]
     [SerializeField] private GameObject errerPanel;
@@ -30,16 +30,28 @@ public class CodeMission : MonoBehaviour, IMission
     [SerializeField] private TextMeshProUGUI selectObjectText;
     [SerializeField] private string selectText;
 
-    bool isAnswer = false;
-    int score = 0;
+
+    CodeMissionTimer codeMissionTimer;
+
     private void Start()
     {
+        codeMissionTimer = GetComponent<CodeMissionTimer>();
+
         OnClickStart();
 
         RandomText();
 
         inspectorPanel.SetActive(false);
         selectObjectPanel.gameObject.SetActive(false);
+
+        codeMissionTimer.startTimer();
+    }
+    private void Update()
+    {
+        if (codeMissionTimer.isTimeOver)
+        {
+            IsFail();
+        }
     }
 
     private void OnClickStart() // 모든 버튼 onClick 기능 부여
@@ -82,16 +94,15 @@ public class CodeMission : MonoBehaviour, IMission
     }
     private void OnClickApplyButton()
     {
-        if (answer == selectText)
+        if (answer == selectText && codeMissionTimer.curTime < codeMissionTimer.timer)
         {
-            Debug.Log("성공");
-            isAnswer = true;
+            IsAnswer();
         }
         else
         {
-            Debug.Log("실패");
-            isAnswer=false;
+            IsFail();
         }
+        codeMissionTimer.EndTimer();
     }
 
     public void RandomText() // 랜덤으로 정답 고르는 매서드
@@ -117,23 +128,24 @@ public class CodeMission : MonoBehaviour, IMission
     }
 
 
-    
-    public void GameEnd()
+    private void IsAnswer()
     {
-        Destroy(this.gameObject);
+        Debug.Log("성공");
+        score = codeMissionTimer.curTime > 10 ? 3 : 5;
+        Debug.Log("score "+ score);
+        GameEnd();
     }
 
-    public int GetScore()
+    private void IsFail()
     {
-        score = isAnswer ? 0 : 5;
-        GetStress();
-        return score;
+        Debug.Log("실패");
+        score = 0;
+        Debug.Log("score " + score);
+        GameEnd();
     }
 
-    public float GetStress()
+    public override void GameEnd()
     {
-        float stress = 0;
-        stress = score > 0 ? 5 : 10;
-        return stress;
+        base.GameEnd();
     }
 }
