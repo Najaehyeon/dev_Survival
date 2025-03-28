@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ServerRoom : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class ServerRoom : MonoBehaviour
 
     private RectTransform selectedWire = null;
     private Vector2 startPoint;
+
+    public int completedConnections { get; private set; }
+    private List<RectTransform> completedWires = new List<RectTransform>(); // 이미 연결된 전선들
 
     void Update()
     {
@@ -39,6 +43,8 @@ public class ServerRoom : MonoBehaviour
 
     void SelectWire(RectTransform wire)
     {
+        if (completedWires.Contains(wire)) return; // 이미 연결된 전선은 선택 불가
+
         selectedWire = wire;
         startPoint = wire.position;
     }
@@ -48,10 +54,10 @@ public class ServerRoom : MonoBehaviour
         Vector2 direction = (end - start).normalized;
         float distance = Vector2.Distance(start, end);
 
-        wire.pivot = new Vector2(0, 0.5f); // 왼쪽 끝을 고정
-        wire.position = start; // 왼쪽 끝은 고정
-        wire.sizeDelta = new Vector2(distance, wire.sizeDelta.y); // 오른쪽으로 길이 조정
-        wire.right = direction; // 방향 회전
+        wire.pivot = new Vector2(0, 0.5f);
+        wire.position = start;
+        wire.sizeDelta = new Vector2(distance, wire.sizeDelta.y);
+        wire.right = direction;
     }
 
     void CheckConnection(RectTransform wire)
@@ -64,12 +70,49 @@ public class ServerRoom : MonoBehaviour
 
         if (correctDestination != null)
         {
-            
+            Vector2 wireEndPoint = wire.position + (Vector3)(wire.right * wire.sizeDelta.x);
+            float distance = Vector2.Distance(wireEndPoint, correctDestination.position);
+
+            if (distance < 80f) // 연결 성공
+            {
+                Debug.Log("연결됨");
+                StretchWire(wire, startPoint, correctDestination.position);
+                completedConnections++;
+
+                completedWires.Add(wire); // 연결된 전선 목록에 추가
+            }
+            else
+            {
+                ResetWire(wire);
+            }
         }
+    }
+
+    void ResetWire(RectTransform wire)
+    {
+        wire.pivot = new Vector2(0, 0.5f);
+        wire.position = startPoint;
+        wire.sizeDelta = new Vector2(100f, wire.sizeDelta.y);
+        wire.right = Vector2.right;
     }
 
     bool IsMouseOverWire(RectTransform wire, Vector2 mousePos)
     {
         return RectTransformUtility.RectangleContainsScreenPoint(wire, mousePos);
+    }
+
+    public int GiveScore()
+    {
+        switch (completedConnections)
+        {
+            case 1:
+                return 1;
+            case 2:
+                return 3;
+            case 3:
+                return 5;
+            default:
+                return 0;
+        }
     }
 }

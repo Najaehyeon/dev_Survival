@@ -2712,7 +2712,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1210137949, guid: a61f505dc11aa1847b9b702358a01d9b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7679,7 +7679,7 @@ GameObject:
   - component: {fileID: 8489050592702164537}
   - component: {fileID: 8704439642654940912}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
