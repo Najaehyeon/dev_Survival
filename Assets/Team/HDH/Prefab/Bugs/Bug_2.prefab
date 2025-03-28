@@ -119,10 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03d411dc9eafcf46b65902e45f5e232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
-  speed: 1
+  speed: 3
   boarderMargin: {x: 0.5, y: 0.5}
-  respawnTime: 0.5
+  respawnTime: 0.3
   FieldRange:
     serializedVersion: 2
     x: 0

@@ -6,18 +6,17 @@ using UnityEngine.UI;
 public class BugMission : MonoBehaviour
 {
     [Header("미션 관련 정보")]
-    [SerializeField] float LimitTime = 10f;
-    [SerializeField] GameObject[] bugPrefab;
-    [SerializeField] List<Bug> Bugs;
-    [SerializeField] Rect fieldRange;
-    [SerializeField] float aimOffset;
+    [SerializeField] float LimitTime = 10f; //Bug 미션 제한 시간
+    [SerializeField] GameObject[] bugPrefab; //버그 프리팹
+    [SerializeField] List<Bug> Bugs; //현재 활성화 중인 버그
+    [SerializeField] Rect fieldRange; //버그가 생성될 영역 범위
+    [SerializeField] float aimOffset; //마우스 위치와 버그 위치 간의 허용 오차값
 
-    private float passsedTime;
-    private int killCount;
-    private bool isFail;
-    private bool isComplete;
-
-    private float completeTime;
+    private float passsedTime; //플레이 중 흘러간 시간
+    private int killCount; //죽인 버그의 수
+    private bool isFail; //실패 여부
+    private bool isComplete; //완료 여부
+    private float completeTime; //완료시 시간
 
     private GameObject fieldObj;
 
@@ -33,7 +32,7 @@ public class BugMission : MonoBehaviour
 
     private void Start()
     {
-        fieldObj = new GameObject("BugField");
+        fieldObj = new GameObject("BugField"); //버그가 생성될 영역을 생성
         fieldObj.transform.position = new Vector3(fieldRange.x, fieldRange.y, 0);
 
         for (int i = 0; i < 5; i++)
@@ -59,6 +58,7 @@ public class BugMission : MonoBehaviour
         }
         else if(passsedTime > LimitTime)
         {
+            //일정 시간이 지나면 실패로 처리
             isFail = true;
             OnFail();
         }
@@ -66,7 +66,9 @@ public class BugMission : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red * 0.1f;
+        Color gizmoColor = Color.red;
+        gizmoColor.a = 0.5f;
+        Gizmos.color = gizmoColor;
         Vector3 center = new Vector3(fieldRange.x + fieldRange.width / 2, fieldRange.y + fieldRange.height / 2);
         Vector3 size = new Vector3(fieldRange.width, fieldRange.height);
         Gizmos.DrawCube(center, size);

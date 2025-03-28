@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bug : MonoBehaviour
 {
-    [field: SerializeField] public float speed;
-    [field: SerializeField] public Vector2 boarderMargin;
-    [field: SerializeField] private float respawnTime;
+    [field: SerializeField] public float speed; //벌레 이동속도
+    [field: SerializeField] public Vector2 boarderMargin; //벌레 생성시 경계선에서 안쪽에 생성되도록 함
+    [field: SerializeField] private float respawnTime; //범위에서 벗어난 이후 재생성될 때까지의 시간
 
-    [HideInInspector] public Rect FieldRange;
+    [HideInInspector] public Rect FieldRange; //벌레 생성가능 범위
 
     private Coroutine respawnCoroutine;
 
@@ -26,7 +26,6 @@ public class Bug : MonoBehaviour
 
         if (!IsInField() && respawnCoroutine == null)
         {
-            Debug.Log("Respawn");
             respawnCoroutine = StartCoroutine(RespawnBug());
         }
     }
@@ -56,7 +55,6 @@ public class Bug : MonoBehaviour
     IEnumerator RespawnBug()
     {
         yield return new WaitForSeconds(respawnTime);
-
         transform.localPosition = SetRandomPosition();
         transform.rotation = SetRandomRotation();
         respawnCoroutine = null;
