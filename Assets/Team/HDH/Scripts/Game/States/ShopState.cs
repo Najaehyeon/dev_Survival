@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopState : GameBaseState
@@ -10,9 +8,8 @@ public class ShopState : GameBaseState
 
     public override void Enter()
     {
-        
-    }
-
+    
+}
     public override void Exit()
     {
         GameManager.Instance.SetTimeZero();
@@ -23,7 +20,7 @@ public class ShopState : GameBaseState
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //stateMachine.ChangeState(gameStateMachine.inGameState);
+            StateMachine.ChangeState(GameStateMachine.inGameState);
         }
     }
 }

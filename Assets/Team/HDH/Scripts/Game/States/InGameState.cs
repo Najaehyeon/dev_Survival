@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 [Serializable]
@@ -9,7 +6,7 @@ public class InGameState : GameBaseState
 {
     float startTime = 540f;
     float unitSecond = 9 / 2f;
-    float endDayTime = 10f;
+    float endDayTime = 3f;
 
     public InGameState(GameStateMachine stateMachine) : base(stateMachine)
     {
@@ -35,7 +32,7 @@ public class InGameState : GameBaseState
 
         if (GameManager.Instance.PassedTime >= endDayTime)
         {
-            //StateMachine.ChangeState(StateMachine.scoreState);
+            StateMachine.ChangeState(GameStateMachine.scoreState);
             return;
         }
 

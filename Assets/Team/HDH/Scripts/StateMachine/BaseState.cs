@@ -1,8 +1,8 @@
-public abstract class BaseState : IState
+public abstract class BaseState
 {
-    public IStateMachine StateMachine { get; set; }
+    public BaseStateMachine StateMachine { get; set; }
 
-    protected BaseState(IStateMachine stateMachine)
+    protected BaseState(BaseStateMachine stateMachine)
     {
         StateMachine = stateMachine;
     }

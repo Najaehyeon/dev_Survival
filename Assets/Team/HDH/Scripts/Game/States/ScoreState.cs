@@ -32,7 +32,7 @@ public class ScoreState : GameBaseState
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            //stateMachine.ChangeState(stateMachine.shopState);
+            StateMachine.ChangeState(GameStateMachine.shopState);
         }
     }
 
