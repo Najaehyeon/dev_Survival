@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ServerRoomManager : MonoBehaviour
+public class ServerRoomManager : Mission
 {
-    [SerializeField] private ServerRoom serverRoom;
+    [SerializeField] private ServerRoomMission serverRoomMission;
     [SerializeField] private float missionTime = 10f;
 
     [SerializeField] private RectTransform[] destinations;
@@ -30,7 +30,7 @@ public class ServerRoomManager : MonoBehaviour
         {
             timer -= Time.deltaTime;
             timerText.text = timer.ToString("F0");
-            if (timer <= 0 || serverRoom.completedConnections == 3)
+            if (timer <= 0 || serverRoomMission.completedConnections == 3)
             {
                 EndMission();
             }
@@ -48,39 +48,68 @@ public class ServerRoomManager : MonoBehaviour
     private void EndMission()
     {
         missionActive = false;
-        int score = serverRoom.GiveScore();
-        if (timer <= 0 && serverRoom.completedConnections > 0)
+        if (timer <= 0 && serverRoomMission.completedConnections > 0)
         {
             timeOver.SetActive(true);
-            timeOverText.text = "Å¸ÀÓ ¿À¹ö!\n" + serverRoom.completedConnections + " / 3 ¼º°ø\n" + serverRoom.GiveScore() + "Á¡ È¹µæ!";
+            timeOverText.text = "íƒ€ì„ ì˜¤ë²„!\n" + serverRoomMission.completedConnections + " / 3 ì„±ê³µ\n" + GetScroe() + "ì  íšë“!";
+            stress = 5f;
         }
-        else if (timer <= 0 && serverRoom.completedConnections == 0)
+        else if (timer <= 0 && serverRoomMission.completedConnections == 0)
         {
             missionFail.SetActive(true);
+            stress = 10f;
         }
-        else if (serverRoom.completedConnections == 3)
+        else if (serverRoomMission.completedConnections == 3)
         {
             missionComplete.SetActive(true);
+            stress = 5f;
         }
-        // »óÈ²º°·Î ¹Ì¼Ç ³¡³µÀ» ¶§ º¸¿©ÁÙ UI ÇÊ¿ä
+        Invoke("GameEnd", 2f);
+    }
 
+    public override void GameEnd()
+    {
+        base.GameEnd();
     }
 
     private void AssignRandomPositions()
     {
         List<float> yPositions = new List<float> { -300f, 0f, 300f };
-        yPositions.Shuffle(); // ¸®½ºÆ® ¼¯±â
+        yPositions.Shuffle(); // ë¦¬ìŠ¤íŠ¸ ì„ê¸°
 
         for (int i = 0; i < destinations.Length; i++)
         {
             Vector2 newPos = destinations[i].anchoredPosition;
-            newPos.y = yPositions[i]; // y°ª¸¸ ¼³Á¤
+            newPos.y = yPositions[i]; // yê°’ë§Œ ì„¤ì •
             destinations[i].anchoredPosition = newPos;
         }
     }
+
+    public override int GetScroe()
+    {
+        switch (serverRoomMission.completedConnections)
+        {
+            case 1:
+                score = 1;
+                return score;
+            case 2:
+                score = 3;
+                return score;
+            case 3:
+                score = 5;
+                return score;
+            default:
+                return 0;
+        }
+    }
+
+    public override float GetStress()
+    {
+        return stress;
+    }
 }
 
-// ¸®½ºÆ® ¼¯´Â È®Àå ¸Ş¼­µå Ãß°¡
+// ë¦¬ìŠ¤íŠ¸ ì„ëŠ” í™•ì¥ ë©”ì„œë“œ ì¶”ê°€
 public static class ListExtensions
 {
     private static System.Random rng = new System.Random();

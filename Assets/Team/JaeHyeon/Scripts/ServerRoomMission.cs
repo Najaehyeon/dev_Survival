@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ServerRoom : MonoBehaviour
+public class ServerRoomMission : MonoBehaviour
 {
     [SerializeField] private RectTransform redWire;
     [SerializeField] private RectTransform blueWire;
@@ -15,7 +15,7 @@ public class ServerRoom : MonoBehaviour
     private Vector2 startPoint;
 
     public int completedConnections { get; private set; } = 0;
-    private List<RectTransform> completedWires = new List<RectTransform>(); // ÀÌ¹Ì ¿¬°áµÈ Àü¼±µé
+    private List<RectTransform> completedWires = new List<RectTransform>(); // ì´ë¯¸ ì—°ê²°ëœ ì „ì„ ë“¤
 
     void Update()
     {
@@ -43,7 +43,7 @@ public class ServerRoom : MonoBehaviour
 
     void SelectWire(RectTransform wire)
     {
-        if (completedWires.Contains(wire)) return; // ÀÌ¹Ì ¿¬°áµÈ Àü¼±Àº ¼±ÅÃ ºÒ°¡
+        if (completedWires.Contains(wire)) return; // ì´ë¯¸ ì—°ê²°ëœ ì „ì„ ì€ ì„ íƒ ë¶ˆê°€
 
         selectedWire = wire;
         startPoint = wire.position;
@@ -73,13 +73,13 @@ public class ServerRoom : MonoBehaviour
             Vector2 wireEndPoint = wire.position + (Vector3)(wire.right * wire.sizeDelta.x);
             float distance = Vector2.Distance(wireEndPoint, correctDestination.position);
 
-            if (distance < 80f) // ¿¬°á ¼º°ø
+            if (distance < 80f) // ì—°ê²° ì„±ê³µ
             {
-                Debug.Log("¿¬°áµÊ");
+                Debug.Log("ì—°ê²°ë¨");
                 StretchWire(wire, startPoint, correctDestination.position);
                 completedConnections++;
 
-                completedWires.Add(wire); // ¿¬°áµÈ Àü¼± ¸ñ·Ï¿¡ Ãß°¡
+                completedWires.Add(wire); // ì—°ê²°ëœ ì „ì„  ëª©ë¡ì— ì¶”ê°€
             }
             else
             {
@@ -99,20 +99,5 @@ public class ServerRoom : MonoBehaviour
     bool IsMouseOverWire(RectTransform wire, Vector2 mousePos)
     {
         return RectTransformUtility.RectangleContainsScreenPoint(wire, mousePos);
-    }
-
-    public int GiveScore()
-    {
-        switch (completedConnections)
-        {
-            case 1:
-                return 1;
-            case 2:
-                return 3;
-            case 3:
-                return 5;
-            default:
-                return 0;
-        }
     }
 }
