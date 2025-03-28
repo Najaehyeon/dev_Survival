@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ServerRoomManager : MonoBehaviour
 {
-    [SerializeField] private ServerRoom serverRoom;
+    [SerializeField] private ServerRoomMission serverRoomMission;
     [SerializeField] private float missionTime = 10f;
 
     [SerializeField] private RectTransform[] destinations;
@@ -18,6 +18,7 @@ public class ServerRoomManager : MonoBehaviour
 
     private float timer;
     private bool missionActive = false;
+    private float stress = 0;
 
     private void Start()
     {
@@ -30,7 +31,7 @@ public class ServerRoomManager : MonoBehaviour
         {
             timer -= Time.deltaTime;
             timerText.text = timer.ToString("F0");
-            if (timer <= 0 || serverRoom.completedConnections == 3)
+            if (timer <= 0 || serverRoomMission.completedConnections == 3)
             {
                 EndMission();
             }
@@ -48,39 +49,45 @@ public class ServerRoomManager : MonoBehaviour
     private void EndMission()
     {
         missionActive = false;
-        int score = serverRoom.GiveScore();
-        if (timer <= 0 && serverRoom.completedConnections > 0)
+        int score = serverRoomMission.GiveScore();
+        if (timer <= 0 && serverRoomMission.completedConnections > 0)
         {
             timeOver.SetActive(true);
-            timeOverText.text = "≈∏¿” ø¿πˆ!\n" + serverRoom.completedConnections + " / 3 º∫∞¯\n" + serverRoom.GiveScore() + "¡° »πµÊ!";
+            timeOverText.text = "ÌÉÄÏûÑ Ïò§Î≤Ñ!\n" + serverRoomMission.completedConnections + " / 3 ÏÑ±Í≥µ\n" + serverRoomMission.GiveScore() + "Ï†ê ÌöçÎìù!";
+            stress = 5f;
         }
-        else if (timer <= 0 && serverRoom.completedConnections == 0)
+        else if (timer <= 0 && serverRoomMission.completedConnections == 0)
         {
             missionFail.SetActive(true);
+            stress = 10f;
         }
-        else if (serverRoom.completedConnections == 3)
+        else if (serverRoomMission.completedConnections == 3)
         {
             missionComplete.SetActive(true);
+            stress = 5f;
         }
-        // ªÛ»≤∫∞∑Œ πÃº« ≥°≥µ¿ª ∂ß ∫∏ø©¡Ÿ UI « ø‰
-
     }
 
     private void AssignRandomPositions()
     {
         List<float> yPositions = new List<float> { -300f, 0f, 300f };
-        yPositions.Shuffle(); // ∏ÆΩ∫∆Æ ºØ±‚
+        yPositions.Shuffle(); // Î¶¨Ïä§Ìä∏ ÏÑûÍ∏∞
 
         for (int i = 0; i < destinations.Length; i++)
         {
             Vector2 newPos = destinations[i].anchoredPosition;
-            newPos.y = yPositions[i]; // y∞™∏∏ º≥¡§
+            newPos.y = yPositions[i]; // yÍ∞íÎßå ÏÑ§Ï†ï
             destinations[i].anchoredPosition = newPos;
         }
     }
+
+    public float ReturnStress()
+    {
+        return stress;
+    }
 }
 
-// ∏ÆΩ∫∆Æ ºØ¥¬ »Æ¿Â ∏ﬁº≠µÂ √ﬂ∞°
+// Î¶¨Ïä§Ìä∏ ÏÑûÎäî ÌôïÏû• Î©îÏÑúÎìú Ï∂îÍ∞Ä
 public static class ListExtensions
 {
     private static System.Random rng = new System.Random();
