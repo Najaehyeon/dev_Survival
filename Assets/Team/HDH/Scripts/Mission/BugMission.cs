@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BugMission : MonoBehaviour
+public class BugMission : MonoBehaviour, IMission
 {
     [Header("미션 관련 정보")]
     [SerializeField] float LimitTime = 10f; //Bug 미션 제한 시간
@@ -11,6 +11,7 @@ public class BugMission : MonoBehaviour
     [SerializeField] List<Bug> Bugs; //현재 활성화 중인 버그
     [SerializeField] Rect fieldRange; //버그가 생성될 영역 범위
     [SerializeField] float aimOffset; //마우스 위치와 버그 위치 간의 허용 오차값
+    public float[] thresholdTime = new float[] { 5, 8};
 
     private float passsedTime; //플레이 중 흘러간 시간
     private int killCount; //죽인 버그의 수
@@ -123,9 +124,31 @@ public class BugMission : MonoBehaviour
     {
         if (isFail || isComplete)
         {
-            //gameObject.SetActive(false);
             Destroy(gameObject);
         }
     }
 
+    public void GameEnd()
+    {
+        
+    }
+
+    public int GetScore()
+    {
+        if(isFail) return 0;
+
+        if (completeTime < thresholdTime[0])
+            return 5;
+        else if (completeTime < thresholdTime[1])
+            return 3;
+        else
+            return 1;
+    }
+
+    public float GetStress()
+    {
+        if (isFail) return 10;
+
+        return 5;
+    }
 }
