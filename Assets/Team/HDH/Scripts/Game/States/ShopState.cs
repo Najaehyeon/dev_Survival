@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopState : BaseState
+public class ShopState : GameBaseState
 {
     public ShopState(GameStateMachine stateMachine) : base(stateMachine)
     {
@@ -23,7 +23,7 @@ public class ShopState : BaseState
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            stateMachine.ChangeState(stateMachine.inGameState);
+            //stateMachine.ChangeState(gameStateMachine.inGameState);
         }
     }
 }

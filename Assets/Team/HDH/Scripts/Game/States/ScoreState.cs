@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum ScoreRate
@@ -10,12 +8,13 @@ public enum ScoreRate
     Prefect
 }
 
-public class ScoreState : BaseState
+public class ScoreState : GameBaseState
 {
     public int[] thresholdScores = new int[]{ 50, 70, 100 };
 
     public ScoreState(GameStateMachine stateMachine) : base(stateMachine)
     {
+
     }
 
     public override void Enter()
@@ -33,7 +32,7 @@ public class ScoreState : BaseState
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            stateMachine.ChangeState(stateMachine.shopState);
+            //stateMachine.ChangeState(stateMachine.shopState);
         }
     }
 

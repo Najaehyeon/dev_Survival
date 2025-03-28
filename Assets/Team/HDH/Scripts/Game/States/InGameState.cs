@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 
 [Serializable]
-public class InGameState : BaseState
+public class InGameState : GameBaseState
 {
     float startTime = 540f;
     float unitSecond = 9 / 2f;
@@ -35,7 +35,7 @@ public class InGameState : BaseState
 
         if (GameManager.Instance.PassedTime >= endDayTime)
         {
-            stateMachine.ChangeState(stateMachine.scoreState);
+            //StateMachine.ChangeState(StateMachine.scoreState);
             return;
         }
 

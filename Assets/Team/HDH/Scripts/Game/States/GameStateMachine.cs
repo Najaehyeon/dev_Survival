@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStateMachine
+public class GameStateMachine : IStateMachine
 {
-    BaseState currentState;
-
     public InGameState inGameState;
     public ScoreState scoreState;
     public ShopState shopState;
 
+    public BaseState CurrentState { get; set; }
 
     public void Init()
     {
@@ -21,21 +20,24 @@ public class GameStateMachine
         ChangeState(inGameState);
     }
 
-    public void ChangeState(BaseState state)
+    public void ChangeState(GameBaseState state)
     {
-        if(currentState != null)
-            currentState.Exit();
+        if(CurrentState != null)
+            CurrentState.Exit();
 
-        currentState = state;
+        CurrentState = state;
 
-        Debug.Log(currentState.ToString());
-
-        currentState.Enter();
+        CurrentState.Enter();
 
     }
 
     public void Update()
     {
-        currentState.Update();
+        CurrentState.Update();
+    }
+
+    public void ChangeState(BaseState state)
+    {
+        throw new NotImplementedException();
     }
 }
