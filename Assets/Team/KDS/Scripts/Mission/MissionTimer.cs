@@ -1,0 +1,60 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
+public class MissionTimer:MonoBehaviour
+{
+    public Mission mission;
+
+    public float timeOut = 20f;
+    public Image radialFill;
+    public Color normalColor = Color.white;
+    public Color warningColor = Color.red;
+    [SerializeField] private bool gameStart;
+    public virtual void Update()
+    {
+        if (!gameStart)
+        {
+            if (timeOut > 0)
+            {
+                timeOut -= Time.deltaTime;
+                UpdateFillAmount();
+            }
+            else
+            {
+                TimeOut();
+            }
+        }
+    }
+    public void Selected()
+    {
+        gameStart= false;
+        timeOut = 20f;
+        gameObject.SetActive(true);
+    }
+    public virtual void OnGameStart()
+    {
+        gameStart = true;
+        mission = Instantiate(mission, Vector3.zero, Quaternion.identity);
+        gameObject.SetActive(false);
+    }
+    public virtual void TimeOut()
+    {
+        Debug.Log("타임아웃");
+        gameStart = true;
+    }
+
+    private void UpdateFillAmount()
+    {
+        radialFill.fillAmount =1-(timeOut / 20f);
+
+        if (timeOut <= 5f)
+        {
+            radialFill.color = warningColor;
+        }
+        else
+        {
+            radialFill.color = normalColor;
+        }
+    }
+}
