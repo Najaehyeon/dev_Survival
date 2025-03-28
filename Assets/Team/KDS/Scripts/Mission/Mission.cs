@@ -31,6 +31,6 @@ public abstract class Mission : MonoBehaviour
         GetStress();
         isGameEnd = true;
         MissionManager.Instance.controller.IsAllGameEnd();
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

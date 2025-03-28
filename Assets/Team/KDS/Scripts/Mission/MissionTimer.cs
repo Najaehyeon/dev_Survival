@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class MissionTimer:MonoBehaviour
 {
+    private Mission missionInstance;
     public Mission mission;
 
     public float timeOut = 20f;
@@ -35,14 +36,14 @@ public class MissionTimer:MonoBehaviour
     public virtual void OnGameStart()
     {
         gameStart = true;
-        mission = Instantiate(mission, Vector3.zero, Quaternion.identity);
+        missionInstance = Instantiate(mission, MissionManager.Instance.controller.canvas.transform);
         gameObject.SetActive(false);
     }
     public virtual void TimeOut()
     {
-
         gameStart = true;
-        mission.GameEnd();
+        // 점수, 스트레스 줘야함
+        MissionManager.Instance.controller.IsAllGameEnd();
         gameObject.SetActive(false);
     }
 
