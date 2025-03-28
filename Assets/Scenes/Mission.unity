@@ -541,7 +541,7 @@ MonoBehaviour:
   - {fileID: 1942261097}
   - {fileID: 1389974760}
   - {fileID: 350775089}
-  canvas: {fileID: 0}
+  canvas: {fileID: 1139237243}
 --- !u!4 &1159673313
 Transform:
   m_ObjectHideFlags: 0

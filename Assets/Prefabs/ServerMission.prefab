@@ -588,7 +588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a4acf1945a344f439aa7cadf2fb296a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverRoom: {fileID: 2319178659967372376}
+  isGameEnd: 0
+  serverRoomMission: {fileID: 2319178659967372376}
   missionTime: 10
   destinations:
   - {fileID: 4694242703226856467}

@@ -67,11 +67,6 @@ public class ServerRoomManager : Mission
         Invoke("GameEnd", 2f);
     }
 
-    public override void GameEnd()
-    {
-        base.GameEnd();
-    }
-
     private void AssignRandomPositions()
     {
         List<float> yPositions = new List<float> { -300f, 0f, 300f };
