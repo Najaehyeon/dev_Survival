@@ -19,9 +19,6 @@ public class ServerRoomManager : Mission
     private float timer;
     private bool missionActive = false;
 
-    private int score;
-    private float stress = 0;
-
     private void Start()
     {
         StartMission();
@@ -93,11 +90,14 @@ public class ServerRoomManager : Mission
         switch (serverRoomMission.completedConnections)
         {
             case 1:
-                return 1;
+                score = 1;
+                return score;
             case 2:
-                return 3;
+                score = 3;
+                return score;
             case 3:
-                return 5;
+                score = 5;
+                return score;
             default:
                 return 0;
         }
