@@ -687,10 +687,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ServerMission
       objectReference: {fileID: 0}
-    - target: {fileID: 5163636193036708909, guid: 03c6c0711a73a654581fa45481b854a0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
