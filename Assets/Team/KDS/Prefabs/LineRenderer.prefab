@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61d1e4d2cc6388249886dfd6399953c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPoints: 20
+  numberOfPoints: 10
   width: 0.1
   amplitude: 3
   frequency: 1
