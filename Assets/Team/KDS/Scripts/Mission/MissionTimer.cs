@@ -35,8 +35,7 @@ public class MissionTimer:MonoBehaviour
     public virtual void OnGameStart()
     {
         gameStart = true;
-        mission = Instantiate(mission, Vector3.zero, Quaternion.identity);
-        mission.transform.parent = MissionManager.Instance.controller.canvas.transform;
+        mission = Instantiate(mission, MissionManager.Instance.controller.canvas.transform);
         gameObject.SetActive(false);
     }
     public virtual void TimeOut()
