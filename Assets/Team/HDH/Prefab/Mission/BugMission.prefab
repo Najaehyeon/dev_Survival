@@ -2039,7 +2039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5404449396979249407
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2081,6 +2081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2171f7b80823514785eaf665d100a75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameEnd: 1
   LimitTime: 10
   bugPrefab:
   - {fileID: 992679364241500027, guid: a5c77854ef8a2be41ac18afbeb5c9df4, type: 3}
@@ -2095,6 +2096,9 @@ MonoBehaviour:
     width: 9.5
     height: 6.5
   aimOffset: 0.5
+  thresholdTime:
+  - 5
+  - 8
   ExitButton: {fileID: 5699696755916060935}
   InfoButton: {fileID: 633820665203363463}
   CompleteButton: {fileID: 583166166401090771}
