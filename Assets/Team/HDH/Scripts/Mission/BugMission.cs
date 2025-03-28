@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BugMission : MonoBehaviour, IMission
+public class BugMission : Mission
 {
     [Header("미션 관련 정보")]
     [SerializeField] float LimitTime = 10f; //Bug 미션 제한 시간
@@ -125,30 +125,32 @@ public class BugMission : MonoBehaviour, IMission
         if (isFail || isComplete)
         {
             Destroy(gameObject);
+            GameEnd();
         }
     }
 
-    public void GameEnd()
+    public override int GetScroe()
     {
-        
-    }
-
-    public int GetScore()
-    {
-        if(isFail) return 0;
-
-        if (completeTime < thresholdTime[0])
-            return 5;
-        else if (completeTime < thresholdTime[1])
-            return 3;
+        if (isFail) score = 1;
         else
-            return 1;
+        {
+            if (completeTime < thresholdTime[0])
+                score = 5;
+            else if (completeTime < thresholdTime[1])
+                score = 3;
+            else
+                score = 1;
+        }
+        return base.GetScroe();
     }
 
-    public float GetStress()
+    public override float GetStress()
     {
-        if (isFail) return 10;
+        return base.GetStress();
+    }
 
-        return 5;
+    public override void GameEnd()
+    {
+        base.GameEnd();
     }
 }

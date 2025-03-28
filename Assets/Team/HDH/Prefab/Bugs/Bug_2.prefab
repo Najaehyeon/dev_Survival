@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   boarderMargin: {x: 0.5, y: 0.5}
-  respawnTime: 0.3
+  respawnTime: 0.1
   FieldRange:
     serializedVersion: 2
     x: 0

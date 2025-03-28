@@ -2,19 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissionManager : MonoBehaviour
+public class MissionManager : Singleton<MissionManager>
 {
-    [SerializeField] private IMission[] missions;
+    [SerializeField] public Mission[] missions;
 
-    void Start()
-    {
-        Debug.Log(missions[0].GetScore());
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("MissionControll")]
+    public MissionController controller;
+
 }

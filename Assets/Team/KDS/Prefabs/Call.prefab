@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e67daf96820fe546ac2e57aa3782452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameEnd: 1
   cirele: {fileID: 7220224863023254410}
   progerss: 0
-  score: 0
   lineRenderer: {fileID: 7135360709317037313, guid: a6913e364b608ce4db86cab48c9daae6, type: 3}
 --- !u!61 &8196906488096734506
 BoxCollider2D:
@@ -304,7 +304,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 66ea53513e879794e8de09b7417750e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CodeMission : MonoBehaviour
+public class CodeMission : Mission
 {
     [Header("Panel")]
     [SerializeField] private GameObject errerPanel;
@@ -19,8 +19,8 @@ public class CodeMission : MonoBehaviour
 
 
     [Header("Mission")]
-    [SerializeField] private TextMeshProUGUI missionHintText1; // ErrerPanel ÈùÆ®
-    [SerializeField] private TextMeshProUGUI missionHintText2; // InspectorPanel ÈùÆ®
+    [SerializeField] private TextMeshProUGUI missionHintText1; // ErrerPanel ížŒíŠ¸
+    [SerializeField] private TextMeshProUGUI missionHintText2; // InspectorPanel ížŒíŠ¸
     [SerializeField] private List<Button> objectListButton = new List<Button>();
 
     [SerializeField] private List<string> missionTextList = new List<string>();
@@ -31,17 +31,30 @@ public class CodeMission : MonoBehaviour
     [SerializeField] private string selectText;
 
 
+    CodeMissionTimer codeMissionTimer;
+
     private void Start()
     {
+        codeMissionTimer = GetComponent<CodeMissionTimer>();
+
         OnClickStart();
 
         RandomText();
 
         inspectorPanel.SetActive(false);
         selectObjectPanel.gameObject.SetActive(false);
+
+        codeMissionTimer.startTimer();
+    }
+    private void Update()
+    {
+        if (codeMissionTimer.isTimeOver)
+        {
+            IsFail();
+        }
     }
 
-    private void OnClickStart() // ¸ðµç ¹öÆ° onClick ±â´É ºÎ¿©
+    private void OnClickStart() // ëª¨ë“  ë²„íŠ¼ onClick ê¸°ëŠ¥ ë¶€ì—¬
     {
         errerButton.onClick.AddListener(onClickCancelButton);
         unityButton.onClick.AddListener(OnClickUnityButton);
@@ -81,17 +94,18 @@ public class CodeMission : MonoBehaviour
     }
     private void OnClickApplyButton()
     {
-        if (answer == selectText)
+        if (answer == selectText && codeMissionTimer.curTime < codeMissionTimer.timer)
         {
-            Debug.Log("¼º°ø");
+            IsAnswer();
         }
         else
         {
-            Debug.Log("½ÇÆÐ");
+            IsFail();
         }
+        codeMissionTimer.EndTimer();
     }
 
-    public void RandomText() // ·£´ýÀ¸·Î Á¤´ä °í¸£´Â ¸Å¼­µå
+    public void RandomText() // ëžœë¤ìœ¼ë¡œ ì •ë‹µ ê³ ë¥´ëŠ” ë§¤ì„œë“œ
     {
         missionTextList.Clear();
 
@@ -111,5 +125,27 @@ public class CodeMission : MonoBehaviour
 
         missionHintText1.text = $"NullReferenceException: Object reference not set to an instance of an object\r\nGameManager.{answer} (System.Int32 {answer}) (at Assets/Manager.cs:41)";
         missionHintText2.text = answer;
+    }
+
+
+    private void IsAnswer()
+    {
+        Debug.Log("ì„±ê³µ");
+        score = codeMissionTimer.curTime > 10 ? 3 : 5;
+        Debug.Log("score "+ score);
+        GameEnd();
+    }
+
+    private void IsFail()
+    {
+        Debug.Log("ì‹¤íŒ¨");
+        score = 0;
+        Debug.Log("score " + score);
+        GameEnd();
+    }
+
+    public override void GameEnd()
+    {
+        base.GameEnd();
     }
 }
