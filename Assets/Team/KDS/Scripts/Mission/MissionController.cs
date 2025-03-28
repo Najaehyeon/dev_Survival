@@ -42,20 +42,20 @@ public class MissionController : MonoBehaviour
 
     public void MissionSelector()
     {
-        
-        //System.Random rng = new System.Random();
-        //missonTimers = missonTimers.OrderBy(x => rng.Next()).ToArray();
 
-        ///테스트단계에서 하나밖에없어서 실행하면 Rarry오류남
-        //missionCount = UnityEngine.Random.Range(1, 3);
-        //for(int i=0;i<missionCount;i++)
-        //{
-        //    missonTimers[i].gameObject.SetActive(true);
-        //    missonTimers[i].Selected();
-        //}
-        missionCount = 1;
-        missonTimers[0].gameObject.SetActive(true);
-        missonTimers[0].Selected();
+        System.Random rng = new System.Random();
+        missonTimers = missonTimers.OrderBy(x => rng.Next()).ToArray();
+
+        // 테스트단계에서 하나밖에없어서 실행하면 Rarry오류남
+        missionCount = UnityEngine.Random.Range(1, 3);
+        for (int i = 0; i < missionCount; i++)
+        {
+            missonTimers[i].gameObject.SetActive(true);
+            missonTimers[i].Selected();
+        }
+        //missionCount = 1;
+        //missonTimers[0].gameObject.SetActive(true);
+        //missonTimers[0].Selected();
     }
 
     public void IsAllGameEnd()
