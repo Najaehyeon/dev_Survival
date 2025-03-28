@@ -14,7 +14,7 @@ public class ServerRoom : MonoBehaviour
     private RectTransform selectedWire = null;
     private Vector2 startPoint;
 
-    public int completedConnections { get; private set; }
+    public int completedConnections { get; private set; } = 0;
     private List<RectTransform> completedWires = new List<RectTransform>(); // 이미 연결된 전선들
 
     void Update()
