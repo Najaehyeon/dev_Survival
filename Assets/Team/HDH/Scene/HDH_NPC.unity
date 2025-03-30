@@ -215,6 +215,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1047408802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1047408803}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1047408803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047408802}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.25, y: 5.47, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1210947912
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IdleDestinationSet: {fileID: 11400000, guid: f43bb167ab1958b4b984c1ebd03d397f, type: 2}
+  MissionDestinationSet: {fileID: 11400000, guid: 34b73f58a5c470f4a8d9e79e727e6a5a, type: 2}
+  RestDeaStateDestinationSet: {fileID: 11400000, guid: f25450a64eef6de4da63ec2e851d096e, type: 2}
 --- !u!212 &1960664213
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -554,3 +587,4 @@ SceneRoots:
   - {fileID: 1809558158}
   - {fileID: 1694850869}
   - {fileID: 1210947913}
+  - {fileID: 1047408803}

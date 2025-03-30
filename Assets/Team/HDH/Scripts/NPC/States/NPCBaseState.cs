@@ -12,4 +12,6 @@ public abstract class NPCBaseState : BaseState
     {
         NPCStateMachine = stateMachine;
     }
+
+    public virtual void OnMission() { }
 }

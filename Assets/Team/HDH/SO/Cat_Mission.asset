@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af51a81310b6bf44cb009df33891f604, type: 3}
-  m_Name: CatIdle
+  m_Name: Cat_Mission
   m_EditorClassIdentifier: 
-  StateName: CatIdle
+  StateName: Cat_Mission
   DestinationSet:
-  - {x: 8.46, y: -4.66, z: 0}
-  - {x: 5.02, y: 8.62, z: 0}
-  - {x: -5.74, y: 5.08, z: 0}
-  - {x: -8.59, y: -4.52, z: 0}
+  - {x: -4.5835376, y: -6.119726, z: 0}
+  - {x: -4.5835376, y: -9.60173, z: 0}
+  - {x: 1.3564625, y: -9.60173, z: 0}
+  - {x: 1.3564625, y: -6.14173, z: 0}
+  - {x: 7.3564625, y: -6.14173, z: 0}
+  - {x: 7.3564625, y: -9.62173, z: 0}
