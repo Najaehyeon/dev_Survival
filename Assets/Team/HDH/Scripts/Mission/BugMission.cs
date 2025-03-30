@@ -124,8 +124,7 @@ public class BugMission : Mission
     {
         if (isFail || isComplete)
         {
-            Destroy(gameObject);
-            GameEnd();
+            base.GameEnd();
         }
     }
 
@@ -141,16 +140,7 @@ public class BugMission : Mission
             else
                 score = 1;
         }
-        return base.GetScroe();
+        return score;
     }
 
-    public override float GetStress()
-    {
-        return base.GetStress();
-    }
-
-    public override void GameEnd()
-    {
-        base.GameEnd();
-    }
 }
