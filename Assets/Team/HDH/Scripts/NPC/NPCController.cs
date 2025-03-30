@@ -29,6 +29,7 @@ public class NPCController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("input");
             stateMachine.ChangeState(stateMachine.npcMissionState);
         }
     }
