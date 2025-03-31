@@ -16,6 +16,7 @@ public class ServerRoomMission : MonoBehaviour
     private RectTransform selectedWire = null;
     private Vector2 startPoint;
     private Vector2 mousePos;
+    private Vector2 screenMousePosition;
 
     public int completedConnections { get; private set; } = 0;
     private List<RectTransform> completedWires = new List<RectTransform>(); // 이미 연결된 전선들
@@ -29,16 +30,14 @@ public class ServerRoomMission : MonoBehaviour
         Debug.Log("와이어 선택됨");
     }
 
-    void StretchWire(RectTransform wire, Vector3 start, Vector2 screenMousePosition)
+    void StretchWire(RectTransform wire, Vector2 start, Vector2 screenMousePosition)
     {
-        Vector3 end = Camera.main.ScreenToWorldPoint(screenMousePosition);
-        start.z = 0;
-        end.z = 0;
-        Debug.Log(start);
-        Debug.Log(end);
-        Debug.Log(screenMousePosition);
+        Vector2 end = Camera.main.ScreenToWorldPoint(screenMousePosition);
         Vector2 direction = (end - start).normalized;
-        float distance = Vector2.Distance(start, screenMousePosition);
+        Vector2 screenStart = RectTransformUtility.WorldToScreenPoint(Camera.main, start);
+        Vector2 screenEnd = RectTransformUtility.WorldToScreenPoint(Camera.main, end);
+
+        float distance = Vector2.Distance(screenStart, screenEnd); // 스크린 좌표에서의 거리
 
         wire.pivot = new Vector2(0, 0.5f);
         wire.position = start;
@@ -56,10 +55,10 @@ public class ServerRoomMission : MonoBehaviour
 
         if (correctDestination != null)
         {
-            Vector2 wireEndPoint = wire.position + (Vector3)(wire.right * wire.sizeDelta.x);
+            Vector2 wireEndPoint = Camera.main.ScreenToWorldPoint(screenMousePosition);
             float distance = Vector2.Distance(wireEndPoint, correctDestination.position);
 
-            if (distance < 3f) // 연결 성공
+            if (distance < 5f) // 연결 성공
             {
                 Debug.Log("연결됨");
                 Vector2 end = Camera.main.WorldToScreenPoint(correctDestination.position);
@@ -121,7 +120,7 @@ public class ServerRoomMission : MonoBehaviour
         if (selectedWire != null)
         {
             // 마우스 좌표를 바탕으로 와이어 늘리기
-            Vector2 screenMousePosition = mousePos;
+            screenMousePosition = mousePos;
             StretchWire(selectedWire, startPoint, screenMousePosition);
         }
     }
