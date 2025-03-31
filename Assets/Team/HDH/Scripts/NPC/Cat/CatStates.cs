@@ -114,7 +114,7 @@ public class CatMissionState : NPCBaseState
     {
         MissionTimer missionTimer = obj as MissionTimer;
         
-        missionTimer.OnGameStart();
+        NPCStateMachine.StartMissionTimer(missionTimer);
     }
 }
 

@@ -48,7 +48,7 @@ public class NPCStateMachine : BaseStateMachine
         IsRestComplete = true;
     }
 
-    void StartMissionTimer(MissionTimer missionTimer)
+    public void StartMissionTimer(MissionTimer missionTimer)
     {
         missionTimer.gameObject.SetActive(true);
         missionTimer.Selected();
@@ -59,7 +59,9 @@ public class NPCStateMachine : BaseStateMachine
         MissionTimer currentMissionTimer;
         if (other.TryGetComponent(out currentMissionTimer))
         {
-            StartMissionTimer(currentMissionTimer);
+            //고양이는 미션 지점에 도착했을 때 고양이 미션 타이머를 가동
+            //직원은 미션 지점에 도착했을 때 미션 타이머를 해결
+            CurrentNPCState.OnMission(currentMissionTimer);
         }
     }
 }

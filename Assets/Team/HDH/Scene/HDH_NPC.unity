@@ -506,6 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateSet: {fileID: 0}
+  MaxStress: 100
 --- !u!114 &1960664216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,9 +519,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb0a19454821b34e9527f9b7f83373a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IdleDestinationSet: {fileID: 0}
-  MissionDestinationSet: {fileID: 0}
-  RestDestinationSet: {fileID: 0}
+  IdleDestinationSet: {fileID: 11400000, guid: f43bb167ab1958b4b984c1ebd03d397f, type: 2}
+  MissionDestinationSet: {fileID: 11400000, guid: 34b73f58a5c470f4a8d9e79e727e6a5a, type: 2}
+  RestDestinationSet: {fileID: 11400000, guid: f25450a64eef6de4da63ec2e851d096e, type: 2}
 --- !u!114 &1960664217
 MonoBehaviour:
   m_ObjectHideFlags: 0
