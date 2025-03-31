@@ -5,7 +5,8 @@ public abstract class NPCBaseState : BaseState
     protected NPCStateMachine NPCStateMachine;
 
     protected StateSet StateSet;
-
+    
+    protected Vector3[] destinations;
     public Vector3 TargetDestination;
 
     protected NPCBaseState(NPCStateMachine stateMachine) : base(stateMachine)
@@ -13,5 +14,10 @@ public abstract class NPCBaseState : BaseState
         NPCStateMachine = stateMachine;
     }
 
-    public virtual void OnMission() { }
+    public virtual void OnMission(Object obj = null) { }
+
+    public override void Enter()
+    {
+        TargetDestination = destinations[Random.Range(0, destinations.Length)];
+    }
 }

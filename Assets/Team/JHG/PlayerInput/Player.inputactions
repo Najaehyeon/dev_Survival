@@ -92,6 +92,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "BugMission",
+            "id": "5ab8c81c-23f9-4ce2-9f2f-198194640ad9",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "4bcec6bc-01b4-46ee-a05c-167086035e40",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3e3aa357-5efe-4cee-9474-1535831a9479",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

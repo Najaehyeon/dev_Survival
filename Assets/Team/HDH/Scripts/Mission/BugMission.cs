@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class BugMission : Mission
@@ -20,6 +21,8 @@ public class BugMission : Mission
     private float completeTime; //완료시 시간
 
     private GameObject fieldObj;
+
+    private bool onClick;
 
     [Header("UI 요소")]
     [SerializeField] private Button ExitButton;
@@ -76,11 +79,19 @@ public class BugMission : Mission
 
     }
 
+    public void OnClick(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+            onClick = true;
+        else if(context.phase == InputActionPhase.Canceled)
+            onClick = false;
+    }
+
     void KillBug()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if(Input.GetMouseButtonDown(0))
+        if(onClick)
         {
             foreach (Bug bug in Bugs)
             {

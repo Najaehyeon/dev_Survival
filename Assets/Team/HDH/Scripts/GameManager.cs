@@ -7,6 +7,7 @@ public class GameManager : Singleton<GameManager>
     [field: SerializeField] public int Day { get; private set; }
     [field: SerializeField] public float PassedTime { get; private set; }
     [field: SerializeField] public bool isMissionInProgress;
+    //MissionTimer 에서 변경
 
     //UI test를 위해 추가 추후 적용시 삭제
     [SerializeField] public UItest uiTest;
