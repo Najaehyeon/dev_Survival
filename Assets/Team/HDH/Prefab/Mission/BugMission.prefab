@@ -993,8 +993,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1500, y: 1000}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 1500, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5062836926388051309
 GameObject:
@@ -1242,7 +1242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -30, y: 230}
+  m_AnchoredPosition: {x: -30, y: 150}
   m_SizeDelta: {x: 250, y: 40}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &6958178041527003305
@@ -1318,7 +1318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -30, y: 320}
+  m_AnchoredPosition: {x: -30, y: 240}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &8258960033598359226
@@ -2092,10 +2092,10 @@ MonoBehaviour:
   Bugs: []
   fieldRange:
     serializedVersion: 2
-    x: -6.1
-    y: -3.6
-    width: 9.5
-    height: 6.5
+    x: -7.4
+    y: -4
+    width: 11.5
+    height: 6
   aimOffset: 0.5
   thresholdTime:
   - 5
@@ -2157,6 +2157,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4bcec6bc-01b4-46ee-a05c-167086035e40
     m_ActionName: BugMission/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6093142440436392162}
+        m_TargetAssemblyTypeName: BugMission, Assembly-CSharp
+        m_MethodName: GetMousePos
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b35a724b-5395-41c0-9c8d-58ab90d5a72c
+    m_ActionName: BugMission/MousePos[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: BugMission
