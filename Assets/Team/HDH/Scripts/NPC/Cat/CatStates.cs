@@ -31,6 +31,7 @@ public class CatIdleState : NPCBaseState
     {
         Debug.Log("CatIdle");
         base.Enter();
+        NPCStateMachine.Controller.ChangeMoveSpeed(5f);
     }
 
     public override void Exit()
@@ -39,8 +40,18 @@ public class CatIdleState : NPCBaseState
 
     public override void Update()
     {
-        //MissionManager에 의해 미션이 할당 되었을 때 배회를 멈추고 미션 장소로 이동
-        SetRandomDestination();
+        if(NPCStateMachine.HasMission)
+            NPCStateMachine.ChangeState(NPCStateMachine.npcMissionState);
+        else if(NPCStateMachine.StressLevel >= NPCStateMachine.MaxStress)
+        {
+            NPCStateMachine.ChangeState(NPCStateMachine.npcRestState);
+        }
+        else
+        {
+            //MissionManager에 의해 미션이 할당 되었을 때 배회를 멈추고 미션 장소로 이동
+            SetRandomDestination();
+        }
+        
             
     }
 
@@ -84,6 +95,8 @@ public class CatMissionState : NPCBaseState
     public override void Enter()
     {
         Debug.Log("CatMission");
+        NPCStateMachine.Controller.ChangeMoveSpeed(10f);
+        NPCStateMachine.AddStress(10f);
         //책상 위치 중 하나를 정해 이동
     }
 
@@ -118,6 +131,7 @@ public class CatRestState : NPCBaseState
     public override void Enter()
     {
         base.Enter();
+        NPCStateMachine.Controller.ChangeMoveSpeed(10f);
         timer = 0;
 
     }
@@ -130,6 +144,9 @@ public class CatRestState : NPCBaseState
     public override void Update()
     {
         InRest();
+        
+        if(NPCStateMachine.IsRestComplete)
+            NPCStateMachine.ChangeState(NPCStateMachine.npcIdleState);
     }
 
     private void InRest()
@@ -140,7 +157,7 @@ public class CatRestState : NPCBaseState
         }
         else
         {
-            NPCStateMachine.ChangeState(NPCStateMachine.npcIdleState);
+            NPCStateMachine.ResetStress();
         }
     }
 }

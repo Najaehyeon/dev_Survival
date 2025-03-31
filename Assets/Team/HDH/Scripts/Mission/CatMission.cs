@@ -20,10 +20,14 @@ public class CatMission : Mission
 
     public void SelectCatMission()
     {
-        //NPC를 미션 상태로 변경
-        stateMachine.ChangeState(stateMachine.npcMissionState);
         //CatNPC에게 임의의 목적지를 할당
-        stateMachine.CurrentNPCState.TargetDestination = catMissionTimers[UnityEngine.Random.Range(0, catMissionTimers.Length)].transform.position;
+        MissionTimer currentMission = catMissionTimers[UnityEngine.Random.Range(0, catMissionTimers.Length)];
+        stateMachine.AssignMission(currentMission);
+    }
+
+    public void EndMission()
+    {
+        stateMachine.ChangeState(stateMachine.npcIdleState);
     }
     
     

@@ -12,7 +12,7 @@ public class BugMission : Mission
     [SerializeField] List<Bug> Bugs; //현재 활성화 중인 버그
     [SerializeField] Rect fieldRange; //버그가 생성될 영역 범위
     [SerializeField] float aimOffset; //마우스 위치와 버그 위치 간의 허용 오차값
-    public float[] thresholdTime = new float[] { 5, 8};
+    public float[] thresholdTime = new float[] {5, 8};
 
     private float passsedTime; //플레이 중 흘러간 시간
     private int killCount; //죽인 버그의 수
@@ -20,10 +20,12 @@ public class BugMission : Mission
     private bool isComplete; //완료 여부
     private float completeTime; //완료시 시간
 
-    private GameObject fieldObj;
+    private GameObject fieldObj; //버그가 생성되는 부모 오브젝트
 
-    private bool onClick;
-
+    private bool onClick; //마우스 클릭 변수
+    private Vector2 mousePos; //마우스 위치 변수
+    private Camera mainCam; //메인 카메라
+    
     [Header("UI 요소")]
     [SerializeField] private Button ExitButton;
     [SerializeField] private Button InfoButton;
@@ -36,6 +38,8 @@ public class BugMission : Mission
 
     private void Start()
     {
+        mainCam = Camera.main;
+        
         fieldObj = new GameObject("BugField"); //버그가 생성될 영역을 생성
         fieldObj.transform.position = new Vector3(fieldRange.x, fieldRange.y, 0);
 
@@ -87,24 +91,43 @@ public class BugMission : Mission
             onClick = false;
     }
 
+    public void GetMousePos(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            mousePos = context.ReadValue<Vector2>();
+    }
+
     void KillBug()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
         if(onClick)
         {
+            Vector3 toWorldPoint = mainCam.ScreenToWorldPoint(mousePos);
+            toWorldPoint = new Vector3(toWorldPoint.x, toWorldPoint.y, 0);
+            
             foreach (Bug bug in Bugs)
             {
-                if ((bug.transform.position - (Vector3)mousePos).magnitude < aimOffset)
+                if ((bug.transform.position - toWorldPoint).magnitude < aimOffset)
                 {
-                    killCount++;
                     bug.gameObject.SetActive(false);
-
-                    isComplete = killCount == Bugs.Count;
-
-                    UpdateProgressBar();
                 }
             }
+            
+            KillCheck();
+            UpdateProgressBar();
+            
+            isComplete = killCount == Bugs.Count;
+            
+            onClick = false;
+        }
+    }
+
+    void KillCheck()
+    {
+        killCount = 0;
+        
+        foreach (Bug bug in Bugs)
+        {
+            killCount += bug.gameObject.activeSelf ?  0 : 1;
         }
     }
 
