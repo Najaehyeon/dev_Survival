@@ -38,6 +38,7 @@ public class NPCStateMachine : BaseStateMachine
     public void AssignMission(MissionTimer missionTimer)
     {
         if(CurrentNPCState != npcIdleState) return;
+        Debug.Log("Receive mission");
         HasMission = true;
         CurrentNPCState.TargetDestination = missionTimer.transform.position;
     }

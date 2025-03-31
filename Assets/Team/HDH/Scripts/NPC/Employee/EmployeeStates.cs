@@ -10,14 +10,15 @@ public class EmployeeStates : StateSet
     public override NPCBaseState IdleState { get; set; }
     public override NPCBaseState RestState { get; set; }
     public override NPCBaseState MissionState { get; set; }
-    
-    //public EmployData employData;
 
+    [Header("직원 스탯 정보")] 
+    public EmployData EmployData;
+    
     public override void Init()
     {
         IdleState = new EmployeeIdleState(stateMachine);
-        RestState = new EmployeeMissionState(stateMachine);
-        MissionState = new EmployeeRestState(stateMachine);
+        RestState = new EmployeeRestState(stateMachine);
+        MissionState = new EmployeeMissionState(stateMachine);
     }
 }
 public class EmployeeIdleState : NPCBaseState
@@ -90,13 +91,18 @@ public class EmployeeIdleState : NPCBaseState
 
 public class EmployeeMissionState : NPCBaseState
 {
+    EmployData employData;
+    
     public EmployeeMissionState(NPCStateMachine stateMachine) : base(stateMachine)
     {
+        EmployeeStates employeeStates = stateMachine.stateSet as EmployeeStates;
+        employData = employeeStates.EmployData;
     }
     
     public override void Enter()
     {
-        NPCStateMachine.Controller.ChangeMoveSpeed(10f);
+        Debug.Log("Employee Mission Enter");
+        NPCStateMachine.Controller.ChangeMoveSpeed(5f);
     }
     public override void Exit()
     {
