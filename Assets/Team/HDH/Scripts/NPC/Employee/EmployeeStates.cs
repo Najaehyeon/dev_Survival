@@ -37,6 +37,7 @@ public class EmployeeIdleState : NPCBaseState
     {
         NPCStateMachine.Controller.ChangeMoveSpeed(1f);
         TargetDestination = destinations[Random.Range(0, destinations.Length)];
+        EmployeeManager.Instance.IdleEmployees.Enqueue(NPCStateMachine);
     }
 
     public override void Exit()

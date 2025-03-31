@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using Random = System.Random;
+
 public class NPCStateMachine : BaseStateMachine
 {
     public StateSet stateSet;
@@ -30,17 +32,27 @@ public class NPCStateMachine : BaseStateMachine
         ChangeState(npcIdleState);
     }
     //MissionTimer를 통해 연결
-    //NPC에 미션을 할당
+    //NPC에 미션을 할당, Stat에 따른 수락 여부
     /// <summary>
-    /// NPC에 미션을 할당
+    /// NPC에 미션을 할당, 수락 확률에 따라 NPCStateMachine 또는 null을 반환
     /// </summary>
     /// <param name="missionTimer">할당할 미션</param>
-    public void AssignMission(MissionTimer missionTimer)
+    public NPCStateMachine AssignMission(Mission mission)
     {
-        if(CurrentNPCState != npcIdleState) return;
+        if(CurrentNPCState != npcIdleState) return  null;
+        
+        EmployeeStates employeeStates = stateSet as EmployeeStates;
+        
+        Random random = new Random();
+        
+        int acceptRate = random.Next(0, 100);
+        if (acceptRate < employeeStates.EmployData.Sincerity) return null;
+        
         Debug.Log("Receive mission");
         HasMission = true;
-        CurrentNPCState.TargetDestination = missionTimer.transform.position;
+        CurrentNPCState.TargetDestination = mission.transform.position;
+        
+        return this;
     }
 
     public void AddStress(float value)

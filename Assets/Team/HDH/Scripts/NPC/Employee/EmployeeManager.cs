@@ -8,5 +8,6 @@ public class EmployeeManager : Singleton<EmployeeManager>
 {
     public List<NPCStateMachine> employees;
     
+    public Queue<NPCStateMachine> IdleEmployees = new Queue<NPCStateMachine>();
     
 }
