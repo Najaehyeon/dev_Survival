@@ -21,8 +21,6 @@ public class CatMission : Mission
     public void SelectCatMission()
     {
         //CatNPC에게 임의의 목적지를 할당
-        MissionTimer currentMission = catMissionTimers[UnityEngine.Random.Range(0, catMissionTimers.Length)];
-        stateMachine.AssignMission(currentMission);
     }
 
     public void EndMission()

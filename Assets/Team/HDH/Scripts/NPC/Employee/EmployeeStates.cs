@@ -119,11 +119,15 @@ public class EmployeeMissionState : NPCBaseState
     {
         MissionTimer missionTimer = obj as MissionTimer;
         //미션 타이머의 직원 전용 해제 함수를 실행
+        missionTimer.NPCInterection(NPCStateMachine);
     }
 }
 
 public class EmployeeRestState : NPCBaseState
 {
+    private float restTime = 30f;
+    private float passedTime;
+    
     public EmployeeRestState(NPCStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -134,11 +138,19 @@ public class EmployeeRestState : NPCBaseState
     }
     public override void Exit()
     {
-        
+        NPCStateMachine.ResetStress();
     }
 
     public override void Update()
     {
-        
+        if (passedTime >= restTime)
+        {
+            StateMachine.ChangeState(NPCStateMachine.npcRestState);
+        }
+        else
+        {
+            passedTime += Time.deltaTime;
+        }
     }
+    
 }
