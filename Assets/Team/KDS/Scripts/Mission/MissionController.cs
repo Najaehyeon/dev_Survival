@@ -3,28 +3,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
 
+public enum MissionState
+{
+    Phase,
+    Ready,
+    Mission
+}
+public enum MissionSelect
+{
+    Bug,
+    Call,
+    Code,
+    Server
+}
 public class MissionController : MonoBehaviour
 {
     private float timer = 0f;
     private float minInterval = 3f; // 최소 3초
     private float maxInterval = 5f; // 최대 5초
     private float currentInterval;
-    private bool nowMissionState;
 
-    public MissionTimer[] missonTimers;
-
+    //게임 정지시 사용할 이전 스테이트
+    //private MissionState preState;
+    private MissionState currentState;
+    public MissionSelect[] missions;
+    public MissionTimer[] call;
+    public MissionTimer[] code;
+    public MissionTimer[] bug;
+    public MissionTimer server;
     public Canvas canvas;
     private int missionCount;
     private int claerCount;
     void Start()
     {
+        ChangeState(MissionState.Phase);
         currentInterval = UnityEngine.Random.Range(minInterval, maxInterval);
+        missions = new MissionSelect[]{ MissionSelect.Bug, MissionSelect.Call, MissionSelect.Code, MissionSelect.Server };
+        //MissionSelector();
+
     }
 
     private void Update()
     {
-        if (!nowMissionState)
+        if (currentState == MissionState.Ready)
         {
 
             timer += Time.deltaTime;
@@ -34,8 +57,7 @@ public class MissionController : MonoBehaviour
                 timer = 0f;
                 MissionSelector();
                 currentInterval = UnityEngine.Random.Range(minInterval, maxInterval);
-                nowMissionState = true;
-                Debug.Log(nowMissionState);
+                ChangeState(MissionState.Mission);
             }
         }
 
@@ -43,21 +65,37 @@ public class MissionController : MonoBehaviour
 
     public void MissionSelector()
     {
-
         System.Random rng = new System.Random();
-        missonTimers = missonTimers.OrderBy(x => rng.Next()).ToArray();
-
-        // 테스트단계에서 하나밖에없어서 실행하면 Rarry오류남
+        missions = missions.OrderBy(x => rng.Next()).ToArray();
         missionCount = UnityEngine.Random.Range(1, 3);
         for (int i = 0; i < missionCount; i++)
         {
-            missonTimers[i].gameObject.SetActive(true);
-            missonTimers[i].Selected();
+            if(missions[i]!= MissionSelect.Server)
+            {
+                int randomindex = UnityEngine.Random.Range(0, 5);
+                switch(missions[i]){
+                    case MissionSelect.Bug:
+                        bug[randomindex].gameObject.SetActive(true);
+                        bug[randomindex].Selected();
+                        break;
+                    case MissionSelect.Call:
+                        call[randomindex].gameObject.SetActive(true);
+                        call[randomindex].Selected();
+                        break;
+                    case MissionSelect.Code:
+                        code[randomindex].gameObject.SetActive(true);
+                        code[randomindex].Selected();
+                        break;
+                }
+            }
+            else
+            {
+                server.gameObject.SetActive(true);
+                server.Selected();
+            }            
         }
-        //missionCount = 1;
-        //missonTimers[0].gameObject.SetActive(true);
-        //missonTimers[0].Selected();
     }
+
 
     public void IsAllGameEnd()
     {
@@ -65,7 +103,41 @@ public class MissionController : MonoBehaviour
         if(claerCount==missionCount)
         {
             claerCount = 0;
-            nowMissionState = false;
+            ChangeState(MissionState.Ready);
         }
     }
+
+    public void ChangeState(MissionState state)
+    {
+        switch (state)
+        {
+            case MissionState.Phase:
+                currentState = MissionState.Phase;
+                break;
+            case MissionState.Ready: 
+                currentState = MissionState.Ready; 
+                break;
+            case MissionState.Mission:
+                currentState = MissionState.Mission;
+                break;
+        }
+    }
+
+    //public void MissionSelector()
+    //{
+
+    //    System.Random rng = new System.Random();
+    //    selectedMissonTimers = selectedMissonTimers.OrderBy(x => rng.Next()).ToArray();
+
+    //    // 테스트단계에서 하나밖에없어서 실행하면 Rarry오류남
+    //    missionCount = UnityEngine.Random.Range(1, 3);
+    //    for (int i = 0; i < missionCount; i++)
+    //    {
+    //        selectedMissonTimers[i].gameObject.SetActive(true);
+    //        selectedMissonTimers[i].Selected();
+    //    }
+    //    //missionCount = 1;
+    //    //selectedMissonTimers[0].gameObject.SetActive(true);
+    //    //selectedMissonTimers[0].Selected();
+    //}
 }
