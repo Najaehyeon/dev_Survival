@@ -17,11 +17,14 @@ public class MiniGameCallController : Mission
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        progerss = cirele.GetProgerss();
-        ProgressToScore();
-        Destroy(lineRenderer);
+        if (collision.gameObject == lineRenderer.gameObject)
+        {
+            progerss = cirele.GetProgerss();
+            ProgressToScore();
+            Destroy(lineRenderer);
 
-        GameEnd();
+            GameEnd();
+        }
     }
 
     private void ProgressToScore()
