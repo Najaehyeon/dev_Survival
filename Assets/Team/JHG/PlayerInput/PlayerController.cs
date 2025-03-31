@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        Debug.Log("게임중"+isGaming);
+        //Debug.Log("게임중"+isGaming);
         isGaming = GameManager.Instance.isMissionInProgress;
     }
 

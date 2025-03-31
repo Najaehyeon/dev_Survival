@@ -19,8 +19,8 @@ public class GameManager : Singleton<GameManager>
         stateMachine = gameObject.AddComponent<GameStateMachine>();
         stateMachine.Init();
 
-        uiTest.ScoreText.text = Score.ToString();
-        uiTest.MoneyText.text = Money.ToString();
+        //uiTest.ScoreText.text = Score.ToString();
+        //uiTest.MoneyText.text = Money.ToString();
     }
 
     private void Update()
@@ -59,7 +59,7 @@ public class GameManager : Singleton<GameManager>
     public void ChangeScore(int amount)
     {
         Score = Mathf.Max(0, Score + amount);
-        uiTest.ScoreText.text = Score.ToString();
+        //uiTest.ScoreText.text = Score.ToString();
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public class GameManager : Singleton<GameManager>
     public void ChangeMoney(int amount)
     {
         Money = Mathf.Max(0, Money + amount);
-        uiTest.MoneyText.text = Money.ToString();
+        //uiTest.MoneyText.text = Money.ToString();
     }
 
 }
