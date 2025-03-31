@@ -27,8 +27,8 @@ public abstract class Mission : MonoBehaviour
     public virtual void GameEnd()
     {
         //게임매니저랑 플레이어랑 연동해서 점수랑 스트레스 변환
-        GetScroe();
-        GetStress();
+        GameManager.Instance.ChangeScore(GetScroe());
+        GameManager.Instance.ChangeStress((int)GetStress());
         isGameEnd = true;
         MissionManager.Instance.controller.IsAllGameEnd();
         Destroy(gameObject);

@@ -36,6 +36,7 @@ public class HomeUI : BaseUI
             {
                 Debug.Log("인게임으로");
                 UIManager.Instance.ChangeState(UIState.InGame);
+                GameManager.Instance.stateMachine.ChangeState(GameManager.Instance.stateMachine.inGameState);
             }
         }
     }

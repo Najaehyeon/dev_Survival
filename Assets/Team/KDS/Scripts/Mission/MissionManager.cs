@@ -9,4 +9,8 @@ public class MissionManager : Singleton<MissionManager>
     [Header("MissionControll")]
     public MissionController controller;
 
+    public void ChangeState(MissionState state)
+    {
+        controller.ChangeState(state);
+    }
 }
