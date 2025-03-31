@@ -85,8 +85,6 @@ public class CatMissionState : NPCBaseState
     {
         Debug.Log("CatMission");
         //책상 위치 중 하나를 정해 이동
-        base.Enter();
-        //도착한 이후의 애니메이션 등은 Controller에서 진행
     }
 
     public override void Exit()
@@ -99,11 +97,11 @@ public class CatMissionState : NPCBaseState
         
     }
 
-    public override void OnMission()
+    public override void OnMission(Object obj = null)
     {
-        //Controller를 통해 애니메이션을 변경
-        //미션 타이머를 활성화
-       //MissionManager.Instance.controller.(CatMission 실행 함수)
+        MissionTimer missionTimer = obj as MissionTimer;
+        
+        missionTimer.OnGameStart();
     }
 }
 

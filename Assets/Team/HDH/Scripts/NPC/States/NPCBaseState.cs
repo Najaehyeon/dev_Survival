@@ -14,7 +14,7 @@ public abstract class NPCBaseState : BaseState
         NPCStateMachine = stateMachine;
     }
 
-    public virtual void OnMission() { }
+    public virtual void OnMission(Object obj = null) { }
 
     public override void Enter()
     {
