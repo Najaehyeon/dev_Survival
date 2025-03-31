@@ -10,16 +10,17 @@ public class PauseState : GameBaseState
 
     public override void Enter()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public override void Exit()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("퍼즈스테이트 종료");
+        //throw new System.NotImplementedException();
     }
 
     public override void Update()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }

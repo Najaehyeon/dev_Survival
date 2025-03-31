@@ -38,6 +38,15 @@ public class UIManager : Singleton<UIManager>
     {
         ChangeState(UIState.Home);
     }
+
+    public void ChangeStatusUI(Status status, int value)
+    {
+        inGameUI.ChangeStatus(status, value);
+    }
+    public void ChangeStatusUI(Status status, float value)
+    {
+        inGameUI.ChangeStatus(status, value);
+    }
     public void ChangeState(UIState state)
     {
         currentState = state;

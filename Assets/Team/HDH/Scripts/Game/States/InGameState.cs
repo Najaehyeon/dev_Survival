@@ -14,7 +14,7 @@ public class InGameState : GameBaseState
 
     public override void Enter()
     {
-        
+        MissionManager.Instance.ChangeState(MissionState.Ready);
     }
 
     public override void Exit()
@@ -33,10 +33,12 @@ public class InGameState : GameBaseState
         if (GameManager.Instance.PassedTime >= endDayTime)
         {
             StateMachine.ChangeState(GameStateMachine.scoreState);
+            UIManager.Instance.ChangeState(UIState.Score);
             return;
         }
 
         GameManager.Instance.PassTime(Time.deltaTime);
+        UIManager.Instance.ChangeStatusUI(Status.Time, (startTime + GameManager.Instance.PassedTime * unitSecond));
         // GameManager.Instance.uiTest.TimerText.text = (startTime + GameManager.Instance.PassedTime * unitSecond).FormatTime();
     }
 }
