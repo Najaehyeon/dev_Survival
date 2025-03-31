@@ -5,8 +5,7 @@ using UnityEngine;
 public class MissionManager : Singleton<MissionManager>
 {
     [SerializeField] public Mission[] missions;
-
-
+    
     [Header("MissionControll")]
     public MissionController controller;
 
