@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
 public class ServerRoomMission : MonoBehaviour
@@ -13,28 +14,34 @@ public class ServerRoomMission : MonoBehaviour
 
     private RectTransform selectedWire = null;
     private Vector2 startPoint;
+    private Vector2 mousePosition;
 
     public int completedConnections { get; private set; } = 0;
-    private List<RectTransform> completedWires = new List<RectTransform>(); // 이미 연결된 전선들
+    private List<RectTransform> completedWires = new List<RectTransform>();
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        mousePosition = Mouse.current.position.ReadValue();
+    }
+
+    public void OnMouseDown()
+    {
+        if (IsMouseOverWire(redWire, mousePosition)) SelectWire(redWire);
+        else if (IsMouseOverWire(blueWire, mousePosition)) SelectWire(blueWire);
+        else if (IsMouseOverWire(yellowWire, mousePosition)) SelectWire(yellowWire);
+    }
+
+    public void OnMouseDrag()
+    {
+        if (selectedWire != null)
         {
-            Vector2 mousePos = Input.mousePosition;
-
-            if (IsMouseOverWire(redWire, mousePos)) SelectWire(redWire);
-            else if (IsMouseOverWire(blueWire, mousePos)) SelectWire(blueWire);
-            else if (IsMouseOverWire(yellowWire, mousePos)) SelectWire(yellowWire);
+            StretchWire(selectedWire, startPoint, mousePosition);
         }
+    }
 
-        if (selectedWire != null && Input.GetMouseButton(0))
-        {
-            Vector2 mousePos = Input.mousePosition;
-            StretchWire(selectedWire, startPoint, mousePos);
-        }
-
-        if (Input.GetMouseButtonUp(0) && selectedWire != null)
+    public void OnMouseUp()
+    {
+        if (selectedWire != null)
         {
             CheckConnection(selectedWire);
             selectedWire = null;
@@ -43,7 +50,7 @@ public class ServerRoomMission : MonoBehaviour
 
     void SelectWire(RectTransform wire)
     {
-        if (completedWires.Contains(wire)) return; // 이미 연결된 전선은 선택 불가
+        if (completedWires.Contains(wire)) return;
 
         selectedWire = wire;
         startPoint = wire.position;
@@ -73,13 +80,12 @@ public class ServerRoomMission : MonoBehaviour
             Vector2 wireEndPoint = wire.position + (Vector3)(wire.right * wire.sizeDelta.x);
             float distance = Vector2.Distance(wireEndPoint, correctDestination.position);
 
-            if (distance < 80f) // 연결 성공
+            if (distance < 80f)
             {
                 Debug.Log("연결됨");
                 StretchWire(wire, startPoint, correctDestination.position);
                 completedConnections++;
-
-                completedWires.Add(wire); // 연결된 전선 목록에 추가
+                completedWires.Add(wire);
             }
             else
             {
@@ -99,5 +105,29 @@ public class ServerRoomMission : MonoBehaviour
     bool IsMouseOverWire(RectTransform wire, Vector2 mousePos)
     {
         return RectTransformUtility.RectangleContainsScreenPoint(wire, mousePos);
+    }
+
+    public void InputMouseDown(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            OnMouseDown();
+        }
+    }
+
+    public void InputMouseDrag(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            OnMouseDrag();
+        }
+    }
+
+    public void InputMouseUp(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Canceled)
+        {
+            OnMouseUp();
+        }
     }
 }

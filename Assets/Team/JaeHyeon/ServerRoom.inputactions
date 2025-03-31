@@ -1,0 +1,74 @@
+{
+    "name": "ServerRoom",
+    "maps": [
+        {
+            "name": "ServerRoom",
+            "id": "11b3612f-eea5-4e34-a356-14d57d8571a8",
+            "actions": [
+                {
+                    "name": "ServerRoomInteract",
+                    "type": "Button",
+                    "id": "d29888f9-3e0d-4a07-94b5-d6e15607d15c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ServerRoomInteract1",
+                    "type": "Button",
+                    "id": "3dc4331a-e517-42a8-8d84-c1ed98103a4e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ServerRoomInteract2",
+                    "type": "Button",
+                    "id": "9a324e55-91a8-4f17-8eb4-203ba9e1c77f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9819aa91-02f0-489c-bad6-e532655d6902",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ServerRoomInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab1a6939-32f3-478b-aa8b-6c116c9afd12",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ServerRoomInteract1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a703863f-0aed-408d-a21c-9a4c4cf12798",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ServerRoomInteract2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
