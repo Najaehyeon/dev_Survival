@@ -32,6 +32,9 @@ public class MissionTimer:MonoBehaviour
         gameStart= false;
         timeOut = 20f;
         gameObject.SetActive(true);
+
+        Debug.Log("Mission Assign");
+        EmployeeManager.Instance.employees[0].AssignMission(this);
     }
     public virtual void OnGameStart()
     {
@@ -59,5 +62,12 @@ public class MissionTimer:MonoBehaviour
         {
             radialFill.color = normalColor;
         }
+    }
+
+    public void NPCInterection(NPCStateMachine interect)
+    {
+        mission.NPCInterection(interect);
+        gameObject.SetActive(false);
+
     }
 }

@@ -15,9 +15,4 @@ public abstract class NPCBaseState : BaseState
     }
 
     public virtual void OnMission(Object obj = null) { }
-
-    public override void Enter()
-    {
-        TargetDestination = destinations[Random.Range(0, destinations.Length)];
-    }
 }

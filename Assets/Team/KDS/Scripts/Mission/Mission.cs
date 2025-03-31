@@ -8,6 +8,9 @@ public abstract class Mission : MonoBehaviour
     protected float stress;
 
     public bool isGameEnd;
+
+    //NPC정보 가지고있는애로 변경
+    public NPCStateMachine target;
     public virtual int GetScroe()
     {
         Debug.Log(score);
@@ -32,5 +35,15 @@ public abstract class Mission : MonoBehaviour
         isGameEnd = true;
         MissionManager.Instance.controller.IsAllGameEnd();
         Destroy(gameObject);
+    }
+
+    public void NPCInterection(NPCStateMachine interect)
+    {
+        if(interect==target)
+        {
+            //target의 스테이터스에따라 스코어랑 스트레스 반환
+            MissionManager.Instance.controller.IsAllGameEnd();
+            Debug.Log("NPC와 소통");
+        }
     }
 }
