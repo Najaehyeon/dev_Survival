@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
     private Vector2 movementDirection;
-    private Vector2 lookDirection;
 
     Rigidbody2D _rigidbody;
 
@@ -27,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Debug.Log("게임중"+isGaming);
+        isGaming = GameManager.Instance.isMissionInProgress;
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Performed && !isGaming)
         {
             movementDirection = context.ReadValue<Vector2>();
-            //Debug.Log(movementDirection);
             animationHandler.IsMove(movementDirection);
         }
         else if (context.phase == InputActionPhase.Canceled)
@@ -58,7 +57,6 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("상호작용");
             MissionTimer.OnGameStart();
-            isGaming = true;
         }
     }
 
