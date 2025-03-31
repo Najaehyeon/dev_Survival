@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     CoffeeMachine coffeeMachin;
     bool isTriggerOn = false;
     bool isGaming = false;
+
+    public AudioClip moveClip;
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
         {
             movementDirection = context.ReadValue<Vector2>();
             animationHandler.IsMove(movementDirection);
+            
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
@@ -43,13 +46,27 @@ public class PlayerController : MonoBehaviour
             movementDirection = Vector2.zero;  
         }
     }
-
+    float footStepTime = 0;
+    float footstepRate = 0.5f;
     private void Move()
     {
         Vector2 dir = transform.up * movementDirection.y + transform.right * movementDirection.x;
         dir *= moveSpeed;
 
         _rigidbody.velocity = dir;
+
+        
+        if (moveClip != null && movementDirection != Vector2.zero)
+        {
+            if (Mathf.Abs(_rigidbody.velocity.y) > 0.1f || Mathf.Abs(_rigidbody.velocity.x) > 0.1f)
+            {
+                if (Time.time - footStepTime > footstepRate)
+                {
+                    footStepTime = Time.time;
+                    SoundManager.PlayClip(moveClip);
+                }
+            }
+        }
     }
 
     public void OnInteractionInput(InputAction.CallbackContext context)
