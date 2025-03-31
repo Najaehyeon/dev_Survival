@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed && !isGaming)
+        if (context.phase == InputActionPhase.Performed)
         {
             movementDirection = context.ReadValue<Vector2>();
             //Debug.Log(movementDirection);
