@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +21,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip BGMClip;
 
     public SoundSource soundSourcePrefab;
+
+    ObjectPoolManager objectPoolManager;
     private void Awake()
     {
         instance = this;
@@ -28,7 +32,6 @@ public class SoundManager : MonoBehaviour
         //슬라이더 추가시 주석 해제
         //sliderBGM.value = BGM;
     }
-
     private void FixedUpdate()
     {
         //ChangeVolume(); 
@@ -36,6 +39,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        objectPoolManager = ObjectPoolManager.Instance;
         ChangeBackGroundMusic(BGMClip);
     }
 
@@ -53,10 +57,13 @@ public class SoundManager : MonoBehaviour
         BGMAudioSource.Play();
     }
 
-    public static void PlayClip(AudioClip clip)
+    public void PlayClip(AudioClip clip)
     {
-        SoundSource obj = Instantiate(instance.soundSourcePrefab);
+        //SoundSource obj = Instantiate(instance.soundSourcePrefab);
+        GameObject obj = objectPoolManager.GetObject(0, Vector3.zero, Quaternion.identity);
+
         SoundSource soundSource = obj.GetComponent<SoundSource>();
         soundSource.Play(clip, instance.SFX, instance.soundEffectPitchVariance);
     }
+
 }

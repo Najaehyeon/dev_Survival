@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class SoundSource : MonoBehaviour
+public class SoundSource : MonoBehaviour, IPoolable
 {
     private AudioSource _audioSource;
 
+    private Action<GameObject> returnToPool;
     public void Play(AudioClip clip, float soundEffectVolume, float soundEffectPitchVariance)
     {
         if (_audioSource == null)
@@ -23,6 +26,22 @@ public class SoundSource : MonoBehaviour
     public void Disable()
     {
         _audioSource.Stop();
-        Destroy(this.gameObject);
+        OnDespawn();
+        //Destroy(this.gameObject);
+    }
+
+    public void Initialize(Action<GameObject> returnAction)
+    {
+        returnToPool = returnAction;
+    }
+
+    public void OnSpawn()
+    {
+        
+    }
+
+    public void OnDespawn()
+    {
+        returnToPool?.Invoke(gameObject);
     }
 }
