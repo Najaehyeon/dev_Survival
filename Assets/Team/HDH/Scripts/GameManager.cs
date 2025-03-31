@@ -36,6 +36,7 @@ public class GameManager : Singleton<GameManager>
     public void PassDay()
     {
         Day++;
+        UIManager.Instance.ChangeStatusUI(Status.Day, Day);
     }
 
     /// <summary>
@@ -61,6 +62,7 @@ public class GameManager : Singleton<GameManager>
     public void ChangeScore(int amount)
     {
         Score = Mathf.Max(0, Score + amount);
+        UIManager.Instance.ChangeStatusUI(Status.Score, Score);
         //uiTest.ScoreText.text = Score.ToString();
     }
 
@@ -71,12 +73,14 @@ public class GameManager : Singleton<GameManager>
     public void ChangeMoney(int amount)
     {
         Money = Mathf.Max(0, Money + amount);
+        UIManager.Instance.ChangeStatusUI(Status.Money, Money);
         //uiTest.MoneyText.text = Money.ToString();
     }
 
     public void ChangeStress(int amount)
     {
         Stress = Mathf.Max(0, Stress + amount);
+        UIManager.Instance.ChangeStatusUI(Status.Stress, (float)Stress);
         //uiTest.ScoreText.text = Score.ToString();
     }
 

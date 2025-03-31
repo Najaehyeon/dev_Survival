@@ -11,6 +11,11 @@ public class NPCStateMachine : BaseStateMachine
     public NPCBaseState npcRestState { get; private set; }
 
     public NPCController Controller { get; private set; }
+    
+    public float StressLevel { get; private set; }
+    public float MaxStress = 100f;
+    public bool HasMission { get; private set; }
+    public bool IsRestComplete { get; private set; }
 
     public override void Init()
     {
@@ -23,5 +28,38 @@ public class NPCStateMachine : BaseStateMachine
         npcRestState = stateSet.RestState;
 
         ChangeState(npcIdleState);
+    }
+
+    public void AssignMission(MissionTimer missionTimer)
+    {
+        if(CurrentNPCState != npcIdleState) return;
+        HasMission = true;
+        CurrentNPCState.TargetDestination = missionTimer.transform.position;
+    }
+
+    public void AddStress(float value)
+    {
+        StressLevel = Mathf.Min(StressLevel + value, MaxStress);
+    }
+
+    public void ResetStress()
+    {
+        StressLevel = 0;
+        IsRestComplete = true;
+    }
+
+    void StartMissionTimer(MissionTimer missionTimer)
+    {
+        missionTimer.gameObject.SetActive(true);
+        missionTimer.Selected();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        MissionTimer currentMissionTimer;
+        if (other.TryGetComponent(out currentMissionTimer))
+        {
+            StartMissionTimer(currentMissionTimer);
+        }
     }
 }
