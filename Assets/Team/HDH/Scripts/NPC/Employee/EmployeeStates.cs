@@ -1,41 +1,46 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
-public class CatStates : StateSet
+public class EmployeeStates : StateSet
 {
     public override NPCBaseState IdleState { get; set; }
     public override NPCBaseState RestState { get; set; }
     public override NPCBaseState MissionState { get; set; }
+    
+    //public EmployData employData;
 
     public override void Init()
     {
-        IdleState = new CatIdleState(stateMachine);
-        RestState = new CatMissionState(stateMachine);
-        MissionState = new CatRestState(stateMachine);
+        IdleState = new EmployeeIdleState(stateMachine);
+        RestState = new EmployeeMissionState(stateMachine);
+        MissionState = new EmployeeRestState(stateMachine);
     }
 }
-
-public class CatIdleState : NPCBaseState
+public class EmployeeIdleState : NPCBaseState
 {
     float timeBetweenResetTarget = 10f;
     float passedTime;
+    
     Vector3 prevTargetDestination = Vector3.zero;
-
-    public CatIdleState(NPCStateMachine stateMachine) : base(stateMachine)
+    
+    public EmployeeIdleState(NPCStateMachine stateMachine) : base(stateMachine)
     {
         destinations = NPCStateMachine.stateSet.IdleDestinationSet.DestinationSet;
     }
 
     public override void Enter()
     {
-        Debug.Log("CatIdle");
         NPCStateMachine.Controller.ChangeMoveSpeed(1f);
         TargetDestination = destinations[Random.Range(0, destinations.Length)];
     }
 
     public override void Exit()
     {
+        
     }
 
     public override void Update()
@@ -83,20 +88,16 @@ public class CatIdleState : NPCBaseState
     }
 }
 
-public class CatMissionState : NPCBaseState
+public class EmployeeMissionState : NPCBaseState
 {
-    public CatMissionState(NPCStateMachine stateMachine) : base(stateMachine)
+    public EmployeeMissionState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        destinations = NPCStateMachine.stateSet.MissionDestinationSet.DestinationSet;
     }
-
+    
     public override void Enter()
     {
-        Debug.Log("CatMission");
         NPCStateMachine.Controller.ChangeMoveSpeed(10f);
-        NPCStateMachine.AddStress(10f);
     }
-
     public override void Exit()
     {
         
@@ -110,29 +111,20 @@ public class CatMissionState : NPCBaseState
     public override void OnMission(Object obj = null)
     {
         MissionTimer missionTimer = obj as MissionTimer;
-        //고양이의 경우는 미션 장소에 도착하였을 때 미션 타이머를 작동
-        NPCStateMachine.StartMissionTimer(missionTimer);
-        
+        //미션 타이머의 직원 전용 해제 함수를 실행
     }
 }
 
-public class CatRestState : NPCBaseState
+public class EmployeeRestState : NPCBaseState
 {
-    private float restTime = 30f;
-    private float timer;
-    
-    public CatRestState(NPCStateMachine stateMachine) : base(stateMachine)
+    public EmployeeRestState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        destinations = NPCStateMachine.stateSet.RestDestinationSet.DestinationSet;
     }
-
+    
     public override void Enter()
     {
-        NPCStateMachine.Controller.ChangeMoveSpeed(10f);
-        timer = 0;
-
+        NPCStateMachine.Controller.ChangeMoveSpeed(5f);
     }
-
     public override void Exit()
     {
         
@@ -140,21 +132,6 @@ public class CatRestState : NPCBaseState
 
     public override void Update()
     {
-        InRest();
         
-        if(NPCStateMachine.IsRestComplete)
-            NPCStateMachine.ChangeState(NPCStateMachine.npcIdleState);
-    }
-
-    private void InRest()
-    {
-        if (timer < restTime)
-        {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            NPCStateMachine.ResetStress();
-        }
     }
 }
