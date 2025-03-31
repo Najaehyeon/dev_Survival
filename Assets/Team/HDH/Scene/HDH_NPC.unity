@@ -225,7 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1047408803}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: RestPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 1960664215}
   - component: {fileID: 1960664216}
   - component: {fileID: 1960664211}
+  - component: {fileID: 1960664217}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -425,9 +426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7a99f5ca4da41409a44755a90b548c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IdleDestinationSet: {fileID: 11400000, guid: f43bb167ab1958b4b984c1ebd03d397f, type: 2}
-  MissionDestinationSet: {fileID: 11400000, guid: 34b73f58a5c470f4a8d9e79e727e6a5a, type: 2}
-  RestDeaStateDestinationSet: {fileID: 11400000, guid: f25450a64eef6de4da63ec2e851d096e, type: 2}
 --- !u!212 &1960664213
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -474,7 +472,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.34375, y: 0.78125}
+  m_Size: {x: 0.45833334, y: 1.0416666}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -507,6 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addd61867027df34f9188210ac5f6400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateSet: {fileID: 0}
 --- !u!114 &1960664216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +518,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb0a19454821b34e9527f9b7f83373a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IdleDestinationSet: {fileID: 11400000, guid: f43bb167ab1958b4b984c1ebd03d397f, type: 2}
+  MissionDestinationSet: {fileID: 11400000, guid: 34b73f58a5c470f4a8d9e79e727e6a5a, type: 2}
+  RestDestinationSet: {fileID: 11400000, guid: f25450a64eef6de4da63ec2e851d096e, type: 2}
+--- !u!114 &1960664217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960664210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a119b934b39051d41b92185006b5067d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGameEnd: 0
+  limitTime: 10
 --- !u!1001 &8456737274495493249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -565,6 +581,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1448905162493644260, guid: ec4af17f9b97aee46b37d3151cb21b97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280205757164612522, guid: ec4af17f9b97aee46b37d3151cb21b97, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 83c1fc9a475599540b2f06436414bf0f, type: 2}
+    - target: {fileID: 5938148248276964079, guid: ec4af17f9b97aee46b37d3151cb21b97, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938148248276964079, guid: ec4af17f9b97aee46b37d3151cb21b97, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6361371953574252027, guid: ec4af17f9b97aee46b37d3151cb21b97, type: 3}

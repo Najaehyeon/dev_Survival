@@ -18,20 +18,19 @@ public class CatStates : StateSet
 
 public class CatIdleState : NPCBaseState
 {
-    public Vector3[] IdleDestinations;
     float timeBetweenResetTarget = 5f;
     float passedTime;
     Vector3 prevTargetDestination;
 
     public CatIdleState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        IdleDestinations = NPCStateMachine.Controller.IdleDestinationSet.DestinationSet;
+        destinations = NPCStateMachine.stateSet.IdleDestinationSet.DestinationSet;
     }
 
     public override void Enter()
     {
         Debug.Log("CatIdle");
-        TargetDestination = IdleDestinations[0];
+        base.Enter();
     }
 
     public override void Exit()
@@ -41,7 +40,6 @@ public class CatIdleState : NPCBaseState
     public override void Update()
     {
         //MissionManager에 의해 미션이 할당 되었을 때 배회를 멈추고 미션 장소로 이동
-        
         SetRandomDestination();
             
     }
@@ -52,18 +50,18 @@ public class CatIdleState : NPCBaseState
         {
             Debug.Log("Set Random Destination");
 
-            if(prevTargetDestination != null)
+            if(prevTargetDestination != Vector3.zero)
             {
                 do
                 {
-                    TargetDestination = IdleDestinations[Random.Range(0, IdleDestinations.Length)];
+                    TargetDestination = destinations[Random.Range(0, destinations.Length)];
                 }
                 while (TargetDestination == prevTargetDestination);
                 
             }
             else
             {
-                TargetDestination = IdleDestinations[Random.Range(0, IdleDestinations.Length)];
+                TargetDestination = destinations[Random.Range(0, destinations.Length)];
             }
 
             prevTargetDestination = TargetDestination;
@@ -78,18 +76,15 @@ public class CatIdleState : NPCBaseState
 
 public class CatMissionState : NPCBaseState
 {
-    public Vector3[] MissionDestinations;
     public CatMissionState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        MissionDestinations = NPCStateMachine.Controller.MissionDestinationSet.DestinationSet;
+        destinations = NPCStateMachine.stateSet.MissionDestinationSet.DestinationSet;
     }
 
     public override void Enter()
     {
         Debug.Log("CatMission");
         //책상 위치 중 하나를 정해 이동
-        TargetDestination = MissionDestinations[Random.Range(0, MissionDestinations.Length)];
-        //도착한 이후의 애니메이션 등은 Controller에서 진행
     }
 
     public override void Exit()
@@ -100,20 +95,31 @@ public class CatMissionState : NPCBaseState
     public override void Update()
     {
         
+    }
+
+    public override void OnMission(Object obj = null)
+    {
+        MissionTimer missionTimer = obj as MissionTimer;
+        
+        missionTimer.OnGameStart();
     }
 }
 
 public class CatRestState : NPCBaseState
 {
-    public Vector3[] RestDestinations;
+    private float restTime = 30f;
+    private float timer;
+    
     public CatRestState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        RestDestinations = NPCStateMachine.Controller.RestDeaStateDestinationSet.DestinationSet;
+        destinations = NPCStateMachine.stateSet.RestDestinationSet.DestinationSet;
     }
 
     public override void Enter()
     {
-        
+        base.Enter();
+        timer = 0;
+
     }
 
     public override void Exit()
@@ -123,6 +129,18 @@ public class CatRestState : NPCBaseState
 
     public override void Update()
     {
-        
+        InRest();
+    }
+
+    private void InRest()
+    {
+        if (timer < restTime)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            NPCStateMachine.ChangeState(NPCStateMachine.npcIdleState);
+        }
     }
 }

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 public class NPCStateMachine : BaseStateMachine
 {
-    StateSet stateSet;
+    public StateSet stateSet;
 
     public NPCBaseState CurrentNPCState { get => CurrentState as NPCBaseState; }
 

@@ -1,9 +1,12 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class InGameUI : BaseUI
 {
     public float stress;
     public RectTransform stressbar;
+    public TextMeshProUGUI timeText;
    
     public override void Init(UIManager uiManager)
     {

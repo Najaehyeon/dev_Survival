@@ -5,7 +5,10 @@ using UnityEngine;
 public class StateSet : MonoBehaviour
 {
     protected NPCStateMachine stateMachine;
-
+    
+    [SerializeField] public StateDestinationSet IdleDestinationSet;
+    [SerializeField] public StateDestinationSet MissionDestinationSet;
+    [SerializeField] public StateDestinationSet RestDestinationSet;
     private void Start()
     {
         stateMachine = GetComponent<NPCStateMachine>();

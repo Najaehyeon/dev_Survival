@@ -6,7 +6,7 @@ public class InGameState : GameBaseState
 {
     float startTime = 540f;
     float unitSecond = 9 / 2f;
-    float endDayTime = 3f;
+    float endDayTime = 120f;
 
     public InGameState(GameStateMachine stateMachine) : base(stateMachine)
     {
@@ -37,6 +37,6 @@ public class InGameState : GameBaseState
         }
 
         GameManager.Instance.PassTime(Time.deltaTime);
-        GameManager.Instance.uiTest.TimerText.text = (startTime + GameManager.Instance.PassedTime * unitSecond).FormatTime();
+        // GameManager.Instance.uiTest.TimerText.text = (startTime + GameManager.Instance.PassedTime * unitSecond).FormatTime();
     }
 }

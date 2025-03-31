@@ -7,6 +7,7 @@ public class GameManager : Singleton<GameManager>
     [field: SerializeField] public int Day { get; private set; }
     [field: SerializeField] public float PassedTime { get; private set; }
     [field: SerializeField] public bool isMissionInProgress;
+    //MissionTimer 에서 변경
 
     //UI test를 위해 추가 추후 적용시 삭제
     [SerializeField] public UItest uiTest;
@@ -18,8 +19,8 @@ public class GameManager : Singleton<GameManager>
         stateMachine = gameObject.AddComponent<GameStateMachine>();
         stateMachine.Init();
 
-        uiTest.ScoreText.text = Score.ToString();
-        uiTest.MoneyText.text = Money.ToString();
+        //uiTest.ScoreText.text = Score.ToString();
+        //uiTest.MoneyText.text = Money.ToString();
     }
 
     private void Update()
@@ -58,7 +59,7 @@ public class GameManager : Singleton<GameManager>
     public void ChangeScore(int amount)
     {
         Score = Mathf.Max(0, Score + amount);
-        uiTest.ScoreText.text = Score.ToString();
+        //uiTest.ScoreText.text = Score.ToString();
     }
 
     /// <summary>
@@ -68,7 +69,7 @@ public class GameManager : Singleton<GameManager>
     public void ChangeMoney(int amount)
     {
         Money = Mathf.Max(0, Money + amount);
-        uiTest.MoneyText.text = Money.ToString();
+        //uiTest.MoneyText.text = Money.ToString();
     }
 
 }
