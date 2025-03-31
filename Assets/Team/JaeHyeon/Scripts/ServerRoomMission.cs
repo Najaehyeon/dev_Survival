@@ -15,46 +15,10 @@ public class ServerRoomMission : MonoBehaviour
 
     private RectTransform selectedWire = null;
     private Vector2 startPoint;
+    private Vector2 mousePos;
 
     public int completedConnections { get; private set; } = 0;
     private List<RectTransform> completedWires = new List<RectTransform>(); // 이미 연결된 전선들
-
-    private bool isDragging = false;
-
-    // 게임 시작 시 와이어 좌표 출력
-    void Start()
-    {
-        LogWirePositions();
-    }
-
-    // 게임 시작 시 와이어들의 좌표를 찍어주는 함수
-    void LogWirePositions()
-    {
-        Debug.Log($"빨간 와이어: {redWire.position}");
-        Debug.Log($"파란 와이어: {blueWire.position}");
-        Debug.Log($"노란 와이어: {yellowWire.position}");
-    }
-
-    void MouseDrag()
-    {
-        if (selectedWire != null && isDragging)
-        {
-            Vector2 mousePosition = Input.mousePosition;
-            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            StretchWire(selectedWire, startPoint, worldMousePosition);
-            Debug.Log("와이어 선택됨");
-        }
-    }
-
-    void MouseUp()
-    {
-        if (selectedWire != null)
-        {
-            CheckConnection(selectedWire);
-            selectedWire = null;
-            isDragging = false;  // 드래그 종료
-        }
-    }
 
     void SelectWire(RectTransform wire)
     {
@@ -62,13 +26,19 @@ public class ServerRoomMission : MonoBehaviour
 
         selectedWire = wire;
         startPoint = wire.position;
-        isDragging = true;  // 드래그 시작
+        Debug.Log("와이어 선택됨");
     }
 
-    void StretchWire(RectTransform wire, Vector2 start, Vector2 end)
+    void StretchWire(RectTransform wire, Vector3 start, Vector2 screenMousePosition)
     {
+        Vector3 end = Camera.main.ScreenToWorldPoint(screenMousePosition);
+        start.z = 0;
+        end.z = 0;
+        Debug.Log(start);
+        Debug.Log(end);
+        Debug.Log(screenMousePosition);
         Vector2 direction = (end - start).normalized;
-        float distance = Vector2.Distance(start, end);
+        float distance = Vector2.Distance(start, screenMousePosition);
 
         wire.pivot = new Vector2(0, 0.5f);
         wire.position = start;
@@ -92,7 +62,8 @@ public class ServerRoomMission : MonoBehaviour
             if (distance < 3f) // 연결 성공
             {
                 Debug.Log("연결됨");
-                StretchWire(wire, startPoint, correctDestination.position);
+                Vector2 end = Camera.main.WorldToScreenPoint(correctDestination.position);
+                StretchWire(wire, startPoint, end);
                 completedConnections++;
 
                 completedWires.Add(wire); // 연결된 전선 목록에 추가
@@ -110,50 +81,48 @@ public class ServerRoomMission : MonoBehaviour
         wire.position = startPoint;
         wire.sizeDelta = new Vector2(100f, wire.sizeDelta.y);
         wire.right = Vector2.right;
+        Debug.Log("와이어 되돌아감");
     }
+
 
     bool IsMouseOverWire(RectTransform wire, Vector2 mousePos)
     {
-        return RectTransformUtility.RectangleContainsScreenPoint(wire, mousePos);
+        // Screen Space - Camera에서 마우스 좌표를 UI의 RectTransform에 맞게 처리합니다.
+        return RectTransformUtility.RectangleContainsScreenPoint(wire, mousePos, Camera.main);
     }
 
     public void MouseInput(InputAction.CallbackContext context)
     {
+        // 클릭될 때 마우스 좌표를 로그로 출력
+        Vector2 screenMousePosition = mousePos;  // MouseDrag에서 업데이트된 값 사용
+
         if (context.phase == InputActionPhase.Started)
         {
-            Vector2 mousePosition = Input.mousePosition;
-            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-            // 마우스 좌표 출력
-            Debug.Log("마우스 좌표 (스크린 좌표): " + mousePosition);
-            Debug.Log("마우스 좌표 (월드 좌표): " + worldMousePosition);
-
-            if (IsMouseOverWire(redWire, worldMousePosition)) SelectWire(redWire);
-            else if (IsMouseOverWire(blueWire, worldMousePosition)) SelectWire(blueWire);
-            else if (IsMouseOverWire(yellowWire, worldMousePosition)) SelectWire(yellowWire);
+            Debug.Log("클릭 시작, 마우스 좌표: " + screenMousePosition);
+            Debug.Log(redWire.position);
+            if (IsMouseOverWire(redWire, screenMousePosition)) SelectWire(redWire);
+            else if (IsMouseOverWire(blueWire, screenMousePosition)) SelectWire(blueWire);
+            else if (IsMouseOverWire(yellowWire, screenMousePosition)) SelectWire(yellowWire);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            MouseUp();
+            if (selectedWire != null)
+            {
+                CheckConnection(selectedWire);
+                selectedWire = null;
+            }
         }
     }
 
-    public void MouseDragInput(InputAction.CallbackContext context)
+    public void MouseDrag(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        mousePos = context.ReadValue<Vector2>();  // 마우스 위치 업데이트
+
+        if (selectedWire != null)
         {
-            Vector2 mousePos = context.ReadValue<Vector2>();
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-            MouseDrag();
+            // 마우스 좌표를 바탕으로 와이어 늘리기
+            Vector2 screenMousePosition = mousePos;
+            StretchWire(selectedWire, startPoint, screenMousePosition);
         }
     }
-
-    //void Update()
-    //{
-    //    // 드래그 중일 때 계속 MouseDrag() 호출
-    //    if (isDragging)
-    //    {
-    //        MouseDrag();
-    //    }
-    //}
 }

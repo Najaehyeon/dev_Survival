@@ -629,7 +629,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1337477705}
         m_TargetAssemblyTypeName: ServerRoomMission, Assembly-CSharp
-        m_MethodName: MouseInput
+        m_MethodName: MouseDrag
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -873,6 +873,10 @@ PrefabInstance:
     - target: {fileID: 2319178659967372376, guid: 03c6c0711a73a654581fa45481b854a0, type: 3}
       propertyPath: onWireSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283569152579587394, guid: 03c6c0711a73a654581fa45481b854a0, type: 3}
+      propertyPath: missionTime
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4181067942136998294, guid: 03c6c0711a73a654581fa45481b854a0, type: 3}
       propertyPath: m_Pivot.x
