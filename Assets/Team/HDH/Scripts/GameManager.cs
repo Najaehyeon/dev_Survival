@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -18,7 +15,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        stateMachine = new GameStateMachine();
+        stateMachine = gameObject.AddComponent<GameStateMachine>();
         stateMachine.Init();
 
         uiTest.ScoreText.text = Score.ToString();
@@ -27,7 +24,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
-        stateMachine.Update();
+        stateMachine.StateUpdate();
     }
 
     /// <summary>
