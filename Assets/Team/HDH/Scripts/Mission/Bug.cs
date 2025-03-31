@@ -22,7 +22,7 @@ public class Bug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.down * speed * Time.deltaTime);
+        transform.Translate(Vector2.down * (speed * Time.deltaTime));
 
         if (!IsInField() && respawnCoroutine == null)
         {
