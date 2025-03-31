@@ -1,5 +1,7 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
+using UnityEngine;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class ServerRoomMission : MonoBehaviour
 {
@@ -17,27 +19,40 @@ public class ServerRoomMission : MonoBehaviour
     public int completedConnections { get; private set; } = 0;
     private List<RectTransform> completedWires = new List<RectTransform>(); // 이미 연결된 전선들
 
-    void Update()
+    private bool isDragging = false;
+
+    // 게임 시작 시 와이어 좌표 출력
+    void Start()
     {
-        if (Input.GetMouseButtonDown(0))
+        LogWirePositions();
+    }
+
+    // 게임 시작 시 와이어들의 좌표를 찍어주는 함수
+    void LogWirePositions()
+    {
+        Debug.Log($"빨간 와이어: {redWire.position}");
+        Debug.Log($"파란 와이어: {blueWire.position}");
+        Debug.Log($"노란 와이어: {yellowWire.position}");
+    }
+
+    void MouseDrag()
+    {
+        if (selectedWire != null && isDragging)
         {
-            Vector2 mousePos = Input.mousePosition;
-
-            if (IsMouseOverWire(redWire, mousePos)) SelectWire(redWire);
-            else if (IsMouseOverWire(blueWire, mousePos)) SelectWire(blueWire);
-            else if (IsMouseOverWire(yellowWire, mousePos)) SelectWire(yellowWire);
+            Vector2 mousePosition = Input.mousePosition;
+            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            StretchWire(selectedWire, startPoint, worldMousePosition);
+            Debug.Log("와이어 선택됨");
         }
+    }
 
-        if (selectedWire != null && Input.GetMouseButton(0))
-        {
-            Vector2 mousePos = Input.mousePosition;
-            StretchWire(selectedWire, startPoint, mousePos);
-        }
-
-        if (Input.GetMouseButtonUp(0) && selectedWire != null)
+    void MouseUp()
+    {
+        if (selectedWire != null)
         {
             CheckConnection(selectedWire);
             selectedWire = null;
+            isDragging = false;  // 드래그 종료
         }
     }
 
@@ -47,6 +62,7 @@ public class ServerRoomMission : MonoBehaviour
 
         selectedWire = wire;
         startPoint = wire.position;
+        isDragging = true;  // 드래그 시작
     }
 
     void StretchWire(RectTransform wire, Vector2 start, Vector2 end)
@@ -73,7 +89,7 @@ public class ServerRoomMission : MonoBehaviour
             Vector2 wireEndPoint = wire.position + (Vector3)(wire.right * wire.sizeDelta.x);
             float distance = Vector2.Distance(wireEndPoint, correctDestination.position);
 
-            if (distance < 80f) // 연결 성공
+            if (distance < 3f) // 연결 성공
             {
                 Debug.Log("연결됨");
                 StretchWire(wire, startPoint, correctDestination.position);
@@ -100,4 +116,44 @@ public class ServerRoomMission : MonoBehaviour
     {
         return RectTransformUtility.RectangleContainsScreenPoint(wire, mousePos);
     }
+
+    public void MouseInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            Vector2 mousePosition = Input.mousePosition;
+            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+            // 마우스 좌표 출력
+            Debug.Log("마우스 좌표 (스크린 좌표): " + mousePosition);
+            Debug.Log("마우스 좌표 (월드 좌표): " + worldMousePosition);
+
+            if (IsMouseOverWire(redWire, worldMousePosition)) SelectWire(redWire);
+            else if (IsMouseOverWire(blueWire, worldMousePosition)) SelectWire(blueWire);
+            else if (IsMouseOverWire(yellowWire, worldMousePosition)) SelectWire(yellowWire);
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            MouseUp();
+        }
+    }
+
+    public void MouseDragInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            Vector2 mousePos = context.ReadValue<Vector2>();
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+            MouseDrag();
+        }
+    }
+
+    //void Update()
+    //{
+    //    // 드래그 중일 때 계속 MouseDrag() 호출
+    //    if (isDragging)
+    //    {
+    //        MouseDrag();
+    //    }
+    //}
 }
