@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D _rigidbody;
 
     MissionTimer MissionTimer;
+    CoffeeMachine coffeeMachin;
     bool isTriggerOn = false;
     bool isGaming = false;
     private void Awake()
@@ -56,18 +57,28 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Performed && isTriggerOn)
         {
             //Debug.Log("상호작용");
-            MissionTimer.OnGameStart();
+            if (MissionTimer != null) MissionTimer.OnGameStart();
+            if (coffeeMachin != null && coffeeMachin.isUse) coffeeMachin.DownStress();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isTriggerOn = true;
-        MissionTimer = collision.gameObject.GetComponent<MissionTimer>();
+        if (collision.tag == "Mission")
+        {
+            MissionTimer = collision.gameObject.GetComponent<MissionTimer>();
+        }
+        else if (collision.tag == "Coffee")
+        {
+            coffeeMachin = collision.gameObject.GetComponent<CoffeeMachine>();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         isTriggerOn = false;
+        MissionTimer = null;
+        coffeeMachin = null;
     }
 }

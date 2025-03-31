@@ -9,6 +9,11 @@ public class CameraController : MonoBehaviour
     public CinemachineVirtualCamera serverRoom;
     public CinemachineVirtualCamera restRoom;
 
+    private void Start()
+    {
+        OfficeRoomCamera();
+    }
+
     public void OfficeRoomCamera()
     {
         officeRoom.MoveToTopOfPrioritySubqueue();
@@ -26,7 +31,11 @@ public class CameraController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "ServerRoom")
+        if (collision.gameObject.name == "OfficeRoom")
+        {
+            OfficeRoomCamera();
+        }
+        else if (collision.gameObject.name == "ServerRoom")
         {
             ServerRoomCamera();
         }
@@ -36,8 +45,4 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        OfficeRoomCamera();
-    }
 }
