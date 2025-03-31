@@ -14,28 +14,27 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D _rigidbody;
 
+    MissionTimer MissionTimer;
+    bool isTriggerOn = false;
+    bool isGaming = false;
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         animationHandler = GetComponent<AnimationHandler>();
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         Move();
+        Debug.Log("게임중"+isGaming);
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed && !isGaming)
         {
             movementDirection = context.ReadValue<Vector2>();
-            Debug.Log(movementDirection);
+            //Debug.Log(movementDirection);
             animationHandler.IsMove(movementDirection);
         }
         else if (context.phase == InputActionPhase.Canceled)
@@ -51,5 +50,26 @@ public class PlayerController : MonoBehaviour
         dir *= moveSpeed;
 
         _rigidbody.velocity = dir;
+    }
+
+    public void OnInteractionInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed && isTriggerOn)
+        {
+            //Debug.Log("상호작용");
+            MissionTimer.OnGameStart();
+            isGaming = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isTriggerOn = true;
+        MissionTimer = collision.gameObject.GetComponent<MissionTimer>();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isTriggerOn = false;
     }
 }
