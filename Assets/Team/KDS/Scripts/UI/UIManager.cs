@@ -36,7 +36,7 @@ public class UIManager : Singleton<UIManager>
     }
     private void Start()
     {
-        ChangeState(UIState.Shop);
+        ChangeState(UIState.Home);
     }
 
     public void ChangeStatusUI(Status status, int value)

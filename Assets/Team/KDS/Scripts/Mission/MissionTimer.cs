@@ -60,4 +60,11 @@ public class MissionTimer:MonoBehaviour
             radialFill.color = normalColor;
         }
     }
+
+    public void NPCInterection(NPCStateMachine interect)
+    {
+        mission.NPCInterection(interect);
+        gameObject.SetActive(false);
+
+    }
 }
