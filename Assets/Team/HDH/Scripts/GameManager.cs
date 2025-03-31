@@ -7,6 +7,8 @@ public class GameManager : Singleton<GameManager>
     [field: SerializeField] public int Day { get; private set; }
     [field: SerializeField] public float PassedTime { get; private set; }
     [field: SerializeField] public bool isMissionInProgress;
+
+    [field: SerializeField] public int Stress { get; private set; }
     //MissionTimer 에서 변경
 
     //UI test를 위해 추가 추후 적용시 삭제
@@ -70,6 +72,12 @@ public class GameManager : Singleton<GameManager>
     {
         Money = Mathf.Max(0, Money + amount);
         //uiTest.MoneyText.text = Money.ToString();
+    }
+
+    public void ChangeStress(int amount)
+    {
+        Stress = Mathf.Max(0, Stress + amount);
+        //uiTest.ScoreText.text = Score.ToString();
     }
 
 }
