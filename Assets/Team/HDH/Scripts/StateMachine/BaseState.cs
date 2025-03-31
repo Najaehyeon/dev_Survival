@@ -1,10 +1,10 @@
 public abstract class BaseState
 {
-    protected GameStateMachine stateMachine;
+    public BaseStateMachine StateMachine { get; set; }
 
-    public BaseState(GameStateMachine stateMachine)
+    protected BaseState(BaseStateMachine stateMachine)
     {
-        this.stateMachine = stateMachine;
+        StateMachine = stateMachine;
     }
 
     public abstract void Enter();
