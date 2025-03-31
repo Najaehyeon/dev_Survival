@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CoffeeMachine : MonoBehaviour
 {
     public bool isUse = true;
     public float coffeMachineColltime = 10f;
     public int coffeStress = 10;
+
+    [SerializeField] private Image timerImage;
 
     private void Start()
     {
@@ -26,10 +29,12 @@ public class CoffeeMachine : MonoBehaviour
         while (!isUse)
         {
             coffeMachineColltime -= Time.deltaTime;
+            timerImage.fillAmount = 1 - (coffeMachineColltime / 10f);
             if (coffeMachineColltime < 0)
             {
                 isUse = true;
                 coffeMachineColltime = 10f;
+                timerImage.fillAmount = 0;
             }
             yield return null;
         }

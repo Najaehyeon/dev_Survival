@@ -154,18 +154,6 @@ PrefabInstance:
       propertyPath: serverRoom
       value: 
       objectReference: {fileID: 28603980}
-    - target: {fileID: 5884065521466799334, guid: 7f097037170852749b7a40993d2459d1, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5884065521466799334, guid: 7f097037170852749b7a40993d2459d1, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
-      value: 4bcec6bc-01b4-46ee-a05c-167086035e40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5884065521466799334, guid: 7f097037170852749b7a40993d2459d1, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
-      value: BugMission/Click[/Mouse/leftButton]
-      objectReference: {fileID: 0}
     - target: {fileID: 7429403961407946499, guid: 7f097037170852749b7a40993d2459d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.59
@@ -3119,11 +3107,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 998469584153331551, guid: e19fbf9c44cb43747b3ecd9285f42610, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.32
+      value: 7.394
       objectReference: {fileID: 0}
     - target: {fileID: 998469584153331551, guid: e19fbf9c44cb43747b3ecd9285f42610, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.3
+      value: 9.831
       objectReference: {fileID: 0}
     - target: {fileID: 998469584153331551, guid: e19fbf9c44cb43747b3ecd9285f42610, type: 3}
       propertyPath: m_LocalPosition.z
