@@ -169,6 +169,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4a6c20c5-ff7f-4144-ac76-13917bc165ef
     m_ActionName: Player/Interaction[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4bcec6bc-01b4-46ee-a05c-167086035e40
+    m_ActionName: BugMission/Click[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
