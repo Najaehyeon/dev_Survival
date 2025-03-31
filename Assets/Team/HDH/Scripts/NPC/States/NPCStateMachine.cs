@@ -29,10 +29,16 @@ public class NPCStateMachine : BaseStateMachine
 
         ChangeState(npcIdleState);
     }
-
+    //MissionTimer를 통해 연결
+    //NPC에 미션을 할당
+    /// <summary>
+    /// NPC에 미션을 할당
+    /// </summary>
+    /// <param name="missionTimer">할당할 미션</param>
     public void AssignMission(MissionTimer missionTimer)
     {
         if(CurrentNPCState != npcIdleState) return;
+        Debug.Log("Receive mission");
         HasMission = true;
         CurrentNPCState.TargetDestination = missionTimer.transform.position;
     }
@@ -47,11 +53,24 @@ public class NPCStateMachine : BaseStateMachine
         StressLevel = 0;
         IsRestComplete = true;
     }
-
-    void StartMissionTimer(MissionTimer missionTimer)
+    
+    /// <summary>
+    /// 미션의 타이머를 시작
+    /// </summary>
+    /// <param name="missionTimer">타이머를 작동시킬 미션의 타이머</param>
+    public void StartMissionTimer(MissionTimer missionTimer)
     {
         missionTimer.gameObject.SetActive(true);
         missionTimer.Selected();
+    }
+    
+    /// <summary>
+    /// 미션 할당이 해제되었을 때
+    /// </summary>
+    public void QuitMission()
+    {
+        HasMission = false;
+        ChangeState(npcIdleState);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -59,7 +78,11 @@ public class NPCStateMachine : BaseStateMachine
         MissionTimer currentMissionTimer;
         if (other.TryGetComponent(out currentMissionTimer))
         {
-            StartMissionTimer(currentMissionTimer);
+            //고양이는 미션 지점에 도착했을 때 고양이 미션 타이머를 가동
+            //OnMission -> 고양이 문제해결 미션이 시작
+            //직원은 미션 지점에 도착했을 때 미션 타이머를 해결
+            //OnMission -> 배정된 미션을 해결 (미션 타이머에서 직원 전용 함수)
+            CurrentNPCState.OnMission(currentMissionTimer);
         }
     }
 }

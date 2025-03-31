@@ -32,6 +32,9 @@ public class MissionTimer:MonoBehaviour
         gameStart= false;
         timeOut = 20f;
         gameObject.SetActive(true);
+
+        Debug.Log("Mission Assign");
+        EmployeeManager.Instance.employees[0].AssignMission(this);
     }
     public virtual void OnGameStart()
     {

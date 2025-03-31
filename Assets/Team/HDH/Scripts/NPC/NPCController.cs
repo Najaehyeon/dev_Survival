@@ -33,15 +33,5 @@ public class NPCController : MonoBehaviour
     {
         agent.speed = moveSpeed;
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        //Mission에 해당하는 장소에 충돌시 OnMission() 함수 실행
-
-        MissionTimer missionTimer;
-        if (other.TryGetComponent<MissionTimer>(out missionTimer))
-        {
-            stateMachine.CurrentNPCState.OnMission(missionTimer);
-        }
-    }
+    
 }
