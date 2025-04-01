@@ -7,6 +7,7 @@ public class ShopUI : BaseUI
     bool isEmployShop;
     public RectTransform stressbarInItemShop;
     public RectTransform stressbarInEmplyShop;
+    public GameObject notEnoughAlert;
 
     [Header("Shop")]
     public ItemShop itemShop;
@@ -17,6 +18,7 @@ public class ShopUI : BaseUI
     public Button buyCat;
     public Button buyBottle;
     public Button buyCloud;
+    public Button closeNotEnoughMoneyAlert;
 
     private void Start()
     {
@@ -24,6 +26,7 @@ public class ShopUI : BaseUI
         buyCat.onClick.AddListener(ShopManager.Instance.itemShop.BuyCat);
         buyBottle.onClick.AddListener(ShopManager.Instance.itemShop.BuyGreenBottle);
         buyCloud.onClick.AddListener(ShopManager.Instance.itemShop.BuyCloud);
+        closeNotEnoughMoneyAlert.onClick.AddListener(CloseNotEnoughMoneyAlert);
     }
 
     public override void Init(UIManager uiManager)
@@ -71,5 +74,10 @@ public class ShopUI : BaseUI
     {
         stressbarInItemShop.anchoredPosition = new Vector2(200 * (UIManager.Instance.inGameUI.stress / 100), 0);
         stressbarInEmplyShop.anchoredPosition = new Vector2(200 * (UIManager.Instance.inGameUI.stress / 100), 0);
+    }
+
+    public void CloseNotEnoughMoneyAlert()
+    {
+        notEnoughAlert.SetActive(false);
     }
 }
