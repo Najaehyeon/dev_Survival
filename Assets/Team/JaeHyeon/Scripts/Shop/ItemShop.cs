@@ -79,6 +79,6 @@ public class ItemShop : MonoBehaviour
 
     public void MonenInit()
     {
-        moneyInItemShop.text = GameManager.Instance.Money.ToString() + "\\";
+        moneyInItemShop.text = GameManager.Instance.Money.ToString() + "만원";
     }
 }

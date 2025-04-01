@@ -69,7 +69,7 @@ public class ScoreState : GameBaseState
 
     void ScoreToMoney()
     {
-        GameManager.Instance.ChangeMoney(GameManager.Instance.Score);
+        GameManager.Instance.ChangeMoney(GameManager.Instance.Score * 10);
         GameManager.Instance.ChangeScore(-GameManager.Instance.Score);
     }
 
