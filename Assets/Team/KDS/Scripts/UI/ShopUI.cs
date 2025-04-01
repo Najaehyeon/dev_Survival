@@ -1,4 +1,4 @@
-using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -63,6 +63,8 @@ public class ShopUI : BaseUI
             employShop.gameObject.SetActive(false);
             itemShop.gameObject.SetActive(true);
         }
+        itemShop.MonenInit();
+        employShop.MoneyInit();
     }
 
     public void MoveStressBar()

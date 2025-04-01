@@ -1,9 +1,12 @@
+using TMPro;
 using UnityEngine;
 
 public class ItemShop : MonoBehaviour
 {
     public GameObject DogPayButton;
     public GameObject CatPayButton;
+
+    public TextMeshProUGUI moneyInItemShop;
 
     private bool hasDog = false;
     private bool hasCat = false;
@@ -19,6 +22,11 @@ public class ItemShop : MonoBehaviour
         cloudPrice = 10;
     }
 
+    private void Start()
+    {
+        MonenInit();
+    }
+
     public void BuyDog()
     {
         if (!HaveMoney(animalsPrice) || hasDog)
@@ -27,6 +35,7 @@ public class ItemShop : MonoBehaviour
             return;
         }
         GameManager.Instance.ChangeMoney(-animalsPrice);
+        MonenInit();
         hasDog = true;
         DogPayButton.SetActive(false);
     }
@@ -39,6 +48,7 @@ public class ItemShop : MonoBehaviour
             return;
         }
         GameManager.Instance.ChangeMoney(-animalsPrice);
+        MonenInit();
         hasCat = true;
         CatPayButton.SetActive(false);
     }
@@ -48,6 +58,7 @@ public class ItemShop : MonoBehaviour
         if (!HaveMoney(greenPrice)||GameManager.Instance.Stress<50) return;
         GameManager.Instance.ChangeStress(-50);
         GameManager.Instance.ChangeMoney(-greenPrice);
+        MonenInit();
         UIManager.Instance.shopUI.MoveStressBar();
     }
 
@@ -56,6 +67,7 @@ public class ItemShop : MonoBehaviour
         if (!HaveMoney(cloudPrice) || GameManager.Instance.Stress < 10) return;
         GameManager.Instance.ChangeStress(-10);
         GameManager.Instance.ChangeMoney(-cloudPrice);
+        MonenInit();
         UIManager.Instance.shopUI.MoveStressBar();
     }
 
@@ -63,5 +75,10 @@ public class ItemShop : MonoBehaviour
     {
         if (GameManager.Instance.Money >= price) return true;
         else return false;
+    }
+
+    public void MonenInit()
+    {
+        moneyInItemShop.text = GameManager.Instance.Money.ToString() + "\\";
     }
 }

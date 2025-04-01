@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   employIndex: 0
   employName: "\uBCA0\uC870\uC2A4"
-  employIcon: {fileID: 112306167, guid: 311e91b00deb71f4e8691bf3511df021, type: 3}
+  employIcon: {fileID: -145451687, guid: 9da17f0cd2b38e34198458c020d615ca, type: 3}
   price: 180
   ability: 50
   sincerity: 60
   stressControl: 2
-  employeePrefab: {fileID: 6765288993802789191, guid: 858c2cb2a4e4cd24bac8744b8ca229c4, type: 3}
+  employeePrefab: {fileID: 6656236515377318365, guid: 7d19a9afbb35bff4a92bd593464fec74, type: 3}

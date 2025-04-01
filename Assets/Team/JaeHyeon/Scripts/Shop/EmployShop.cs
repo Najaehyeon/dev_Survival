@@ -10,6 +10,8 @@ public class EmployShop : MonoBehaviour
     public Button secondEmployButton;
     public Button thirdEmployButton;
 
+    public TextMeshProUGUI moneyInEmployShop;
+
     [Header("직원 데이터")]
     [SerializeField] private EmployData[] allEmployees; // 모든 직원 데이터 저장
 
@@ -54,25 +56,30 @@ public class EmployShop : MonoBehaviour
     {
         rerollButon.onClick.AddListener(Reroll);
         Reroll();
+        MoneyInit();
     }
 
     void HireFirstEmployee()
     {
         GameManager.Instance.ChangeMoney(-allEmployees[selectedEmployeeIndexes[0]].Price); // 금액 지불
+        MoneyInit();
         // 구매 안 한 리스트에서 빼야함.
-        // 직원 구매했다고 전달 해야함.
         EmployeeManager.Instance.HireEmployee(selectedEmployeeIndexes[0]);
     }
 
     void HireSecondEmployee()
     {
         GameManager.Instance.ChangeMoney(-allEmployees[selectedEmployeeIndexes[1]].Price); // 금액 지불
+        MoneyInit();
+        // 구매 안 한 리스트에서 빼야함.
         EmployeeManager.Instance.HireEmployee(selectedEmployeeIndexes[1]);
     }
 
     void HireThirdEmployee()
     {
         GameManager.Instance.ChangeMoney(-allEmployees[selectedEmployeeIndexes[2]].Price); // 금액 지불
+        MoneyInit();
+        // 구매 안 한 리스트에서 빼야함.
         EmployeeManager.Instance.HireEmployee(selectedEmployeeIndexes[2]);
     }
 
@@ -132,5 +139,10 @@ public class EmployShop : MonoBehaviour
         firstEmployeeStressControl.text = first.StressControl.ToString("F1");
         secondEmployeeStressControl.text = second.StressControl.ToString("F1");
         thirdEmployeeStressControl.text = third.StressControl.ToString("F1");
+    }
+
+    public void MoneyInit()
+    {
+        moneyInEmployShop.text = GameManager.Instance.Money.ToString() + "\\";
     }
 }
