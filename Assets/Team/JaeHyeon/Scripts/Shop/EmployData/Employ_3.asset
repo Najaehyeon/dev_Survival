@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   employIndex: 3
   employName: "\uAC8C\uC774\uCE20"
-  employIcon: {fileID: 1640471827, guid: 311e91b00deb71f4e8691bf3511df021, type: 3}
+  employIcon: {fileID: -1694384320, guid: 311e91b00deb71f4e8691bf3511df021, type: 3}
   price: 220
   ability: 80
   sincerity: 50
