@@ -27,9 +27,13 @@ public abstract class Mission : MonoBehaviour
         Debug.Log(stress);
         return stress;
     }
+
+    /// <summary>
+    /// 게임매니저랑 플레이어랑 연동해서 점수랑 스트레스 변환
+    /// 미션 종료시 호출
+    /// </summary>
     public virtual void GameEnd()
     {
-        //게임매니저랑 플레이어랑 연동해서 점수랑 스트레스 변환
         GameManager.Instance.ChangeScore(GetScroe());
         GameManager.Instance.ChangeStress((int)GetStress());
         isGameEnd = true;
@@ -38,6 +42,10 @@ public abstract class Mission : MonoBehaviour
         GameManager.Instance.isMissionInProgress = false;
     }
 
+    /// <summary>
+    /// NPC가 미션클리어했을때 호출
+    /// </summary>
+    /// <param name="interect"></param>
     public void NPCInterection(NPCStateMachine interect)
     {
         if(interect==target)

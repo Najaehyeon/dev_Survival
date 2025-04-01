@@ -19,7 +19,10 @@ public class MiniGameCallController : Mission
     {
         lineRenderer=Instantiate(lineRenderer, Vector3.zero, Quaternion.identity);
     }
-
+    /// <summary>
+    /// 선이 종점에 부딪히면 점수계산
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject == lineRenderer.gameObject)
@@ -41,7 +44,9 @@ public class MiniGameCallController : Mission
             Invoke("GameEnd", 1);
         }
     }
-
+    /// <summary>
+    /// ProgressToScore, 점수로 변환
+    /// </summary>
     private void ProgressToScore()
     {
         if (progerss > 330) { score = 5; }
