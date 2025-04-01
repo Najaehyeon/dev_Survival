@@ -4780,7 +4780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3590a40826432a74abd0b2a4b9bee6e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missions: []
+  SelectedMissions: []
   controller: {fileID: 1913247949826554873}
 --- !u!1 &1959457011501160461
 GameObject:
