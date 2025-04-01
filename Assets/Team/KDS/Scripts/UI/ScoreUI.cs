@@ -60,11 +60,11 @@ public class ScoreUI : BaseUI
             score--;
             scoreText.text = score.ToString();
             money+=10;
-            moneyText.text = money.ToString();
+            moneyText.text = money.ToString() + "만원";
             yield return new WaitForSeconds(0.02f);
         }
         scoreText.text = "0";
-        moneyText.text = endmoney.ToString();
+        moneyText.text = endmoney.ToString() + "만원";
         StartCoroutine(TypeStress());
     }
 
