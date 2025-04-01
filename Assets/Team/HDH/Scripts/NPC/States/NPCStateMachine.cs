@@ -43,16 +43,16 @@ public class NPCStateMachine : BaseStateMachine
         
         EmployeeStates employeeStates = stateSet as EmployeeStates;
         
-        // Random random = new Random();
-        //
-        // int acceptRate = random.Next(0, 100);
-        // if (acceptRate <= employeeStates.EmployData.Sincerity)
-        // {
-        //     Debug.Log("미션 거절");
-        //     ChangeState(stateSet.IdleState);
-        //     return null;
-        // }
-        //
+        Random random = new Random();
+        
+        int acceptRate = random.Next(0, 100);
+        if (acceptRate <= employeeStates.EmployData.Sincerity)
+        {
+            Debug.Log("미션 거절");
+            ChangeState(stateSet.IdleState);
+            return null;
+        }
+        
         Debug.Log("Receive mission");
         HasMission = true;
         ChangeState(npcMissionState);
@@ -90,6 +90,12 @@ public class NPCStateMachine : BaseStateMachine
     {
         HasMission = false;
         ChangeState(npcIdleState);
+    }
+
+    public EmployData GetEmployData()
+    {
+        EmployeeStates employeeStates = stateSet as EmployeeStates;
+        return employeeStates.EmployData;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -121,6 +121,7 @@ public class EmployeeMissionState : NPCBaseState
     {
         MissionTimer missionTimer = obj as MissionTimer;
         //미션 타이머의 직원 전용 해제 함수를 실행
+        Debug.Log("Employee Mission Enter");
         missionTimer.NPCInterection(NPCStateMachine);
     }
 }
