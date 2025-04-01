@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af51a81310b6bf44cb009df33891f604, type: 3}
   m_Name: Employee_Idle
   m_EditorClassIdentifier: 
-  StateName: CatIdle
   DestinationSet:
-  - {x: 8.46, y: -4.66, z: 0}
-  - {x: 5.02, y: 8.62, z: 0}
-  - {x: -5.74, y: 5.08, z: 0}
-  - {x: -8.59, y: -4.52, z: 0}
+  - {x: -9.6, y: -3.58, z: 0}
+  - {x: -9.6, y: 2.44, z: 0}
+  - {x: -3.45, y: 6.51, z: 0}
+  - {x: 8.32, y: 7.66, z: 0}
+  - {x: 4.12, y: 6.95, z: 0}
+  - {x: 7.93, y: 5.67, z: 0}
+  - {x: -3.44, y: -4.69, z: 0}
+  - {x: -3.44, y: -0.57, z: 0}
+  - {x: 2.58, y: -0.57, z: 0}
+  - {x: 2.58, y: -3.71, z: 0}
+  - {x: 8.33, y: -3.71, z: 0}
+  - {x: 8.33, y: -0.48, z: 0}

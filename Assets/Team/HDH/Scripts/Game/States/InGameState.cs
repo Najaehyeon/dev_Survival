@@ -15,6 +15,7 @@ public class InGameState : GameBaseState
     public override void Enter()
     {
         MissionManager.Instance.ChangeState(MissionState.Ready);
+        EmployeeManager.Instance.ResetEmployeesPosition();
     }
 
     public override void Exit()

@@ -14,7 +14,7 @@ public class NPCStateMachine : BaseStateMachine
 
     public NPCController Controller { get; private set; }
     
-    public float StressLevel { get; private set; }
+    [field: SerializeField] public float StressLevel { get; private set; }
     public float MaxStress = 100f;
     public bool IsRestComplete { get; private set; }
 

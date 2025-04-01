@@ -4,6 +4,5 @@ using UnityEngine;
 [Serializable]
 public class StateDestinationSet : ScriptableObject
 {
-    [field: SerializeField] public string StateName;
     [field: SerializeField] public Vector3[] DestinationSet;
 }

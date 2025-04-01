@@ -41,6 +41,8 @@ public class EmployeeManager : Singleton<EmployeeManager>
             // 고용된 직원 리스트에 추가
             hiredEmployees.Add(employeeObject);
             
+            employeeObject.SetActive(false);
+            
             return employeeObject;
         }
         else
@@ -69,6 +71,7 @@ public class EmployeeManager : Singleton<EmployeeManager>
     {
         foreach (GameObject employee in hiredEmployees)
         {
+            employee.gameObject.SetActive(true);
             employee.transform.position = employeeSpawnPoint.position;
         }
     }

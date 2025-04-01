@@ -34,6 +34,7 @@ public class BugMission : Mission
     [SerializeField] private Image ProgressBarImage;
     [SerializeField] private TextMeshProUGUI ProgressText;
     [SerializeField] private GameObject CompleteSign;
+    [SerializeField] private TextMeshProUGUI ScoreText;
     [SerializeField] private GameObject FailSign;
 
     private void Start()
@@ -144,6 +145,7 @@ public class BugMission : Mission
         if (!isComplete) return;
         completeTime = passsedTime;
         CompleteSign.SetActive(true);
+        ScoreText.text = "+" + GetScroe().ToString();
         Bugs.Clear();
         Destroy(fieldObj);
     }
