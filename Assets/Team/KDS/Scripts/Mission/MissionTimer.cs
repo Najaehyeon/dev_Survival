@@ -32,8 +32,17 @@ public class MissionTimer:MonoBehaviour
         gameStart= false;
         timeOut = 20f;
         gameObject.SetActive(true);
-
+        HireNPC();
         Debug.Log("Mission Assign");
+    }
+
+    public void HireNPC()
+    {
+
+            Debug.Log("고용중");
+            //아이덜 스테이트인 npc 리스트(NPCManager.intance.IdalNPCs) 순회하면서 npc에게 AssignMission(missionTimer);
+            //missionTimer.mission.target = 
+
     }
     public virtual void OnGameStart()
     {

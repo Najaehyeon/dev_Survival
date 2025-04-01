@@ -34,7 +34,6 @@ public class MissionController : MonoBehaviour
     public MissionTimer[] bug;
     public MissionTimer server;
 
-    public List<MissionTimer> SelectedMissionTimer;
     public Canvas canvas;
     private int missionCount;
     private int claerCount;
@@ -78,17 +77,14 @@ public class MissionController : MonoBehaviour
                     case MissionSelect.Bug:
                         bug[randomindex].gameObject.SetActive(true);
                         bug[randomindex].Selected();
-                        SelectedMissionTimer.Add(bug[randomindex]);
                         break;
                     case MissionSelect.Call:
                         call[randomindex].gameObject.SetActive(true);
                         call[randomindex].Selected();
-                        SelectedMissionTimer.Add(call[randomindex]);
                         break;
                     case MissionSelect.Code:
                         code[randomindex].gameObject.SetActive(true);
                         code[randomindex].Selected();
-                        SelectedMissionTimer.Add(code[randomindex]);
                         break;
                 }
             }
@@ -96,22 +92,10 @@ public class MissionController : MonoBehaviour
             {
                 server.gameObject.SetActive(true);
                 server.Selected();
-                SelectedMissionTimer.Add(server);
             }
         }
     }
-
-    public void HireNPC()
-    {
-        foreach (MissionTimer missionTimer in SelectedMissionTimer)
-        {
-            Debug.Log(missionTimer);
-            //아이덜 스테이트인 npc 리스트(NPCManager.intance.IdalNPCs) 순회하면서 npc에게 AssignMission(missionTimer);
-            //missionTimer.mission.target = 
-        }
-    }
-
-    
+   
     public void IsAllGameEnd()
     {
         claerCount++;
@@ -137,22 +121,4 @@ public class MissionController : MonoBehaviour
                 break;
         }
     }
-
-    //public void MissionSelector()
-    //{
-
-    //    System.Random rng = new System.Random();
-    //    selectedMissonTimers = selectedMissonTimers.OrderBy(x => rng.Next()).ToArray();
-
-    //    // 테스트단계에서 하나밖에없어서 실행하면 Rarry오류남
-    //    missionCount = UnityEngine.Random.Range(1, 3);
-    //    for (int i = 0; i < missionCount; i++)
-    //    {
-    //        selectedMissonTimers[i].gameObject.SetActive(true);
-    //        selectedMissonTimers[i].Selected();
-    //    }
-    //    //missionCount = 1;
-    //    //selectedMissonTimers[0].gameObject.SetActive(true);
-    //    //selectedMissonTimers[0].Selected();
-    //}
 }
