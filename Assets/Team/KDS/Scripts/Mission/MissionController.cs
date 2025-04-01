@@ -36,7 +36,6 @@ public class MissionController : MonoBehaviour
 
     public Canvas canvas;
     private int missionCount;
-    private int claerCount;
     void Start()
     {
         ChangeState(MissionState.Phase);
@@ -112,7 +111,6 @@ public class MissionController : MonoBehaviour
     /// </summary>
     public void IsDayEnd()
     {
-        claerCount = 0;
         missionCount = 0;
         currentState = MissionState.Phase;
         foreach(MissionTimer missionTimer in MissionManager.Instance.SelectedMissions)

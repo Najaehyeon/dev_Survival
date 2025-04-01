@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class ItemShop : MonoBehaviour
 {
-    public GameObject DogPayButton;
-    public GameObject CatPayButton;
-
     public TextMeshProUGUI moneyInItemShop;
 
     private bool hasDog = false;
@@ -29,33 +26,42 @@ public class ItemShop : MonoBehaviour
 
     public void BuyDog()
     {
-        if (!HaveMoney(animalsPrice) || hasDog)
+        if (hasDog) return;
+        if (!HaveMoney(animalsPrice))
         {
-            Debug.Log("돈 없음");
+            UIManager.Instance.shopUI.notEnoughAlert.SetActive(true);
+            UIManager.Instance.shopUI.closeNotEnoughMoneyAlert.onClick.AddListener(UIManager.Instance.shopUI.CloseNotEnoughMoneyAlert);
             return;
         }
         GameManager.Instance.ChangeMoney(-animalsPrice);
         MonenInit();
         hasDog = true;
-        DogPayButton.SetActive(false);
+        UIManager.Instance.shopUI.buyDog.gameObject.SetActive(false);
     }
 
     public void BuyCat()
     {
-        if (!HaveMoney(animalsPrice) || hasCat)
+        if (hasCat) return;
+        if (!HaveMoney(animalsPrice))
         {
-            Debug.Log("돈 없음");
+            UIManager.Instance.shopUI.notEnoughAlert.SetActive(true);
+            UIManager.Instance.shopUI.closeNotEnoughMoneyAlert.onClick.AddListener(UIManager.Instance.shopUI.CloseNotEnoughMoneyAlert);
             return;
         }
         GameManager.Instance.ChangeMoney(-animalsPrice);
         MonenInit();
         hasCat = true;
-        CatPayButton.SetActive(false);
+        UIManager.Instance.shopUI.buyCat.gameObject.SetActive(false);
     }
 
     public void BuyGreenBottle()
     {
-        if (!HaveMoney(greenPrice)||GameManager.Instance.Stress<50) return;
+        if (!HaveMoney(greenPrice) || GameManager.Instance.Stress < 50)
+        {
+            UIManager.Instance.shopUI.notEnoughAlert.SetActive(true);
+            UIManager.Instance.shopUI.closeNotEnoughMoneyAlert.onClick.AddListener(UIManager.Instance.shopUI.CloseNotEnoughMoneyAlert);
+            return;
+        }
         GameManager.Instance.ChangeStress(-50);
         GameManager.Instance.ChangeMoney(-greenPrice);
         MonenInit();
@@ -64,7 +70,12 @@ public class ItemShop : MonoBehaviour
 
     public void BuyCloud()
     {
-        if (!HaveMoney(cloudPrice) || GameManager.Instance.Stress < 10) return;
+        if (!HaveMoney(cloudPrice) || GameManager.Instance.Stress < 10)
+        {
+            UIManager.Instance.shopUI.notEnoughAlert.SetActive(true);
+            UIManager.Instance.shopUI.closeNotEnoughMoneyAlert.onClick.AddListener(UIManager.Instance.shopUI.CloseNotEnoughMoneyAlert);
+            return;
+        }
         GameManager.Instance.ChangeStress(-10);
         GameManager.Instance.ChangeMoney(-cloudPrice);
         MonenInit();
