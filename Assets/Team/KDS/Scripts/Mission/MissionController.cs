@@ -119,8 +119,9 @@ public class MissionController : MonoBehaviour
         {
             missionTimer.IsDayEnd();
         }
-
+        MissionManager.Instance.SelectedMissions.Clear();
     }
+
     public void ChangeState(MissionState state)
     {
         switch (state)

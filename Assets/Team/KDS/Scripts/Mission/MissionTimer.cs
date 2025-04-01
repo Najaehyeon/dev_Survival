@@ -104,7 +104,6 @@ public class MissionTimer:MonoBehaviour
     public void IsDayEnd()
     {
         gameStart = true;
-        MissionManager.Instance.SelectedMissions.Remove(this);
         if (target != null) target.QuitMission();
         gameObject.SetActive(false);
     }
