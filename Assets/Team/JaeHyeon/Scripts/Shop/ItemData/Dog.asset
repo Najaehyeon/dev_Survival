@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623564342a3e3b540a1e313b89a82082, type: 3}
+  m_Name: Dog
+  m_EditorClassIdentifier: 
+  itemName: "\uAC15\uC544\uC9C0"
+  description: "\uC774 \uAC15\uC544\uC9C0\uB294 \uCE90\uB9AD\uD130\uC758 \uAE30\uBD84\uC744
+    \uC88B\uAC8C \uB9CC\uB4E4\uC5B4, \uC2A4\uD2B8\uB808\uC2A4\uB97C \uC9C0\uC18D\uC801\uC73C\uB85C
+    \uD574\uC18C\uD574\uC90D\uB2C8\uB2E4."
+  price: 60
+  stress: -1

@@ -5,19 +5,20 @@ using UnityEngine.UI;
 
 public class TestCode : MonoBehaviour
 {
-    public GameObject missionPrefab;
+    private Collider2D collider;
+    bool isOn;
 
-
-    private void Update()
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PlayCodeMission();
-        }
+        collider = GetComponent<Collider2D>();
     }
 
-    public void PlayCodeMission()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Instantiate(missionPrefab, Vector3.zero, Quaternion.identity);
+        isOn = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isOn = false;
     }
 }

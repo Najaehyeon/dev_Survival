@@ -519,8 +519,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4181067942136998294}
-  - component: {fileID: 2319178659967372376}
   - component: {fileID: 3283569152579587394}
+  - component: {fileID: 2319178659967372376}
+  - component: {fileID: 1192220959825971947}
   m_Layer: 5
   m_Name: ServerMission
   m_TagString: Untagged
@@ -558,6 +559,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -200, y: -200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3283569152579587394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5163636193036708909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4acf1945a344f439aa7cadf2fb296a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGameEnd: 0
+  serverRoomMission: {fileID: 2319178659967372376}
+  missionTime: 10
+  destinations:
+  - {fileID: 4694242703226856467}
+  - {fileID: 277125806213704916}
+  - {fileID: 4179881743361693059}
+  missionComplete: {fileID: 7700933423638107274}
+  timeOver: {fileID: 2649908072345732639}
+  missionFail: {fileID: 7109184257392673910}
+  timeOverText: {fileID: 2400236319248759000}
+  timerText: {fileID: 76795916524755988}
 --- !u!114 &2319178659967372376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,7 +601,7 @@ MonoBehaviour:
   redWireDestination: {fileID: 4694242703226856467}
   blueWireDestination: {fileID: 277125806213704916}
   yellowWireDestination: {fileID: 4179881743361693059}
---- !u!114 &3283569152579587394
+--- !u!114 &1192220959825971947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -585,21 +610,71 @@ MonoBehaviour:
   m_GameObject: {fileID: 5163636193036708909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a4acf1945a344f439aa7cadf2fb296a, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGameEnd: 1
-  serverRoomMission: {fileID: 2319178659967372376}
-  missionTime: 10
-  destinations:
-  - {fileID: 4694242703226856467}
-  - {fileID: 277125806213704916}
-  - {fileID: 4179881743361693059}
-  missionComplete: {fileID: 7700933423638107274}
-  timeOver: {fileID: 2649908072345732639}
-  missionFail: {fileID: 7109184257392673910}
-  timeOverText: {fileID: 2400236319248759000}
-  timerText: {fileID: 76795916524755988}
+  m_Actions: {fileID: -944628639613478452, guid: fda65d409e59c7c4c834162abdcef211, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 01fe4a31-58e2-4391-bf60-bf00122ddd76
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4a6c20c5-ff7f-4144-ac76-13917bc165ef
+    m_ActionName: Player/Interaction[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4bcec6bc-01b4-46ee-a05c-167086035e40
+    m_ActionName: BugMission/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2319178659967372376}
+        m_TargetAssemblyTypeName: ServerRoomMission, Assembly-CSharp
+        m_MethodName: MouseInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b31730c5-72e4-4eb2-bec7-c68633dfc0c2
+    m_ActionName: ServerMission/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2319178659967372376}
+        m_TargetAssemblyTypeName: ServerRoomMission, Assembly-CSharp
+        m_MethodName: MouseDrag
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 537822c5-2a51-4db8-8f37-0b4a11b8e346
+    m_ActionName: ServerMission/MousePos[/Mouse/position]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: ServerMission
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &6369225325094499705
 GameObject:
   m_ObjectHideFlags: 0

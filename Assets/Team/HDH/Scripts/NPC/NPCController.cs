@@ -1,0 +1,37 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.AI;
+
+public class NPCController : MonoBehaviour
+{
+    NavMeshAgent agent;
+    NPCStateMachine stateMachine;
+    
+    private int destinationIndex;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateUpAxis = false;
+        agent.updateRotation = false;
+        stateMachine = GetComponent<NPCStateMachine>();
+        stateMachine.Init();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        stateMachine.StateUpdate();
+        agent.SetDestination(stateMachine.CurrentNPCState.TargetDestination);
+    }
+
+    public void ChangeMoveSpeed(float moveSpeed)
+    {
+        agent.speed = moveSpeed;
+    }
+    
+}

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -11,6 +8,9 @@ public class GameManager : Singleton<GameManager>
     [field: SerializeField] public float PassedTime { get; private set; }
     [field: SerializeField] public bool isMissionInProgress;
 
+    [field: SerializeField] public int Stress { get; private set; }
+    //MissionTimer 에서 변경
+
     //UI test를 위해 추가 추후 적용시 삭제
     [SerializeField] public UItest uiTest;
 
@@ -18,16 +18,16 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        stateMachine = new GameStateMachine();
+        stateMachine = gameObject.AddComponent<GameStateMachine>();
         stateMachine.Init();
 
-        uiTest.ScoreText.text = Score.ToString();
-        uiTest.MoneyText.text = Money.ToString();
+        //uiTest.ScoreText.text = Score.ToString();
+        //uiTest.MoneyText.text = Money.ToString();
     }
 
     private void Update()
     {
-        stateMachine.Update();
+        stateMachine.StateUpdate();
     }
 
     /// <summary>
@@ -36,6 +36,7 @@ public class GameManager : Singleton<GameManager>
     public void PassDay()
     {
         Day++;
+        UIManager.Instance.ChangeStatusUI(Status.Day, Day);
     }
 
     /// <summary>
@@ -61,7 +62,8 @@ public class GameManager : Singleton<GameManager>
     public void ChangeScore(int amount)
     {
         Score = Mathf.Max(0, Score + amount);
-        uiTest.ScoreText.text = Score.ToString();
+        UIManager.Instance.ChangeStatusUI(Status.Score, Score);
+        //uiTest.ScoreText.text = Score.ToString();
     }
 
     /// <summary>
@@ -71,7 +73,15 @@ public class GameManager : Singleton<GameManager>
     public void ChangeMoney(int amount)
     {
         Money = Mathf.Max(0, Money + amount);
-        uiTest.MoneyText.text = Money.ToString();
+        UIManager.Instance.ChangeStatusUI(Status.Money, Money);
+        //uiTest.MoneyText.text = Money.ToString();
+    }
+
+    public void ChangeStress(int amount)
+    {
+        Stress = Mathf.Max(0, Stress + amount);
+        UIManager.Instance.ChangeStatusUI(Status.Stress, (float)Stress);
+        //uiTest.ScoreText.text = Score.ToString();
     }
 
 }

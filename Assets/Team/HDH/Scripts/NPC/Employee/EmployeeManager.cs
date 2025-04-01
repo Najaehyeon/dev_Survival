@@ -1,0 +1,13 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class EmployeeManager : Singleton<EmployeeManager>
+{
+    public List<NPCStateMachine> employees;
+    
+    public Queue<NPCStateMachine> IdleEmployees = new Queue<NPCStateMachine>();
+    
+}

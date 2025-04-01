@@ -39,7 +39,7 @@
                 {
                     "name": "up",
                     "id": "e356db99-76ba-43fa-b12f-19459d497b70",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -50,7 +50,7 @@
                 {
                     "name": "down",
                     "id": "f60e31d7-b2fc-4043-bcd1-318bbdcac3fa",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -61,7 +61,7 @@
                 {
                     "name": "left",
                     "id": "fb60959d-c433-4f1d-8c58-11473a47cc2d",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -72,7 +72,7 @@
                 {
                     "name": "right",
                     "id": "a5313072-8c68-47a7-ae25-db29714999d0",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -88,6 +88,102 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "BugMission",
+            "id": "5ab8c81c-23f9-4ce2-9f2f-198194640ad9",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "4bcec6bc-01b4-46ee-a05c-167086035e40",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MousePos",
+                    "type": "Value",
+                    "id": "b35a724b-5395-41c0-9c8d-58ab90d5a72c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3e3aa357-5efe-4cee-9474-1535831a9479",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4373b67a-4220-4a1e-af4a-7bff63213ae1",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "ServerMission",
+            "id": "4d7342a5-8d65-4238-8051-48dc16e06894",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "b31730c5-72e4-4eb2-bec7-c68633dfc0c2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MousePos",
+                    "type": "Value",
+                    "id": "537822c5-2a51-4db8-8f37-0b4a11b8e346",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5ed1263a-0072-4226-ba6f-90b8282d68ac",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54f6fc80-52b2-4ebc-8fce-f85e8fabdfd9",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

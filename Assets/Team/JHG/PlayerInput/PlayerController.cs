@@ -10,33 +10,35 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
     private Vector2 movementDirection;
-    private Vector2 lookDirection;
 
     Rigidbody2D _rigidbody;
 
+    MissionTimer MissionTimer;
+    CoffeeMachine coffeeMachin;
+    bool isTriggerOn = false;
+    bool isGaming = false;
+
+    public AudioClip moveClip;
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         animationHandler = GetComponent<AnimationHandler>();
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         Move();
+        //Debug.Log("게임중"+isGaming);
+        isGaming = GameManager.Instance.isMissionInProgress;
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed && !isGaming)
         {
             movementDirection = context.ReadValue<Vector2>();
-            Debug.Log(movementDirection);
             animationHandler.IsMove(movementDirection);
+            
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
@@ -44,12 +46,56 @@ public class PlayerController : MonoBehaviour
             movementDirection = Vector2.zero;  
         }
     }
-
+    float footStepTime = 0;
+    float footstepRate = 0.5f;
     private void Move()
     {
         Vector2 dir = transform.up * movementDirection.y + transform.right * movementDirection.x;
         dir *= moveSpeed;
 
         _rigidbody.velocity = dir;
+
+        
+        if (moveClip != null && movementDirection != Vector2.zero)
+        {
+            if (Mathf.Abs(_rigidbody.velocity.y) > 0.1f || Mathf.Abs(_rigidbody.velocity.x) > 0.1f)
+            {
+                if (Time.time - footStepTime > footstepRate)
+                {
+                    footStepTime = Time.time;
+                    SoundManager.instance.PlayClip(moveClip);
+                }
+            }
+        }
+    }
+
+    public void OnInteractionInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed && isTriggerOn)
+        {
+            //Debug.Log("상호작용");
+            if (MissionTimer != null) MissionTimer.OnGameStart();
+            if (coffeeMachin != null && coffeeMachin.isUse) coffeeMachin.DownStress();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isTriggerOn = true;
+        if (collision.tag == "Mission")
+        {
+            MissionTimer = collision.gameObject.GetComponent<MissionTimer>();
+        }
+        else if (collision.tag == "Coffee")
+        {
+            coffeeMachin = collision.gameObject.GetComponent<CoffeeMachine>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isTriggerOn = false;
+        MissionTimer = null;
+        coffeeMachin = null;
     }
 }

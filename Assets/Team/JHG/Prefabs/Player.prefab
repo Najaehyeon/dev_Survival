@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4597963987195493689}
   - component: {fileID: 2569402325396325513}
   - component: {fileID: 8951357315185515526}
+  - component: {fileID: 5234627229679942687}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -48,7 +49,7 @@ Animator:
   m_GameObject: {fileID: 8915344672588504333}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7421de313d68cd14abc95aeed4c0dc55, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7ef014ee2ac501443ab69522f421e652, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -99,7 +100,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1377316451, guid: 311e91b00deb71f4e8691bf3511df021, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -153,9 +154,25 @@ MonoBehaviour:
     m_ActionId: 01fe4a31-58e2-4391-bf60-bf00122ddd76
     m_ActionName: Player/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2569402325396325513}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnInteractionInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4a6c20c5-ff7f-4144-ac76-13917bc165ef
     m_ActionName: Player/Interaction[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4bcec6bc-01b4-46ee-a05c-167086035e40
+    m_ActionName: BugMission/Click[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -246,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  moveClip: {fileID: 8300000, guid: 14ae706fef2303e4cb71112dbd5d250b, type: 3}
 --- !u!114 &8951357315185515526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,3 +276,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdee28a96238ca40b9a989140a80a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5234627229679942687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915344672588504333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c835ee4106c398a419a9c22d95c9a43d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  officeRoom: {fileID: 0}
+  serverRoom: {fileID: 0}
+  restRoom: {fileID: 0}

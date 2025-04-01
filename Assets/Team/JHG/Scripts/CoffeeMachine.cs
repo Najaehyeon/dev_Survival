@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class CoffeeMachine : MonoBehaviour
+{
+    public bool isUse = true;
+    public float coffeMachineColltime = 10f;
+    public int coffeStress = 10;
+
+    [SerializeField] private Image timerImage;
+
+    private void Start()
+    {
+        isUse = true;
+    }
+    public void DownStress()
+    {
+        isUse = false;
+        Debug.Log("스트레스 감소");
+        GameManager.Instance.ChangeStress(-coffeStress);
+        StartCoroutine(CoffeeMachineTimer());
+    }
+
+    IEnumerator CoffeeMachineTimer()
+    {
+        while (!isUse)
+        {
+            coffeMachineColltime -= Time.deltaTime;
+            timerImage.fillAmount = 1 - (coffeMachineColltime / 10f);
+            if (coffeMachineColltime < 0)
+            {
+                isUse = true;
+                coffeMachineColltime = 10f;
+                timerImage.fillAmount = 0;
+            }
+            yield return null;
+        }
+    }
+}
