@@ -3789,6 +3789,7 @@ MonoBehaviour:
   firstEmployButton: {fileID: 4005275886969068753}
   secondEmployButton: {fileID: 8924888450533563180}
   thirdEmployButton: {fileID: 634047488844781050}
+  moneyInEmployShop: {fileID: 899256055581454811}
   allEmployees:
   - {fileID: 11400000, guid: f56d838476eff764cb42ae1a0278fa11, type: 2}
   - {fileID: 11400000, guid: 9c3626465f49eaa4a8822ece8eb0af50, type: 2}
@@ -10420,6 +10421,8 @@ MonoBehaviour:
   employShop: {fileID: 3170992232370838648}
   buyDog: {fileID: 3176948366428957321}
   buyCat: {fileID: 7310528167008008425}
+  buyBottle: {fileID: 0}
+  buyCloud: {fileID: 0}
 --- !u!114 &8959350710176337555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12309,6 +12312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DogPayButton: {fileID: 6241513868790780780}
   CatPayButton: {fileID: 7319076782300511167}
+  moneyInItemShop: {fileID: 6493696083587566125}
 --- !u!1 &8070561974956097420
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,12 @@
+using TMPro;
 using UnityEngine;
 
 public class ItemShop : MonoBehaviour
 {
     public GameObject DogPayButton;
     public GameObject CatPayButton;
+
+    public TextMeshProUGUI moneyInItemShop;
 
     private bool hasDog = false;
     private bool hasCat = false;
@@ -17,6 +20,11 @@ public class ItemShop : MonoBehaviour
         animalsPrice = 60;
         greenPrice = 20;
         cloudPrice = 10;
+    }
+
+    private void Start()
+    {
+        moneyInItemShop.text = GameManager.Instance.Money.ToString() + "\\";
     }
 
     public void BuyDog()
