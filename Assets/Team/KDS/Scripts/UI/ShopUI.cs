@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ShopUI : BaseUI
 {
-    bool state;
+    bool isEmployShop;
     [Header("Shop")]
     public ItemShop itemShop;
     public EmployShop employShop;
@@ -11,10 +11,18 @@ public class ShopUI : BaseUI
     [Header("Button")]
     public Button buyDog;
     public Button buyCat;
+
+    private void Start()
+    {
+        buyDog.onClick.AddListener(ShopManager.Instance.itemShop.BuyDog);
+        buyCat.onClick.AddListener(ShopManager.Instance.itemShop.BuyCat);
+    }
+
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
     }
+
     protected override UIState GetUIState()
     {
         return UIState.Shop;
@@ -27,10 +35,11 @@ public class ShopUI : BaseUI
         //게임시간 , 스테이트들,
         UIManager.Instance.ChangeState(UIState.InGame);
     }
+
     public void OnChangeShopstate()
     {
-        state = !state;
-        if(state)
+        isEmployShop = !isEmployShop;
+        if(isEmployShop)
         {
             employShop.gameObject.SetActive(true);
             itemShop.gameObject.SetActive(false);
