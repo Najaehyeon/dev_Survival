@@ -18,8 +18,22 @@ public class GameManager : Singleton<GameManager>
 
     public Transform StartPos;
 
+    public void Init(int money, int day, int stress)
+    {
+        Money = money;
+        Day = day;
+        Stress = stress;
+        UIManager.Instance.ChangeStatusUI(Status.Day, Day);
+        UIManager.Instance.ChangeStatusUI(Status.Money, Money);
+        UIManager.Instance.ChangeStatusUI(Status.Stress, stress);
+    }
+    private void OnEnable()
+    {
+        DataManager.Instance.LoadGameManager();
+    }
     private void Start()
     {
+      
         stateMachine = gameObject.AddComponent<GameStateMachine>();
         stateMachine.Init();
         UIManager.Instance.ChangeStatusUI(Status.Money, Money);

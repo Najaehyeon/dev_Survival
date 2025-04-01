@@ -14,6 +14,7 @@ public class ShopState : GameBaseState
     {
         GameManager.Instance.SetTimeZero();
         GameManager.Instance.PassDay();
+        DataManager.Instance.SaveGameManager();
     }
 
     public override void Update()
