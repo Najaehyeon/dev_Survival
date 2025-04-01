@@ -24,26 +24,26 @@ public class Employee : MonoBehaviour
     /// NPC에 미션을 할당, 수락 확률에 따라 NPCStateMachine 또는 null을 반환
     /// </summary>
     /// <param name="missionTimer">할당할 미션</param>
-    public NPCStateMachine AssignMission(MissionTimer missionTimer)
+    public Employee AssignMission(MissionTimer missionTimer)
     {
         if(npcStateMachine.CurrentNPCState != npcStateMachine.npcIdleState) return  null;
         
         Random random = new Random();
         
-        int acceptRate = random.Next(0, 100);
-        if (acceptRate <= employeeStates.EmployData.Sincerity)
-        {
-            Debug.Log("미션 거절");
-            QuitMission();
-            return null;
-        }
+        // int acceptRate = random.Next(0, 100);
+        // if (acceptRate <= employeeStates.EmployData.Sincerity)
+        // {
+        //     Debug.Log("미션 거절");
+        //     QuitMission();
+        //     return null;
+        // }
         
         Debug.Log("Receive mission");
         npcStateMachine.ChangeState(npcStateMachine.npcMissionState);
         Vector3 targetPos = new Vector3(missionTimer.transform.position.x, missionTimer.transform.position.y, 0);
         npcStateMachine.CurrentNPCState.TargetDestination = targetPos;
         Debug.Log(targetPos);
-        return npcStateMachine;
+        return this;
     }
     
     /// <summary>

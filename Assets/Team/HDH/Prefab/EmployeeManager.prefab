@@ -56,6 +56,6 @@ MonoBehaviour:
   hiredEmployees: []
   employeeSpawnPoint: {fileID: 0}
   destinationSets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 4c19dcacfd8227146b45506af17f5580, type: 2}
+  - {fileID: 11400000, guid: bb6b67586ff219240a66d0cf14c16297, type: 2}
+  - {fileID: 11400000, guid: a4ccd5b3f9b63cc4f94d8fbda9a82a06, type: 2}

@@ -48,11 +48,13 @@ public abstract class Mission : MonoBehaviour
     /// <param name="interect"></param>
     public void NPCInterection(Employee interect)
     {
+        Debug.Log("NPC와 소통 시도");
         if(interect==target)
         {
             //target의 스테이터스에따라 스코어랑 스트레스 반환
             MissionManager.Instance.controller.IsAllGameEnd();
             Debug.Log("NPC와 소통");
+            target.QuitMission();
         }
     }
 }

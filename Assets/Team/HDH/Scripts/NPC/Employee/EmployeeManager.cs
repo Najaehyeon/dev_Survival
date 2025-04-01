@@ -59,7 +59,7 @@ public class EmployeeManager : Singleton<EmployeeManager>
         employeeObject.GetComponent<EmployeeStates>().MissionDestinationSet = destinationSets[1];
         employeeObject.GetComponent<EmployeeStates>().RestDestinationSet = destinationSets[2];
         employeeObject.AddComponent<NPCController>();
-        employeeObject.AddComponent<NPCStateMachine>().ChangeState(employeeObject.GetComponent<NPCStateMachine>().npcIdleState);
+        employeeObject.AddComponent<NPCStateMachine>();
     }
     
     /// <summary>

@@ -34,7 +34,7 @@ public class ShopUI : BaseUI
     protected override UIState GetUIState()
     {
         MoveStressBar();
-        Debug.Log("스트레스 바 업그레이드 됨");
+        //Debug.Log("스트레스 바 업그레이드 됨");
         return UIState.Shop;
     }
 

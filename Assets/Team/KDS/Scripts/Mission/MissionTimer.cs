@@ -46,9 +46,9 @@ public class MissionTimer:MonoBehaviour
     /// </summary>
     public void HireNPC()
     {
-            Debug.Log("고용중");
-            //아이덜 스테이트인 npc 리스트(NPCManager.intance.IdalNPCs) 순회하면서 npc에게 AssignMission(missionTimer);
-            //missionTimer.mission.target = 
+        if (EmployeeManager.Instance.IdleEmployees == null) return;
+        //아이덜 스테이트인 npc 리스트(NPCManager.intance.IdalNPCs) 순회하면서 npc에게 AssignMission(missionTimer);
+        mission.target = EmployeeManager.Instance.IdleEmployees.Dequeue().AssignMission(this);
     }
 
 
@@ -70,6 +70,7 @@ public class MissionTimer:MonoBehaviour
     /// <param name="interect"></param>
     public void NPCInterection(Employee interect)
     {
+        Debug.Log("미션 전달");
         MissionManager.Instance.SelectedMissions.Remove(this);
         mission.NPCInterection(interect);
         gameObject.SetActive(false);
