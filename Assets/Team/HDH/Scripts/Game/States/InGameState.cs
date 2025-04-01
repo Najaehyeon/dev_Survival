@@ -19,7 +19,7 @@ public class InGameState : GameBaseState
 
     public override void Exit()
     {
-        
+        MissionManager.Instance.IsDayEnd();
     }
 
     public override void Update()

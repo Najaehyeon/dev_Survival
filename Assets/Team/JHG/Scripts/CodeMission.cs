@@ -10,12 +10,14 @@ public class CodeMission : Mission
     [SerializeField] private GameObject errerPanel;
     [SerializeField] private GameObject inspectorPanel;
     [SerializeField] private GameObject selectObjectPanel;
+    [SerializeField] private GameObject endPanel;
 
     [Header("Panel Button")]
     [SerializeField] private Button errerButton;
     [SerializeField] private Button unityButton;
     [SerializeField] private Button inspectorButton;
     [SerializeField] private Button applyButton;
+    [SerializeField] private Button endButton;
 
 
     [Header("Mission")]
@@ -30,6 +32,10 @@ public class CodeMission : Mission
     [SerializeField] private TextMeshProUGUI selectObjectText;
     [SerializeField] private string selectText;
 
+    [Header("Score Text")]
+    [SerializeField] private TextMeshProUGUI completeText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    private bool isFail;
 
     CodeMissionTimer codeMissionTimer;
 
@@ -43,6 +49,7 @@ public class CodeMission : Mission
 
         inspectorPanel.SetActive(false);
         selectObjectPanel.gameObject.SetActive(false);
+        endPanel.SetActive(false);
 
         codeMissionTimer.startTimer();
     }
@@ -60,6 +67,7 @@ public class CodeMission : Mission
         unityButton.onClick.AddListener(OnClickUnityButton);
         inspectorButton.onClick.AddListener(OnClickInspectorButton);
         applyButton.onClick.AddListener(OnClickApplyButton);
+        endButton.onClick.AddListener(OnClickEndButton);
 
         for (int i = 0; i < objectListButton.Count; i++)
         {
@@ -92,8 +100,16 @@ public class CodeMission : Mission
         selectObjectText.text = objectListButton[i].GetComponent<TextMeshProUGUI>().text;
         selectText = selectObjectText.text;
     }
+
+    private void UpdateScore()
+    {
+        completeText.text = isFail ? "Build failure" : "Build Complete";
+        scoreText.text = $"SCORE : {score}";
+    }
+
     private void OnClickApplyButton()
     {
+        codeMissionTimer.EndTimer();
         if (answer == selectText && codeMissionTimer.curTime < codeMissionTimer.timer)
         {
             IsAnswer();
@@ -102,7 +118,10 @@ public class CodeMission : Mission
         {
             IsFail();
         }
-        codeMissionTimer.EndTimer();
+    }
+    private void OnClickEndButton()
+    {
+        GameEnd();
     }
 
     public void RandomText() // 랜덤으로 정답 고르는 매서드
@@ -133,7 +152,10 @@ public class CodeMission : Mission
         Debug.Log("성공");
         score = codeMissionTimer.curTime > 10 ? 3 : 5;
         Debug.Log("score "+ score);
-        GameEnd();
+        isFail = false;
+        //GameEnd();
+        UpdateScore();
+        endPanel.SetActive(true);
     }
 
     private void IsFail()
@@ -141,7 +163,10 @@ public class CodeMission : Mission
         Debug.Log("실패");
         score = 0;
         Debug.Log("score " + score);
-        GameEnd();
+        isFail = true;
+        //GameEnd();
+        UpdateScore();
+        endPanel.SetActive(true);
     }
 
     public override void GameEnd()

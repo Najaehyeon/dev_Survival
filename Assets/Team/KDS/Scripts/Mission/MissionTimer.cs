@@ -32,8 +32,8 @@ public class MissionTimer:MonoBehaviour
         gameStart= false;
         timeOut = 20f;
         gameObject.SetActive(true);
+        MissionManager.Instance.SelectedMissions.Add(this);
         HireNPC();
-        Debug.Log("Mission Assign");
     }
 
     public void HireNPC()
@@ -48,7 +48,8 @@ public class MissionTimer:MonoBehaviour
     {
         gameStart = true;
         missionInstance = Instantiate(mission, MissionManager.Instance.controller.canvas.transform);
-        if(mission.target!=null)mission.target.QuitMission();
+        MissionManager.Instance.SelectedMissions.Remove(this);
+        if (mission.target!=null)mission.target.QuitMission();
         gameObject.SetActive(false);
         GameManager.Instance.isMissionInProgress = true;
     }
@@ -56,11 +57,18 @@ public class MissionTimer:MonoBehaviour
     {
         gameStart = true;
         GameManager.Instance.ChangeStress(10);
+        MissionManager.Instance.SelectedMissions.Remove(this);
         if (mission.target != null) mission.target.QuitMission();
         MissionManager.Instance.controller.IsAllGameEnd();
         gameObject.SetActive(false);
     }
-
+    public void IsDayEnd()
+    {
+        gameStart = true;
+        MissionManager.Instance.SelectedMissions.Remove(this);
+        if (mission.target != null) mission.target.QuitMission();
+        gameObject.SetActive(false);
+    }
     private void UpdateFillAmount()
     {
         radialFill.fillAmount =1-(timeOut / 20f);
@@ -77,8 +85,8 @@ public class MissionTimer:MonoBehaviour
 
     public void NPCInterection(NPCStateMachine interect)
     {
+        MissionManager.Instance.SelectedMissions.Remove(this);
         mission.NPCInterection(interect);
         gameObject.SetActive(false);
-
     }
 }

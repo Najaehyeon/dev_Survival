@@ -47,7 +47,7 @@ public class InGameUI : BaseUI
         {
             case Status.Day:
                 day = value;
-                dayText.text=value.ToString();
+                dayText.text=value.ToString()+" 일";
                 break;
 
             case Status.Score:

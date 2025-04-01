@@ -42,7 +42,6 @@ public class MissionController : MonoBehaviour
         ChangeState(MissionState.Phase);
         currentInterval = UnityEngine.Random.Range(minInterval, maxInterval);
         missions = new MissionSelect[]{ MissionSelect.Bug, MissionSelect.Call, MissionSelect.Code, MissionSelect.Server };
-        //MissionSelector();
     }
 
     private void Update()
@@ -98,14 +97,25 @@ public class MissionController : MonoBehaviour
    
     public void IsAllGameEnd()
     {
-        claerCount++;
-        if(claerCount==missionCount)
-        {
-            claerCount = 0;
-            ChangeState(MissionState.Ready);
-        }
+        //claerCount++;
+        //if(claerCount==missionCount)
+        //{
+        //    claerCount = 0;
+        //    ChangeState(MissionState.Ready);
+        //}
+        if(MissionManager.Instance.SelectedMissions.Count==0) ChangeState(MissionState.Ready);
     }
+    public void IsDayEnd()
+    {
+        claerCount = 0;
+        missionCount = 0;
+        currentState = MissionState.Phase;
+        foreach(MissionTimer missionTimer in MissionManager.Instance.SelectedMissions)
+        {
+            missionTimer.IsDayEnd();
+        }
 
+    }
     public void ChangeState(MissionState state)
     {
         switch (state)
