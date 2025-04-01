@@ -33,7 +33,7 @@ public class ScoreUI : BaseUI
         rect.anchoredPosition = new Vector2(-1500, 0);
         score= GameManager.Instance.Score;
         money = GameManager.Instance.Money;
-        endmoney = money + score;
+        endmoney = money + (score*10);
         scoreText.text = score.ToString();
         moneyText.text = money.ToString();
         stressText.text = "";
@@ -59,12 +59,12 @@ public class ScoreUI : BaseUI
         {
             score--;
             scoreText.text = score.ToString();
-            money++;
-            moneyText.text = money.ToString();
+            money+=10;
+            moneyText.text = money.ToString() + "만원";
             yield return new WaitForSeconds(0.02f);
         }
         scoreText.text = "0";
-        moneyText.text = endmoney.ToString();
+        moneyText.text = endmoney.ToString() + "만원";
         StartCoroutine(TypeStress());
     }
 

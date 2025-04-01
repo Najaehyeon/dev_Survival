@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af51a81310b6bf44cb009df33891f604, type: 3}
   m_Name: Employee_Rest
   m_EditorClassIdentifier: 
-  StateName: Cat_Rest
   DestinationSet:
-  - {x: 3.25, y: 5.47, z: 0}
+  - {x: 7.62, y: 7.62, z: 0}

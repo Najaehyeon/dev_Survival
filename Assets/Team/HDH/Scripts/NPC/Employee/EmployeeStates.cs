@@ -63,8 +63,6 @@ public class EmployeeIdleState : NPCBaseState
     {
         if(passedTime > timeBetweenResetTarget)
         {
-            Debug.Log("Set Random Destination");
-
             if(prevTargetDestination != Vector3.zero)
             {
                 do
@@ -101,7 +99,7 @@ public class EmployeeMissionState : NPCBaseState
     
     public override void Enter()
     {
-        NPCStateMachine.Controller.ChangeMoveSpeed(5f);
+        NPCStateMachine.Controller.ChangeMoveSpeed(3f);
     }
     public override void Exit()
     {
@@ -124,16 +122,19 @@ public class EmployeeMissionState : NPCBaseState
 
 public class EmployeeRestState : NPCBaseState
 {
-    private float restTime = 30f;
+    private float restTime = 10f;
     private float passedTime;
     
     public EmployeeRestState(NPCStateMachine stateMachine) : base(stateMachine)
     {
+        destinations =  NPCStateMachine.stateSet.RestDestinationSet.DestinationSet;
     }
     
     public override void Enter()
     {
-        NPCStateMachine.Controller.ChangeMoveSpeed(5f);
+        Debug.Log("Enter Rest");
+        NPCStateMachine.Controller.ChangeMoveSpeed(1f);
+        TargetDestination = destinations[0];
     }
     public override void Exit()
     {
@@ -142,9 +143,9 @@ public class EmployeeRestState : NPCBaseState
 
     public override void Update()
     {
-        if (passedTime >= restTime)
+        if (passedTime > restTime)
         {
-            StateMachine.ChangeState(NPCStateMachine.npcRestState);
+            StateMachine.ChangeState(NPCStateMachine.npcIdleState);
         }
         else
         {

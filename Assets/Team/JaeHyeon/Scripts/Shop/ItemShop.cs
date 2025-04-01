@@ -26,7 +26,7 @@ public class ItemShop : MonoBehaviour
 
     public void BuyDog()
     {
-        if (hasCat) return;
+        if (hasDog) return;
         if (!HaveMoney(animalsPrice))
         {
             UIManager.Instance.shopUI.notEnoughAlert.SetActive(true);
@@ -90,6 +90,6 @@ public class ItemShop : MonoBehaviour
 
     public void MonenInit()
     {
-        moneyInItemShop.text = GameManager.Instance.Money.ToString() + "\\";
+        moneyInItemShop.text = GameManager.Instance.Money.ToString() + "만원";
     }
 }

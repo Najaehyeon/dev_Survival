@@ -13,6 +13,9 @@ public class MissionTimer:MonoBehaviour
     public Color normalColor = Color.white;
     public Color warningColor = Color.red;
     [SerializeField] private bool gameStart;
+
+    //NPC정보 가지고있는애로 변경
+    public Employee? target;
     public virtual void Update()
     {
         if (!gameStart)
@@ -46,9 +49,8 @@ public class MissionTimer:MonoBehaviour
     /// </summary>
     public void HireNPC()
     {
-        if (EmployeeManager.Instance.IdleEmployees == null) return;
-        //아이덜 스테이트인 npc 리스트(NPCManager.intance.IdalNPCs) 순회하면서 npc에게 AssignMission(missionTimer);
-        mission.target = EmployeeManager.Instance.IdleEmployees.Dequeue().AssignMission(this);
+        if (EmployeeManager.Instance.IdleEmployees.Count == 0) return;
+        target = EmployeeManager.Instance.IdleEmployees.Dequeue().AssignMission(this);
     }
 
 
@@ -59,8 +61,8 @@ public class MissionTimer:MonoBehaviour
     {
         gameStart = true;
         missionInstance = Instantiate(mission, MissionManager.Instance.controller.canvas.transform);
-        MissionManager.Instance.SelectedMissions.Remove(this);
-        if (mission.target!=null)mission.target.QuitMission();
+        MissionManager.Instance.RemoveMission(this);
+        if (target !=null)target.QuitMission();
         gameObject.SetActive(false);
         GameManager.Instance.isMissionInProgress = true;
     }
@@ -71,9 +73,17 @@ public class MissionTimer:MonoBehaviour
     public void NPCInterection(Employee interect)
     {
         Debug.Log("미션 전달");
-        MissionManager.Instance.SelectedMissions.Remove(this);
-        mission.NPCInterection(interect);
+        MissionManager.Instance.RemoveMission(this);
         gameObject.SetActive(false);
+        if (interect == target)
+        {
+            //target의 스테이터스에따라 스코어랑 스트레스 반환
+            CalculateScore(interect);
+            MissionManager.Instance.controller.IsAllGameEnd();
+            Debug.Log("NPC와 소통");
+            target.QuitMission();
+
+        }
     }
     /// <summary>
     /// 제한시간안에 상호작용 되지 않으면 호출
@@ -82,8 +92,8 @@ public class MissionTimer:MonoBehaviour
     {
         gameStart = true;
         GameManager.Instance.ChangeStress(10);
-        MissionManager.Instance.SelectedMissions.Remove(this);
-        if (mission.target != null) mission.target.QuitMission();
+        MissionManager.Instance.RemoveMission(this);
+        if (target != null) target.QuitMission();
         MissionManager.Instance.controller.IsAllGameEnd();
         gameObject.SetActive(false);
     }
@@ -94,8 +104,7 @@ public class MissionTimer:MonoBehaviour
     public void IsDayEnd()
     {
         gameStart = true;
-        MissionManager.Instance.SelectedMissions.Remove(this);
-        if (mission.target != null) mission.target.QuitMission();
+        if (target != null) target.QuitMission();
         gameObject.SetActive(false);
     }
     private void UpdateFillAmount()
@@ -112,5 +121,16 @@ public class MissionTimer:MonoBehaviour
         }
     }
 
-
+    private void CalculateScore(Employee interect)
+    {
+        int success = interect.Data.Ability;
+        if(success>Random.Range(1,101))
+        {
+            GameManager.Instance.ChangeScore(3);
+        }
+        else
+        {
+            GameManager.Instance.ChangeStress(5);
+        }
+    }
 }

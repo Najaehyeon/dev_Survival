@@ -103,7 +103,8 @@ public class MissionController : MonoBehaviour
     /// </summary>
     public void IsAllGameEnd()
     {
-        if(MissionManager.Instance.SelectedMissions.Count==0) ChangeState(MissionState.Ready);
+        if (MissionManager.Instance.SelectedMissions.Count == 0) ChangeState(MissionState.Ready);
+        else Debug.Log("아직게임남음");
     }
 
     /// <summary>
@@ -118,8 +119,9 @@ public class MissionController : MonoBehaviour
         {
             missionTimer.IsDayEnd();
         }
-
+        MissionManager.Instance.SelectedMissions.Clear();
     }
+
     public void ChangeState(MissionState state)
     {
         switch (state)

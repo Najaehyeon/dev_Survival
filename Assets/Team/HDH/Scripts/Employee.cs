@@ -30,18 +30,19 @@ public class Employee : MonoBehaviour
         
         Random random = new Random();
         
-        // int acceptRate = random.Next(0, 100);
-        // if (acceptRate <= employeeStates.EmployData.Sincerity)
-        // {
-        //     Debug.Log("미션 거절");
-        //     QuitMission();
-        //     return null;
-        // }
+        int acceptRate = random.Next(0, 100);
+        if (acceptRate >= employeeStates.EmployData.Sincerity)
+        {
+            Debug.Log("미션 거절");
+            QuitMission();
+            return null;
+        }
         
         Debug.Log("Receive mission");
         npcStateMachine.ChangeState(npcStateMachine.npcMissionState);
         Vector3 targetPos = new Vector3(missionTimer.transform.position.x, missionTimer.transform.position.y, 0);
         npcStateMachine.CurrentNPCState.TargetDestination = targetPos;
+        npcStateMachine.AddStress(10 * employeeStates.EmployData.StressControl);
         return this;
     }
     

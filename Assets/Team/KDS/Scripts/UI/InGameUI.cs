@@ -57,7 +57,7 @@ public class InGameUI : BaseUI
 
             case Status.Money:
                 money = value;
-                moneyText.text=value.ToString();
+                moneyText.text=value.ToString() + "만원";
                 break;
         }
     }

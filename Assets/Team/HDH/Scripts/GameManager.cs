@@ -22,7 +22,8 @@ public class GameManager : Singleton<GameManager>
     {
         stateMachine = gameObject.AddComponent<GameStateMachine>();
         stateMachine.Init();
-
+        UIManager.Instance.ChangeStatusUI(Status.Money, Money);
+        UIManager.Instance.ChangeStatusUI(Status.Day, Day);
         //uiTest.ScoreText.text = Score.ToString();
         //uiTest.MoneyText.text = Money.ToString();
     }
