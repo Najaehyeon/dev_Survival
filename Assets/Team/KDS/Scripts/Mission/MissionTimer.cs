@@ -61,7 +61,7 @@ public class MissionTimer:MonoBehaviour
     {
         gameStart = true;
         missionInstance = Instantiate(mission, MissionManager.Instance.controller.canvas.transform);
-        MissionManager.Instance.SelectedMissions.Remove(this);
+        MissionManager.Instance.RemoveMission(this);
         if (target !=null)target.QuitMission();
         gameObject.SetActive(false);
         GameManager.Instance.isMissionInProgress = true;
@@ -73,7 +73,7 @@ public class MissionTimer:MonoBehaviour
     public void NPCInterection(Employee interect)
     {
         Debug.Log("미션 전달");
-        MissionManager.Instance.SelectedMissions.Remove(this);
+        MissionManager.Instance.RemoveMission(this);
         gameObject.SetActive(false);
         if (interect == target)
         {
@@ -92,7 +92,7 @@ public class MissionTimer:MonoBehaviour
     {
         gameStart = true;
         GameManager.Instance.ChangeStress(10);
-        MissionManager.Instance.SelectedMissions.Remove(this);
+        MissionManager.Instance.RemoveMission(this);
         if (target != null) target.QuitMission();
         MissionManager.Instance.controller.IsAllGameEnd();
         gameObject.SetActive(false);

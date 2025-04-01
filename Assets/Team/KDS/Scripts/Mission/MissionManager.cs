@@ -26,4 +26,16 @@ public class MissionManager : Singleton<MissionManager>
     {
         controller.ChangeState(state);
     }
+
+    public void RemoveMission(MissionTimer missionToRemove)
+    {
+        for (int i = SelectedMissions.Count - 1; i >= 0; i--)  
+        {
+            if (SelectedMissions[i] == missionToRemove)
+            {
+                SelectedMissions.RemoveAt(i); 
+                break; 
+            }
+        }
+    }
 }
