@@ -10,7 +10,7 @@ public abstract class Mission : MonoBehaviour
     public bool isGameEnd;
 
     //NPC정보 가지고있는애로 변경
-    public NPCStateMachine? target;
+    public Employee? target;
     public virtual int GetScroe()
     {
         Debug.Log(score);
@@ -46,7 +46,7 @@ public abstract class Mission : MonoBehaviour
     /// NPC가 미션클리어했을때 호출
     /// </summary>
     /// <param name="interect"></param>
-    public void NPCInterection(NPCStateMachine interect)
+    public void NPCInterection(Employee interect)
     {
         if(interect==target)
         {

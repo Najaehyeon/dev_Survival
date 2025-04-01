@@ -38,7 +38,6 @@ public class EmployeeIdleState : NPCBaseState
         Debug.Log("Idle Enter");
         NPCStateMachine.Controller.ChangeMoveSpeed(1f);
         TargetDestination = destinations[Random.Range(0, destinations.Length)];
-        EmployeeManager.Instance.IdleEmployees.Enqueue(NPCStateMachine);
         Debug.Log(EmployeeManager.Instance.IdleEmployees.Count);
     }
 
@@ -49,9 +48,7 @@ public class EmployeeIdleState : NPCBaseState
 
     public override void Update()
     {
-        if(NPCStateMachine.HasMission)
-            NPCStateMachine.ChangeState(NPCStateMachine.npcMissionState);
-        else if(NPCStateMachine.StressLevel >= NPCStateMachine.MaxStress)
+        if(NPCStateMachine.StressLevel >= NPCStateMachine.MaxStress)
         {
             NPCStateMachine.ChangeState(NPCStateMachine.npcRestState);
         }
@@ -122,7 +119,7 @@ public class EmployeeMissionState : NPCBaseState
         MissionTimer missionTimer = obj as MissionTimer;
         //미션 타이머의 직원 전용 해제 함수를 실행
         Debug.Log("Employee Mission Enter");
-        missionTimer.NPCInterection(NPCStateMachine);
+        missionTimer.NPCInterection(NPCStateMachine.GetEmployee());
     }
 }
 

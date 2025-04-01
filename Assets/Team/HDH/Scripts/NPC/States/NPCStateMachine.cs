@@ -16,7 +16,6 @@ public class NPCStateMachine : BaseStateMachine
     
     public float StressLevel { get; private set; }
     public float MaxStress = 100f;
-    public bool HasMission { get; private set; }
     public bool IsRestComplete { get; private set; }
 
     public override void Init()
@@ -31,37 +30,7 @@ public class NPCStateMachine : BaseStateMachine
 
         ChangeState(npcIdleState);
     }
-    //MissionTimer를 통해 연결
-    //NPC에 미션을 할당, Stat에 따른 수락 여부
-    /// <summary>
-    /// NPC에 미션을 할당, 수락 확률에 따라 NPCStateMachine 또는 null을 반환
-    /// </summary>
-    /// <param name="missionTimer">할당할 미션</param>
-    public NPCStateMachine AssignMission(MissionTimer missionTimer)
-    {
-        if(CurrentNPCState != npcIdleState) return  null;
-        
-        EmployeeStates employeeStates = stateSet as EmployeeStates;
-        
-        Random random = new Random();
-        
-        int acceptRate = random.Next(0, 100);
-        if (acceptRate <= employeeStates.EmployData.Sincerity)
-        {
-            Debug.Log("미션 거절");
-            ChangeState(stateSet.IdleState);
-            return null;
-        }
-        
-        Debug.Log("Receive mission");
-        HasMission = true;
-        ChangeState(npcMissionState);
-        Vector3 targetPos = new Vector3(missionTimer.transform.position.x, missionTimer.transform.position.y, 0);
-        CurrentNPCState.TargetDestination = targetPos;
-        Debug.Log(targetPos);
-        return this;
-    }
-
+    
     public void AddStress(float value)
     {
         StressLevel = Mathf.Min(StressLevel + value, MaxStress);
@@ -83,21 +52,6 @@ public class NPCStateMachine : BaseStateMachine
         missionTimer.Selected();
     }
     
-    /// <summary>
-    /// 미션 할당이 해제되었을 때
-    /// </summary>
-    public void QuitMission()
-    {
-        HasMission = false;
-        ChangeState(npcIdleState);
-    }
-
-    public EmployData GetEmployData()
-    {
-        EmployeeStates employeeStates = stateSet as EmployeeStates;
-        return employeeStates.EmployData;
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         MissionTimer currentMissionTimer;
@@ -109,5 +63,10 @@ public class NPCStateMachine : BaseStateMachine
             //OnMission -> 배정된 미션을 해결 (미션 타이머에서 직원 전용 함수)
             CurrentNPCState.OnMission(currentMissionTimer);
         }
+    }
+
+    public Employee GetEmployee()
+    {
+        return GetComponent<Employee>();
     }
 }

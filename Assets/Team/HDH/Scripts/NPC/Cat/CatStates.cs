@@ -39,10 +39,8 @@ public class CatIdleState : NPCBaseState
     }
 
     public override void Update()
-    {
-        if(NPCStateMachine.HasMission)
-            NPCStateMachine.ChangeState(NPCStateMachine.npcMissionState);
-        else if(NPCStateMachine.StressLevel >= NPCStateMachine.MaxStress)
+    { 
+        if(NPCStateMachine.StressLevel >= NPCStateMachine.MaxStress)
         {
             NPCStateMachine.ChangeState(NPCStateMachine.npcRestState);
         }
@@ -111,7 +109,7 @@ public class CatMissionState : NPCBaseState
     {
         MissionTimer missionTimer = obj as MissionTimer;
         //고양이의 경우는 미션 장소에 도착하였을 때 미션 타이머를 작동
-        NPCStateMachine.StartMissionTimer(missionTimer);
+        //NPCStateMachine.StartMissionTimer(missionTimer);
         
     }
 }
