@@ -48,16 +48,14 @@ public class EmployShop : MonoBehaviour
     private List<int> selectedEmployeeIndexes = new List<int>(); // 선택된 직원 인덱스
     private List<int> hiredEmployeeIDs = new List<int>(); // 고용된 직원 ID 저장
 
-    private void Awake()
-    {
-        ShopManager.Instance.employShop = this;
-    }
+    private ShopUI shopUI;
 
     private void Start()
     {
+        shopUI = UIManager.Instance.shopUI;
         rerollButon.onClick.AddListener(Reroll);
         Reroll();
-        MoneyInit();
+        shopUI.MoneyInit();
     }
 
     void HireEmployee(int index)
@@ -70,14 +68,14 @@ public class EmployShop : MonoBehaviour
         // 돈 부족 시
         if (GameManager.Instance.Money < allEmployees[employeeID].Price)
         {
-            UIManager.Instance.shopUI.notEnoughAlert.SetActive(true);
-            UIManager.Instance.shopUI.closeNotEnoughMoneyAlert.onClick.AddListener(UIManager.Instance.shopUI.CloseNotEnoughMoneyAlert);
+            shopUI.notEnoughMoneyAlert.SetActive(true);
+            shopUI.closeNotEnoughMoneyAlert.onClick.AddListener(shopUI.CloseNotEnoughAlert);
             return;
         }
 
         // 금액 차감 및 UI 갱신
         GameManager.Instance.ChangeMoney(-allEmployees[employeeID].Price);
-        MoneyInit();
+        shopUI.MoneyInit();
 
         // 직원 고용
         EmployeeManager.Instance.HireEmployee(employeeID);
@@ -154,10 +152,5 @@ public class EmployShop : MonoBehaviour
         firstEmployeeStressControl.text = first.StressControl.ToString("F2");
         secondEmployeeStressControl.text = second.StressControl.ToString("F2");
         thirdEmployeeStressControl.text = third.StressControl.ToString("F2");
-    }
-
-    public void MoneyInit()
-    {
-        moneyInEmployShop.text = GameManager.Instance.Money.ToString() + "\\";
     }
 }
