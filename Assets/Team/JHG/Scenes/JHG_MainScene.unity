@@ -215,6 +215,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f097037170852749b7a40993d2459d1, type: 3}
+--- !u!114 &102498991 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6682199327679628227, guid: ad2ad3c38e31e1340aa4d571ec54d0fa, type: 3}
+  m_PrefabInstance: {fileID: 504897715}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &222998018 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8891202512171368054, guid: e369e2a423e82a04d8179cd0a90e915c, type: 3}
@@ -326,9 +337,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4796072388711293485, guid: ad2ad3c38e31e1340aa4d571ec54d0fa, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5248026682471909596, guid: ad2ad3c38e31e1340aa4d571ec54d0fa, type: 3}
       propertyPath: m_Name
       value: UIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691360858490573831, guid: ad2ad3c38e31e1340aa4d571ec54d0fa, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6414282079813971487, guid: ad2ad3c38e31e1340aa4d571ec54d0fa, type: 3}
       propertyPath: m_Pivot.x
@@ -408,10 +427,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6414282079813971487, guid: ad2ad3c38e31e1340aa4d571ec54d0fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8174835223802960948, guid: ad2ad3c38e31e1340aa4d571ec54d0fa, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -699,6 +714,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4082530724247970082, guid: 7e1835881f75ff243886211f0228b644, type: 3}
+      propertyPath: sliderBGM
+      value: 
+      objectReference: {fileID: 102498991}
+    - target: {fileID: 4082530724247970082, guid: 7e1835881f75ff243886211f0228b644, type: 3}
+      propertyPath: sliderSFX
+      value: 
+      objectReference: {fileID: 1902049428}
     - target: {fileID: 5677620970929374889, guid: 7e1835881f75ff243886211f0228b644, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -836,6 +859,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b47290739cbdf9c4ca9aa0eb89d390c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1902049428 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8239755584899045271, guid: ad2ad3c38e31e1340aa4d571ec54d0fa, type: 3}
+  m_PrefabInstance: {fileID: 504897715}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2054639287 stripped
