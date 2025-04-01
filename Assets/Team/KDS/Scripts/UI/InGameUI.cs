@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum Status
@@ -12,12 +13,18 @@ public enum Status
 }
 public class InGameUI : BaseUI
 {
-    [Header("UI")]
+    [Header("Status")]
     public TextMeshProUGUI dayText;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI scoreText;
     public RectTransform stressbar;
-    public TextMeshProUGUI moneyText;   
+    public TextMeshProUGUI moneyText;
+
+    [Header("Pause")]
+    public GameObject pauseUI;
+    public Button pauseButton;
+    public Button resumeButton;
+    public Button resetButton;
 
     [Header("Value")]
     public int day;
@@ -25,9 +32,13 @@ public class InGameUI : BaseUI
     public int score;
     public float stress;
     public int money;
-
-
-
+    public void Start()
+    {
+        pauseUI.SetActive(false);
+        pauseButton.onClick.AddListener(OnPauseBotton);
+        resumeButton.onClick.AddListener(OnResumeBotton);
+        resetButton.onClick.AddListener(OnResetBotton);
+    }
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
@@ -75,5 +86,25 @@ public class InGameUI : BaseUI
                 timeText.text=value.FormatTime();
                 break;
         }
+    }
+
+    public void OnPauseBotton()
+    {
+        Time.timeScale = 0f;
+        pauseUI.SetActive(true);
+        GameManager.Instance.isMissionInProgress=true;
+    }
+
+    public void OnResumeBotton()
+    {
+        Time.timeScale = 1f;
+        pauseUI.SetActive(false);
+        GameManager.Instance.isMissionInProgress = false;
+    }
+
+    public void OnResetBotton()
+    {
+        DataManager.Instance.DeleteGameManager();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
