@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class EmployShop : MonoBehaviour
 {
+    [Header("Buttons")]
     public Button rerollButon;
     public Button[] employButton;
 
+    [Header("Text")]
     public TextMeshProUGUI moneyInEmployShop;
 
     [Header("직원 데이터")]
@@ -60,13 +62,15 @@ public class EmployShop : MonoBehaviour
 
     void HireEmployee(int index)
     {
+        int employeeID = selectedEmployeeIndexes[index];
+
+        // 인덱스 벗어나면
         if (index < 0 || index >= selectedEmployeeIndexes.Count) return;
 
-        int employeeID = selectedEmployeeIndexes[index];
+        // 돈 부족 시
         if (GameManager.Instance.Money < allEmployees[employeeID].Price)
         {
             UIManager.Instance.shopUI.notEnoughAlert.SetActive(true);
-
             UIManager.Instance.shopUI.closeNotEnoughMoneyAlert.onClick.AddListener(UIManager.Instance.shopUI.CloseNotEnoughMoneyAlert);
             return;
         }
@@ -87,10 +91,10 @@ public class EmployShop : MonoBehaviour
 
     public void Reroll()
     {
+        // 모두 채용하면 리롤 안 되게
         if (hiredEmployeeIDs.Count == 8) return;
 
         List<int> newEmployees = new List<int>();
-
         while (newEmployees.Count < 3)
         {
             int employeeNum = Random.Range(0, allEmployees.Length);
@@ -101,9 +105,7 @@ public class EmployShop : MonoBehaviour
                 newEmployees.Add(employeeNum);
             }
         }
-
         selectedEmployeeIndexes = newEmployees;
-        UpdateUI();
 
         // 버튼 설정
         for (int i = 0; i < selectedEmployeeIndexes.Count; i++)
@@ -117,6 +119,8 @@ public class EmployShop : MonoBehaviour
             // 이미 고용된 직원이면 버튼 비활성화
             employButton[i].gameObject.SetActive(!hiredEmployeeIDs.Contains(employeeID));
         }
+
+        UpdateUI();
     }
 
     void UpdateUI()
