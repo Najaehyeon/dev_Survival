@@ -42,7 +42,6 @@ public class Employee : MonoBehaviour
         npcStateMachine.ChangeState(npcStateMachine.npcMissionState);
         Vector3 targetPos = new Vector3(missionTimer.transform.position.x, missionTimer.transform.position.y, 0);
         npcStateMachine.CurrentNPCState.TargetDestination = targetPos;
-        Debug.Log(targetPos);
         return this;
     }
     

@@ -30,11 +30,9 @@ public class HomeUI : BaseUI
             {
                 bounceTweener.Kill(); 
                 rectTransform.anchoredPosition = Vector2.zero;
-                Debug.Log("실행중 클릭");
             }
             else 
             {
-                Debug.Log("인게임으로");
                 UIManager.Instance.ChangeState(UIState.InGame);
                 GameManager.Instance.stateMachine.ChangeState(GameManager.Instance.stateMachine.inGameState);
             }

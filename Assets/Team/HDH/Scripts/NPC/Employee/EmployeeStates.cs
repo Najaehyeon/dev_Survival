@@ -101,7 +101,6 @@ public class EmployeeMissionState : NPCBaseState
     
     public override void Enter()
     {
-        Debug.Log("Employee Mission Enter");
         NPCStateMachine.Controller.ChangeMoveSpeed(5f);
     }
     public override void Exit()
