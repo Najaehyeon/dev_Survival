@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7600ec306f10e4bb9fa944f38cd913, type: 3}
   m_Name: Employ Data
   m_EditorClassIdentifier: 
+  employIndex: 0
   employName: 
   price: 0
   efficiency: 0
