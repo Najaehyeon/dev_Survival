@@ -30,7 +30,7 @@ public class InGameState : GameBaseState
     void SetTimerText()
     {
 
-        if (GameManager.Instance.PassedTime >= endDayTime)
+        if (GameManager.Instance.PassedTime >= endDayTime && ! GameManager.Instance.isMissionInProgress)
         {
             StateMachine.ChangeState(GameStateMachine.scoreState);
             UIManager.Instance.ChangeState(UIState.Score);

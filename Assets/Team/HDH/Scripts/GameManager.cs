@@ -4,7 +4,7 @@ public class GameManager : Singleton<GameManager>
 {
     [field : SerializeField] public int Score { get; private set; }
     [field: SerializeField] public int Money { get; private set; }
-    [field: SerializeField] public int Day { get; private set; }
+    [field: SerializeField] public int Day { get; private set; } = 1;
     [field: SerializeField] public float PassedTime { get; private set; }
     [field: SerializeField] public bool isMissionInProgress;
 
@@ -15,6 +15,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public UItest uiTest;
 
     public GameStateMachine stateMachine;
+
+    public Transform StartPos;
 
     private void Start()
     {

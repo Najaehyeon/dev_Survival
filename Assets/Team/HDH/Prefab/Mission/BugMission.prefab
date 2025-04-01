@@ -2083,6 +2083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameEnd: 1
+  target: {fileID: 0}
   LimitTime: 10
   bugPrefab:
   - {fileID: 992679364241500027, guid: a5c77854ef8a2be41ac18afbeb5c9df4, type: 3}

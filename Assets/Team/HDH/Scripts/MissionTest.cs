@@ -9,14 +9,18 @@ public class MissionTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        missionTimer = GetComponent<MissionTimer>();
+        //missionTimer = GetComponent<MissionTimer>();
         StartCoroutine(StartMission());
     }
 
     IEnumerator StartMission()
     {
-        yield return new WaitForSeconds(11f);
-        missionTimer.Selected();
+        yield return new WaitForSeconds(5f);
+        
+        EmployeeManager.Instance.HireEmployee(0);
+        //EmployeeManager.Instance.SpwanHiredEmployee();
+        
+        
     }
 
     // Update is called once per frame
