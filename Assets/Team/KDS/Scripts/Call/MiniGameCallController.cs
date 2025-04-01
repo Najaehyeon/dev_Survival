@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MiniGameCallController : Mission
@@ -10,6 +11,10 @@ public class MiniGameCallController : Mission
 
     public GameObject lineRenderer;
 
+    public GameObject result;
+    public GameObject scorego;
+    public TextMeshPro resultText;
+    public TextMeshPro scoreText;
     public void Start()
     {
         lineRenderer=Instantiate(lineRenderer, Vector3.zero, Quaternion.identity);
@@ -22,8 +27,18 @@ public class MiniGameCallController : Mission
             progerss = cirele.GetProgerss();
             ProgressToScore();
             Destroy(lineRenderer);
-
-            GameEnd();
+            result.SetActive(true);
+            if (score > 0)
+            {
+                scorego.SetActive(true);
+                resultText.text = "성공!";
+                scoreText.text=score.ToString();
+            }
+            else
+            {
+                resultText.text = "실패";
+            }
+            Invoke("GameEnd", 1);
         }
     }
 
