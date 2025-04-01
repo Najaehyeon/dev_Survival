@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +6,8 @@ public class ShopUI : BaseUI
     bool isEmployShop;
     public RectTransform stressbarInItemShop;
     public RectTransform stressbarInEmplyShop;
-    public GameObject notEnoughAlert;
+    public GameObject notEnoughMoneyAlert;
+    public GameObject notEnoughStressAlert;
 
     [Header("Shop")]
     public ItemShop itemShop;
@@ -19,14 +19,14 @@ public class ShopUI : BaseUI
     public Button buyBottle;
     public Button buyCloud;
     public Button closeNotEnoughMoneyAlert;
+    public Button closeNotEnoughStressAlert;
 
     private void Start()
     {
-        buyDog.onClick.AddListener(ShopManager.Instance.itemShop.BuyDog);
-        buyCat.onClick.AddListener(ShopManager.Instance.itemShop.BuyCat);
-        buyBottle.onClick.AddListener(ShopManager.Instance.itemShop.BuyGreenBottle);
-        buyCloud.onClick.AddListener(ShopManager.Instance.itemShop.BuyCloud);
-        closeNotEnoughMoneyAlert.onClick.AddListener(CloseNotEnoughMoneyAlert);
+        buyDog.onClick.AddListener(itemShop.BuyDog);
+        buyCat.onClick.AddListener(itemShop.BuyCat);
+        buyBottle.onClick.AddListener(itemShop.BuyGreenBottle);
+        buyCloud.onClick.AddListener(itemShop.BuyCloud);
     }
 
     public override void Init(UIManager uiManager)
@@ -66,8 +66,7 @@ public class ShopUI : BaseUI
             employShop.gameObject.SetActive(false);
             itemShop.gameObject.SetActive(true);
         }
-        itemShop.MonenInit();
-        employShop.MoneyInit();
+        MoneyInit();
     }
 
     public void MoveStressBar()
@@ -76,8 +75,15 @@ public class ShopUI : BaseUI
         stressbarInEmplyShop.anchoredPosition = new Vector2(200 * (UIManager.Instance.inGameUI.stress / 100), 0);
     }
 
-    public void CloseNotEnoughMoneyAlert()
+    public void CloseNotEnoughAlert()
     {
-        notEnoughAlert.SetActive(false);
+        notEnoughMoneyAlert.SetActive(false);
+        notEnoughStressAlert.SetActive(false);
+    }
+
+    public void MoneyInit()
+    {
+        itemShop.moneyInItemShop.text = GameManager.Instance.Money.ToString() + "만원";
+        employShop.moneyInEmployShop.text = GameManager.Instance.Money.ToString() + "만원";
     }
 }
