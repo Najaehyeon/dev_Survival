@@ -4741,7 +4741,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &1869928803393327990
 RectTransform:
@@ -5186,7 +5186,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &2000868214719119613
 GameObject:
@@ -14409,13 +14409,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stressbarInItemShop: {fileID: 7915292158008279606}
-  stressbarInEmplyShop: {fileID: 1869928803393327990}
+  stressbarInEmplyShop: {fileID: 8009219006824016617}
   itemShop: {fileID: 4818738924525093493}
   employShop: {fileID: 1726057506288997398}
   buyDog: {fileID: 1721317611137753831}
   buyCat: {fileID: 6809906805599367303}
-  buyBottle: {fileID: 0}
-  buyCloud: {fileID: 0}
+  buyBottle: {fileID: 192362690433405804}
+  buyCloud: {fileID: 7606085543327452089}
 --- !u!222 &6277945129241964833
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16963,7 +16963,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &7235623892668020664
 RectTransform:
