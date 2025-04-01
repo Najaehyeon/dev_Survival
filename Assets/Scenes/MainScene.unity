@@ -274,30 +274,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2966914062212239843, guid: e5ce1074f22077d439f5e5c007943180, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[10].m_Data
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2966914062212239843, guid: e5ce1074f22077d439f5e5c007943180, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[12].m_Data
-      value: 
-      objectReference: {fileID: 1029691006, guid: 6ce0d6976165d274297b07970eb0f734, type: 3}
-    - target: {fileID: 2966914062212239843, guid: e5ce1074f22077d439f5e5c007943180, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[10].m_RefCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2966914062212239843, guid: e5ce1074f22077d439f5e5c007943180, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[12].m_RefCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2966914062212239843, guid: e5ce1074f22077d439f5e5c007943180, type: 3}
-      propertyPath: m_Tiles.Array.data[113].second.m_TileSpriteIndex
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3495530566267001108, guid: e5ce1074f22077d439f5e5c007943180, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7874115877941755377, guid: e5ce1074f22077d439f5e5c007943180, type: 3}
       propertyPath: m_Name
       value: Map
@@ -785,7 +761,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -810,7 +786,7 @@ Transform:
   m_GameObject: {fileID: 2139165105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 7.5, z: -20}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
