@@ -35,9 +35,11 @@ public class EmployeeIdleState : NPCBaseState
 
     public override void Enter()
     {
+        Debug.Log("Idle Enter");
         NPCStateMachine.Controller.ChangeMoveSpeed(1f);
         TargetDestination = destinations[Random.Range(0, destinations.Length)];
         EmployeeManager.Instance.IdleEmployees.Enqueue(NPCStateMachine);
+        Debug.Log(EmployeeManager.Instance.IdleEmployees.Count);
     }
 
     public override void Exit()
@@ -112,7 +114,7 @@ public class EmployeeMissionState : NPCBaseState
 
     public override void Update()
     {
-        
+        //Debug.Log(TargetDestination);
     }
 
     public override void OnMission(Object obj = null)

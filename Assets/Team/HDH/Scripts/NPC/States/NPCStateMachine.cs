@@ -37,24 +37,28 @@ public class NPCStateMachine : BaseStateMachine
     /// NPC에 미션을 할당, 수락 확률에 따라 NPCStateMachine 또는 null을 반환
     /// </summary>
     /// <param name="missionTimer">할당할 미션</param>
-    public NPCStateMachine AssignMission(Mission mission)
+    public NPCStateMachine AssignMission(MissionTimer missionTimer)
     {
         if(CurrentNPCState != npcIdleState) return  null;
         
         EmployeeStates employeeStates = stateSet as EmployeeStates;
         
-        Random random = new Random();
-        
-        int acceptRate = random.Next(0, 100);
-        if (acceptRate < employeeStates.EmployData.Sincerity)
-        {
-            ChangeState(npcIdleState);
-            return null;
-        }
-        
+        // Random random = new Random();
+        //
+        // int acceptRate = random.Next(0, 100);
+        // if (acceptRate <= employeeStates.EmployData.Sincerity)
+        // {
+        //     Debug.Log("미션 거절");
+        //     ChangeState(stateSet.IdleState);
+        //     return null;
+        // }
+        //
         Debug.Log("Receive mission");
         HasMission = true;
-        CurrentNPCState.TargetDestination = mission.transform.position;
+        ChangeState(npcMissionState);
+        Vector3 targetPos = new Vector3(missionTimer.transform.position.x, missionTimer.transform.position.y, 0);
+        CurrentNPCState.TargetDestination = targetPos;
+        Debug.Log(targetPos);
         return this;
     }
 

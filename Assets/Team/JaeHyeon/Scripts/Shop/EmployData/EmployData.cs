@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Employ Data", menuName = "NPC/Employ Data", order = int.MaxValue)]
 public class EmployData : ScriptableObject
 {
+    public GameObject employeePrefab;
+    
     [SerializeField] private int employIndex;
     public int EmployIndex { get { return employIndex; } }
 
@@ -16,16 +18,16 @@ public class EmployData : ScriptableObject
     public int Price { get { return price; } }
 
     [SerializeField] private int efficiency;
-    public int Efficiency { get { return Efficiency; } }
+    public int Efficiency { get { return efficiency; } }
 
     [SerializeField] private int ability;
-    public int Ability { get { return Ability; } }
+    public int Ability { get { return ability; } }
 
     [SerializeField] private int sincerity;
-    public int Sincerity { get { return Sincerity; } }
+    public int Sincerity { get { return sincerity; } }
 
     [SerializeField] private int stressControl;
-    public int StressControl { get { return StressControl; } }
+    public int StressControl { get { return stressControl; } }
 
 
 }
