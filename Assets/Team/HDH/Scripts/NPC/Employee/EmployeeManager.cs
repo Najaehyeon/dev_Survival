@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class EmployeeManager : Singleton<EmployeeManager>
 {
     //NPC 업무 할당을 위한 Queue
-    [field: SerializeField] public Queue<NPCStateMachine> IdleEmployees = new Queue<NPCStateMachine>();
+    [field: SerializeField] public Queue<Employee> IdleEmployees = new Queue<Employee>();
     
     //같은 스프라이트에도 여러 스탯이 가능
     //스탯이 SO에 있으니
@@ -52,6 +52,7 @@ public class EmployeeManager : Singleton<EmployeeManager>
 
     private void InitializeEmployee(GameObject employeeObject, EmployData employeeData)
     {
+        employeeObject.AddComponent<Employee>();
         employeeObject.AddComponent<NavMeshAgent>();
         employeeObject.AddComponent<EmployeeStates>().EmployData = employeeData;
         employeeObject.GetComponent<EmployeeStates>().IdleDestinationSet = destinationSets[0];
