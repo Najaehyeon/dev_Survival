@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca7600ec306f10e4bb9fa944f38cd913, type: 3}
-  m_Name: Employ Data
+  m_Name: Employ_6
   m_EditorClassIdentifier: 
-  employName: 
-  price: 0
-  efficiency: 0
-  ability: 0
-  sincerity: 0
-  stressControl: 0
+  employIndex: 6
+  employName: "\uC800\uCEE4\uBC84\uADF8"
+  employIcon: {fileID: -641975394, guid: 311e91b00deb71f4e8691bf3511df021, type: 3}
+  price: 120
+  ability: 30
+  sincerity: 50
+  stressControl: 1.5
+  employeePrefab: {fileID: 0}

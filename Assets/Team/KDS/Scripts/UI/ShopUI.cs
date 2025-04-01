@@ -1,9 +1,13 @@
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopUI : BaseUI
 {
     bool isEmployShop;
+    public RectTransform stressbarInItemShop;
+    public RectTransform stressbarInEmplyShop;
+
     [Header("Shop")]
     public ItemShop itemShop;
     public EmployShop employShop;
@@ -25,6 +29,8 @@ public class ShopUI : BaseUI
 
     protected override UIState GetUIState()
     {
+        MoveStressBar();
+        Debug.Log("스트레스 바 업그레이드 됨");
         return UIState.Shop;
     }
 
@@ -53,5 +59,11 @@ public class ShopUI : BaseUI
             employShop.gameObject.SetActive(false);
             itemShop.gameObject.SetActive(true);
         }
+    }
+
+    public void MoveStressBar()
+    {
+        stressbarInItemShop.anchoredPosition = new Vector2(200 * (UIManager.Instance.inGameUI.stress / 100), 0);
+        stressbarInEmplyShop.anchoredPosition = new Vector2(200 * (UIManager.Instance.inGameUI.stress / 100), 0);
     }
 }

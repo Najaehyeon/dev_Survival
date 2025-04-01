@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -10,24 +8,25 @@ public class EmployData : ScriptableObject
     public int EmployIndex { get { return employIndex; } }
 
     [SerializeField] private string employName;
-    public string EmployName { get { return EmployName; } }
+    public string EmployName { get { return employName; } }
+
+    [SerializeField] private Sprite employIcon;
+    public Sprite EmployIcon { get { return employIcon; } }
 
     [SerializeField] private int price;
     public int Price { get { return price; } }
 
-    [SerializeField] private int efficiency;
-    public int Efficiency { get { return Efficiency; } }
-
     [SerializeField] private int ability;
-    public int Ability { get { return Ability; } }
+    public int Ability { get { return ability; } }
 
     [SerializeField] private int sincerity;
-    public int Sincerity { get { return Sincerity; } }
+    public int Sincerity { get { return sincerity; } }
 
-    [SerializeField] private int stressControl;
-    public int StressControl { get { return StressControl; } }
+    [SerializeField] private float stressControl;
+    public float StressControl { get { return stressControl; } }
 
-
+    [SerializeField] private GameObject employeePrefab;
+    public GameObject EmployeePrefab { get { return employeePrefab; } }
 }
 
 
