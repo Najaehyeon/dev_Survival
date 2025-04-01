@@ -35,9 +35,11 @@ public class EmployeeIdleState : NPCBaseState
 
     public override void Enter()
     {
+        Debug.Log("Idle Enter");
         NPCStateMachine.Controller.ChangeMoveSpeed(1f);
         TargetDestination = destinations[Random.Range(0, destinations.Length)];
         EmployeeManager.Instance.IdleEmployees.Enqueue(NPCStateMachine);
+        Debug.Log(EmployeeManager.Instance.IdleEmployees.Count);
     }
 
     public override void Exit()
@@ -112,13 +114,14 @@ public class EmployeeMissionState : NPCBaseState
 
     public override void Update()
     {
-        
+        //Debug.Log(TargetDestination);
     }
 
     public override void OnMission(Object obj = null)
     {
         MissionTimer missionTimer = obj as MissionTimer;
         //미션 타이머의 직원 전용 해제 함수를 실행
+        Debug.Log("Employee Mission Enter");
         missionTimer.NPCInterection(NPCStateMachine);
     }
 }

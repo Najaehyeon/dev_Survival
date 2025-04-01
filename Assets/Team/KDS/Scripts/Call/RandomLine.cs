@@ -5,8 +5,8 @@ public class RandomLine : MonoBehaviour
     private LineRenderer lineRenderer;
     private EdgeCollider2D edgeCollider;
 
-    public int numberOfPoints = 13;  // Á¡ÀÇ °³¼ö  
-    public float width = 0.1f;  // ¼±ÀÇ µÎ²²  
+    public int numberOfPoints = 13;  // ì ì˜ ê°œìˆ˜  
+    public float width = 0.1f;  // ì„ ì˜ ë‘ê»˜  
     public float amplitude = 3f;  
     public float frequency = 1f; 
     public int interpolationPoints = 10;
@@ -21,17 +21,17 @@ public class RandomLine : MonoBehaviour
         Vector3[] points = new Vector3[numberOfPoints];
         for (int i =0; i < numberOfPoints; i++)
         {
-            float x = i * 2f;  // x ÁÂÇ¥
+            float x = i * 2f;  // x ì¢Œí‘œ
 
             float randomAmplitude = Random.Range(1f, amplitude); 
             float y = Mathf.Sin(x * frequency) * randomAmplitude;  
             points[i] = new Vector3(x, y, 0);
         }
 
-        // µÎ Á¡ »çÀÌ¸¦ ºÎµå·´°Ô ¿¬°áÇÏ´Â º¸°£µÈ Á¡µé °è»ê
+        // ë‘ ì  ì‚¬ì´ë¥¼ ë¶€ë“œëŸ½ê²Œ ì—°ê²°í•˜ëŠ” ë³´ê°„ëœ ì ë“¤ ê³„ì‚°
         Vector3[] smoothPoints = GenerateSmoothPoints(points);
 
-        // ºÎµå·´°Ô ¿¬°áµÈ Á¡µé LineRenderer¿¡ ¼³Á¤
+        // ë¶€ë“œëŸ½ê²Œ ì—°ê²°ëœ ì ë“¤ LineRendererì— ì„¤ì •
         lineRenderer.SetPositions(smoothPoints);
 
         edgeCollider.points = new Vector2[smoothPoints.Length];
@@ -45,6 +45,10 @@ public class RandomLine : MonoBehaviour
         lineRenderer.endWidth = width;
     }
 
+    /// <summary>
+    /// ê·¸ë˜í”„ë¥¼ ì´ì–´ì£¼ëŠ” ì ë“¤ì„ ìƒì„±
+    /// </summary>
+
     void FixedUpdate()
     {
         for (int i = 0; i < lineRenderer.positionCount; i++)
@@ -55,7 +59,10 @@ public class RandomLine : MonoBehaviour
         }
         transform.position -= new Vector3(0.05f, 0, 0);
     }
-    // Catmull-Rom º¸°£¹ıÀ» ÀÌ¿ëÇÏ¿© Á¡µéÀ» ºÎµå·´°Ô ¿¬°á
+    /// <summary>
+    /// Catmull-Rom ë³´ê°„ë²•ì„ ì´ìš©í•˜ì—¬ ì ë“¤ì„ ë¶€ë“œëŸ½ê²Œ ì—°ê²°
+    /// </summary>
+    /// <param name="points"></param>
     Vector3[] GenerateSmoothPoints(Vector3[] points)
     {
         int totalPoints = (points.Length - 1) * interpolationPoints + 1; 
@@ -68,7 +75,7 @@ public class RandomLine : MonoBehaviour
             Vector3 p2 = points[i + 1];  
             Vector3 p3 = i + 2 < points.Length ? points[i + 2] : points[i + 1];  
 
-            // µÎ Á¡ »çÀÌ¸¦ ºÎµå·´°Ô ¿¬°áÇÏ±â À§ÇØ Catmull-Rom º¸°£À» »ç¿ë
+            // ë‘ ì  ì‚¬ì´ë¥¼ ë¶€ë“œëŸ½ê²Œ ì—°ê²°í•˜ê¸° ìœ„í•´ Catmull-Rom ë³´ê°„ì„ ì‚¬ìš©
             for (int j = 0; j < interpolationPoints; j++)
             {
                 float t = (float)j / interpolationPoints;
@@ -80,7 +87,7 @@ public class RandomLine : MonoBehaviour
         return smoothPoints;
     }
 
-    // Catmull-Rom º¸°£ ÇÔ¼ö
+    // Catmull-Rom ë³´ê°„ í•¨ìˆ˜
     Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
     {
         float t2 = t * t;
