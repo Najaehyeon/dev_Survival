@@ -13,6 +13,9 @@ public class MissionTimer:MonoBehaviour
     public Color normalColor = Color.white;
     public Color warningColor = Color.red;
     [SerializeField] private bool gameStart;
+
+    //NPC정보 가지고있는애로 변경
+    public Employee? target;
     public virtual void Update()
     {
         if (!gameStart)
@@ -47,7 +50,7 @@ public class MissionTimer:MonoBehaviour
     public void HireNPC()
     {
         if (EmployeeManager.Instance.IdleEmployees.Count == 0) return;
-        mission.target = EmployeeManager.Instance.IdleEmployees.Dequeue().AssignMission(this);
+        target = EmployeeManager.Instance.IdleEmployees.Dequeue().AssignMission(this);
     }
 
 
@@ -59,7 +62,7 @@ public class MissionTimer:MonoBehaviour
         gameStart = true;
         missionInstance = Instantiate(mission, MissionManager.Instance.controller.canvas.transform);
         MissionManager.Instance.SelectedMissions.Remove(this);
-        if (mission.target!=null)mission.target.QuitMission();
+        if (target !=null)target.QuitMission();
         gameObject.SetActive(false);
         GameManager.Instance.isMissionInProgress = true;
     }
@@ -71,8 +74,16 @@ public class MissionTimer:MonoBehaviour
     {
         Debug.Log("미션 전달");
         MissionManager.Instance.SelectedMissions.Remove(this);
-        mission.NPCInterection(interect);
         gameObject.SetActive(false);
+        if (interect == target)
+        {
+            //target의 스테이터스에따라 스코어랑 스트레스 반환
+            CalculateScore(interect);
+            MissionManager.Instance.controller.IsAllGameEnd();
+            Debug.Log("NPC와 소통");
+            target.QuitMission();
+
+        }
     }
     /// <summary>
     /// 제한시간안에 상호작용 되지 않으면 호출
@@ -82,7 +93,7 @@ public class MissionTimer:MonoBehaviour
         gameStart = true;
         GameManager.Instance.ChangeStress(10);
         MissionManager.Instance.SelectedMissions.Remove(this);
-        if (mission.target != null) mission.target.QuitMission();
+        if (target != null) target.QuitMission();
         MissionManager.Instance.controller.IsAllGameEnd();
         gameObject.SetActive(false);
     }
@@ -94,7 +105,7 @@ public class MissionTimer:MonoBehaviour
     {
         gameStart = true;
         MissionManager.Instance.SelectedMissions.Remove(this);
-        if (mission.target != null) mission.target.QuitMission();
+        if (target != null) target.QuitMission();
         gameObject.SetActive(false);
     }
     private void UpdateFillAmount()
@@ -111,5 +122,16 @@ public class MissionTimer:MonoBehaviour
         }
     }
 
-
+    private void CalculateScore(Employee interect)
+    {
+        int success = interect.Data.Ability;
+        if(success>Random.Range(1,101))
+        {
+            GameManager.Instance.ChangeScore(3);
+        }
+        else
+        {
+            GameManager.Instance.ChangeStress(5);
+        }
+    }
 }

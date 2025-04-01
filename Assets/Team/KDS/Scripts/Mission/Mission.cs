@@ -9,8 +9,6 @@ public abstract class Mission : MonoBehaviour
 
     public bool isGameEnd;
 
-    //NPC정보 가지고있는애로 변경
-    public Employee? target;
     public virtual int GetScroe()
     {
         return score;
@@ -38,21 +36,5 @@ public abstract class Mission : MonoBehaviour
         MissionManager.Instance.controller.IsAllGameEnd();
         Destroy(gameObject);
         GameManager.Instance.isMissionInProgress = false;
-    }
-
-    /// <summary>
-    /// NPC가 미션클리어했을때 호출
-    /// </summary>
-    /// <param name="interect"></param>
-    public void NPCInterection(Employee interect)
-    {
-        Debug.Log("NPC와 소통 시도");
-        if(interect==target)
-        {
-            //target의 스테이터스에따라 스코어랑 스트레스 반환
-            MissionManager.Instance.controller.IsAllGameEnd();
-            Debug.Log("NPC와 소통");
-            target.QuitMission();
-        }
     }
 }
