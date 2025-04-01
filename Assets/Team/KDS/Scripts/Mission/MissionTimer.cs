@@ -46,8 +46,7 @@ public class MissionTimer:MonoBehaviour
     /// </summary>
     public void HireNPC()
     {
-        if (EmployeeManager.Instance.IdleEmployees == null) return;
-        //아이덜 스테이트인 npc 리스트(NPCManager.intance.IdalNPCs) 순회하면서 npc에게 AssignMission(missionTimer);
+        if (EmployeeManager.Instance.IdleEmployees.Count == 0) return;
         mission.target = EmployeeManager.Instance.IdleEmployees.Dequeue().AssignMission(this);
     }
 

@@ -13,7 +13,6 @@ public abstract class Mission : MonoBehaviour
     public Employee? target;
     public virtual int GetScroe()
     {
-        Debug.Log(score);
         return score;
     }
 
@@ -24,7 +23,6 @@ public abstract class Mission : MonoBehaviour
         if (score > 0) { stress = 5f; }
         else { stress = 10f; }
 
-        Debug.Log(stress);
         return stress;
     }
 
