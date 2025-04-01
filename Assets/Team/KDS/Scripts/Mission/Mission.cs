@@ -35,6 +35,7 @@ public abstract class Mission : MonoBehaviour
         isGameEnd = true;
         MissionManager.Instance.controller.IsAllGameEnd();
         Destroy(gameObject);
+        GameManager.Instance.isMissionInProgress = false;
     }
 
     public void NPCInterection(NPCStateMachine interect)

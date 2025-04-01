@@ -8,4 +8,9 @@ public class EmployShop : MonoBehaviour
     {
         ShopManager.Instance.employShop = this;
     }
+
+    void Employ()
+    {
+        // 직원 구매만 (직원 생성은 따로)
+    }
 }

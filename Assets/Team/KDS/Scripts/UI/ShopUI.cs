@@ -34,6 +34,10 @@ public class ShopUI : BaseUI
         //초기화 항목
         //게임시간 , 스테이트들,
         UIManager.Instance.ChangeState(UIState.InGame);
+        GameManager.Instance.stateMachine.ChangeState(GameManager.Instance.stateMachine.inGameState);
+        // 플레이어 시작 위치 초기화
+        // 미션 스테이트 초기화
+        // 
     }
 
     public void OnChangeShopstate()

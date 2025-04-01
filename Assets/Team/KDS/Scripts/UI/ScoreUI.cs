@@ -23,6 +23,7 @@ public class ScoreUI : BaseUI
     {
         rect.DOAnchorPos(new Vector2(1500, 0), 1f).SetEase(Ease.InCubic)
         .OnKill(() => UIManager.Instance.ChangeState(UIState.Shop));
+        GameManager.Instance.stateMachine.ChangeState(GameManager.Instance.stateMachine.shopState);
     }
     protected override UIState GetUIState()
     {

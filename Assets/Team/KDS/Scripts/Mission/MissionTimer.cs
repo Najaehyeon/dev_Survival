@@ -50,6 +50,7 @@ public class MissionTimer:MonoBehaviour
         missionInstance = Instantiate(mission, MissionManager.Instance.controller.canvas.transform);
         if(mission.target!=null)mission.target.QuitMission();
         gameObject.SetActive(false);
+        GameManager.Instance.isMissionInProgress = true;
     }
     public virtual void TimeOut()
     {
