@@ -10,7 +10,7 @@ public abstract class Mission : MonoBehaviour
     public bool isGameEnd;
 
     //NPC정보 가지고있는애로 변경
-    public NPCStateMachine target;
+    public NPCStateMachine? target;
     public virtual int GetScroe()
     {
         Debug.Log(score);
