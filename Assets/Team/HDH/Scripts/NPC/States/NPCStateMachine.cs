@@ -46,12 +46,15 @@ public class NPCStateMachine : BaseStateMachine
         Random random = new Random();
         
         int acceptRate = random.Next(0, 100);
-        if (acceptRate < employeeStates.EmployData.Sincerity) return null;
+        if (acceptRate < employeeStates.EmployData.Sincerity)
+        {
+            ChangeState(npcIdleState);
+            return null;
+        }
         
         Debug.Log("Receive mission");
         HasMission = true;
         CurrentNPCState.TargetDestination = mission.transform.position;
-        
         return this;
     }
 
