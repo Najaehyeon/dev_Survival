@@ -19,4 +19,4 @@ MonoBehaviour:
   ability: 50
   sincerity: 60
   stressControl: 2
-  employeePrefab: {fileID: 0}
+  employeePrefab: {fileID: 6765288993802789191, guid: 858c2cb2a4e4cd24bac8744b8ca229c4, type: 3}

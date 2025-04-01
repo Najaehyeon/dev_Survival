@@ -61,16 +61,19 @@ public class EmployShop : MonoBehaviour
         GameManager.Instance.ChangeMoney(-allEmployees[selectedEmployeeIndexes[0]].Price); // 금액 지불
         // 구매 안 한 리스트에서 빼야함.
         // 직원 구매했다고 전달 해야함.
+        EmployeeManager.Instance.HireEmployee(selectedEmployeeIndexes[0]);
     }
 
     void HireSecondEmployee()
     {
         GameManager.Instance.ChangeMoney(-allEmployees[selectedEmployeeIndexes[1]].Price); // 금액 지불
+        EmployeeManager.Instance.HireEmployee(selectedEmployeeIndexes[1]);
     }
 
     void HireThirdEmployee()
     {
         GameManager.Instance.ChangeMoney(-allEmployees[selectedEmployeeIndexes[2]].Price); // 금액 지불
+        EmployeeManager.Instance.HireEmployee(selectedEmployeeIndexes[2]);
     }
 
     public void Reroll()

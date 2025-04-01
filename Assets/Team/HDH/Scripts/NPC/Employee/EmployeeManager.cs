@@ -33,7 +33,7 @@ public class EmployeeManager : Singleton<EmployeeManager>
         if (index >= 0 && index < employeeDataList.Count)
         {
             EmployData employeeData = employeeDataList[index];
-            GameObject employeeObject = Instantiate(employeeData.employeePrefab, employeeSpawnPoint.position, Quaternion.identity);
+            GameObject employeeObject = Instantiate(employeeData.EmployeePrefab, employeeSpawnPoint.position, Quaternion.identity);
 
             // 필요한 스크립트 추가 및 초기화
             InitializeEmployee(employeeObject, employeeData);
@@ -59,7 +59,7 @@ public class EmployeeManager : Singleton<EmployeeManager>
         employeeObject.GetComponent<EmployeeStates>().MissionDestinationSet = destinationSets[1];
         employeeObject.GetComponent<EmployeeStates>().RestDestinationSet = destinationSets[2];
         employeeObject.AddComponent<NPCController>();
-        employeeObject.AddComponent<NPCStateMachine>();
+        employeeObject.AddComponent<NPCStateMachine>().ChangeState(employeeObject.GetComponent<NPCStateMachine>().npcIdleState);
     }
     
     /// <summary>

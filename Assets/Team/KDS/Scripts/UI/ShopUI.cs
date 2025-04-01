@@ -15,11 +15,15 @@ public class ShopUI : BaseUI
     [Header("Button")]
     public Button buyDog;
     public Button buyCat;
+    public Button buyBottle;
+    public Button buyCloud;
 
     private void Start()
     {
         buyDog.onClick.AddListener(ShopManager.Instance.itemShop.BuyDog);
         buyCat.onClick.AddListener(ShopManager.Instance.itemShop.BuyCat);
+        buyBottle.onClick.AddListener(ShopManager.Instance.itemShop.BuyGreenBottle);
+        buyCloud.onClick.AddListener(ShopManager.Instance.itemShop.BuyCloud);
     }
 
     public override void Init(UIManager uiManager)
