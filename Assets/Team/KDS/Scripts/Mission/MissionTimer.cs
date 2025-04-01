@@ -68,7 +68,7 @@ public class MissionTimer:MonoBehaviour
     /// NPC가 상호작용하면 호출 타이머 종료
     /// </summary>
     /// <param name="interect"></param>
-    public void NPCInterection(NPCStateMachine interect)
+    public void NPCInterection(Employee interect)
     {
         MissionManager.Instance.SelectedMissions.Remove(this);
         mission.NPCInterection(interect);
