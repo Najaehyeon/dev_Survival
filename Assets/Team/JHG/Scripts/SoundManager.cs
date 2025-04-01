@@ -30,11 +30,12 @@ public class SoundManager : MonoBehaviour
         BGMAudioSource.volume = BGM;
         BGMAudioSource.loop = true;
         //슬라이더 추가시 주석 해제
-        //sliderBGM.value = BGM;
+        sliderBGM.value = BGM;
+        sliderSFX.value = SFX;
     }
     private void FixedUpdate()
     {
-        //ChangeVolume(); 
+        ChangeVolume(); 
     }
 
     private void Start()
