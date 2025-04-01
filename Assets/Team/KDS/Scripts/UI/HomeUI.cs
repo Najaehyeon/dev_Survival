@@ -41,6 +41,9 @@ public class HomeUI : BaseUI
         }
     }
 
+    /// <summary>
+    /// 타이틀 로고가 튕기는 효과
+    /// </summary>
     private void Production()
     {
         bounceTweener=rectTransform.DOAnchorPos(new Vector2(0, 0), duration)

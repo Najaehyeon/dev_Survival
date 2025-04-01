@@ -5,6 +5,9 @@ public class LineRendererController : MonoBehaviour
     private LineRenderer lineRenderer;
     private EdgeCollider2D edgeCollider;
 
+    /// <summary>
+    /// ë¼ì¸ì´ë‘ ì¶©ëŒì²´ ì´ë™
+    /// </summary>
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -13,7 +16,7 @@ public class LineRendererController : MonoBehaviour
 
     void Update()
     {
-        // °ÔÀÓ ¿ÀºêÁ§Æ® ÀÌµ¿
+        // ê²Œì„ ì˜¤ë¸Œì íŠ¸ ì´ë™
         transform.position -= new Vector3(0.05f, 0, 0);
         edgeCollider.transform.position = lineRenderer.transform.position;
     }

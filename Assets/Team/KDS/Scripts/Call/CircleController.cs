@@ -52,7 +52,10 @@ public class CircleController : MonoBehaviour
             transform.position -= new Vector3(0, MaxSpeed, 0);
         }
     }
-
+    /// <summary>
+    /// 점수로 전환하기위한 파라미터
+    /// </summary>
+    /// <returns></returns>
     public float GetProgerss()
     {
         return progress;

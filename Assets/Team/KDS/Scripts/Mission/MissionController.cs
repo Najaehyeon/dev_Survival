@@ -62,6 +62,9 @@ public class MissionController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 랜덤한 위치에 미션타이머 Active
+    /// </summary>
     public void MissionSelector()
     {
         System.Random rng = new System.Random();
@@ -95,16 +98,17 @@ public class MissionController : MonoBehaviour
         }
     }
    
+    /// <summary>
+    /// 미션이 끝날때마다 남아있는 미션이있는지 탐색
+    /// </summary>
     public void IsAllGameEnd()
     {
-        //claerCount++;
-        //if(claerCount==missionCount)
-        //{
-        //    claerCount = 0;
-        //    ChangeState(MissionState.Ready);
-        //}
         if(MissionManager.Instance.SelectedMissions.Count==0) ChangeState(MissionState.Ready);
     }
+
+    /// <summary>
+    /// 게임 상태가 인게임->결산 으로 전환댈때 켜져있는 게임 전부 삭제
+    /// </summary>
     public void IsDayEnd()
     {
         claerCount = 0;
