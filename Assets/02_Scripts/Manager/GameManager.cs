@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -31,8 +32,6 @@ public class GameManager : Singleton<GameManager>
         stateMachine.Init();
         UIManager.Instance.ChangeStatusUI(Status.Money, Money);
         UIManager.Instance.ChangeStatusUI(Status.Day, Day);
-        //uiTest.ScoreText.text = Score.ToString();
-        //uiTest.MoneyText.text = Money.ToString();
     }
 
     private void Update()
@@ -73,7 +72,6 @@ public class GameManager : Singleton<GameManager>
     {
         Score = Mathf.Max(0, Score + amount);
         UIManager.Instance.ChangeStatusUI(Status.Score, Score);
-        //uiTest.ScoreText.text = Score.ToString();
     }
 
     /// <summary>
@@ -84,14 +82,17 @@ public class GameManager : Singleton<GameManager>
     {
         Money = Mathf.Max(0, Money + amount);
         UIManager.Instance.ChangeStatusUI(Status.Money, Money);
-        //uiTest.MoneyText.text = Money.ToString();
     }
 
     public void ChangeStress(int amount)
     {
         Stress = Mathf.Max(0, Stress + amount);
         UIManager.Instance.ChangeStatusUI(Status.Stress, (float)Stress);
-        //uiTest.ScoreText.text = Score.ToString();
+        if (Stress >= 100)
+        {
+            Stress = 100;
+            SceneManager.LoadScene("BadEndingScene");
+        }
     }
 
 }

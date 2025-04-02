@@ -5,8 +5,8 @@ public class ItemShop : MonoBehaviour
 {
     public TextMeshProUGUI moneyInItemShop;
 
-    private bool hasDog = false;
-    private bool hasCat = false;
+    public bool hasDog = false;
+    public bool hasCat = false;
     private int animalsPrice;
     private int greenPrice;
     private int cloudPrice;
@@ -39,6 +39,7 @@ public class ItemShop : MonoBehaviour
         shopUI.MoneyInit();
         hasDog = true;
         shopUI.buyDog.gameObject.SetActive(false);
+        NPCManager.Instance.SpawnDog();
     }
 
     public void BuyCat()
@@ -54,6 +55,7 @@ public class ItemShop : MonoBehaviour
         shopUI.MoneyInit();
         hasCat = true;
         shopUI.buyCat.gameObject.SetActive(false);
+        NPCManager.Instance.SpawnCat();
     }
 
     public void BuyGreenBottle()

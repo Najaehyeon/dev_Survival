@@ -71,15 +71,12 @@ public class MissionTimer:MonoBehaviour
     {
         if (interect == target)
         {
-            Debug.Log("미션 전달");
             MissionManager.Instance.RemoveMission(this);
             gameObject.SetActive(false);
             
             //target의 스테이터스에따라 스코어랑 스트레스 반환
             CalculateScore(interect);
             MissionManager.Instance.controller.IsAllGameEnd();
-            Debug.Log("NPC와 소통");
-
         }
     }
     /// <summary>

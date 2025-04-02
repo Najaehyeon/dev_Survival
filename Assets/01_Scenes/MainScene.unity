@@ -485,6 +485,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47290739cbdf9c4ca9aa0eb89d390c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &599499377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 599499379}
+  - component: {fileID: 599499378}
+  m_Layer: 0
+  m_Name: OpeningSceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &599499378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599499377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74870f4093502b4d8cf25df05540b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &599499379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599499377}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &624527137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2203937816763310757, guid: 7f25b8586a0b88543b3708f24217153a, type: 3}
@@ -923,7 +967,7 @@ Transform:
   m_GameObject: {fileID: 2139165105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5, y: 7.5, z: -20}
+  m_LocalPosition: {x: 6, y: 7.5, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2293,6 +2337,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyInItemShop: {fileID: 2793021600914027556}
+  hasDog: 0
+  hasCat: 0
 --- !u!114 &582959521055099666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14165,7 +14211,7 @@ MonoBehaviour:
   moneyText: {fileID: 1734241945445800179}
   stressText: {fileID: 7384075682294825336}
   Shop: {fileID: 1362756913877271507}
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 5b13a0199b634364d8b4b614499d55d4, type: 3}
 --- !u!224 &4698981709929032345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25870,3 +25916,4 @@ SceneRoots:
   - {fileID: 5851046724578434648}
   - {fileID: 176273441024043061}
   - {fileID: 6414282079511449260}
+  - {fileID: 599499379}

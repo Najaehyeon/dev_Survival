@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum ScoreRate
 {
@@ -26,6 +27,15 @@ public class ScoreState : GameBaseState
     public override void Exit()
     {
         ScoreToMoney();
+        if (
+            UIManager.Instance.shopUI.itemShop.hasDog && 
+            UIManager.Instance.shopUI.itemShop.hasCat &&
+            GameManager.Instance.Money >= 1000 &&
+            UIManager.Instance.shopUI.employShop.hiredEmployeeIDs.Count >= 2
+            )
+        {
+            SceneManager.LoadScene("HappyEndingScene");
+        }
     }
 
     public override void Update()

@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/01_Scenes/OpeningScene.unity
     guid: 6bbe30a56617c204cbdba23d19126686
   - enabled: 1
-    path: Assets/01_Scenes/EndingScene.unity
+    path: Assets/01_Scenes/BadEndingScene.unity
     guid: 82bdb591296fa0f46a7fbd1e307d22d9
   - enabled: 1
-    path: Assets/01_Scenes/EndingScene2.unity
+    path: Assets/01_Scenes/HappyEndingScene.unity
     guid: 02292e295aebe9245bf5b8969ef63951
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 5c9387cfd5e28694f9df93810b331f05, type: 2}

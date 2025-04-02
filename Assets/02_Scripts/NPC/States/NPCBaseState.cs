@@ -28,8 +28,6 @@ public abstract class NPCBaseState : BaseState
     {
         if(passedTime > timeBetweenResetTarget)
         {
-            Debug.Log("Set Random Destination");
-
             if(prevTargetDestination != Vector3.zero)
             {
                 do

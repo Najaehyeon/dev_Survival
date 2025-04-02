@@ -32,7 +32,6 @@ public class ServerRoomMission : MonoBehaviour
 
         selectedWire = wire;
         startPoint = wire.position;
-        Debug.Log("와이어 선택됨");
     }
 
     void StretchWire(RectTransform wire, Vector2 start, Vector2 screenMousePosition)

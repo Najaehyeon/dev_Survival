@@ -9,6 +9,8 @@ public class GameData
     public int Day;
     public int Stress;
     public List<int> hiredEmployeeIDs;
+    public bool hasCat;
+    public bool hasDog;
 }
 
 public class DataManager : Singleton<DataManager>
@@ -31,6 +33,8 @@ public class DataManager : Singleton<DataManager>
             Day = GameManager.Instance.Day,
             Stress = GameManager.Instance.Stress,
             hiredEmployeeIDs = UIManager.Instance.shopUI.employShop.hiredEmployeeIDs,
+            hasCat = UIManager.Instance.shopUI.itemShop.hasCat,
+            hasDog = UIManager.Instance.shopUI.itemShop.hasDog
         };
 
         string json = JsonUtility.ToJson(gameData);
@@ -49,6 +53,15 @@ public class DataManager : Singleton<DataManager>
 
             GameManager.Instance.Init(gameData.Money, gameData.Day, gameData.Stress);
             UIManager.Instance.shopUI.employShop.hiredEmployeeIDs = gameData.hiredEmployeeIDs;
+
+            if (gameData.hasDog)
+            {
+                NPCManager.Instance.SpawnDog();
+            }
+            if (gameData.hasCat)
+            {
+                NPCManager.Instance.SpawnCat();
+            }
         }
         else
         {
