@@ -658,6 +658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoffeeMachine
       objectReference: {fileID: 0}
+    - target: {fileID: 7824004307617735435, guid: e19fbf9c44cb43747b3ecd9285f42610, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b770a8cc71f1bb349ac96512060ea3ce, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

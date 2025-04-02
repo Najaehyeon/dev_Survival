@@ -12,6 +12,7 @@ public class CoffeeMachine : MonoBehaviour
 
     [SerializeField] private Image timerImage;
 
+    public AudioClip audioClip;
     private void Start()
     {
         isUse = true;
@@ -20,6 +21,7 @@ public class CoffeeMachine : MonoBehaviour
     {
         isUse = false;
         Debug.Log("스트레스 감소");
+        SoundManager.instance.PlayClip(audioClip);
         GameManager.Instance.ChangeStress(-coffeStress);
         StartCoroutine(CoffeeMachineTimer());
     }
