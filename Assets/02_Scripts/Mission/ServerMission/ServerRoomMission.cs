@@ -97,7 +97,6 @@ public class ServerRoomMission : MonoBehaviour
 
     public void MouseInput(InputAction.CallbackContext context)
     {
-        // 클릭될 때 마우스 좌표를 로그로 출력
         Vector2 screenMousePosition = mousePos;  // MouseDrag에서 업데이트된 값 사용
 
         if (context.phase == InputActionPhase.Started)
