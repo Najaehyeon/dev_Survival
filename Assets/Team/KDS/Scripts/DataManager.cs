@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class GameData
@@ -7,15 +8,18 @@ public class GameData
     public int Money;
     public int Day;
     public int Stress;
+    public List<int> hiredEmployeeIDs;
+    public List<GameObject> hiredEmployees;
 }
 
 public class DataManager : Singleton<DataManager>
 {
+
     private string gameDataPath;
+
 
     void Awake()
     {
-        // 저장할 경로 지정
         gameDataPath = Path.Combine(Application.persistentDataPath, "GameManager.json");
     }
 
@@ -25,7 +29,9 @@ public class DataManager : Singleton<DataManager>
         {
             Money = GameManager.Instance.Money,
             Day = GameManager.Instance.Day,
-            Stress = GameManager.Instance.Stress
+            Stress = GameManager.Instance.Stress,
+            hiredEmployeeIDs = UIManager.Instance.shopUI.employShop.hiredEmployeeIDs,
+            hiredEmployees = EmployeeManager.Instance.hiredEmployees
         };
 
         string json = JsonUtility.ToJson(gameData);
@@ -44,7 +50,8 @@ public class DataManager : Singleton<DataManager>
             GameData gameData = JsonUtility.FromJson<GameData>(json);
 
             GameManager.Instance.Init(gameData.Money, gameData.Day, gameData.Stress);
-
+            EmployeeManager.Instance.hiredEmployees = gameData.hiredEmployees;
+            UIManager.Instance.shopUI.employShop.hiredEmployeeIDs = gameData.hiredEmployeeIDs;
             Debug.Log("게임 데이터 로드됨");
         }
         else

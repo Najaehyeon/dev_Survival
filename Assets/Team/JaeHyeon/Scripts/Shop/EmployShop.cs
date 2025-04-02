@@ -49,7 +49,7 @@ public class EmployShop : MonoBehaviour
     [SerializeField] private TextMeshProUGUI thirdEmployeeStressControl;
 
     private List<int> selectedEmployeeIndexes = new List<int>(); // 선택된 직원 인덱스
-    private List<int> hiredEmployeeIDs = new List<int>(); // 고용된 직원 ID 저장
+    public List<int> hiredEmployeeIDs = new List<int>(); // 고용된 직원 ID 저장
 
     private ShopUI shopUI;
 
