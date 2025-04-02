@@ -19,65 +19,27 @@ public class CatStates : StateSet
 public class CatIdleState : NPCBaseState
 {
     float timeBetweenResetTarget = 10f;
-    float passedTime;
-    Vector3 prevTargetDestination = Vector3.zero;
 
     public CatIdleState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        destinations = NPCStateMachine.stateSet.IdleDestinationSet.DestinationSet;
+        destinations = NPCStateMachine.stateSet.idleDestinationData.DestinationSet;
     }
 
     public override void Enter()
     {
-        Debug.Log("CatIdle");
         NPCStateMachine.Controller.ChangeMoveSpeed(1f);
         TargetDestination = destinations[Random.Range(0, destinations.Length)];
     }
 
     public override void Exit()
     {
+        passedTime = 0f;
     }
 
     public override void Update()
     { 
-        if(NPCStateMachine.StressLevel >= NPCStateMachine.MaxStress)
-        {
-            NPCStateMachine.ChangeState(NPCStateMachine.npcRestState);
-        }
-        else
-        {
-            //MissionManager에 의해 미션이 할당 되었을 때 배회를 멈추고 미션 장소로 이동
-            SetRandomDestination();
-        }
-    }
-    
-    void SetRandomDestination()
-    {
-        if(passedTime > timeBetweenResetTarget)
-        {
-            Debug.Log("Set Random Destination");
-
-            if(prevTargetDestination != Vector3.zero)
-            {
-                do
-                {
-                    TargetDestination = destinations[Random.Range(0, destinations.Length)];
-                }
-                while (TargetDestination == prevTargetDestination);
-                
-            }
-            else
-            {
-                TargetDestination = destinations[Random.Range(0, destinations.Length)];
-            }
-
-            prevTargetDestination = TargetDestination;
-            passedTime = 0f;
-        }
-        else
-        {
-            passedTime += Time.deltaTime;
-        }
+        //MissionManager에 의해 미션이 할당 되었을 때 배회를 멈추고 미션 장소로 이동
+        SetRandomDestination(timeBetweenResetTarget);
     }
 }
 
@@ -85,7 +47,7 @@ public class CatMissionState : NPCBaseState
 {
     public CatMissionState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        destinations = NPCStateMachine.stateSet.MissionDestinationSet.DestinationSet;
+        destinations = NPCStateMachine.stateSet.missionDestinationData.DestinationSet;
     }
 
     public override void Enter()
@@ -116,18 +78,17 @@ public class CatMissionState : NPCBaseState
 
 public class CatRestState : NPCBaseState
 {
-    private float restTime = 30f;
-    private float timer;
+    private float restTime = 10f;
     
     public CatRestState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        destinations = NPCStateMachine.stateSet.RestDestinationSet.DestinationSet;
+        destinations = NPCStateMachine.stateSet.restDestinationData.DestinationSet;
     }
 
     public override void Enter()
     {
         NPCStateMachine.Controller.ChangeMoveSpeed(10f);
-        timer = 0;
+        passedTime = 0;
 
     }
 
@@ -146,9 +107,9 @@ public class CatRestState : NPCBaseState
 
     private void InRest()
     {
-        if (timer < restTime)
+        if (passedTime < restTime)
         {
-            timer += Time.deltaTime;
+            passedTime += Time.deltaTime;
         }
         else
         {

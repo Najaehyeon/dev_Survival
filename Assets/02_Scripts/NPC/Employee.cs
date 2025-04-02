@@ -15,7 +15,7 @@ public class Employee : MonoBehaviour
     {
         employeeStates = GetComponent<EmployeeStates>();
         npcStateMachine = GetComponent<NPCStateMachine>();
-        EmployeeManager.Instance.IdleEmployees.Enqueue(this);
+        NPCManager.Instance.IdleEmployees.Enqueue(this);
     }
 
     private void Update()
@@ -45,7 +45,7 @@ public class Employee : MonoBehaviour
         if (npcStateMachine.CurrentNPCState != npcStateMachine.npcIdleState)
         {
             Debug.Log("대기 상태 아님");
-            EmployeeManager.Instance.IdleEmployees.Enqueue(this);
+            NPCManager.Instance.IdleEmployees.Enqueue(this);
             return  null;
         }
         
@@ -54,7 +54,7 @@ public class Employee : MonoBehaviour
         if (acceptRate >= employeeStates.EmployData.Sincerity)
         {
             Debug.Log("미션 거절");
-            EmployeeManager.Instance.IdleEmployees.Enqueue(this);
+            NPCManager.Instance.IdleEmployees.Enqueue(this);
             return null;
         }
         
@@ -70,7 +70,7 @@ public class Employee : MonoBehaviour
     /// </summary>
     public void QuitMission()
     {
-        EmployeeManager.Instance.IdleEmployees.Enqueue(this);
+        NPCManager.Instance.IdleEmployees.Enqueue(this);
         npcStateMachine.ChangeState(npcStateMachine.npcIdleState);
     }
     

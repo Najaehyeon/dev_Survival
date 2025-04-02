@@ -49,8 +49,8 @@ public class MissionTimer:MonoBehaviour
     /// </summary>
     public void HireNPC()
     {
-        if (EmployeeManager.Instance.IdleEmployees.Count == 0) return;
-        target = EmployeeManager.Instance.IdleEmployees.Dequeue().AssignMission(this);
+        if (NPCManager.Instance.IdleEmployees.Count == 0) return;
+        target = NPCManager.Instance.IdleEmployees.Dequeue().AssignMission(this);
     }
 
 

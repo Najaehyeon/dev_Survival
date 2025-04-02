@@ -88,7 +88,7 @@ public class EmployShop : MonoBehaviour
         shopUI.MoneyInit();
 
         // 직원 고용
-        EmployeeManager.Instance.HireEmployee(employeeID);
+        NPCManager.Instance.HireEmployee(employeeID);
 
         // 고용된 직원 목록에 추가
         hiredEmployeeIDs.Add(employeeID);

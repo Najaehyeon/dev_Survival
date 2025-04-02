@@ -24,16 +24,10 @@ public class EmployeeStates : StateSet
 public class EmployeeIdleState : NPCBaseState
 {
     float timeBetweenResetTarget = 10f;
-    float passedTime;
-    
-    Vector3 prevTargetDestination = Vector3.zero;
-    
-    Employee employee;
     
     public EmployeeIdleState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        destinations = NPCStateMachine.stateSet.IdleDestinationSet.DestinationSet;
-        employee = NPCStateMachine.GetEmployee();
+        destinations = NPCStateMachine.stateSet.idleDestinationData.DestinationSet;
     }
 
     public override void Enter()
@@ -48,50 +42,15 @@ public class EmployeeIdleState : NPCBaseState
     }
 
     public override void Update()
-    {
-        if(NPCStateMachine.StressLevel >= NPCStateMachine.MaxStress)
-        {
-            NPCStateMachine.ChangeState(NPCStateMachine.npcRestState);
-        }
-        else
-        {
-            //MissionManager에 의해 미션이 할당 되었을 때 배회를 멈추고 미션 장소로 이동
-            SetRandomDestination();
-        }
-    }
-    
-    void SetRandomDestination()
-    {
-        if(passedTime > timeBetweenResetTarget)
-        {
-            if(prevTargetDestination != Vector3.zero)
-            {
-                do
-                {
-                    TargetDestination = destinations[Random.Range(0, destinations.Length)];
-                }
-                while (TargetDestination == prevTargetDestination);
-                
-            }
-            else
-            {
-                TargetDestination = destinations[Random.Range(0, destinations.Length)];
-            }
-
-            prevTargetDestination = TargetDestination;
-            passedTime = 0f;
-        }
-        else
-        {
-            passedTime += Time.deltaTime;
-        }
+    { 
+        //MissionManager에 의해 미션이 할당 되었을 때 배회를 멈추고 미션 장소로 이동
+        SetRandomDestination(timeBetweenResetTarget);
     }
 }
 
 public class EmployeeMissionState : NPCBaseState
 {
     Employee employee;
-    private float paseedTime;
     private float missionDelayTime = 1.5f;
     private bool onMission;
     
@@ -109,16 +68,16 @@ public class EmployeeMissionState : NPCBaseState
     {
         Debug.Log("미션 종료");
         onMission = false;
-        paseedTime = 0f;
+        passedTime = 0f;
     }
 
     public override void Update()
     {
         if (onMission)
         {
-            paseedTime += Time.deltaTime;
+            passedTime += Time.deltaTime;
             
-            if(paseedTime > missionDelayTime)
+            if(passedTime > missionDelayTime)
                 employee.QuitMission();
         }
     }
@@ -137,11 +96,10 @@ public class EmployeeMissionState : NPCBaseState
 public class EmployeeRestState : NPCBaseState
 {
     private float restTime = 10f;
-    private float passedTime;
     
     public EmployeeRestState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        destinations =  NPCStateMachine.stateSet.RestDestinationSet.DestinationSet;
+        destinations =  NPCStateMachine.stateSet.restDestinationData.DestinationSet;
     }
     
     public override void Enter()

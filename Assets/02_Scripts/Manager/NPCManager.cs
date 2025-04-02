@@ -5,20 +5,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EmployeeManager : Singleton<EmployeeManager>
+public class NPCManager : Singleton<NPCManager>
 {
     //NPC 업무 할당을 위한 Queue
-    [field: SerializeField] public Queue<Employee> IdleEmployees = new Queue<Employee>();
-    
-    //같은 스프라이트에도 여러 스탯이 가능
-    //스탯이 SO에 있으니
-    //상점에서도 인덱스를 가지고 있고 NPC 매니저에
-    
-    //데이터에는 스탯 정보랑 인덱스, 이름
-    //스프라이트랑 생성할 때 게임오브젝트가 필요한데
-    //데이터에 프리팹까지 할당
-    
-    //상점에서 인덱스를 받기만 하면 됨
+    public Queue<Employee> IdleEmployees = new Queue<Employee>();
     
     [SerializeField] private List<EmployData> employeeDataList = new List<EmployData>();
     // 고용된 직원 리스트
@@ -26,8 +16,8 @@ public class EmployeeManager : Singleton<EmployeeManager>
     
     public Transform employeeSpawnPoint;
     
-    [SerializeField] private StateDestinationSet[] destinationSets = new StateDestinationSet[3];
-    
+    [SerializeField] private StateDestinationData[] destinationSets = new StateDestinationData[3];
+
     public GameObject HireEmployee(int index)
     {
         if (index >= 0 && index < employeeDataList.Count)
@@ -58,9 +48,9 @@ public class EmployeeManager : Singleton<EmployeeManager>
         employeeObject.AddComponent<NavMeshAgent>();
         employeeObject.AddComponent<AnimationHandler>();
         employeeObject.AddComponent<EmployeeStates>().EmployData = employeeData;
-        employeeObject.GetComponent<EmployeeStates>().IdleDestinationSet = destinationSets[0];
-        employeeObject.GetComponent<EmployeeStates>().MissionDestinationSet = destinationSets[1];
-        employeeObject.GetComponent<EmployeeStates>().RestDestinationSet = destinationSets[2];
+        employeeObject.GetComponent<EmployeeStates>().idleDestinationData = destinationSets[0];
+        employeeObject.GetComponent<EmployeeStates>().missionDestinationData = destinationSets[1];
+        employeeObject.GetComponent<EmployeeStates>().restDestinationData = destinationSets[2];
         employeeObject.AddComponent<NPCController>();
         employeeObject.AddComponent<NPCStateMachine>();
     }
@@ -68,12 +58,20 @@ public class EmployeeManager : Singleton<EmployeeManager>
     /// <summary>
     /// 게임 시작시 직원 위치를 초기화
     /// </summary>
-    public void ResetEmployeesPosition()
+    public void ActiveEmployees()
     {
         foreach (GameObject employee in hiredEmployees)
         {
             employee.gameObject.SetActive(true);
             employee.transform.position = employeeSpawnPoint.position;
+        }
+    }
+
+    public void InactiveEmployees()
+    {
+        foreach (GameObject employee in hiredEmployees)
+        {
+            employee.gameObject.SetActive(false);
         }
     }
     

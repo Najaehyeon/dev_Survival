@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class StateSet : MonoBehaviour
 {
     protected NPCStateMachine stateMachine;
     
-    [SerializeField] public StateDestinationSet IdleDestinationSet;
-    [SerializeField] public StateDestinationSet MissionDestinationSet;
-    [SerializeField] public StateDestinationSet RestDestinationSet;
+    [FormerlySerializedAs("IdleDestinationSet")] [SerializeField] public StateDestinationData idleDestinationData;
+    [FormerlySerializedAs("MissionDestinationSet")] [SerializeField] public StateDestinationData missionDestinationData;
+    [FormerlySerializedAs("RestDestinationSet")] [SerializeField] public StateDestinationData restDestinationData;
     private void Start()
     {
         stateMachine = GetComponent<NPCStateMachine>();
