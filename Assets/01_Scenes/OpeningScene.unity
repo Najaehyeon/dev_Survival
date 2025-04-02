@@ -5522,20 +5522,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2569402325287058655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8915344672697394523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e17514549f02ad84199347254e817d89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  moveClip: {fileID: 0}
 --- !u!1 &2830183842376472315
 GameObject:
   m_ObjectHideFlags: 0
@@ -5952,7 +5938,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2569402325287058655}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnMoveInput
         m_Mode: 0
@@ -6274,7 +6260,6 @@ GameObject:
   - component: {fileID: 5884065521357638832}
   - component: {fileID: 5668319321857011520}
   - component: {fileID: 4597963987337921903}
-  - component: {fileID: 2569402325287058655}
   - component: {fileID: 8951357315311314000}
   m_Layer: 0
   m_Name: Player

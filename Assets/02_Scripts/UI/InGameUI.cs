@@ -25,6 +25,7 @@ public class InGameUI : BaseUI
     public Button pauseButton;
     public Button resumeButton;
     public Button resetButton;
+    public Button exitButton;
 
     [Header("Value")]
     public int day;
@@ -38,6 +39,7 @@ public class InGameUI : BaseUI
         pauseButton.onClick.AddListener(OnPauseButton);
         resumeButton.onClick.AddListener(OnResumeButton);
         resetButton.onClick.AddListener(OnResetButton);
+        exitButton.onClick.AddListener(OnExitButton);
     }
     public override void Init(UIManager uiManager)
     {
@@ -107,5 +109,9 @@ public class InGameUI : BaseUI
         Time.timeScale = 1f;
         DataManager.Instance.DeleteGameManager();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void OnExitButton()
+    {
+        Application.Quit();
     }
 }
