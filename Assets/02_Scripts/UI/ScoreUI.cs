@@ -53,7 +53,10 @@ public class ScoreUI : BaseUI
             GameManager.Instance.stateMachine.ChangeState(GameManager.Instance.stateMachine.shopState);
         });
     }
-
+    /// <summary>
+    /// 점수가 돈으로 바뀌는 연출
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator StringChange()
     {
         SoundManager.instance.PlayClip(clip);

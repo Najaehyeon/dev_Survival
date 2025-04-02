@@ -82,7 +82,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameEnd: 1
-  target: {fileID: 0}
   cirele: {fileID: 7220224863023254410}
   progerss: 0
   lineRenderer: {fileID: 7135360709317037313, guid: a6913e364b608ce4db86cab48c9daae6, type: 3}
@@ -90,6 +89,7 @@ MonoBehaviour:
   scorego: {fileID: 4053029272366170516}
   resultText: {fileID: 3732902782738887645}
   scoreText: {fileID: 2353526678180582256}
+  clip: {fileID: 8300000, guid: 9e9006601d7714d49b955be0707d94d4, type: 3}
 --- !u!61 &8196906488096734506
 BoxCollider2D:
   m_ObjectHideFlags: 0

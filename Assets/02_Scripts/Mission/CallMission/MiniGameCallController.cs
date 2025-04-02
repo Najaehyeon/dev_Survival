@@ -15,9 +15,20 @@ public class MiniGameCallController : Mission
     public GameObject scorego;
     public TextMeshPro resultText;
     public TextMeshPro scoreText;
+
+    public AudioClip clip;
     public void Start()
     {
         lineRenderer=Instantiate(lineRenderer, Vector3.zero, Quaternion.identity);
+ 
+    }
+    /// <summary>
+    /// 게임이 시작되면 사운드
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        SoundManager.instance.PlayClip(clip);
     }
     /// <summary>
     /// 선이 종점에 부딪히면 점수계산

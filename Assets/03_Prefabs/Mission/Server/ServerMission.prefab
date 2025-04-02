@@ -602,6 +602,7 @@ MonoBehaviour:
   redWireDestination: {fileID: 4694242703226856467}
   blueWireDestination: {fileID: 277125806213704916}
   yellowWireDestination: {fileID: 4179881743361693059}
+  wireAudioClip: {fileID: 8300000, guid: a245ee5d75348c84a89ffb7992f1dc82, type: 3}
   serverRoomManager: {fileID: 3283569152579587394}
 --- !u!114 &1192220959825971947
 MonoBehaviour:

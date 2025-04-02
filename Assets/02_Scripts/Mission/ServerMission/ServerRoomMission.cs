@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class ServerRoomMission : MonoBehaviour
 {
-    [SerializeField] private RectTransform redWire;
-    [SerializeField] private RectTransform blueWire;
-    [SerializeField] private RectTransform yellowWire;
-
-    [SerializeField] private RectTransform redWireDestination;
-    [SerializeField] private RectTransform blueWireDestination;
-    [SerializeField] private RectTransform yellowWireDestination;
-
     private RectTransform selectedWire = null;
     private Vector2 startPoint;
     private Vector2 mousePos;
     private Vector2 screenMousePosition;
+
+    [Header("Wires")]
+    [SerializeField] private RectTransform redWire;
+    [SerializeField] private RectTransform blueWire;
+    [SerializeField] private RectTransform yellowWire;
+
+    [Header("Destination")]
+    [SerializeField] private RectTransform redWireDestination;
+    [SerializeField] private RectTransform blueWireDestination;
+    [SerializeField] private RectTransform yellowWireDestination;
+
+    public AudioClip wireAudioClip;
 
     public int completedConnections { get; private set; } = 0;
     private List<RectTransform> completedWires = new List<RectTransform>(); // 이미 연결된 전선들
@@ -63,7 +67,7 @@ public class ServerRoomMission : MonoBehaviour
 
             if (distance < 0.4f) // 연결 성공
             {
-                Debug.Log("연결됨");
+                SoundManager.instance.PlayClip(wireAudioClip);
                 Vector2 end = Camera.main.WorldToScreenPoint(correctDestination.position);
                 StretchWire(wire, startPoint, end);
                 completedConnections++;
@@ -83,7 +87,6 @@ public class ServerRoomMission : MonoBehaviour
         wire.position = startPoint;
         wire.sizeDelta = new Vector2(100f, wire.sizeDelta.y);
         wire.right = Vector2.right;
-        Debug.Log("와이어 되돌아감");
     }
 
 
@@ -100,8 +103,6 @@ public class ServerRoomMission : MonoBehaviour
 
         if (context.phase == InputActionPhase.Started)
         {
-            Debug.Log("클릭 시작, 마우스 좌표: " + screenMousePosition);
-            Debug.Log(redWire.position);
             if (IsMouseOverWire(redWire, screenMousePosition)) SelectWire(redWire);
             else if (IsMouseOverWire(blueWire, screenMousePosition)) SelectWire(blueWire);
             else if (IsMouseOverWire(yellowWire, screenMousePosition)) SelectWire(yellowWire);
