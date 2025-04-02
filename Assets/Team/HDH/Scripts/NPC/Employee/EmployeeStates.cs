@@ -28,9 +28,12 @@ public class EmployeeIdleState : NPCBaseState
     
     Vector3 prevTargetDestination = Vector3.zero;
     
+    Employee employee;
+    
     public EmployeeIdleState(NPCStateMachine stateMachine) : base(stateMachine)
     {
         destinations = NPCStateMachine.stateSet.IdleDestinationSet.DestinationSet;
+        employee = NPCStateMachine.GetEmployee();
     }
 
     public override void Enter()
@@ -38,8 +41,7 @@ public class EmployeeIdleState : NPCBaseState
         Debug.Log("Idle Enter");
         NPCStateMachine.Controller.ChangeMoveSpeed(1f);
         TargetDestination = destinations[Random.Range(0, destinations.Length)];
-        EmployeeManager.Instance.IdleEmployees.Enqueue(NPCStateMachine.GetEmployee());
-        Debug.Log(EmployeeManager.Instance.IdleEmployees.Count);
+        EmployeeManager.Instance.IdleEmployees.Enqueue(employee);
     }
 
     public override void Exit()
@@ -90,12 +92,11 @@ public class EmployeeIdleState : NPCBaseState
 
 public class EmployeeMissionState : NPCBaseState
 {
-    EmployData employData;
+    Employee employee;
     
     public EmployeeMissionState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        EmployeeStates employeeStates = stateMachine.stateSet as EmployeeStates;
-        employData = employeeStates.EmployData;
+        employee = NPCStateMachine.GetEmployee();
     }
     
     public override void Enter()
@@ -117,8 +118,8 @@ public class EmployeeMissionState : NPCBaseState
         MissionTimer missionTimer = obj as MissionTimer;
         //미션 타이머의 직원 전용 해제 함수를 실행
         Debug.Log("Employee Mission Enter");
-        missionTimer.NPCInterection(NPCStateMachine.GetEmployee());
-        NPCStateMachine.AddStress(10 * NPCStateMachine.GetEmployee().Data.StressControl);
+        missionTimer.NPCInterection(employee);
+        NPCStateMachine.AddStress(10 * employee.Data.StressControl);
     }
 }
 

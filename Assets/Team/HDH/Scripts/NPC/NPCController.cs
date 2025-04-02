@@ -9,6 +9,7 @@ public class NPCController : MonoBehaviour
 {
     NavMeshAgent agent;
     NPCStateMachine stateMachine;
+    AnimationHandler animationHandler;
     
     private int destinationIndex;
 
@@ -20,6 +21,8 @@ public class NPCController : MonoBehaviour
         agent.updateRotation = false;
         stateMachine = GetComponent<NPCStateMachine>();
         stateMachine.Init();
+
+        animationHandler = GetComponent<AnimationHandler>();
     }
 
     // Update is called once per frame
