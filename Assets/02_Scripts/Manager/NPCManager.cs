@@ -25,7 +25,7 @@ public class NPCManager : Singleton<NPCManager>
     
     [Header("강아지 정보")]
     [SerializeField] private GameObject dogPrefab;
-    
+
     public GameObject HireEmployee(int index)
     {
         if (index >= 0 && index < employeeDataList.Count)

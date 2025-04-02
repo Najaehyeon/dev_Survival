@@ -22,7 +22,7 @@ public class NPCStateMachine : BaseStateMachine
     {
         Controller = GetComponent<NPCController>();
         stateSet = GetComponent<StateSet>();
-        stateSet.Init();
+        stateSet.Init(this);
         
         npcIdleState = stateSet.IdleState;
         npcMissionState = stateSet.MissionState;

@@ -8,8 +8,9 @@ public class DogStates : StateSet
     public override NPCBaseState RestState { get; set; }
     public override NPCBaseState MissionState { get; set; }
 
-    public override void Init()
+    public override void Init(NPCStateMachine npcStateMachine)
     {
+        base.Init(npcStateMachine);
         IdleState = new DogIdleState(stateMachine);
         RestState = new DogMissionState(stateMachine);
         MissionState = new DogRestState(stateMachine);

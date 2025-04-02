@@ -7,17 +7,16 @@ public class StateSet : MonoBehaviour
 {
     protected NPCStateMachine stateMachine;
     
-    [FormerlySerializedAs("IdleDestinationSet")] [SerializeField] public StateDestinationData idleDestinationData;
-    [FormerlySerializedAs("MissionDestinationSet")] [SerializeField] public StateDestinationData missionDestinationData;
-    [FormerlySerializedAs("RestDestinationSet")] [SerializeField] public StateDestinationData restDestinationData;
-    private void Start()
-    {
-        stateMachine = GetComponent<NPCStateMachine>();
-    }
-
+    [SerializeField] public StateDestinationData idleDestinationData;
+    [SerializeField] public StateDestinationData missionDestinationData;
+    [SerializeField] public StateDestinationData restDestinationData;
+    
     public virtual NPCBaseState IdleState { get; set; }
     public virtual NPCBaseState MissionState { get; set; }
     public virtual NPCBaseState RestState { get; set; }
 
-    public virtual void Init() { }
+    public virtual void Init(NPCStateMachine stateMachine)
+    {
+        this.stateMachine = stateMachine;
+    }
 }

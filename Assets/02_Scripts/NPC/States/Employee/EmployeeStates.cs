@@ -14,8 +14,9 @@ public class EmployeeStates : StateSet
     [Header("직원 스탯 정보")] 
     public EmployData EmployData;
     
-    public override void Init()
+    public override void Init(NPCStateMachine npcStateMachine)
     {
+        base.Init(npcStateMachine);
         IdleState = new EmployeeIdleState(stateMachine);
         RestState = new EmployeeRestState(stateMachine);
         MissionState = new EmployeeMissionState(stateMachine);

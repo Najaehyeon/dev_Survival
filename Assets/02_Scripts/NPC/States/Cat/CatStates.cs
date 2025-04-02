@@ -8,8 +8,9 @@ public class CatStates : StateSet
     public override NPCBaseState RestState { get; set; }
     public override NPCBaseState MissionState { get; set; }
 
-    public override void Init()
+    public override void Init(NPCStateMachine npcStateMachine)
     {
+        base.Init(npcStateMachine);
         IdleState = new CatIdleState(stateMachine);
         RestState = new CatMissionState(stateMachine);
         MissionState = new CatRestState(stateMachine);
@@ -22,6 +23,9 @@ public class CatIdleState : NPCBaseState
 
     public CatIdleState(NPCStateMachine stateMachine) : base(stateMachine)
     {
+        if(NPCStateMachine == null) Debug.Log("CatIdleState: StateMachine is null");
+        if(NPCStateMachine.stateSet == null) Debug.Log("CatIdleState: StateSet is null");
+        if(NPCStateMachine.stateSet.idleDestinationData == null) Debug.Log("CatIdleState: StateSet.idleDestinationData is null");
         destinations = NPCStateMachine.stateSet.idleDestinationData.DestinationSet;
     }
 

@@ -19,6 +19,9 @@ public class InGameState : GameBaseState
 
         if (NPCManager.Instance.hiredEmployees.Count > 0)
             NPCManager.Instance.ActiveEmployees();
+        
+        NPCManager.Instance.SpawnCat();
+        NPCManager.Instance.SpawnDog();
     }
 
     public override void Exit()
