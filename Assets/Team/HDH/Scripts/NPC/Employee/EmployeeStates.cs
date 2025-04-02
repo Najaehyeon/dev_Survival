@@ -117,6 +117,7 @@ public class EmployeeMissionState : NPCBaseState
         //미션 타이머의 직원 전용 해제 함수를 실행
         Debug.Log("Employee Mission Enter");
         missionTimer.NPCInterection(NPCStateMachine.GetEmployee());
+        NPCStateMachine.AddStress(10 * NPCStateMachine.GetEmployee().Data.StressControl);
     }
 }
 
