@@ -29,7 +29,6 @@ public class Employee : MonoBehaviour
         if(npcStateMachine.CurrentNPCState != npcStateMachine.npcIdleState) return  null;
         
         Random random = new Random();
-        
         int acceptRate = random.Next(0, 100);
         if (acceptRate >= employeeStates.EmployData.Sincerity)
         {
@@ -50,7 +49,6 @@ public class Employee : MonoBehaviour
     /// </summary>
     public void QuitMission()
     {
-        EmployeeManager.Instance.IdleEmployees.Enqueue(this);
         npcStateMachine.ChangeState(npcStateMachine.npcIdleState);
     }
     
