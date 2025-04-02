@@ -13,6 +13,8 @@ public class ScoreUI : BaseUI
     public TextMeshProUGUI stressText;
     public Button Shop;
 
+    public TextMeshProUGUI buttonText;
+
     public AudioClip clip;
 
     private RectTransform rect;
@@ -88,5 +90,10 @@ public class ScoreUI : BaseUI
     protected override UIState GetUIState()
     {
         return UIState.Score;
+    }
+
+    public void ChangeText()
+    {
+        buttonText.text = "화성...?";
     }
 }

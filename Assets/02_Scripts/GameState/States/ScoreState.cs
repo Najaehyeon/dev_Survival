@@ -22,6 +22,15 @@ public class ScoreState : GameBaseState
     {
         //점수 결과 창 표시
         ShowResult(RateScore());
+        if (
+            UIManager.Instance.shopUI.itemShop.hasDog &&
+            UIManager.Instance.shopUI.itemShop.hasCat &&
+            GameManager.Instance.Money >= 1000 &&
+            UIManager.Instance.shopUI.employShop.hiredEmployeeIDs.Count >= 2
+            )
+        {
+            UIManager.Instance.scoreUI.ChangeText();
+        }
     }
 
     public override void Exit()
