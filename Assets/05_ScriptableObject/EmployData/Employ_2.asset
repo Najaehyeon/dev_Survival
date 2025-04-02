@@ -15,7 +15,7 @@ MonoBehaviour:
   employIndex: 2
   employName: "\uC7A1\uC2A4"
   employIcon: {fileID: -145451687, guid: 9da17f0cd2b38e34198458c020d615ca, type: 3}
-  price: 220
+  price: 240
   ability: 50
   sincerity: 75
   stressControl: 1.25
