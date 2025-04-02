@@ -17,7 +17,7 @@ public class ServerRoomManager : Mission
     [SerializeField] private TextMeshProUGUI timerText;
 
     private float timer;
-    private bool missionActive = false;
+    public bool missionActive = false;
 
     private void Start()
     {

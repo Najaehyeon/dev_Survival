@@ -572,7 +572,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameEnd: 0
-  target: {fileID: 0}
   serverRoomMission: {fileID: 2319178659967372376}
   missionTime: 10
   destinations:
@@ -584,6 +583,7 @@ MonoBehaviour:
   missionFail: {fileID: 7109184257392673910}
   timeOverText: {fileID: 2400236319248759000}
   timerText: {fileID: 76795916524755988}
+  missionActive: 0
 --- !u!114 &2319178659967372376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,6 +602,7 @@ MonoBehaviour:
   redWireDestination: {fileID: 4694242703226856467}
   blueWireDestination: {fileID: 277125806213704916}
   yellowWireDestination: {fileID: 4179881743361693059}
+  serverRoomManager: {fileID: 3283569152579587394}
 --- !u!114 &1192220959825971947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,6 +672,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 537822c5-2a51-4db8-8f37-0b4a11b8e346
     m_ActionName: ServerMission/MousePos[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b35a724b-5395-41c0-9c8d-58ab90d5a72c
+    m_ActionName: BugMission/MousePos[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ServerMission
