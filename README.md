@@ -34,6 +34,9 @@
 - 강아지와 고양이를 구매하고, 2명 이상의 직원을 채용하고, 1000만원 이상을 모으면, 엔딩을 볼 수 있다.
 
 ## 주요기능
+-미니게임
+
+![Image](https://github.com/user-attachments/assets/a6d1269b-a976-4195-b856-f401a09b5c01)
 
 - State Machine
     
