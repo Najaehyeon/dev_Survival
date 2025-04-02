@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class ServerRoomMission : MonoBehaviour
 {
@@ -21,9 +20,11 @@ public class ServerRoomMission : MonoBehaviour
     public int completedConnections { get; private set; } = 0;
     private List<RectTransform> completedWires = new List<RectTransform>(); // 이미 연결된 전선들
 
+    public ServerRoomManager serverRoomManager;
+
     void SelectWire(RectTransform wire)
     {
-        if (completedWires.Contains(wire)) return; // 이미 연결된 전선은 선택 불가
+        if (completedWires.Contains(wire) || !serverRoomManager.missionActive) return; // 이미 연결된 전선은 선택 불가
 
         selectedWire = wire;
         startPoint = wire.position;
@@ -47,6 +48,8 @@ public class ServerRoomMission : MonoBehaviour
 
     void CheckConnection(RectTransform wire)
     {
+        if (!serverRoomManager.missionActive) return;
+
         RectTransform correctDestination = null;
 
         if (wire == redWire) correctDestination = redWireDestination;
@@ -58,7 +61,7 @@ public class ServerRoomMission : MonoBehaviour
             Vector2 wireEndPoint = Camera.main.ScreenToWorldPoint(screenMousePosition);
             float distance = Vector2.Distance(wireEndPoint, correctDestination.position);
 
-            if (distance < 5f) // 연결 성공
+            if (distance < 0.4f) // 연결 성공
             {
                 Debug.Log("연결됨");
                 Vector2 end = Camera.main.WorldToScreenPoint(correctDestination.position);
