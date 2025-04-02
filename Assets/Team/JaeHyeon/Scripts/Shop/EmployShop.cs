@@ -5,16 +5,15 @@ using UnityEngine.UI;
 
 public class EmployShop : MonoBehaviour
 {
+    [Header("Buttons")]
     public Button rerollButon;
-    public Button firstEmployButton;
-    public Button secondEmployButton;
-    public Button thirdEmployButton;
+    public Button[] employButton;
 
+    [Header("Text")]
     public TextMeshProUGUI moneyInEmployShop;
 
     [Header("직원 데이터")]
     [SerializeField] private EmployData[] allEmployees; // 모든 직원 데이터 저장
-    private HashSet<int> hiredEmployees = new HashSet<int>(); // 고용된 직원 추적
 
     [Header("Name")]
     [SerializeField] private TextMeshProUGUI firstEmployeeNameText;
@@ -46,68 +45,80 @@ public class EmployShop : MonoBehaviour
     [SerializeField] private TextMeshProUGUI secondEmployeeStressControl;
     [SerializeField] private TextMeshProUGUI thirdEmployeeStressControl;
 
-    private List<int> selectedEmployeeIndexes = new List<int>(); // 뽑힌 직원 인덱스 리스트
+    private List<int> selectedEmployeeIndexes = new List<int>(); // 선택된 직원 인덱스
+    private List<int> hiredEmployeeIDs = new List<int>(); // 고용된 직원 ID 저장
 
-    private void Awake()
-    {
-        ShopManager.Instance.employShop = this;
-    }
+    private ShopUI shopUI;
 
     private void Start()
     {
+        shopUI = UIManager.Instance.shopUI;
         rerollButon.onClick.AddListener(Reroll);
         Reroll();
-        MoneyInit();
+        shopUI.MoneyInit();
     }
 
     void HireEmployee(int index)
     {
+        int employeeID = selectedEmployeeIndexes[index];
+
+        // 인덱스 벗어나면
         if (index < 0 || index >= selectedEmployeeIndexes.Count) return;
 
-        int employeeID = selectedEmployeeIndexes[index];
-        if (GameManager.Instance.Money < allEmployees[employeeID].Price) return;
-        if (hiredEmployees.Contains(employeeID)) return; // 이미 고용된 직원이면 실행 안 함
+        // 돈 부족 시
+        if (GameManager.Instance.Money < allEmployees[employeeID].Price)
+        {
+            shopUI.notEnoughMoneyAlert.SetActive(true);
+            shopUI.closeNotEnoughMoneyAlert.onClick.AddListener(shopUI.CloseNotEnoughAlert);
+            return;
+        }
 
         // 금액 차감 및 UI 갱신
         GameManager.Instance.ChangeMoney(-allEmployees[employeeID].Price);
-        MoneyInit();
+        shopUI.MoneyInit();
 
         // 직원 고용
         EmployeeManager.Instance.HireEmployee(employeeID);
 
         // 고용된 직원 목록에 추가
-        hiredEmployees.Add(employeeID);
+        hiredEmployeeIDs.Add(employeeID);
 
-        // 리롤을 강제 실행하여 고용된 직원 제거
-        Reroll();
+        // 버튼 비활성화
+        employButton[index].gameObject.SetActive(false);
     }
 
     public void Reroll()
     {
-        List<int> newEmployees = new List<int>();
+        // 모두 채용하면 리롤 안 되게
+        if (hiredEmployeeIDs.Count == 8) return;
 
-        while (newEmployees.Count < (hiredEmployees.Count < 6 ? 3 : 8 - hiredEmployees.Count))
+        List<int> newEmployees = new List<int>();
+        while (newEmployees.Count < 3)
         {
             int employeeNum = Random.Range(0, allEmployees.Length);
 
-            // 이미 고용된 직원이 아니고, 중복이 아닌 경우에만 추가
-            if (!hiredEmployees.Contains(employeeNum) && !newEmployees.Contains(employeeNum))
+            // 중복이 아닌 경우에만 추가
+            if (!newEmployees.Contains(employeeNum))
             {
                 newEmployees.Add(employeeNum);
             }
         }
-
         selectedEmployeeIndexes = newEmployees;
+
+        // 버튼 설정
+        for (int i = 0; i < selectedEmployeeIndexes.Count; i++)
+        {
+            int index = i;
+            employButton[i].onClick.RemoveAllListeners();
+            employButton[i].onClick.AddListener(() => HireEmployee(index));
+
+            int employeeID = selectedEmployeeIndexes[i];
+
+            // 이미 고용된 직원이면 버튼 비활성화
+            employButton[i].gameObject.SetActive(!hiredEmployeeIDs.Contains(employeeID));
+        }
+
         UpdateUI();
-
-        // 기존 리스너 제거 후 새로 추가 (중복 실행 방지)
-        firstEmployButton.onClick.RemoveAllListeners();
-        secondEmployButton.onClick.RemoveAllListeners();
-        thirdEmployButton.onClick.RemoveAllListeners();
-
-        firstEmployButton.onClick.AddListener(() => HireEmployee(0));
-        secondEmployButton.onClick.AddListener(() => HireEmployee(1));
-        thirdEmployButton.onClick.AddListener(() => HireEmployee(2));
     }
 
     void UpdateUI()
@@ -141,10 +152,5 @@ public class EmployShop : MonoBehaviour
         firstEmployeeStressControl.text = first.StressControl.ToString("F2");
         secondEmployeeStressControl.text = second.StressControl.ToString("F2");
         thirdEmployeeStressControl.text = third.StressControl.ToString("F2");
-    }
-
-    public void MoneyInit()
-    {
-        moneyInEmployShop.text = GameManager.Instance.Money.ToString() + "\\";
     }
 }

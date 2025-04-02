@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class ItemShop : MonoBehaviour
 {
-    public GameObject DogPayButton;
-    public GameObject CatPayButton;
-
     public TextMeshProUGUI moneyInItemShop;
 
     private bool hasDog = false;
@@ -14,9 +11,10 @@ public class ItemShop : MonoBehaviour
     private int greenPrice;
     private int cloudPrice;
 
+    private ShopUI shopUI;
+
     private void Awake()
     {
-        ShopManager.Instance.itemShop = this;
         animalsPrice = 60;
         greenPrice = 20;
         cloudPrice = 10;
@@ -24,61 +22,83 @@ public class ItemShop : MonoBehaviour
 
     private void Start()
     {
-        MonenInit();
+        shopUI = UIManager.Instance.shopUI;
+        shopUI.MoneyInit();
     }
 
     public void BuyDog()
     {
-        if (!HaveMoney(animalsPrice) || hasDog)
+        if (hasDog) return;
+        if (!HaveMoney(animalsPrice))
         {
-            Debug.Log("돈 없음");
+            shopUI.notEnoughMoneyAlert.SetActive(true);
+            shopUI.closeNotEnoughMoneyAlert.onClick.AddListener(shopUI.CloseNotEnoughAlert);
             return;
         }
         GameManager.Instance.ChangeMoney(-animalsPrice);
-        MonenInit();
+        shopUI.MoneyInit();
         hasDog = true;
-        DogPayButton.SetActive(false);
+        shopUI.buyDog.gameObject.SetActive(false);
     }
 
     public void BuyCat()
     {
-        if (!HaveMoney(animalsPrice) || hasCat)
+        if (hasCat) return;
+        if (!HaveMoney(animalsPrice))
         {
-            Debug.Log("돈 없음");
+            shopUI.notEnoughMoneyAlert.SetActive(true);
+            shopUI.closeNotEnoughMoneyAlert.onClick.AddListener(shopUI.CloseNotEnoughAlert);
             return;
         }
         GameManager.Instance.ChangeMoney(-animalsPrice);
-        MonenInit();
+        shopUI.MoneyInit();
         hasCat = true;
-        CatPayButton.SetActive(false);
+        shopUI.buyCat.gameObject.SetActive(false);
     }
 
     public void BuyGreenBottle()
     {
-        if (!HaveMoney(greenPrice)||GameManager.Instance.Stress<50) return;
+        if (GameManager.Instance.Stress < 50)
+        {
+            shopUI.notEnoughStressAlert.SetActive(true);
+            shopUI.closeNotEnoughStressAlert.onClick.AddListener(shopUI.CloseNotEnoughAlert);
+            return;
+        }
+        if (!HaveMoney(greenPrice))
+        {
+            shopUI.notEnoughMoneyAlert.SetActive(true);
+            shopUI.closeNotEnoughMoneyAlert.onClick.AddListener(shopUI.CloseNotEnoughAlert);
+            return;
+        }
         GameManager.Instance.ChangeStress(-50);
         GameManager.Instance.ChangeMoney(-greenPrice);
-        MonenInit();
-        UIManager.Instance.shopUI.MoveStressBar();
+        shopUI.MoneyInit();
+        shopUI.MoveStressBar();
     }
 
     public void BuyCloud()
     {
-        if (!HaveMoney(cloudPrice) || GameManager.Instance.Stress < 10) return;
+        if (GameManager.Instance.Stress < 10)
+        {
+            shopUI.notEnoughStressAlert.SetActive(true);
+            shopUI.closeNotEnoughStressAlert.onClick.AddListener(shopUI.CloseNotEnoughAlert);
+            return;
+        }
+        if (!HaveMoney(cloudPrice))
+        {
+            shopUI.notEnoughMoneyAlert.SetActive(true);
+            shopUI.closeNotEnoughMoneyAlert.onClick.AddListener(shopUI.CloseNotEnoughAlert);
+            return;
+        }
         GameManager.Instance.ChangeStress(-10);
         GameManager.Instance.ChangeMoney(-cloudPrice);
-        MonenInit();
-        UIManager.Instance.shopUI.MoveStressBar();
+        shopUI.MoneyInit();
+        shopUI.MoveStressBar();
     }
 
     private bool HaveMoney(int price)
     {
         if (GameManager.Instance.Money >= price) return true;
         else return false;
-    }
-
-    public void MonenInit()
-    {
-        moneyInItemShop.text = GameManager.Instance.Money.ToString() + "만원";
     }
 }
