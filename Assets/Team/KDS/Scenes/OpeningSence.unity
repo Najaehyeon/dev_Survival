@@ -4718,6 +4718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  moveClip: {fileID: 0}
 --- !u!1 &2830183842376472315
 GameObject:
   m_ObjectHideFlags: 0
