@@ -5,9 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singleton<SoundManager>
 {
-    public static SoundManager instance;
 
     [SerializeField][Range(0f, 1f)] private float BGM;
     [SerializeField][Range(0f, 1f)] private float SFX;
@@ -22,10 +21,9 @@ public class SoundManager : MonoBehaviour
 
     public SoundSource soundSourcePrefab;
 
-    ObjectPoolManager objectPoolManager;
+    ObjectPoolController objectPoolManager;
     private void Awake()
     {
-        instance = this;
         BGMAudioSource = GetComponent<AudioSource>();
         BGMAudioSource.volume = BGM;
         BGMAudioSource.loop = true;
@@ -39,7 +37,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        objectPoolManager = ObjectPoolManager.Instance;
+        objectPoolManager = ObjectPoolController.Instance;
         ChangeBackGroundMusic(BGMClip);
     }
 
@@ -62,7 +60,7 @@ public class SoundManager : MonoBehaviour
         GameObject obj = objectPoolManager.GetObject(0, Vector3.zero, Quaternion.identity);
 
         SoundSource soundSource = obj.GetComponent<SoundSource>();
-        soundSource.Play(clip, instance.SFX, instance.soundEffectPitchVariance);
+        soundSource.Play(clip, Instance.SFX, Instance.soundEffectPitchVariance);
     }
 
 }

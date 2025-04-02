@@ -35,9 +35,9 @@ public class InGameUI : BaseUI
     public void Start()
     {
         pauseUI.SetActive(false);
-        pauseButton.onClick.AddListener(OnPauseBotton);
-        resumeButton.onClick.AddListener(OnResumeBotton);
-        resetButton.onClick.AddListener(OnResetBotton);
+        pauseButton.onClick.AddListener(OnPauseButton);
+        resumeButton.onClick.AddListener(OnResumeButton);
+        resetButton.onClick.AddListener(OnResetButton);
     }
     public override void Init(UIManager uiManager)
     {
@@ -88,21 +88,21 @@ public class InGameUI : BaseUI
         }
     }
 
-    public void OnPauseBotton()
+    public void OnPauseButton()
     {
         Time.timeScale = 0f;
         pauseUI.SetActive(true);
         GameManager.Instance.isMissionInProgress=true;
     }
 
-    public void OnResumeBotton()
+    public void OnResumeButton()
     {
         Time.timeScale = 1f;
         pauseUI.SetActive(false);
         GameManager.Instance.isMissionInProgress = false;
     }
 
-    public void OnResetBotton()
+    public void OnResetButton()
     {
         Time.timeScale = 1f;
         DataManager.Instance.DeleteGameManager();

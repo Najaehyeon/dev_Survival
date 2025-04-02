@@ -24,7 +24,7 @@ public class ServerRoomMission : MonoBehaviour
     public int completedConnections { get; private set; } = 0;
     private List<RectTransform> completedWires = new List<RectTransform>(); // 이미 연결된 전선들
 
-    public ServerRoomManager serverRoomManager;
+    public ServerRoomController serverRoomManager;
 
     void SelectWire(RectTransform wire)
     {
@@ -66,7 +66,7 @@ public class ServerRoomMission : MonoBehaviour
 
             if (distance < 0.4f) // 연결 성공
             {
-                SoundManager.instance.PlayClip(wireAudioClip);
+                SoundManager.Instance.PlayClip(wireAudioClip);
                 Vector2 end = Camera.main.WorldToScreenPoint(correctDestination.position);
                 StretchWire(wire, startPoint, end);
                 completedConnections++;

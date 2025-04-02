@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class OpeningSceneManager : MonoBehaviour
+public class OpeningSceneController : MonoBehaviour
 {
     private const string FirstTimeKey = "FirstTime";
 
