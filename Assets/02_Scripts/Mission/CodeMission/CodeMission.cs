@@ -96,7 +96,6 @@ public class CodeMission : Mission
     }
     private void ChangeText(int i)
     {
-        Debug.Log(i);
         selectObjectText.text = objectListButton[i].GetComponent<TextMeshProUGUI>().text;
         selectText = selectObjectText.text;
     }
@@ -140,8 +139,6 @@ public class CodeMission : Mission
 
         answer = missionTextList[randomNum];
 
-        Debug.Log(answer);
-
         missionHintText1.text = $"NullReferenceException: Object reference not set to an instance of an object\r\nGameManager.{answer} (System.Int32 {answer}) (at Assets/Manager.cs:41)";
         missionHintText2.text = answer;
     }
@@ -149,22 +146,16 @@ public class CodeMission : Mission
 
     private void IsAnswer()
     {
-        Debug.Log("성공");
         score = codeMissionTimer.curTime > 10 ? 3 : 5;
-        Debug.Log("score "+ score);
         isFail = false;
-        //GameEnd();
         UpdateScore();
         endPanel.SetActive(true);
     }
 
     private void IsFail()
     {
-        Debug.Log("실패");
         score = 0;
-        Debug.Log("score " + score);
         isFail = true;
-        //GameEnd();
         UpdateScore();
         endPanel.SetActive(true);
     }
