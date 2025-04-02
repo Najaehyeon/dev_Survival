@@ -180,7 +180,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3632944914067230927, guid: 7f097037170852749b7a40993d2459d1, type: 3}
       propertyPath: m_SortingOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5234627229679942687, guid: 7f097037170852749b7a40993d2459d1, type: 3}
       propertyPath: restRoom
