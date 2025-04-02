@@ -14278,6 +14278,7 @@ MonoBehaviour:
   moneyText: {fileID: 1734241945445800179}
   stressText: {fileID: 7384075682294825336}
   Shop: {fileID: 1362756913877271507}
+  clip: {fileID: 8300000, guid: 5b13a0199b634364d8b4b614499d55d4, type: 3}
 --- !u!224 &4698981709929032345
 RectTransform:
   m_ObjectHideFlags: 0

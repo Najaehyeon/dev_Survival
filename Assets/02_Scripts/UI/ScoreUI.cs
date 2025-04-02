@@ -12,7 +12,9 @@ public class ScoreUI : BaseUI
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI stressText;
     public Button Shop;
-    
+
+    public AudioClip clip;
+
     private RectTransform rect;
 
     private int score;
@@ -54,7 +56,7 @@ public class ScoreUI : BaseUI
 
     public IEnumerator StringChange()
     {
-
+        SoundManager.instance.PlayClip(clip);
         while (score != 0)
         {
             score--;
