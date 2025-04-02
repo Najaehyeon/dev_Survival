@@ -16,11 +16,16 @@ public class InGameState : GameBaseState
     {
         MissionManager.Instance.ChangeState(MissionState.Ready);
         NPCManager.Instance.ActiveEmployees();
+
+        if (NPCManager.Instance.hiredEmployees.Count > 0)
+            NPCManager.Instance.ActiveEmployees();
     }
 
     public override void Exit()
     {
         MissionManager.Instance.IsDayEnd();
+        if (NPCManager.Instance.hiredEmployees.Count > 0)
+            NPCManager.Instance.InactiveEmployees();
     }
 
     public override void Update()

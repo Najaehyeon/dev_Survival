@@ -4,26 +4,34 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class NPCManager : Singleton<NPCManager>
 {
     //NPC 업무 할당을 위한 Queue
     public Queue<Employee> IdleEmployees = new Queue<Employee>();
     
+    [Header("직원 정보")]
     [SerializeField] private List<EmployData> employeeDataList = new List<EmployData>();
     // 고용된 직원 리스트
     public List<Employee> hiredEmployees = new List<Employee>();
     
-    public Transform employeeSpawnPoint;
+    [FormerlySerializedAs("employeeSpawnPoint")] public Transform SpawnPoint;
     
     [SerializeField] private StateDestinationData[] destinationSets = new StateDestinationData[3];
 
+    [Header("고양이 정보")] 
+    [SerializeField] private GameObject catPrefab;
+    
+    [Header("강아지 정보")]
+    [SerializeField] private GameObject dogPrefab;
+    
     public GameObject HireEmployee(int index)
     {
         if (index >= 0 && index < employeeDataList.Count)
         {
             EmployData employeeData = employeeDataList[index];
-            GameObject employeeObject = Instantiate(employeeData.EmployeePrefab, employeeSpawnPoint.position, Quaternion.identity);
+            GameObject employeeObject = Instantiate(employeeData.EmployeePrefab, SpawnPoint.position, Quaternion.identity);
 
             // 필요한 스크립트 추가 및 초기화
             InitializeEmployee(employeeObject, employeeData);
@@ -60,7 +68,7 @@ public class NPCManager : Singleton<NPCManager>
         foreach (Employee employee in hiredEmployees)
         {
             employee.gameObject.SetActive(true);
-            employee.transform.position = employeeSpawnPoint.position;
+            employee.transform.position = SpawnPoint.position;
         }
     }
 
@@ -109,6 +117,16 @@ public class NPCManager : Singleton<NPCManager>
             Debug.LogError("Index out of range");
         }
         
+    }
+
+    public void SpawnCat()
+    {
+        Instantiate(catPrefab, SpawnPoint.position, Quaternion.identity);
+    }
+
+    public void SpawnDog()
+    {
+        Instantiate(dogPrefab, SpawnPoint.position, Quaternion.identity);
     }
     
     

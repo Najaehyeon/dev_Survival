@@ -980,7 +980,7 @@ Transform:
   m_GameObject: {fileID: 2139165105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 7.5, z: -20}
+  m_LocalPosition: {x: -5.5, y: 7.5, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14278,7 +14278,7 @@ MonoBehaviour:
   moneyText: {fileID: 1734241945445800179}
   stressText: {fileID: 7384075682294825336}
   Shop: {fileID: 1362756913877271507}
-  clip: {fileID: 8300000, guid: 5b13a0199b634364d8b4b614499d55d4, type: 3}
+  clip: {fileID: 0}
 --- !u!224 &4698981709929032345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20958,11 +20958,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 61849a404496c894483f4f7bc25299d5, type: 2}
   - {fileID: 11400000, guid: 34457094fae73de4b846fffa408022dd, type: 2}
   hiredEmployees: []
-  employeeSpawnPoint: {fileID: 8366335}
+  SpawnPoint: {fileID: 8366335}
   destinationSets:
   - {fileID: 11400000, guid: 4c19dcacfd8227146b45506af17f5580, type: 2}
   - {fileID: 11400000, guid: bb6b67586ff219240a66d0cf14c16297, type: 2}
   - {fileID: 11400000, guid: a4ccd5b3f9b63cc4f94d8fbda9a82a06, type: 2}
+  catPrefab: {fileID: 1191445135766586780, guid: 32d6649953b23bc4fa403de382ff889d, type: 3}
+  dogPrefab: {fileID: 9076080677837395363, guid: 93e6c1f3672970e4883cde6dec5d6075, type: 3}
 --- !u!224 &7428587538587842382
 RectTransform:
   m_ObjectHideFlags: 0
