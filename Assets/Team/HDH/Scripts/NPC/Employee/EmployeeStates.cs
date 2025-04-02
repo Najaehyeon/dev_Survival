@@ -28,22 +28,23 @@ public class EmployeeIdleState : NPCBaseState
     
     Vector3 prevTargetDestination = Vector3.zero;
     
+    Employee employee;
+    
     public EmployeeIdleState(NPCStateMachine stateMachine) : base(stateMachine)
     {
         destinations = NPCStateMachine.stateSet.IdleDestinationSet.DestinationSet;
+        employee = NPCStateMachine.GetEmployee();
     }
 
     public override void Enter()
     {
-        Debug.Log("Idle Enter");
         NPCStateMachine.Controller.ChangeMoveSpeed(1f);
         TargetDestination = destinations[Random.Range(0, destinations.Length)];
-        Debug.Log(EmployeeManager.Instance.IdleEmployees.Count);
     }
 
     public override void Exit()
     {
-        
+        passedTime = 0f;
     }
 
     public override void Update()
@@ -89,35 +90,47 @@ public class EmployeeIdleState : NPCBaseState
 
 public class EmployeeMissionState : NPCBaseState
 {
-    EmployData employData;
+    Employee employee;
+    private float paseedTime;
+    private float missionDelayTime = 1.5f;
+    private bool onMission;
     
     public EmployeeMissionState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        EmployeeStates employeeStates = stateMachine.stateSet as EmployeeStates;
-        employData = employeeStates.EmployData;
+        employee = NPCStateMachine.GetEmployee();
     }
     
     public override void Enter()
     {
+        Debug.Log("미션 시작");
         NPCStateMachine.Controller.ChangeMoveSpeed(3f);
     }
     public override void Exit()
     {
-        
+        Debug.Log("미션 종료");
+        onMission = false;
+        paseedTime = 0f;
     }
 
     public override void Update()
     {
-        //Debug.Log(TargetDestination);
+        if (onMission)
+        {
+            paseedTime += Time.deltaTime;
+            
+            if(paseedTime > missionDelayTime)
+                employee.QuitMission();
+        }
     }
 
     public override void OnMission(Object obj = null)
     {
         MissionTimer missionTimer = obj as MissionTimer;
         //미션 타이머의 직원 전용 해제 함수를 실행
-        Debug.Log("Employee Mission Enter");
-        missionTimer.NPCInterection(NPCStateMachine.GetEmployee());
-        NPCStateMachine.AddStress(10 * NPCStateMachine.GetEmployee().Data.StressControl);
+        Debug.Log( employee.gameObject.name + "Mission Enter");
+        missionTimer.NPCInterection(employee);
+        NPCStateMachine.AddStress(10 * employee.Data.StressControl);
+        onMission = true;
     }
 }
 
@@ -134,24 +147,21 @@ public class EmployeeRestState : NPCBaseState
     public override void Enter()
     {
         Debug.Log("Enter Rest");
-        NPCStateMachine.Controller.ChangeMoveSpeed(1f);
+        NPCStateMachine.Controller.ChangeMoveSpeed(0.5f);
         TargetDestination = destinations[0];
     }
     public override void Exit()
     {
+        passedTime = 0f;
         NPCStateMachine.ResetStress();
     }
 
     public override void Update()
     {
+        passedTime += Time.deltaTime;
         if (passedTime > restTime)
-        {
             StateMachine.ChangeState(NPCStateMachine.npcIdleState);
-        }
-        else
-        {
-            passedTime += Time.deltaTime;
-        }
+
     }
     
 }

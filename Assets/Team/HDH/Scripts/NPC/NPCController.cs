@@ -9,6 +9,7 @@ public class NPCController : MonoBehaviour
 {
     NavMeshAgent agent;
     NPCStateMachine stateMachine;
+    AnimationHandler animationHandler;
     
     private int destinationIndex;
 
@@ -18,8 +19,11 @@ public class NPCController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateUpAxis = false;
         agent.updateRotation = false;
+        
         stateMachine = GetComponent<NPCStateMachine>();
         stateMachine.Init();
+
+        animationHandler = GetComponent<AnimationHandler>();
     }
 
     // Update is called once per frame
@@ -27,6 +31,10 @@ public class NPCController : MonoBehaviour
     {
         stateMachine.StateUpdate();
         agent.SetDestination(stateMachine.CurrentNPCState.TargetDestination);
+        if(agent.velocity.magnitude > 0.1f)
+            animationHandler.IsMove(agent.velocity);
+        else
+            animationHandler.IsIdle();
     }
 
     public void ChangeMoveSpeed(float moveSpeed)

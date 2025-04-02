@@ -33,7 +33,6 @@ public class GameManager : Singleton<GameManager>
     }
     private void Start()
     {
-      
         stateMachine = gameObject.AddComponent<GameStateMachine>();
         stateMachine.Init();
         UIManager.Instance.ChangeStatusUI(Status.Money, Money);

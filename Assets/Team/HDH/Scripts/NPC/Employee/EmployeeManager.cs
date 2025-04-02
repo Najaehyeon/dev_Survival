@@ -56,6 +56,7 @@ public class EmployeeManager : Singleton<EmployeeManager>
     {
         employeeObject.AddComponent<Employee>();
         employeeObject.AddComponent<NavMeshAgent>();
+        employeeObject.AddComponent<AnimationHandler>();
         employeeObject.AddComponent<EmployeeStates>().EmployData = employeeData;
         employeeObject.GetComponent<EmployeeStates>().IdleDestinationSet = destinationSets[0];
         employeeObject.GetComponent<EmployeeStates>().MissionDestinationSet = destinationSets[1];

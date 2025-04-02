@@ -17,7 +17,23 @@ public class Employee : MonoBehaviour
         npcStateMachine = GetComponent<NPCStateMachine>();
         EmployeeManager.Instance.IdleEmployees.Enqueue(this);
     }
-    
+
+    private void Update()
+    {
+        switch (npcStateMachine.CurrentNPCState)
+        {
+            case EmployeeIdleState:
+                GetComponent<SpriteRenderer>().color = Color.green;
+                break;
+            case EmployeeMissionState:
+                GetComponent<SpriteRenderer>().color = Color.red;
+                break;
+            case EmployeeRestState:
+                GetComponent<SpriteRenderer>().color = Color.yellow;
+                break;
+        }
+    }
+
     //MissionTimer를 통해 연결
     //NPC에 미션을 할당, Stat에 따른 수락 여부
     /// <summary>
@@ -26,19 +42,23 @@ public class Employee : MonoBehaviour
     /// <param name="missionTimer">할당할 미션</param>
     public Employee AssignMission(MissionTimer missionTimer)
     {
-        if(npcStateMachine.CurrentNPCState != npcStateMachine.npcIdleState) return  null;
+        if (npcStateMachine.CurrentNPCState != npcStateMachine.npcIdleState)
+        {
+            Debug.Log("대기 상태 아님");
+            EmployeeManager.Instance.IdleEmployees.Enqueue(this);
+            return  null;
+        }
         
         Random random = new Random();
-        
         int acceptRate = random.Next(0, 100);
         if (acceptRate >= employeeStates.EmployData.Sincerity)
         {
             Debug.Log("미션 거절");
-            QuitMission();
+            EmployeeManager.Instance.IdleEmployees.Enqueue(this);
             return null;
         }
         
-        Debug.Log("Receive mission");
+        Debug.Log("미션 수락");
         npcStateMachine.ChangeState(npcStateMachine.npcMissionState);
         Vector3 targetPos = new Vector3(missionTimer.transform.position.x, missionTimer.transform.position.y, 0);
         npcStateMachine.CurrentNPCState.TargetDestination = targetPos;

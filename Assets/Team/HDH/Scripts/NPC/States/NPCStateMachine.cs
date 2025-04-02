@@ -54,11 +54,10 @@ public class NPCStateMachine : BaseStateMachine
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("트리거 부딪");
+        if (CurrentNPCState != npcMissionState) return;
         
         if (other.TryGetComponent(out MissionTimer currentMissionTimer))
         {
-            Debug.Log(other);
             //고양이는 미션 지점에 도착했을 때 고양이 미션 타이머를 가동
             //OnMission -> 고양이 문제해결 미션이 시작
             //직원은 미션 지점에 도착했을 때 미션 타이머를 해결
