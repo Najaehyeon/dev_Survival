@@ -663,7 +663,7 @@ MonoBehaviour:
   buyBottle: {fileID: 6245417491909701972}
   buyCloud: {fileID: 3273859743139858524}
   closeNotEnoughMoneyAlert: {fileID: 652489920684897151}
-  closeNotEnoughStressAlert: {fileID: 0}
+  closeNotEnoughStressAlert: {fileID: 7305140992040307033}
 --- !u!1 &660290302834434851
 GameObject:
   m_ObjectHideFlags: 0
@@ -7048,7 +7048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7899070379820070662
 RectTransform:
   m_ObjectHideFlags: 0
