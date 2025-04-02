@@ -2218,7 +2218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameEnd: 1
-  target: {fileID: 0}
   LimitTime: 10
   bugPrefab:
   - {fileID: 992679364241500027, guid: a5c77854ef8a2be41ac18afbeb5c9df4, type: 3}
@@ -2236,6 +2235,11 @@ MonoBehaviour:
   thresholdTime:
   - 5
   - 8
+  bugKillSound:
+  - {fileID: 8300000, guid: 0f2a64709a3e5b04182cfd861c523069, type: 3}
+  - {fileID: 8300000, guid: 1fc5ea596839cf146b0f8654cee34439, type: 3}
+  - {fileID: 8300000, guid: bfee92e3632c41f498f92f453902092f, type: 3}
+  - {fileID: 8300000, guid: 1f17c53e9ce2fa74fb7944c624f6649d, type: 3}
   ExitButton: {fileID: 5699696755916060935}
   InfoButton: {fileID: 633820665203363463}
   CompleteButton: {fileID: 583166166401090771}

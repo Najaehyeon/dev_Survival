@@ -26,6 +26,8 @@ public class BugMission : Mission
     private Vector2 mousePos; //마우스 위치 변수
     private Camera mainCam; //메인 카메라
     
+    [SerializeField] AudioClip[] bugKillSound = new AudioClip[4];
+    
     [Header("UI 요소")]
     [SerializeField] private Button ExitButton;
     [SerializeField] private Button InfoButton;
@@ -110,6 +112,8 @@ public class BugMission : Mission
                 if ((bug.transform.position - toWorldPoint).magnitude < aimOffset)
                 {
                     bug.gameObject.SetActive(false);
+                    AudioClip audioClip = bugKillSound[Random.Range(0, bugKillSound.Length)];
+                    SoundManager.Instance.PlayClip(audioClip);
                 }
             }
             
