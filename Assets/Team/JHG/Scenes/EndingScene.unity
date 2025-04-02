@@ -1059,6 +1059,8 @@ PlayableDirector:
     value: {fileID: 1310393652}
   - key: {fileID: 355596072311163317, guid: 9bc8407eb3cd2984294f2a015da087e8, type: 2}
     value: {fileID: 274568159}
+  - key: {fileID: -8561042956588119707, guid: 9bc8407eb3cd2984294f2a015da087e8, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - f3b3dfb23a1e095439b8166ce1c982cd: {fileID: 56326057}
@@ -1081,7 +1083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playableDirector: {fileID: 1228393831}
-  startTime: 1.5
+  startTime: 3.166667
   endTime: 5.833333
 --- !u!1 &1310393651
 GameObject:
