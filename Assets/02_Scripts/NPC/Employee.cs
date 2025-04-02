@@ -6,8 +6,8 @@ using Random = System.Random;
 
 public class Employee : MonoBehaviour
 {
-    private EmployeeStates employeeStates;
-    private NPCStateMachine npcStateMachine;
+    public EmployeeStates employeeStates { get; private set; }
+    public NPCStateMachine npcStateMachine { get; private set; }
 
     public EmployData Data { get => employeeStates.EmployData; }
 

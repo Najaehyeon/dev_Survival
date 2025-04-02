@@ -12,7 +12,7 @@ public class NPCManager : Singleton<NPCManager>
     
     [SerializeField] private List<EmployData> employeeDataList = new List<EmployData>();
     // 고용된 직원 리스트
-    public List<GameObject> hiredEmployees = new List<GameObject>();
+    public List<Employee> hiredEmployees = new List<Employee>();
     
     public Transform employeeSpawnPoint;
     
@@ -28,9 +28,6 @@ public class NPCManager : Singleton<NPCManager>
             // 필요한 스크립트 추가 및 초기화
             InitializeEmployee(employeeObject, employeeData);
             
-            // 고용된 직원 리스트에 추가
-            hiredEmployees.Add(employeeObject);
-            
             employeeObject.SetActive(false);
             
             return employeeObject;
@@ -44,7 +41,7 @@ public class NPCManager : Singleton<NPCManager>
 
     private void InitializeEmployee(GameObject employeeObject, EmployData employeeData)
     {
-        employeeObject.AddComponent<Employee>();
+        hiredEmployees.Add(employeeObject.AddComponent<Employee>());
         employeeObject.AddComponent<NavMeshAgent>();
         employeeObject.AddComponent<AnimationHandler>();
         employeeObject.AddComponent<EmployeeStates>().EmployData = employeeData;
@@ -60,7 +57,7 @@ public class NPCManager : Singleton<NPCManager>
     /// </summary>
     public void ActiveEmployees()
     {
-        foreach (GameObject employee in hiredEmployees)
+        foreach (Employee employee in hiredEmployees)
         {
             employee.gameObject.SetActive(true);
             employee.transform.position = employeeSpawnPoint.position;
@@ -69,8 +66,9 @@ public class NPCManager : Singleton<NPCManager>
 
     public void InactiveEmployees()
     {
-        foreach (GameObject employee in hiredEmployees)
+        foreach (Employee employee in hiredEmployees)
         {
+            employee.npcStateMachine.ResetStress();
             employee.gameObject.SetActive(false);
         }
     }
@@ -79,17 +77,38 @@ public class NPCManager : Singleton<NPCManager>
     /// 고용된 직원을 해고
     /// </summary>
     /// <param name="employee">해고할 직원</param>
-    public void FireEmployee(GameObject employee)
+    public void FireEmployee(int index)
     {
-        if (hiredEmployees.Contains(employee))
+        if (index >= 0 && index < employeeDataList.Count)
         {
-            hiredEmployees.Remove(employee);
-            Destroy(employee);
+            EmployData employeeData = employeeDataList[index];
+            
+            Employee fireEmployee = null;
+        
+            foreach (Employee employee in hiredEmployees)
+            {
+                if (employee.Data == employeeData)
+                {
+                    fireEmployee = employee;
+                    break;
+                }
+            }
+
+            if (hiredEmployees.Contains(fireEmployee))
+            {
+                hiredEmployees.Remove(fireEmployee);
+                Destroy(fireEmployee);
+            }
+            else
+            {
+                Debug.LogError("Employee not found in hired list");
+            }
         }
         else
         {
-            Debug.LogError("Employee not found in hired list: " + employee.name);
+            Debug.LogError("Index out of range");
         }
+        
     }
     
     
