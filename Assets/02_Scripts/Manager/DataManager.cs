@@ -25,6 +25,7 @@ public class DataManager : Singleton<DataManager>
 
     public void SaveGameManager()
     {
+        Debug.Log(gameDataPath);
         GameData gameData = new GameData
         {
             Money = GameManager.Instance.Money,
@@ -37,7 +38,6 @@ public class DataManager : Singleton<DataManager>
         string json = JsonUtility.ToJson(gameData);
 
         File.WriteAllText(gameDataPath, json);
-        Debug.Log("게임 데이터 저장됨: " + gameDataPath);
     }
 
     public void LoadGameManager()
@@ -52,11 +52,9 @@ public class DataManager : Singleton<DataManager>
             GameManager.Instance.Init(gameData.Money, gameData.Day, gameData.Stress);
             NPCManager.Instance.hiredEmployees = gameData.hiredEmployees;
             UIManager.Instance.shopUI.employShop.hiredEmployeeIDs = gameData.hiredEmployeeIDs;
-            Debug.Log("게임 데이터 로드됨");
         }
         else
         {
-            Debug.Log("저장된 게임 데이터가 없습니다.");
         }
     }
     public void DeleteGameManager()
@@ -64,11 +62,9 @@ public class DataManager : Singleton<DataManager>
         if (File.Exists(gameDataPath))
         {
             File.Delete(gameDataPath);
-            Debug.Log("게임 데이터 삭제됨: " + gameDataPath);
         }
         else
         {
-            Debug.Log("삭제할 게임 데이터가 존재하지 않습니다.");
         }
     }
 }

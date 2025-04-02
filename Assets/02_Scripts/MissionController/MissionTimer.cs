@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-//리팩토링할때 MissionHandler로 바꿔줄것
 public class MissionTimer:MonoBehaviour
 {
     private Mission missionInstance;
@@ -13,8 +12,6 @@ public class MissionTimer:MonoBehaviour
     public Color normalColor = Color.white;
     public Color warningColor = Color.red;
     [SerializeField] private bool gameStart;
-
-    //NPC정보 가지고있는애로 변경
     public Employee? target;
     public virtual void Update()
     {
