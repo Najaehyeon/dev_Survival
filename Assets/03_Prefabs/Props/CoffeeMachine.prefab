@@ -325,3 +325,4 @@ MonoBehaviour:
   coffeMachineColltime: 10
   coffeStress: 10
   timerImage: {fileID: 1859231575727022304}
+  audioClip: {fileID: 8300000, guid: b770a8cc71f1bb349ac96512060ea3ce, type: 3}
