@@ -24,11 +24,11 @@ public class ServerRoomMission : MonoBehaviour
     public int completedConnections { get; private set; } = 0;
     private List<RectTransform> completedWires = new List<RectTransform>(); // 이미 연결된 전선들
 
-    public ServerRoomController serverRoomManager;
+    public ServerRoomController serverRoomController;
 
     void SelectWire(RectTransform wire)
     {
-        if (completedWires.Contains(wire) || !serverRoomManager.missionActive) return; // 이미 연결된 전선은 선택 불가
+        if (completedWires.Contains(wire) || !serverRoomController.missionActive) return; // 이미 연결된 전선은 선택 불가
 
         selectedWire = wire;
         startPoint = wire.position;
@@ -51,7 +51,7 @@ public class ServerRoomMission : MonoBehaviour
 
     void CheckConnection(RectTransform wire)
     {
-        if (!serverRoomManager.missionActive) return;
+        if (!serverRoomController.missionActive) return;
 
         RectTransform correctDestination = null;
 
@@ -91,7 +91,7 @@ public class ServerRoomMission : MonoBehaviour
 
     bool IsMouseOverWire(RectTransform wire, Vector2 mousePos)
     {
-        // Screen Space - Camera에서 마우스 좌표를 UI의 RectTransform에 맞게 처리합니다.
+        // Screen Space - Camera에서 마우스 좌표를 UI의 RectTransform에 맞게 처리
         return RectTransformUtility.RectangleContainsScreenPoint(wire, mousePos, Camera.main);
     }
 
