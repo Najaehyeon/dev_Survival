@@ -87,7 +87,6 @@ public class ServerRoomMission : MonoBehaviour
         wire.position = startPoint;
         wire.sizeDelta = new Vector2(100f, wire.sizeDelta.y);
         wire.right = Vector2.right;
-        Debug.Log("와이어 되돌아감");
     }
 
 
@@ -104,8 +103,6 @@ public class ServerRoomMission : MonoBehaviour
 
         if (context.phase == InputActionPhase.Started)
         {
-            Debug.Log("클릭 시작, 마우스 좌표: " + screenMousePosition);
-            Debug.Log(redWire.position);
             if (IsMouseOverWire(redWire, screenMousePosition)) SelectWire(redWire);
             else if (IsMouseOverWire(blueWire, screenMousePosition)) SelectWire(blueWire);
             else if (IsMouseOverWire(yellowWire, screenMousePosition)) SelectWire(yellowWire);
