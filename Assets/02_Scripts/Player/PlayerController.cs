@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
                 if (Time.time - footStepTime > footstepRate)
                 {
                     footStepTime = Time.time;
-                    SoundManager.instance.PlayClip(moveClip);
+                    SoundManager.Instance.PlayClip(moveClip);
                 }
             }
         }

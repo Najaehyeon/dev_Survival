@@ -59,7 +59,7 @@ public class ScoreUI : BaseUI
     /// <returns></returns>
     public IEnumerator StringChange()
     {
-        SoundManager.instance.PlayClip(clip);
+        SoundManager.Instance.PlayClip(clip);
         while (score != 0)
         {
             score--;

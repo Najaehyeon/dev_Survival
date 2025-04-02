@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ServerRoomManager : Mission
+public class ServerRoomController : Mission
 {
     [SerializeField] private ServerRoomMission serverRoomMission;
     [SerializeField] private float missionTime = 10f;

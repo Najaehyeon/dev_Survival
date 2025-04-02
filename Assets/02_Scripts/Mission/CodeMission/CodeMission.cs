@@ -139,7 +139,7 @@ public class CodeMission : Mission
 
         answer = missionTextList[randomNum];
 
-        missionHintText1.text = $"NullReferenceException: Object reference not set to an instance of an object\r\nGameManager.{answer} (System.Int32 {answer}) (at Assets/Manager.cs:41)";
+        missionHintText1.text = $"NullReferenceException: Object reference not set to an Instance of an object\r\nGameManager.{answer} (System.Int32 {answer}) (at Assets/Manager.cs:41)";
         missionHintText2.text = answer;
     }
 

@@ -28,7 +28,7 @@ public class MiniGameCallController : Mission
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SoundManager.instance.PlayClip(clip);
+        SoundManager.Instance.PlayClip(clip);
     }
     /// <summary>
     /// 선이 종점에 부딪히면 점수계산

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPoolManager : MonoBehaviour
+public class ObjectPoolController : MonoBehaviour
 {
     public GameObject[] prefabs;
     [field: SerializeField]private Dictionary<int, Queue<GameObject>> pools = new Dictionary<int, Queue<GameObject>>();
-    public static ObjectPoolManager Instance { get; private set; }
+    public static ObjectPoolController Instance { get; private set; }
 
     private void Awake()
     {
