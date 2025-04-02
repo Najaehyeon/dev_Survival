@@ -1,12 +1,15 @@
-using System;
 using UnityEngine;
-using Random = System.Random;
 
 public class NPCStateMachine : BaseStateMachine
 {
-    public StateSet stateSet;
-
+    /// <summary>
+    /// 현재 상태
+    /// </summary>
     public NPCBaseState CurrentNPCState { get => CurrentState as NPCBaseState; }
+    /// <summary>
+    /// NPC가 가질 수 있는 상태들의 집합
+    /// </summary>
+    public StateSet StateSet { get; private set; }
 
     public NPCBaseState npcIdleState { get; private set; }
     public NPCBaseState npcMissionState { get; private set; }
@@ -21,35 +24,31 @@ public class NPCStateMachine : BaseStateMachine
     public override void Init()
     {
         Controller = GetComponent<NPCController>();
-        stateSet = GetComponent<StateSet>();
-        stateSet.Init(this);
+        StateSet = GetComponent<StateSet>();
+        StateSet.Init(this);
         
-        npcIdleState = stateSet.IdleState;
-        npcMissionState = stateSet.MissionState;
-        npcRestState = stateSet.RestState;
+        npcIdleState = StateSet.IdleState;
+        npcMissionState = StateSet.MissionState;
+        npcRestState = StateSet.RestState;
 
         ChangeState(npcIdleState);
     }
-    
+    /// <summary>
+    /// NPC의 스트레스 값을 추가
+    /// </summary>
+    /// <param name="value">추가할 스트레스 값</param>
     public void AddStress(float value)
     {
         StressLevel = Mathf.Min(StressLevel + value, MaxStress);
     }
-
+    
+    /// <summary>
+    /// NPC의 스트레스를 초기화
+    /// </summary>
     public void ResetStress()
     {
         StressLevel = 0;
         IsRestComplete = true;
-    }
-    
-    /// <summary>
-    /// 미션의 타이머를 시작
-    /// </summary>
-    /// <param name="missionTimer">타이머를 작동시킬 미션의 타이머</param>
-    public void StartMissionTimer(MissionTimer missionTimer)
-    {
-        missionTimer.gameObject.SetActive(true);
-        missionTimer.Selected();
     }
     
     private void OnTriggerEnter2D(Collider2D other)

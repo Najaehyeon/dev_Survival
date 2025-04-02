@@ -20843,12 +20843,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8bcdbcef9099e0a46a47e4ada2093a21, type: 2}
   - {fileID: 11400000, guid: 61849a404496c894483f4f7bc25299d5, type: 2}
   - {fileID: 11400000, guid: 34457094fae73de4b846fffa408022dd, type: 2}
-  hiredEmployees: []
   SpawnPoint: {fileID: 8366335}
   destinationSets:
   - {fileID: 11400000, guid: 4c19dcacfd8227146b45506af17f5580, type: 2}
   - {fileID: 11400000, guid: bb6b67586ff219240a66d0cf14c16297, type: 2}
   - {fileID: 11400000, guid: a4ccd5b3f9b63cc4f94d8fbda9a82a06, type: 2}
+  HiredEmployees: []
   catPrefab: {fileID: 1521281080620760510, guid: a2d446ef07c745345a506d3d9b03fb79, type: 3}
   dogPrefab: {fileID: 5097298615430844429, guid: 545193f3ccabd5943b21cc4ce9d36d10, type: 3}
 --- !u!224 &7428587538587842382

@@ -16,19 +16,12 @@ public class InGameState : GameBaseState
     {
         MissionManager.Instance.ChangeState(MissionState.Ready);
         NPCManager.Instance.ActiveEmployees();
-
-        if (NPCManager.Instance.hiredEmployees.Count > 0)
-            NPCManager.Instance.ActiveEmployees();
-        
-        NPCManager.Instance.SpawnCat();
-        NPCManager.Instance.SpawnDog();
     }
 
     public override void Exit()
     {
-        MissionManager.Instance.IsDayEnd();
-        if (NPCManager.Instance.hiredEmployees.Count > 0)
-            NPCManager.Instance.InactiveEmployees();
+        MissionManager.Instance.IsDayEnd(); 
+        NPCManager.Instance.InactiveEmployees();
     }
 
     public override void Update()
@@ -48,6 +41,5 @@ public class InGameState : GameBaseState
 
         GameManager.Instance.PassTime(Time.deltaTime);
         UIManager.Instance.ChangeStatusUI(Status.Time, (startTime + GameManager.Instance.PassedTime * unitSecond));
-        // GameManager.Instance.uiTest.TimerText.text = (startTime + GameManager.Instance.PassedTime * unitSecond).FormatTime();
     }
 }

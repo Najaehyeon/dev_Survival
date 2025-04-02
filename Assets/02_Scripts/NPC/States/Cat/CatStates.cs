@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CatStates : StateSet
@@ -23,15 +21,12 @@ public class CatIdleState : NPCBaseState
 
     public CatIdleState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        if(NPCStateMachine == null) Debug.Log("CatIdleState: StateMachine is null");
-        if(NPCStateMachine.stateSet == null) Debug.Log("CatIdleState: StateSet is null");
-        if(NPCStateMachine.stateSet.idleDestinationData == null) Debug.Log("CatIdleState: StateSet.idleDestinationData is null");
-        destinations = NPCStateMachine.stateSet.idleDestinationData.DestinationSet;
+        destinations = NPCStateMachine.StateSet.idleDestinationData.DestinationSet;
     }
 
     public override void Enter()
     {
-        NPCStateMachine.Controller.ChangeMoveSpeed(1f);
+        NPCStateMachine.Controller.ChangeMoveSpeed(idleSpeed);
         TargetDestination = destinations[Random.Range(0, destinations.Length)];
     }
 
@@ -42,7 +37,6 @@ public class CatIdleState : NPCBaseState
 
     public override void Update()
     { 
-        //MissionManager에 의해 미션이 할당 되었을 때 배회를 멈추고 미션 장소로 이동
         SetRandomDestination(timeBetweenResetTarget);
     }
 }
@@ -51,32 +45,21 @@ public class CatMissionState : NPCBaseState
 {
     public CatMissionState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        destinations = NPCStateMachine.stateSet.missionDestinationData.DestinationSet;
+        destinations = NPCStateMachine.StateSet.missionDestinationData.DestinationSet;
     }
 
     public override void Enter()
     {
-        Debug.Log("CatMission");
-        NPCStateMachine.Controller.ChangeMoveSpeed(10f);
-        NPCStateMachine.AddStress(10f);
     }
 
     public override void Exit()
     {
-        
+
     }
 
     public override void Update()
     {
-        
-    }
 
-    public override void OnMission(Object obj = null)
-    {
-        MissionTimer missionTimer = obj as MissionTimer;
-        //고양이의 경우는 미션 장소에 도착하였을 때 미션 타이머를 작동
-        //NPCStateMachine.StartMissionTimer(missionTimer);
-        
     }
 }
 
@@ -86,12 +69,12 @@ public class CatRestState : NPCBaseState
     
     public CatRestState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        destinations = NPCStateMachine.stateSet.restDestinationData.DestinationSet;
+        destinations = NPCStateMachine.StateSet.restDestinationData.DestinationSet;
     }
 
     public override void Enter()
     {
-        NPCStateMachine.Controller.ChangeMoveSpeed(10f);
+        NPCStateMachine.Controller.ChangeMoveSpeed(restSpeed);
         passedTime = 0;
 
     }

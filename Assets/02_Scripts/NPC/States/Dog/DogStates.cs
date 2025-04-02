@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DogStates : StateSet
@@ -23,12 +21,12 @@ public class  DogIdleState : NPCBaseState
     
     public DogIdleState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        destinations = NPCStateMachine.stateSet.idleDestinationData.DestinationSet;
+        destinations = NPCStateMachine.StateSet.idleDestinationData.DestinationSet;
     }
 
     public override void Enter()
     {
-        NPCStateMachine.Controller.ChangeMoveSpeed(1f);
+        NPCStateMachine.Controller.ChangeMoveSpeed(idleSpeed);
         TargetDestination = destinations[Random.Range(0, destinations.Length)];
     }
 
@@ -39,7 +37,6 @@ public class  DogIdleState : NPCBaseState
 
     public override void Update()
     { 
-        //MissionManager에 의해 미션이 할당 되었을 때 배회를 멈추고 미션 장소로 이동
         SetRandomDestination(timeBetweenResetTarget);
     }
 }

@@ -1,77 +1,87 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
 public class Employee : MonoBehaviour
 {
-    public EmployeeStates employeeStates { get; private set; }
-    public NPCStateMachine npcStateMachine { get; private set; }
-
-    public EmployData Data { get => employeeStates.EmployData; }
-
+    /// <summary>
+    /// 직원의 상태머신을 구성하는 상태의 집합
+    /// </summary>
+    public EmployeeStates EmployeeStates { get; private set; }
+    /// <summary>
+    /// 직원의 상태머신
+    /// </summary>
+    public NPCStateMachine NPCStateMachine { get; private set; }
+    /// <summary>
+    /// 직원의 스탯 정보
+    /// </summary>
+    public EmployData Data { get => EmployeeStates.EmployData; }
+    
+    private SpriteRenderer spriteRenderer;
+    private Color missionColor;
+    private Color defaultColor;
+    
     private void Start()
     {
-        employeeStates = GetComponent<EmployeeStates>();
-        npcStateMachine = GetComponent<NPCStateMachine>();
+        EmployeeStates = GetComponent<EmployeeStates>();
+        NPCStateMachine = GetComponent<NPCStateMachine>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        defaultColor = spriteRenderer.color;
+        missionColor = new  Color(1, 190/255f, 190/255f, 1f);
         NPCManager.Instance.IdleEmployees.Enqueue(this);
     }
-
-    private void Update()
+    
+    /// <summary>
+    /// 미션 할당 시 색깔을 변경
+    /// </summary>
+    public void ChangeToMissionColor()
     {
-        switch (npcStateMachine.CurrentNPCState)
-        {
-            case EmployeeIdleState:
-                GetComponent<SpriteRenderer>().color = Color.green;
-                break;
-            case EmployeeMissionState:
-                GetComponent<SpriteRenderer>().color = Color.red;
-                break;
-            case EmployeeRestState:
-                GetComponent<SpriteRenderer>().color = Color.yellow;
-                break;
-        }
+        spriteRenderer.color = missionColor;
     }
-
-    //MissionTimer를 통해 연결
-    //NPC에 미션을 할당, Stat에 따른 수락 여부
+    
+    /// <summary>
+    /// 미션 할당 해제 시 색깔을 변경
+    /// </summary>
+    public void ChangeToDefaultColor()
+    {
+        spriteRenderer.color = defaultColor;
+    }
+    
     /// <summary>
     /// NPC에 미션을 할당, 수락 확률에 따라 NPCStateMachine 또는 null을 반환
     /// </summary>
     /// <param name="missionTimer">할당할 미션</param>
     public Employee AssignMission(MissionTimer missionTimer)
     {
-        if (npcStateMachine.CurrentNPCState != npcStateMachine.npcIdleState)
+        if (NPCStateMachine.CurrentNPCState != NPCStateMachine.npcIdleState)
         {
-            Debug.Log("대기 상태 아님");
+            //대기 상태가 아닐 경우 수락하지 않음
             NPCManager.Instance.IdleEmployees.Enqueue(this);
             return  null;
         }
         
         Random random = new Random();
         int acceptRate = random.Next(0, 100);
-        if (acceptRate >= employeeStates.EmployData.Sincerity)
+        //Sincerity에 따라 미션 수락 여부 결정(100이면 무조건 수락)
+        if (acceptRate >= EmployeeStates.EmployData.Sincerity)
         {
-            Debug.Log("미션 거절");
+            //Sincerity보다 acceptRate가 더 클 경우 수락하지 않음
             NPCManager.Instance.IdleEmployees.Enqueue(this);
             return null;
         }
-        
-        Debug.Log("미션 수락");
-        npcStateMachine.ChangeState(npcStateMachine.npcMissionState);
+        //미션 상태로 변경하고 해당 위치로 이동하도록 함
+        NPCStateMachine.ChangeState(NPCStateMachine.npcMissionState);
         Vector3 targetPos = new Vector3(missionTimer.transform.position.x, missionTimer.transform.position.y, 0);
-        npcStateMachine.CurrentNPCState.TargetDestination = targetPos;
+        NPCStateMachine.CurrentNPCState.TargetDestination = targetPos;
         return this;
     }
     
     /// <summary>
-    /// 미션 할당이 해제되었을 때
+    /// 미션 할당이 해제되었을 때 대기 상태로 바꾸고 대기 직원 Queue에 추가
     /// </summary>
     public void QuitMission()
     {
         NPCManager.Instance.IdleEmployees.Enqueue(this);
-        npcStateMachine.ChangeState(npcStateMachine.npcIdleState);
+        NPCStateMachine.ChangeState(NPCStateMachine.npcIdleState);
     }
     
 }

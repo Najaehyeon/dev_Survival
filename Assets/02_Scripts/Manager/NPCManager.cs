@@ -1,31 +1,31 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 public class NPCManager : Singleton<NPCManager>
 {
-    //NPC 업무 할당을 위한 Queue
+    /// <summary>
+    /// 현재 대기 상태인 직원 Queue
+    /// </summary>
     public Queue<Employee> IdleEmployees = new Queue<Employee>();
     
     [Header("직원 정보")]
     [SerializeField] private List<EmployData> employeeDataList = new List<EmployData>();
-    // 고용된 직원 리스트
-    public List<Employee> hiredEmployees = new List<Employee>();
-    
-    [FormerlySerializedAs("employeeSpawnPoint")] public Transform SpawnPoint;
-    
+    [SerializeField] private Transform SpawnPoint;
     [SerializeField] private StateDestinationData[] destinationSets = new StateDestinationData[3];
-
+    [SerializeField] private List<Employee> HiredEmployees = new List<Employee>();
+    
     [Header("고양이 정보")] 
     [SerializeField] private GameObject catPrefab;
     
     [Header("강아지 정보")]
     [SerializeField] private GameObject dogPrefab;
-
+    
+    /// <summary>
+    /// 상점에서 선택한 직원을 생성
+    /// </summary>
+    /// <param name="index">직원 데이터에서 생성할 직원에 대한 인덱스</param>
+    /// <returns></returns>
     public GameObject HireEmployee(int index)
     {
         if (index >= 0 && index < employeeDataList.Count)
@@ -46,10 +46,10 @@ public class NPCManager : Singleton<NPCManager>
             return null;
         }
     }
-
+    
     private void InitializeEmployee(GameObject employeeObject, EmployData employeeData)
     {
-        hiredEmployees.Add(employeeObject.AddComponent<Employee>());
+        HiredEmployees.Add(employeeObject.AddComponent<Employee>());
         employeeObject.AddComponent<NavMeshAgent>();
         employeeObject.AddComponent<AnimationHandler>();
         employeeObject.AddComponent<EmployeeStates>().EmployData = employeeData;
@@ -61,30 +61,37 @@ public class NPCManager : Singleton<NPCManager>
     }
     
     /// <summary>
-    /// 게임 시작시 직원 위치를 초기화
+    /// 게임 시작시 직원 오브젝트를 활성화 및 시작 위치로 초기화
     /// </summary>
     public void ActiveEmployees()
     {
-        foreach (Employee employee in hiredEmployees)
+        if(HiredEmployees.Count == 0) return;
+        
+        foreach (Employee employee in HiredEmployees)
         {
             employee.gameObject.SetActive(true);
             employee.transform.position = SpawnPoint.position;
         }
     }
-
+    
+    /// <summary>
+    /// 게임 종료시 직원 오브젝트를 비활성화 및 스트레스를 초기화
+    /// </summary>
     public void InactiveEmployees()
     {
-        foreach (Employee employee in hiredEmployees)
+        if(HiredEmployees.Count == 0) return;
+        
+        foreach (Employee employee in HiredEmployees)
         {
-            employee.npcStateMachine.ResetStress();
+            employee.NPCStateMachine.ResetStress();
             employee.gameObject.SetActive(false);
         }
     }
     
     /// <summary>
-    /// 고용된 직원을 해고
+    /// 고용 중인 직원을 삭제
     /// </summary>
-    /// <param name="employee">해고할 직원</param>
+    /// <param name="index">삭제할 직원의 인덱스 번호</param>
     public void FireEmployee(int index)
     {
         if (index >= 0 && index < employeeDataList.Count)
@@ -93,7 +100,7 @@ public class NPCManager : Singleton<NPCManager>
             
             Employee fireEmployee = null;
         
-            foreach (Employee employee in hiredEmployees)
+            foreach (Employee employee in HiredEmployees)
             {
                 if (employee.Data == employeeData)
                 {
@@ -102,9 +109,9 @@ public class NPCManager : Singleton<NPCManager>
                 }
             }
 
-            if (hiredEmployees.Contains(fireEmployee))
+            if (HiredEmployees.Contains(fireEmployee))
             {
-                hiredEmployees.Remove(fireEmployee);
+                HiredEmployees.Remove(fireEmployee);
                 Destroy(fireEmployee);
             }
             else
@@ -118,12 +125,18 @@ public class NPCManager : Singleton<NPCManager>
         }
         
     }
-
+    
+    /// <summary>
+    /// 고양이를 생성
+    /// </summary>
     public void SpawnCat()
     {
         Instantiate(catPrefab, SpawnPoint.position, Quaternion.identity);
     }
-
+    
+    /// <summary>
+    /// 고양이를 생성
+    /// </summary>
     public void SpawnDog()
     {
         Instantiate(dogPrefab, SpawnPoint.position, Quaternion.identity);

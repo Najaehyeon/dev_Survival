@@ -9,6 +9,11 @@ public abstract class NPCBaseState : BaseState
     protected Vector3[] destinations;
     public Vector3 TargetDestination;
 
+    protected readonly float idleSpeed = 1f;
+    protected readonly float missionSpeed = 3f;
+    protected readonly float restSpeed = 0.5f;
+    
+
     protected NPCBaseState(NPCStateMachine stateMachine) : base(stateMachine)
     {
         NPCStateMachine = stateMachine;

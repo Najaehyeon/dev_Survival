@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Object = UnityEngine.Object;
-using Random = UnityEngine.Random;
 
 public class EmployeeStates : StateSet
 {
@@ -28,12 +23,12 @@ public class EmployeeIdleState : NPCBaseState
     
     public EmployeeIdleState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        destinations = NPCStateMachine.stateSet.idleDestinationData.DestinationSet;
+        destinations = NPCStateMachine.StateSet.idleDestinationData.DestinationSet;
     }
 
     public override void Enter()
     {
-        NPCStateMachine.Controller.ChangeMoveSpeed(1f);
+        NPCStateMachine.Controller.ChangeMoveSpeed(idleSpeed);
         TargetDestination = destinations[Random.Range(0, destinations.Length)];
     }
 
@@ -44,7 +39,6 @@ public class EmployeeIdleState : NPCBaseState
 
     public override void Update()
     { 
-        //MissionManager에 의해 미션이 할당 되었을 때 배회를 멈추고 미션 장소로 이동
         SetRandomDestination(timeBetweenResetTarget);
     }
 }
@@ -62,12 +56,12 @@ public class EmployeeMissionState : NPCBaseState
     
     public override void Enter()
     {
-        Debug.Log("미션 시작");
-        NPCStateMachine.Controller.ChangeMoveSpeed(3f);
+        NPCStateMachine.Controller.ChangeMoveSpeed(missionSpeed);
+        employee.ChangeToMissionColor();
     }
     public override void Exit()
     {
-        Debug.Log("미션 종료");
+        employee.ChangeToDefaultColor();
         onMission = false;
         passedTime = 0f;
     }
@@ -87,7 +81,6 @@ public class EmployeeMissionState : NPCBaseState
     {
         MissionTimer missionTimer = obj as MissionTimer;
         //미션 타이머의 직원 전용 해제 함수를 실행
-        Debug.Log( employee.gameObject.name + "Mission Enter");
         missionTimer.NPCInterection(employee);
         NPCStateMachine.AddStress(10 * employee.Data.StressControl);
         onMission = true;
@@ -100,13 +93,12 @@ public class EmployeeRestState : NPCBaseState
     
     public EmployeeRestState(NPCStateMachine stateMachine) : base(stateMachine)
     {
-        destinations =  NPCStateMachine.stateSet.restDestinationData.DestinationSet;
+        destinations =  NPCStateMachine.StateSet.restDestinationData.DestinationSet;
     }
     
     public override void Enter()
     {
-        Debug.Log("Enter Rest");
-        NPCStateMachine.Controller.ChangeMoveSpeed(0.5f);
+        NPCStateMachine.Controller.ChangeMoveSpeed(restSpeed);
         TargetDestination = destinations[0];
     }
     public override void Exit()

@@ -9,11 +9,8 @@ public class GameManager : Singleton<GameManager>
     [field: SerializeField] public bool isMissionInProgress;
 
     [field: SerializeField] public int Stress { get; private set; }
-    //MissionTimer 에서 변경
 
     public GameStateMachine stateMachine;
-
-    public Transform StartPos;
 
     public void Init(int money, int day, int stress)
     {

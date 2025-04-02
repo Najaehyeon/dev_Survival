@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -26,7 +22,6 @@ public class NPCController : MonoBehaviour
         animationHandler = GetComponent<AnimationHandler>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         stateMachine.StateUpdate();
@@ -36,7 +31,11 @@ public class NPCController : MonoBehaviour
         else
             animationHandler.IsIdle();
     }
-
+    
+    /// <summary>
+    /// NPC의 이동 속도를 변경
+    /// </summary>
+    /// <param name="moveSpeed">변경할 이동 속도 값</param>
     public void ChangeMoveSpeed(float moveSpeed)
     {
         agent.speed = moveSpeed;
