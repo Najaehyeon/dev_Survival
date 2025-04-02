@@ -27,7 +27,6 @@ public class SoundSource : MonoBehaviour, IPoolable
     {
         _audioSource.Stop();
         OnDespawn();
-        //Destroy(this.gameObject);
     }
 
     public void Initialize(Action<GameObject> returnAction)

@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
     private Vector2 movementDirection;
+    float footStepTime = 0;
+    float footstepRate = 0.5f;
 
     Rigidbody2D _rigidbody;
 
@@ -28,7 +30,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        //Debug.Log("게임중"+isGaming);
         isGaming = GameManager.Instance.isMissionInProgress;
     }
 
@@ -46,8 +47,7 @@ public class PlayerController : MonoBehaviour
             movementDirection = Vector2.zero;  
         }
     }
-    float footStepTime = 0;
-    float footstepRate = 0.5f;
+    
     private void Move()
     {
         Vector2 dir = transform.up * movementDirection.y + transform.right * movementDirection.x;
@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed && isTriggerOn)
         {
-            //Debug.Log("상호작용");
             if (MissionTimer != null) MissionTimer.OnGameStart();
             if (coffeeMachin != null && coffeeMachin.isUse) coffeeMachin.DownStress();
         }

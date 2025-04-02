@@ -20,7 +20,6 @@ public class CoffeeMachine : MonoBehaviour
     public void DownStress()
     {
         isUse = false;
-        Debug.Log("스트레스 감소");
         SoundManager.instance.PlayClip(audioClip);
         GameManager.Instance.ChangeStress(-coffeStress);
         StartCoroutine(CoffeeMachineTimer());

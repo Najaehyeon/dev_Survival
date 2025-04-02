@@ -29,7 +29,6 @@ public class SoundManager : MonoBehaviour
         BGMAudioSource = GetComponent<AudioSource>();
         BGMAudioSource.volume = BGM;
         BGMAudioSource.loop = true;
-        //슬라이더 추가시 주석 해제
         sliderBGM.value = BGM;
         sliderSFX.value = SFX;
     }
@@ -60,7 +59,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlayClip(AudioClip clip)
     {
-        //SoundSource obj = Instantiate(instance.soundSourcePrefab);
         GameObject obj = objectPoolManager.GetObject(0, Vector3.zero, Quaternion.identity);
 
         SoundSource soundSource = obj.GetComponent<SoundSource>();
