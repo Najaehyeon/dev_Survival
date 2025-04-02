@@ -19,17 +19,12 @@ public class ServerRoomMission : MonoBehaviour
     [SerializeField] private RectTransform blueWireDestination;
     [SerializeField] private RectTransform yellowWireDestination;
 
-    AudioSource audioSource;
+    public AudioClip wireAudioClip;
 
     public int completedConnections { get; private set; } = 0;
     private List<RectTransform> completedWires = new List<RectTransform>(); // 이미 연결된 전선들
 
     public ServerRoomManager serverRoomManager;
-
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
 
     void SelectWire(RectTransform wire)
     {
@@ -72,7 +67,7 @@ public class ServerRoomMission : MonoBehaviour
 
             if (distance < 0.4f) // 연결 성공
             {
-                audioSource.Play();
+                SoundManager.instance.PlayClip(wireAudioClip);
                 Vector2 end = Camera.main.WorldToScreenPoint(correctDestination.position);
                 StretchWire(wire, startPoint, end);
                 completedConnections++;
