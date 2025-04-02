@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class EmployShop : MonoBehaviour
 {
+    public GameObject fullEmployeeAlert;
+
     [Header("Buttons")]
+    public Button closeFullEmployeeAlert;
     public Button rerollButon;
     public Button[] employButton;
 
@@ -61,6 +64,13 @@ public class EmployShop : MonoBehaviour
     void HireEmployee(int index)
     {
         int employeeID = selectedEmployeeIndexes[index];
+
+        if (hiredEmployeeIDs.Count == 3)
+        {
+            fullEmployeeAlert.SetActive(true);
+            closeFullEmployeeAlert.onClick.AddListener(() => fullEmployeeAlert.SetActive(false));
+            return;
+        }
 
         // 인덱스 벗어나면
         if (index < 0 || index >= selectedEmployeeIndexes.Count) return;
