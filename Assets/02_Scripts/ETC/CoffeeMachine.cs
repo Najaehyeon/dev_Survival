@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CoffeeMachine : MonoBehaviour
 {
     public bool isUse = true;
-    public float coffeMachineColltime = 10f;
+    public float coffeMachineCooltime = 10f;
     public int coffeStress = 10;
 
     [SerializeField] private Image timerImage;
@@ -29,12 +29,12 @@ public class CoffeeMachine : MonoBehaviour
     {
         while (!isUse)
         {
-            coffeMachineColltime -= Time.deltaTime;
-            timerImage.fillAmount = 1 - (coffeMachineColltime / 10f);
-            if (coffeMachineColltime < 0)
+            coffeMachineCooltime -= Time.deltaTime;
+            timerImage.fillAmount = 1 - (coffeMachineCooltime / 10f);
+            if (coffeMachineCooltime < 0)
             {
                 isUse = true;
-                coffeMachineColltime = 10f;
+                coffeMachineCooltime = 10f;
                 timerImage.fillAmount = 0;
             }
             yield return null;

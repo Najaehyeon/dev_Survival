@@ -2215,7 +2215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &554284058619834617
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5385,7 +5385,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\uC774 \uAC15\uC544\uC9C0\uB294 \uCE90\uB9AD\uD130\uC758 \uAE30\uBD84\uC744
-    \uC88B\uAC8C \uB9CC\uB4E4\uC5B4,\n\uC2A4\uD2B8\uB808\uC2A4\uB97C \uC9C0\uC18D\uC801\uC73C\uB85C\n\uD574\uC18C\uD574\uC90D\uB2C8\uB2E4."
+    \uC88B\uAC8C \uB9CC\uB4E4\uC5B4,\n\uC2A4\uD2B8\uB808\uC2A4\uB97C \uC790\uC8FC\n\uD574\uC18C\uD574\uC90D\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2ccaa64c6d5334d49a9409afca1a0f90, type: 2}
   m_sharedMaterial: {fileID: 8832682642043553971, guid: 2ccaa64c6d5334d49a9409afca1a0f90, type: 2}
@@ -21270,7 +21270,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: -1/s
+  m_text: -10/pat
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2ccaa64c6d5334d49a9409afca1a0f90, type: 2}
   m_sharedMaterial: {fileID: 8832682642043553971, guid: 2ccaa64c6d5334d49a9409afca1a0f90, type: 2}

@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     MissionTimer MissionTimer;
     CoffeeMachine coffeeMachin;
-    //Pet pet;
+    Pet pet;
     bool isTriggerOn = false;
     bool isGaming = false;
 
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         {
             if (MissionTimer != null) MissionTimer.OnGameStart();
             if (coffeeMachin != null && coffeeMachin.isUse) coffeeMachin.DownStress();
-            //if (pet != null) Pet.DownStress();
+            if (pet != null && pet.isUse) pet.DownStress();
         }
     }
 
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.tag == "Pet")
         {
-            //pet = collision.gameObject.GetComponent<Pet>();
+            pet = collision.gameObject.GetComponent<Pet>();
         }
     }
 
@@ -102,6 +102,6 @@ public class PlayerController : MonoBehaviour
         isTriggerOn = false;
         MissionTimer = null;
         coffeeMachin = null;
-        //pet = null;
+        pet = null;
     }
 }
