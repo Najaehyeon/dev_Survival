@@ -104,6 +104,7 @@ public class InGameUI : BaseUI
 
     public void OnResetBotton()
     {
+        Time.timeScale = 1f;
         DataManager.Instance.DeleteGameManager();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
