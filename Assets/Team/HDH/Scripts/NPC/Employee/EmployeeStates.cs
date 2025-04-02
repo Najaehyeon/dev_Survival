@@ -38,15 +38,13 @@ public class EmployeeIdleState : NPCBaseState
 
     public override void Enter()
     {
-        Debug.Log("Idle Enter");
         NPCStateMachine.Controller.ChangeMoveSpeed(1f);
         TargetDestination = destinations[Random.Range(0, destinations.Length)];
-        EmployeeManager.Instance.IdleEmployees.Enqueue(employee);
     }
 
     public override void Exit()
     {
-        
+        passedTime = 0f;
     }
 
     public override void Update()
@@ -93,6 +91,9 @@ public class EmployeeIdleState : NPCBaseState
 public class EmployeeMissionState : NPCBaseState
 {
     Employee employee;
+    private float paseedTime;
+    private float missionDelayTime = 1.5f;
+    private bool onMission;
     
     public EmployeeMissionState(NPCStateMachine stateMachine) : base(stateMachine)
     {
@@ -101,16 +102,25 @@ public class EmployeeMissionState : NPCBaseState
     
     public override void Enter()
     {
+        Debug.Log("미션 시작");
         NPCStateMachine.Controller.ChangeMoveSpeed(3f);
     }
     public override void Exit()
     {
-        
+        Debug.Log("미션 종료");
+        onMission = false;
+        paseedTime = 0f;
     }
 
     public override void Update()
     {
-        //Debug.Log(TargetDestination);
+        if (onMission)
+        {
+            paseedTime += Time.deltaTime;
+            
+            if(paseedTime > missionDelayTime)
+                employee.QuitMission();
+        }
     }
 
     public override void OnMission(Object obj = null)
@@ -120,6 +130,7 @@ public class EmployeeMissionState : NPCBaseState
         Debug.Log("Employee Mission Enter");
         missionTimer.NPCInterection(employee);
         NPCStateMachine.AddStress(10 * employee.Data.StressControl);
+        onMission = true;
     }
 }
 
@@ -141,19 +152,16 @@ public class EmployeeRestState : NPCBaseState
     }
     public override void Exit()
     {
+        passedTime = 0f;
         NPCStateMachine.ResetStress();
     }
 
     public override void Update()
     {
+        passedTime += Time.deltaTime;
         if (passedTime > restTime)
-        {
             StateMachine.ChangeState(NPCStateMachine.npcIdleState);
-        }
-        else
-        {
-            passedTime += Time.deltaTime;
-        }
+
     }
     
 }

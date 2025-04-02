@@ -81,7 +81,6 @@ public class MissionTimer:MonoBehaviour
             CalculateScore(interect);
             MissionManager.Instance.controller.IsAllGameEnd();
             Debug.Log("NPC와 소통");
-            target.QuitMission();
 
         }
     }
