@@ -22,7 +22,8 @@
 
 ## 와이어 프레임
 
-![image.png](attachment:c8e8b647-6b0d-452b-8354-ff2c6bd93865:image.png)
+![image](https://github.com/user-attachments/assets/6a08b0db-b98e-4e40-9fcf-b49f303c0997)
+
 
 ## 플레이 방법
 
@@ -36,8 +37,10 @@
 
 - State Machine
     
-    ![image (2).png](attachment:1e37e657-478d-465f-a094-15c2b33be6e9:image_(2).png)
+![image (2)](https://github.com/user-attachments/assets/f6bc7266-1fa4-49f3-9594-4f8ed6754419)
+
     
 - 타임라인을 활용한 컷
     
-    ![image (1).png](attachment:60b6cefb-78d4-468c-bb4b-917aea386bbb:image_(1).png)
+![image (1)](https://github.com/user-attachments/assets/a07fb12e-eb3e-4af0-ae15-4d9e4608eeb6)
+
