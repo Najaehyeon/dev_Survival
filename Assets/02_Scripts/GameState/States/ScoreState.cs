@@ -25,7 +25,7 @@ public class ScoreState : GameBaseState
         if (
             UIManager.Instance.shopUI.itemShop.hasDog &&
             UIManager.Instance.shopUI.itemShop.hasCat &&
-            GameManager.Instance.Money >= 1000 &&
+            GameManager.Instance.Money+ (GameManager.Instance.Score*10) >= 1000 &&
             UIManager.Instance.shopUI.employShop.hiredEmployeeIDs.Count >= 2
             )
         {
