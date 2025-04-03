@@ -48,3 +48,16 @@
     
 ![image (1)](https://github.com/user-attachments/assets/a07fb12e-eb3e-4af0-ae15-4d9e4608eeb6)
 
+## 외부에셋
+
+https://ashizian.itch.io/pixelized-phone   
+https://comp3interactive.itch.io/retro-windows-gui   
+https://2dpig.itch.io/pixel-office
+https://pop-shop-packs.itch.io/cats-pixel-asset-pack
+https://jik-a-4.itch.io/metrocity-free-topdown-character-pack
+
+
+https://assetstore.unity.com/packages/audio/music/arcade-game-bgm-3-173560
+https://assetstore.unity.com/packages/audio/music/arcade-game-bgm-17-210775
+https://assetstore.unity.com/packages/audio/music/casual-game-bgm-5-135943
+https://kyafupaca.itch.io/shiba-inu
